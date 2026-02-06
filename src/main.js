@@ -26,11 +26,17 @@ for (const user of users) {
   const discordUserId = user.discord_user_id;
   const dbUserId = user.id;
 
-  // Get next card: prioritize unseen (correct_count = 0), then by lowest score
+  // Decay: reduce all introduced cards by 1 point
+  await pool.query(
+    'UPDATE cards SET score = GREATEST(score - 1, 5) WHERE user_id = $1 AND introduced = TRUE',
+    [dbUserId]
+  );
+
+  // Get next card: score <= 50, prioritize unseen
   const { rows: cards } = await pool.query(
     `SELECT * FROM cards
-     WHERE user_id = $1 AND introduced = TRUE
-     ORDER BY CASE WHEN correct_count = 0 THEN 0 ELSE 1 END ASC, score ASC
+     WHERE user_id = $1 AND introduced = TRUE AND score <= 50
+     ORDER BY CASE WHEN correct_count = 0 THEN 0 ELSE 1 END ASC, RANDOM()
      LIMIT 1`,
     [dbUserId]
   );

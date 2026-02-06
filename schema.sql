@@ -15,6 +15,7 @@ CREATE TABLE cards (
     next_review TIMESTAMP,
     correct_count INT NOT NULL DEFAULT 0,
     incorrect_count INT NOT NULL DEFAULT 0,
+    consecutive_correct INT NOT NULL DEFAULT 0,
     score INT NOT NULL DEFAULT 50
 );
 

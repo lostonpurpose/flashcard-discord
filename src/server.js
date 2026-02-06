@@ -51,7 +51,11 @@ client.on('messageCreate', async (message) => {
     );
     if (result.rowCount === 1) {
       console.log("Inserted new user", discordUserId);
-      await onboardUser(discordUserId, message, 'easy');
+      try {
+        await onboardUser(discordUserId, message, 'easy');
+      } catch (err) {
+        console.error("onboardUser failed:", err);
+      }
     } else {
       console.log("User already exists", discordUserId);
     }

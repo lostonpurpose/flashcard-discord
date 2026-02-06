@@ -3,35 +3,39 @@ import { Pool } from 'pg';
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 export async function reviewCard(userId, cardId, correct) {
-  // Get current score
+  // Get current score and streak
   const { rows } = await pool.query(
-    'SELECT score FROM cards WHERE id = $1 AND user_id = $2',
+    'SELECT score, consecutive_correct FROM cards WHERE id = $1 AND user_id = $2',
     [cardId, userId]
   );
   if (!rows.length) throw new Error('Card not found');
+  
   let score = Number(rows[0].score);
+  let streak = Number(rows[0].consecutive_correct);
 
-  // Adjust score
-  let newScore;
+  // Calculate new score and streak
+  let newScore, newStreak;
   if (correct) {
-    newScore = score + 5;
+    // Base increase: 4-7 (randomized for variation)
+    const baseIncrease = Math.floor(Math.random() * 4) + 4;
+    // Score increase: baseIncrease + (3 * current_streak)
+    newScore = score + baseIncrease + (3 * streak);
+    // Then increment streak for next time
+    newStreak = streak + 1;
   } else {
-    // Penalty scales by distance from baseline (50)
-    if (score <= 75) {
-      newScore = Math.max(score - 5, 5);
-    } else if (score <= 100) {
-      newScore = Math.max(score - 25, 5);
-    } else {
-      newScore = Math.max(score - 50, 5);
-    }
+    // Reset streak on wrong answer
+    newStreak = 0;
+    // Penalty: -5 points
+    newScore = Math.max(score - 5, 5);
   }
 
   await pool.query(
     `UPDATE cards SET
       score = $1,
-      correct_count = correct_count + $2,
-      incorrect_count = incorrect_count + $3
-     WHERE id = $4 AND user_id = $5`,
-    [newScore, correct ? 1 : 0, correct ? 0 : 1, cardId, userId]
+      consecutive_correct = $2,
+      correct_count = correct_count + $3,
+      incorrect_count = incorrect_count + $4
+     WHERE id = $5 AND user_id = $6`,
+    [newScore, newStreak, correct ? 1 : 0, correct ? 0 : 1, cardId, userId]
   );
 }
