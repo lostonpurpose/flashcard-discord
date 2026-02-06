@@ -94,7 +94,7 @@ client.on('messageCreate', async (message) => {
       if (cardFront && cardBack) {
         try {
           await pool.query(
-            `INSERT INTO cards (user_id, card_front, card_back, introduced, next_review) VALUES ($1, $2, $3, TRUE, NOW())`,
+            `INSERT INTO cards (user_id, card_front, card_back, introduced, next_review, is_custom) VALUES ($1, $2, $3, TRUE, NOW(), TRUE)`,
             [userId, cardFront, cardBack]
           );
           await message.reply(`Card created: ${cardFront} = ${cardBack}`);

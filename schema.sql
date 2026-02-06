@@ -12,6 +12,7 @@ CREATE TABLE cards (
     card_front VARCHAR(255) NOT NULL,
     card_back TEXT NOT NULL,
     introduced BOOLEAN NOT NULL DEFAULT FALSE,
+  is_custom BOOLEAN NOT NULL DEFAULT FALSE,
     next_review TIMESTAMP,
     correct_count INT NOT NULL DEFAULT 0,
     incorrect_count INT NOT NULL DEFAULT 0,

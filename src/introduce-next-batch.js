@@ -5,9 +5,9 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 export async function introduceNextBatch(userId, message, difficulty = 'easy') {
   // 1. Get all cards for user with their mastery status
   const { rows: userCards } = await pool.query(
-    `SELECT c.id, c.card_front, c.card_back, c.score
+    `SELECT c.id, c.card_front, c.card_back, c.correct_count
      FROM cards c
-     WHERE c.user_id = $1 AND c.introduced = TRUE
+     WHERE c.user_id = $1 AND c.introduced = TRUE AND c.is_custom = FALSE
      ORDER BY c.id ASC`,
     [userId]
   );
@@ -21,8 +21,8 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
   // 3. Find the latest batch (the last group of 5)
   const currentBatch = batches[batches.length - 1];
 
-  // 4. Check if current batch is mastered
-  const mastered = currentBatch && currentBatch.length === 5 && currentBatch.every(card => card.score > 50);
+  // 4. Check if current batch is mastered (all answered correctly at least once)
+  const mastered = currentBatch && currentBatch.length === 5 && currentBatch.every(card => card.correct_count >= 1);
 
   if (mastered) {
     // 5. Get next 5 master_cards not yet assigned to user, filtered by difficulty
