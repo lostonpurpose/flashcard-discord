@@ -19,7 +19,8 @@ export async function reviewCard(userId, cardId, correct) {
     // Base increase: 4-7 (randomized for variation)
     const baseIncrease = Math.floor(Math.random() * 4) + 4;
     // Score increase: baseIncrease + (3 * current_streak)
-    newScore = score + baseIncrease + (3 * streak);
+    const fiveInRowBonus = streak === 4 ? 35 : 0;
+    newScore = score + baseIncrease + (3 * streak) + fiveInRowBonus;
     // Then increment streak for next time
     newStreak = streak + 1;
   } else {

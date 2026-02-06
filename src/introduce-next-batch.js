@@ -18,8 +18,9 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
     batches.push(userCards.slice(i, i + 5));
   }
 
-  // 3. Find the latest batch (the last group of 5)
-  const currentBatch = batches[batches.length - 1];
+  // 3. Find the latest full batch (ignore partial trailing batch)
+  const fullBatches = batches.filter(batch => batch.length === 5);
+  const currentBatch = fullBatches[fullBatches.length - 1];
 
   // 4. Check if current batch is mastered (all answered correctly at least once)
   const mastered = currentBatch && currentBatch.length === 5 && currentBatch.every(card => card.correct_count >= 1);
