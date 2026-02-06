@@ -14,6 +14,7 @@ services:
       - db
     volumes:
       - .:/app
+      - node_modules:/app/node_modules
 
   cloudflared:
     image: cloudflare/cloudflared:latest
@@ -38,6 +39,7 @@ services:
     working_dir: /app
     volumes:
       - .:/app
+      - node_modules:/app/node_modules
     command: sh -c "while true; do node src/main.js; sleep 60; done"
     environment:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/flashcard
@@ -55,6 +57,8 @@ services:
       - db
     volumes:
       - .:/app
+      - node_modules:/app/node_modules
 
 volumes:
   postgres_data:
+  node_modules:

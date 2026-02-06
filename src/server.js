@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { Client, GatewayIntentBits } from 'discord.js';
+import { Client, GatewayIntentBits, Partials } from 'discord.js';
 import { Pool } from 'pg';
 import { checkMessage } from './kanji-check.js';
 import { onboardUser } from './onboard-user.js';
@@ -13,9 +13,11 @@ if (!botToken) {
 
 const client = new Client({
   intents: [
+    GatewayIntentBits.Guilds,
     GatewayIntentBits.DirectMessages,
     GatewayIntentBits.MessageContent,
   ],
+  partials: [Partials.Channel],
 });
 
 const pool = new Pool({
@@ -27,11 +29,13 @@ client.on('ready', () => {
 });
 
 client.on('messageCreate', async (message) => {
+  console.log(`Message received from ${message.author.tag}: "${message.content}" in channel type: ${message.channel.type}`);
+  
   // Ignore bot messages
   if (message.author.bot) return;
 
   // Only handle DMs
-  if (!message.isDMChannel()) return;
+  if (message.guild !== null) return;
 
   const discordUserId = message.author.id;
   const userAnswer = message.content.trim();
