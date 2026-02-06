@@ -1,10 +1,8 @@
 import { Pool } from 'pg';
-import fetch from 'node-fetch';
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-const channelToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 
-export async function sendNextCard(userId, lineUserId) {
+export async function sendNextCard(userId, message) {
   // Get the next card due for review
   const { rows } = await pool.query(
     `SELECT c.* FROM cards c
@@ -32,15 +30,7 @@ export async function sendNextCard(userId, lineUserId) {
   if (allMeanings.length === 1) {
     await pool.query('UPDATE users SET last_kanji_sent = $1 WHERE id = $2', [card.card_front, userId]);
     
-    const payload = {
-      to: lineUserId,
-      messages: [{ type: 'text', text: card.card_front }]
-    };
-    await fetch('https://api.line.me/v2/bot/message/push', {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${channelToken}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
+    await message.reply(card.card_front);
     return true;
   }
 
@@ -61,15 +51,7 @@ export async function sendNextCard(userId, lineUserId) {
     // Just send the plain kanji for first time
     await pool.query('UPDATE users SET last_kanji_sent = $1 WHERE id = $2', [card.card_front, userId]);
     
-    const payload = {
-      to: lineUserId,
-      messages: [{ type: 'text', text: card.card_front }]
-    };
-    await fetch('https://api.line.me/v2/bot/message/push', {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${channelToken}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
+    await message.reply(card.card_front);
     return true;
   }
 
@@ -99,15 +81,7 @@ export async function sendNextCard(userId, lineUserId) {
 
   await pool.query('UPDATE users SET last_kanji_sent = $1 WHERE id = $2', [card.card_front, userId]);
   
-  const payload = {
-    to: lineUserId,
-    messages: [{ type: 'text', text: promptText }]
-  };
-  await fetch('https://api.line.me/v2/bot/message/push', {
-    method: 'POST',
-    headers: { 'Authorization': `Bearer ${channelToken}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
+  await message.reply(promptText);
   
   return true;
 }

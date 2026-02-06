@@ -1,14 +1,12 @@
 import { Pool } from 'pg';
-import fetch from 'node-fetch'; // Import at the top
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-const channelToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 
-export async function onboardUser(lineUserId, difficulty = 'easy') {
+export async function onboardUser(discordUserId, message, difficulty = 'easy') {
   // Get user id
   const { rows: userRows } = await pool.query(
-    'SELECT id FROM users WHERE line_user_id = $1',
-    [lineUserId]
+    'SELECT id FROM users WHERE discord_user_id = $1',
+    [discordUserId]
   );
   if (!userRows.length) throw new Error('User not found');
   const userId = userRows[0].id;
@@ -29,54 +27,13 @@ export async function onboardUser(lineUserId, difficulty = 'easy') {
   }
 
   // Send the very first welcome greeting
-  const initialGreeting = {
-    to: lineUserId,
-    messages: [
-      { type: 'text', text: "Welcome to the Kanji Study Line App!\nYou'll be getting a kanji every few hours. Just repond to the message with your answer like a regular text message\n For options, like changing the timing or difficulty, see the 'Files' section. It can be found by clicking the three lines in the top right.\n Here are your first five kanji to learn:" }
-    ]
-  };
-    await fetch('https://api.line.me/v2/bot/message/push', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${channelToken}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(initialGreeting),
-  });
-
+  await message.reply("Welcome to the Kanji Study Discord Bot!\nYou'll be getting a kanji every few hours. Just respond to the message with your answer like a regular Discord message.\n\nHere are your first five kanji to learn:");
 
   // Send study message (kanji + meaning) for each card
   for (const card of cardRows) {
-
-    const payload = {
-      to: lineUserId,
-      messages: [
-        { type: 'text', text: `${card.card_front} = ${card.card_back}` }
-      ]
-    };
-    await fetch('https://api.line.me/v2/bot/message/push', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${channelToken}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    });
+    await message.reply(`${card.card_front} = ${card.card_back}`);
   }
 
-  // Send empty block so you don't accidentally see the teachings
-  const emptyBlock = {
-    to: lineUserId,
-    messages: [
-      { type: 'text', text: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nScroll up for your first five cards (this is so you don't accidentally see the meanings when typing your answers:))" }
-    ]
-  };
-    await fetch('https://api.line.me/v2/bot/message/push', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${channelToken}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(emptyBlock),
-  });
+  // Send spacing message
+  await message.reply("\n\n\n(Scroll up for your first five cards to avoid accidentally seeing the meanings!)");
 }

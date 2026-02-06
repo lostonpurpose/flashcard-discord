@@ -1,10 +1,8 @@
 import { Pool } from 'pg';
-import fetch from 'node-fetch';
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-const channelToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 
-export async function introduceNextBatch(userId, lineUserId, difficulty = 'easy') {
+export async function introduceNextBatch(userId, message, difficulty = 'easy') {
   // 1. Get all cards for user with their mastery status
   const { rows: userCards } = await pool.query(
     `SELECT c.id, c.card_front, c.card_back, c.score
@@ -40,38 +38,12 @@ export async function introduceNextBatch(userId, lineUserId, difficulty = 'easy'
 
     if (nextCards.length === 0) {
       // No more cards available
-      const noMoreCards = {
-        to: lineUserId,
-        messages: [
-          { type: 'text', text: "You've completed all available cards at this difficulty level! 🎉" }
-        ]
-      };
-      await fetch('https://api.line.me/v2/bot/message/push', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${channelToken}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(noMoreCards),
-      });
+      await message.reply("You've completed all available cards at this difficulty level! 🎉");
       return false;
     }
 
     // Send message telling them about next 5 kanji
-    const nextBatchUnlocked = {
-      to: lineUserId,
-      messages: [
-        { type: 'text', text: "Nice work! You're on to the next 5 cards. Here they are:" }
-      ]
-    };
-    await fetch('https://api.line.me/v2/bot/message/push', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${channelToken}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(nextBatchUnlocked),
-    });
+    await message.reply("Nice work! You're on to the next 5 cards. Here they are:");
 
     // 6. Insert new cards and send study messages
     for (const card of nextCards) {
@@ -99,37 +71,13 @@ export async function introduceNextBatch(userId, lineUserId, difficulty = 'easy'
         );
       }
       
-      // Send next five flashcards to learn via LINE
+      // Send next five flashcards to learn via Discord
       const meaningText = meanings.join(', ');
-      const payload = {
-        to: lineUserId,
-        messages: [{ type: 'text', text: `${card.card_front} = ${meaningText}` }]
-      };
-      await fetch('https://api.line.me/v2/bot/message/push', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${channelToken}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
+      await message.reply(`${card.card_front} = ${meaningText}`);
     }
 
-    // Send empty block so you don't accidentally see the teachings
-    const emptyBlock = {
-      to: lineUserId,
-      messages: [
-        { type: 'text', text: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nScroll up for the new words (this is so you don't accidentally see the meanings :))" }
-      ]
-    };
-    await fetch('https://api.line.me/v2/bot/message/push', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${channelToken}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(emptyBlock),
-    });
+    // Send spacing message
+    await message.reply("\n\n(Scroll up for the new words to avoid accidentally seeing the meanings!)");
 
     return true; // Next batch introduced
   }

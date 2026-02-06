@@ -9,7 +9,7 @@ services:
       - "3000:3000"
     environment:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/flashcard
-      - LINE_CHANNEL_ACCESS_TOKEN=${LINE_CHANNEL_ACCESS_TOKEN}
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
     depends_on:
       - db
     volumes:
@@ -41,7 +41,7 @@ services:
     command: sh -c "while true; do node src/main.js; sleep 60; done"
     environment:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/flashcard
-      - LINE_CHANNEL_ACCESS_TOKEN=${LINE_CHANNEL_ACCESS_TOKEN}
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
     depends_on:
       - db
 
@@ -50,7 +50,7 @@ services:
     command: node src/kanji-check.js
     environment:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/flashcard
-      - LINE_CHANNEL_ACCESS_TOKEN=${LINE_CHANNEL_ACCESS_TOKEN}
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
     depends_on:
       - db
     volumes:
