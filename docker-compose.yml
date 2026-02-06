@@ -16,12 +16,6 @@ services:
       - .:/app
       - node_modules:/app/node_modules
 
-  cloudflared:
-    image: cloudflare/cloudflared:latest
-    network_mode: "host"
-    command: tunnel --no-autoupdate run --token ${CF_TUNNEL_TOKEN}
-    restart: unless-stopped
-
   db:
     image: postgres:16
     environment:
