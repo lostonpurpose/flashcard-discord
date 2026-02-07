@@ -18,6 +18,8 @@ export async function onboardUser(discordUserId, message, difficulty = 'easy') {
   );
 
   // Insert into cards table for this user
+  const { rows: userFreqRows } = await pool.query('SELECT user_freq FROM users WHERE id = $1', [userId]);
+  const userFreq = userFreqRows.length ? userFreqRows[0].user_freq : 3;
   for (const card of cardRows) {
     await pool.query(
       `INSERT INTO cards (user_id, card_front, card_back, introduced, next_review)
@@ -31,6 +33,9 @@ export async function onboardUser(discordUserId, message, difficulty = 'easy') {
 
   // Send study message (kanji + meaning) for each card
   for (const card of cardRows) {
+    // Set next_review to user_freq hours from now
+    const nextReview = new Date(Date.now() + userFreq * 60 * 60 * 1000);
+    await pool.query('UPDATE cards SET next_review = $1 WHERE user_id = $2 AND card_front = $3', [nextReview, userId, card.card_front]);
     await message.reply(`${card.card_front} = ${card.card_back}`);
   }
 

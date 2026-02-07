@@ -3,7 +3,8 @@ CREATE TABLE users (
   discord_user_id VARCHAR(255) UNIQUE NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
   last_kanji_sent VARCHAR(255),
-  difficulty VARCHAR(50) DEFAULT 'easy'
+  difficulty VARCHAR(50) DEFAULT 'easy',
+  user_freq INT NOT NULL DEFAULT 3
 );
 
 CREATE TABLE cards (

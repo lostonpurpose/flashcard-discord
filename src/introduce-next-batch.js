@@ -72,6 +72,11 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
         );
       }
       
+      // Set next_review to user_freq hours from now
+      const { rows: userRows } = await pool.query('SELECT user_freq FROM users WHERE id = $1', [userId]);
+      const userFreq = userRows.length ? userRows[0].user_freq : 3;
+      const nextReview = new Date(Date.now() + userFreq * 60 * 60 * 1000);
+      await pool.query('UPDATE cards SET next_review = $1 WHERE user_id = $2 AND card_front = $3', [nextReview, userId, card.card_front]);
       // Send next five flashcards to learn via Discord
       const meaningText = meanings.join(', ');
       await message.reply(`${card.card_front} = ${meaningText}`);

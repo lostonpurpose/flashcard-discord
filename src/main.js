@@ -26,9 +26,9 @@ for (const user of users) {
   const discordUserId = user.discord_user_id;
   const dbUserId = user.id;
 
-  // Decay: reduce all introduced cards by 1 point
+  // Decay: reduce only cards with score >= 50 by 1 point
   await pool.query(
-    'UPDATE cards SET score = GREATEST(score - 1, 5) WHERE user_id = $1 AND introduced = TRUE',
+    'UPDATE cards SET score = GREATEST(score - 1, 5) WHERE user_id = $1 AND introduced = TRUE AND score >= 50',
     [dbUserId]
   );
 

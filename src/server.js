@@ -5,6 +5,7 @@ import { checkMessage } from './kanji-check.js';
 import { onboardUser } from './onboard-user.js';
 import { reviewCard } from './review-card.js';
 import { introduceNextBatch } from './introduce-next-batch.js';
+import { sendNextCard } from './send-next-card.js';
 
 const botToken = process.env.DISCORD_BOT_TOKEN;
 if (!botToken) {
@@ -74,6 +75,17 @@ client.on('messageCreate', async (message) => {
   if (userAnswer.includes(' = ')) {
     const parts = userAnswer.split(' = ').map(s => s.trim());
     
+    // Check if it's a frequency change command
+    if (parts[0].toLowerCase() === 'freq' && parts[1]) {
+      const freqInt = parseInt(parts[1], 10);
+      if (isNaN(freqInt) || freqInt < 1 || freqInt > 24) {
+        await message.reply('Frequency must be an integer between 1 and 24 (hours).');
+        return;
+      }
+      await pool.query('UPDATE users SET user_freq = $1 WHERE id = $2', [freqInt, userId]);
+      await message.reply(`Card frequency updated: you will get a card every ${freqInt} hour(s).`);
+      return;
+    }
     // Check if it's a difficulty change command
     if (parts[0].toLowerCase() === 'difficulty' && parts[1]) {
       const newDifficulty = parts[1].toLowerCase();
@@ -223,9 +235,19 @@ client.on('messageCreate', async (message) => {
 
   // 4. Try to introduce the next batch if ready
   try {
-    await introduceNextBatch(userId, message, 'easy');
+    const batchIntroduced = await introduceNextBatch(userId, message, 'easy');
+    // Only send a new card if one is actually due (next_review <= now)
+    const { rows: dueCards } = await pool.query(
+      `SELECT id FROM cards WHERE user_id = $1 AND introduced = TRUE AND (next_review IS NULL OR next_review <= NOW()) LIMIT 1`,
+      [userId]
+    );
+    if (dueCards.length > 0) {
+      await sendNextCard(userId, message);
+    } else {
+      console.log('[server.js] No card due, not sending new card.');
+    }
   } catch (err) {
-    console.error("introduceNextBatch failed:", err);
+    console.error("introduceNextBatch/sendNextCard failed:", err);
   }
 });
 
