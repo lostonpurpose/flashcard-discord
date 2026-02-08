@@ -91,12 +91,12 @@ export async function sendNextCard(userId, message) {
       const knownText = knownMeanings.join(', ');
       promptText = `${card.card_front} means ${knownText}, and ?`;
     } else {
-      // All meanings are at 0, just send plain kanji
-      promptText = card.card_front;
+      // All meanings are at 0, use kanji = ?
+      promptText = `${card.card_front} = ?`;
     }
   } else {
-    // All meanings are balanced, send plain kanji
-    promptText = card.card_front;
+    // All meanings are balanced, use kanji = ?
+    promptText = `${card.card_front} = ?`;
   }
   await message.reply(promptText);
   return true;

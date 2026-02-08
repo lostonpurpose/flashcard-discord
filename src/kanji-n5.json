@@ -202,6 +202,14 @@
       "しち"
     ]
   },
+    "水曜日": {
+    "meanings": [
+      "Wednesday"
+    ],
+    "readings": [
+      "すいようび"
+    ]
+  },
   "女": {
     "meanings": [
       "woman",
@@ -307,6 +315,14 @@
       "じ"
     ]
   },
+    "土曜日": {
+    "meanings": [
+      "Saturday"
+    ],
+    "readings": [
+      "どようび"
+    ]
+  },
   "文": {
     "meanings": [
       "sentence",
@@ -324,6 +340,14 @@
     "readings": [
       "みず",
       "すい"
+    ]
+  },
+    "火曜日": {
+    "meanings": [
+      "Tuesday"
+    ],
+    "readings": [
+      "かようび"
     ]
   },
   "火": {
@@ -470,6 +494,14 @@
       "こう"
     ]
   },
+    "月曜日": {
+    "meanings": [
+      "Monday"
+    ],
+    "readings": [
+      "げつようび"
+    ]
+  },
   "来": {
     "meanings": [
       "come",
@@ -588,6 +620,14 @@
     ],
     "readings": [
       "にほんじん"
+    ]
+  },
+    "白い": {
+    "meanings": [
+      "white"
+    ],
+    "readings": [
+      "しろい"
     ]
   },
   "学生": {
@@ -831,30 +871,6 @@
       "てんき"
     ]
   },
-  "月曜日": {
-    "meanings": [
-      "Monday"
-    ],
-    "readings": [
-      "げつようび"
-    ]
-  },
-  "火曜日": {
-    "meanings": [
-      "Tuesday"
-    ],
-    "readings": [
-      "かようび"
-    ]
-  },
-  "水曜日": {
-    "meanings": [
-      "Wednesday"
-    ],
-    "readings": [
-      "すいようび"
-    ]
-  },
   "木曜日": {
     "meanings": [
       "Thursday"
@@ -880,28 +896,12 @@
       "とお"
     ]
   },
-  "土曜日": {
-    "meanings": [
-      "Saturday"
-    ],
-    "readings": [
-      "どようび"
-    ]
-  },
   "日曜日": {
     "meanings": [
       "Sunday"
     ],
     "readings": [
       "にちようび"
-    ]
-  },
-  "白い": {
-    "meanings": [
-      "white"
-    ],
-    "readings": [
-      "しろい"
     ]
   },
   "黒い": {
