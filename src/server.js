@@ -230,7 +230,6 @@ client.on('messageCreate', async (message) => {
     
     if (correct) {
       const matchedMeaning = checkResult.matchedMeaning;
-      
       // Update the specific meaning's progress
       await pool.query(
         `INSERT INTO card_meanings (card_id, meaning, correct_count, last_tested)
@@ -239,8 +238,20 @@ client.on('messageCreate', async (message) => {
          DO UPDATE SET correct_count = card_meanings.correct_count + 1, last_tested = NOW()`,
         [cardIdFromQuery, matchedMeaning]
       );
-      
-      feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')}`;
+
+      // Update review stats before fetching new score/streak
+      await reviewCard(userId, cardId, correct);
+
+      // Fetch updated score and streak
+      const { rows } = await pool.query(
+        'SELECT score, consecutive_correct FROM cards WHERE id = $1 AND user_id = $2',
+        [cardId, userId]
+      );
+      if (!rows.length) throw new Error('Card not found');
+      let score = Number(rows[0].score);
+      let streak = Number(rows[0].consecutive_correct);
+
+      feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (streak: ${streak} -- score: ${score})`;
     } else {
       // Track which meaning they failed to answer
       // We'll increment incorrect_count on the least-practiced meaning
@@ -263,8 +274,10 @@ client.on('messageCreate', async (message) => {
 
     await message.reply(feedbackText);
 
-    // Now update review stats
-    await reviewCard(userId, cardId, correct);
+    // Now update review stats for incorrect answers
+    if (!correct) {
+      await reviewCard(userId, cardId, correct);
+    }
 
   } else {
     console.error("No valid cardId found, skipping reviewCard");
