@@ -42,6 +42,7 @@ import { onboardUser } from './onboard-user.js';
 import { reviewCard } from './review-card.js';
 import { introduceNextBatch } from './introduce-next-batch.js';
 import { sendNextCard } from './send-next-card.js';
+import { badges } from './badges.js';
 
 const botToken = process.env.DISCORD_BOT_TOKEN;
 if (!botToken) {
@@ -262,9 +263,11 @@ client.on('messageCreate', async (message) => {
       let score = Number(updatedRows[0].score);
       let streak = Number(updatedRows[0].consecutive_correct);
 
+      // fun awards for big streaks
+      badges(streak);
 
       // actual feedback to user on CORRECT answer !!!!!!!!!!!!
-      feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+      feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
     } else {
       // Track which meaning they failed to answer
       // We'll increment incorrect_count on the least-practiced meaning
