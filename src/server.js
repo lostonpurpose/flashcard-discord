@@ -264,7 +264,7 @@ client.on('messageCreate', async (message) => {
       let streak = Number(updatedRows[0].consecutive_correct);
 
       // fun awards for big streaks
-      badges(streak);
+      let badge = badges(streak);
 
       // actual feedback to user on CORRECT answer !!!!!!!!!!!!
       feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;

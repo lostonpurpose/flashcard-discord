@@ -18,4 +18,5 @@ export function badges(streak){
     else {
     badge = ""
     }
+    return badge;
 };
