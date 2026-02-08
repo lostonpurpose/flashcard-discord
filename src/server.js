@@ -266,6 +266,49 @@ client.on('messageCreate', async (message) => {
       // fun awards for big streaks
       let badge = badges(streak);
 
+      // === READINGS INTRODUCTION LOGIC ===
+      // Check if streak is 5 and readings not introduced
+      const { rows: readingIntroRows } = await pool.query(
+        'SELECT reading_introduced FROM cards WHERE id = $1',
+        [cardId]
+      );
+      const readingIntroduced = readingIntroRows[0]?.reading_introduced;
+      if (streak >= 5 && !readingIntroduced) {
+        // Find readings for this kanji
+        let readings = null;
+        try {
+          // Try all kanji JSON files
+          const kanjiFiles = [
+            './kanji-n5.json', './kanji-n4.json', './kanji-n3-1.json', './kanji-n3-2.json',
+            './kanji-n2-1.json', './kanji-n2-2.json', './kanji-n2-3.json'
+          ];
+          for (const file of kanjiFiles) {
+            const kanjiData = require(file);
+            if (kanjiData[lastKanji] && kanjiData[lastKanji].readings) {
+              readings = kanjiData[lastKanji].readings;
+              break;
+            }
+          }
+        } catch (e) {
+          readings = null;
+        }
+        if (readings && readings.length) {
+          // Send readings message
+          await message.reply(`Congratulations, you've answered ${lastKanji} 5 times in a row! Here are the readings for ${lastKanji}: ${readings.join(', ')}`);
+          // Add readings card
+          await pool.query(
+            `INSERT INTO cards (user_id, card_front, card_back, introduced, is_custom, reading_introduced)
+             VALUES ($1, $2, $3, TRUE, FALSE, TRUE)`,
+            [userId, lastKanji, JSON.stringify(readings)]
+          );
+          // Mark original card as reading_introduced
+          await pool.query(
+            'UPDATE cards SET reading_introduced = TRUE WHERE id = $1',
+            [cardId]
+          );
+        }
+      }
+
       // actual feedback to user on CORRECT answer !!!!!!!!!!!!
       feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
     } else {
