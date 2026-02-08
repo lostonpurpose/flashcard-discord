@@ -3,20 +3,45 @@ import { Pool } from 'pg';
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 export async function sendNextCard(userId, message) {
-  // Get the next card due for review
-  const { rows } = await pool.query(
-    `SELECT c.* FROM cards c
-     WHERE c.user_id = $1 AND c.introduced = TRUE
-     ORDER BY CASE WHEN c.correct_count = 0 THEN 0 ELSE 1 END ASC, c.score ASC
-     LIMIT 1`,
-    [userId]
-  );
+      // Send debug info directly to the user
+      // ...existing code (removed debug DM to user)...
+    // Get all new and review cards (ignore next_review)
+    const { rows: newCards } = await pool.query(
+      `SELECT * FROM cards WHERE user_id = $1 AND introduced = TRUE AND score = 50`,
+      [userId]
+    );
+    const { rows: reviewCards } = await pool.query(
+      `SELECT * FROM cards WHERE user_id = $1 AND introduced = TRUE AND score < 50`,
+      [userId]
+    );
 
-  if (rows.length === 0) {
+    // ...existing code (removed debug reply to user)...
+
+  if (newCards.length === 0 && reviewCards.length === 0) {
     return false; // No cards due
   }
 
-  const card = rows[0];
+  // Weighted random: reviewCards 3x as likely as newCards
+  let pickGroup;
+  if (newCards.length === 0) {
+    pickGroup = reviewCards;
+    console.log('[sendNextCard] Picking from reviewCards (only group available)');
+  } else if (reviewCards.length === 0) {
+    pickGroup = newCards;
+    console.log('[sendNextCard] Picking from newCards (only group available)');
+  } else {
+    // 0-3: review, 4: new (3:1 odds)
+    const r = Math.floor(Math.random() * 4);
+    pickGroup = r < 3 ? reviewCards : newCards;
+    console.log(`[sendNextCard] Weighted pick: ${r < 3 ? 'reviewCards' : 'newCards'}`);
+  }
+
+  // Pick a random card from the chosen group
+  const card = pickGroup[Math.floor(Math.random() * pickGroup.length)];
+  console.log(`[sendNextCard] Picked card: ${card.card_front}, score: ${card.score}`);
+
+  // Update last_card_sent to NOW for this user
+  await pool.query('UPDATE users SET last_card_sent = NOW() WHERE id = $1', [userId]);
   
   // Parse meanings
   let allMeanings;
@@ -26,11 +51,10 @@ export async function sendNextCard(userId, message) {
     allMeanings = [card.card_back];
   }
 
-  // If only one meaning, just send the kanji
+  // Restore multiple meaning prompt logic
+  await pool.query('UPDATE users SET last_kanji_sent = $1 WHERE id = $2', [card.card_front, userId]);
   if (allMeanings.length === 1) {
-    await pool.query('UPDATE users SET last_kanji_sent = $1 WHERE id = $2', [card.card_front, userId]);
-    
-    await message.reply(card.card_front);
+    await message.reply(`${card.card_front} = ?`);
     return true;
   }
 
@@ -48,10 +72,7 @@ export async function sendNextCard(userId, message) {
         [card.id, meaning]
       );
     }
-    // Just send the plain kanji for first time
-    await pool.query('UPDATE users SET last_kanji_sent = $1 WHERE id = $2', [card.card_front, userId]);
-    
-    await message.reply(card.card_front);
+    await message.reply(`${card.card_front} = ?`);
     return true;
   }
 
@@ -66,22 +87,18 @@ export async function sendNextCard(userId, message) {
     const knownMeanings = meaningStats
       .filter(m => !laggingMeanings.find(lm => lm.meaning === m.meaning))
       .map(m => m.meaning);
-    
     if (knownMeanings.length > 0) {
       const knownText = knownMeanings.join(', ');
       promptText = `${card.card_front} means ${knownText}, and ?`;
     } else {
-      // All meanings are at 0, just send plain kanji
-      promptText = card.card_front;
+      // All meanings are at 0, use kanji = ?
+      promptText = `${card.card_front} = ?`;
     }
   } else {
-    // All meanings are balanced, send plain kanji
-    promptText = card.card_front;
+    // All meanings are balanced, use kanji = ?
+    promptText = `${card.card_front} = ?`;
   }
-
-  await pool.query('UPDATE users SET last_kanji_sent = $1 WHERE id = $2', [card.card_front, userId]);
-  
   await message.reply(promptText);
-  
   return true;
+
 }

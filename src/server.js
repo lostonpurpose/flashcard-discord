@@ -1,3 +1,39 @@
+// === BACKGROUND INTERVAL KANJI SENDER ===
+// This timer runs every minute and checks all users for due kanji
+setInterval(async () => {
+  try {
+    const { rows: users } = await pool.query('SELECT id, discord_user_id, last_card_sent, user_freq FROM users');
+    const now = new Date();
+    for (const user of users) {
+      const { id: userId, discord_user_id, last_card_sent, user_freq } = user;
+      const lastSent = last_card_sent ? new Date(last_card_sent) : null;
+      const freqMs = (user_freq || 3) * 60 * 1000;
+      if (!lastSent || (now - lastSent) >= freqMs) {
+        try {
+          const discordUser = await client.users.fetch(discord_user_id);
+          await introduceNextBatch(userId, { author: { id: discord_user_id }, reply: async () => {} }, 'easy');
+          await sendNextCard(userId, {
+            author: { id: discord_user_id },
+            client,
+            reply: async (msg) => { try { await discordUser.send(msg); } catch (e) { /* ignore DM errors */ } },
+          });
+          // Decrease all kanji scores >50 by 1 for this user
+          await pool.query(
+            'UPDATE cards SET score = GREATEST(score - 1, 5) WHERE user_id = $1 AND introduced = TRUE AND score > 50',
+            [userId]
+          );
+          // Update last_card_sent immediately after sending
+          await pool.query('UPDATE users SET last_card_sent = $1 WHERE id = $2', [now.toISOString(), userId]);
+          console.log(`[TIMER] Sent kanji to user ${discord_user_id} and updated last_card_sent`);
+        } catch (err) {
+          console.error(`[TIMER] Failed to send kanji to user ${discord_user_id}:`, err);
+        }
+      }
+    }
+  } catch (err) {
+    console.error('[TIMER] Error in kanji interval sender:', err);
+  }
+}, 60 * 1000); // every minute
 import 'dotenv/config';
 import { Client, GatewayIntentBits, Partials } from 'discord.js';
 import { Pool } from 'pg';
@@ -5,6 +41,7 @@ import { checkMessage } from './kanji-check.js';
 import { onboardUser } from './onboard-user.js';
 import { reviewCard } from './review-card.js';
 import { introduceNextBatch } from './introduce-next-batch.js';
+import { sendNextCard } from './send-next-card.js';
 
 const botToken = process.env.DISCORD_BOT_TOKEN;
 if (!botToken) {
@@ -30,6 +67,7 @@ client.on('ready', () => {
 
 client.on('messageCreate', async (message) => {
   console.log(`Message received from ${message.author.tag}: "${message.content}" in channel type: ${message.channel.type}`);
+  console.log('[server.js] messageCreate handler triggered');
   
   // Ignore bot messages
   if (message.author.bot) return;
@@ -74,6 +112,17 @@ client.on('messageCreate', async (message) => {
   if (userAnswer.includes(' = ')) {
     const parts = userAnswer.split(' = ').map(s => s.trim());
     
+    // Check if it's a frequency change command
+    if (parts[0].toLowerCase() === 'freq' && parts[1]) {
+      const freqInt = parseInt(parts[1], 10);
+      if (isNaN(freqInt) || freqInt < 1 || freqInt > 24) {
+        await message.reply('Frequency must be an integer between 1 and 24 (hours).');
+        return;
+      }
+      await pool.query('UPDATE users SET user_freq = $1 WHERE id = $2', [freqInt, userId]);
+      await message.reply(`Card frequency updated: you will get a card every ${freqInt} hour(s).`);
+      return;
+    }
     // Check if it's a difficulty change command
     if (parts[0].toLowerCase() === 'difficulty' && parts[1]) {
       const newDifficulty = parts[1].toLowerCase();
@@ -181,7 +230,6 @@ client.on('messageCreate', async (message) => {
     
     if (correct) {
       const matchedMeaning = checkResult.matchedMeaning;
-      
       // Update the specific meaning's progress
       await pool.query(
         `INSERT INTO card_meanings (card_id, meaning, correct_count, last_tested)
@@ -190,8 +238,20 @@ client.on('messageCreate', async (message) => {
          DO UPDATE SET correct_count = card_meanings.correct_count + 1, last_tested = NOW()`,
         [cardIdFromQuery, matchedMeaning]
       );
-      
-      feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')}`;
+
+      // Update review stats before fetching new score/streak
+      await reviewCard(userId, cardId, correct);
+
+      // Fetch updated score and streak
+      const { rows } = await pool.query(
+        'SELECT score, consecutive_correct FROM cards WHERE id = $1 AND user_id = $2',
+        [cardId, userId]
+      );
+      if (!rows.length) throw new Error('Card not found');
+      let score = Number(rows[0].score);
+      let streak = Number(rows[0].consecutive_correct);
+
+      feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (streak: ${streak} -- score: ${score})`;
     } else {
       // Track which meaning they failed to answer
       // We'll increment incorrect_count on the least-practiced meaning
@@ -214,8 +274,10 @@ client.on('messageCreate', async (message) => {
 
     await message.reply(feedbackText);
 
-    // Now update review stats
-    await reviewCard(userId, cardId, correct);
+    // Now update review stats for incorrect answers
+    if (!correct) {
+      await reviewCard(userId, cardId, correct);
+    }
 
   } else {
     console.error("No valid cardId found, skipping reviewCard");
@@ -223,9 +285,27 @@ client.on('messageCreate', async (message) => {
 
   // 4. Try to introduce the next batch if ready
   try {
-    await introduceNextBatch(userId, message, 'easy');
+    const batchIntroduced = await introduceNextBatch(userId, message, 'easy');
+    // Check user's last_card_sent and user_freq
+    const { rows: userRows } = await pool.query('SELECT last_card_sent, user_freq FROM users WHERE id = $1', [userId]);
+    if (userRows.length) {
+      const { last_card_sent, user_freq } = userRows[0];
+      const now = new Date();
+      const lastSent = last_card_sent ? new Date(last_card_sent) : null;
+      // seeting user frequency, currently minutes ============== must change back to hours
+      const freqMs = (user_freq || 3) * 60 * 1000;
+      const timeSinceLast = lastSent ? (now - lastSent) : null;
+      const timeLeft = lastSent ? (freqMs - timeSinceLast) : 0;
+      // ...existing code (removed interval debug logging and DM)...
+      if (!lastSent || (now - lastSent) >= freqMs) {
+        // ...existing code (removed debug log and DM for sendNextCard call)...
+        await sendNextCard(userId, message);
+      } else {
+        // ...existing code (removed debug log and DM for not sending new card)...
+      }
+    }
   } catch (err) {
-    console.error("introduceNextBatch failed:", err);
+    console.error("introduceNextBatch/sendNextCard failed:", err);
   }
 });
 

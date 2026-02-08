@@ -18,10 +18,12 @@ export async function onboardUser(discordUserId, message, difficulty = 'easy') {
   );
 
   // Insert into cards table for this user
+  const { rows: userFreqRows } = await pool.query('SELECT user_freq FROM users WHERE id = $1', [userId]);
+  const userFreq = userFreqRows.length ? userFreqRows[0].user_freq : 3;
   for (const card of cardRows) {
     await pool.query(
-      `INSERT INTO cards (user_id, card_front, card_back, introduced, next_review)
-       VALUES ($1, $2, $3, TRUE, NOW()) ON CONFLICT DO NOTHING`,
+      `INSERT INTO cards (user_id, card_front, card_back, introduced)
+       VALUES ($1, $2, $3, TRUE) ON CONFLICT DO NOTHING`,
       [userId, card.card_front, card.card_back]
     );
   }

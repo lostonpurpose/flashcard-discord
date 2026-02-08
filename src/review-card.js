@@ -16,10 +16,16 @@ export async function reviewCard(userId, cardId, correct) {
   // Calculate new score and streak
   let newScore, newStreak;
   if (correct) {
-    // Base increase: 4-7 (randomized for variation)
-    const baseIncrease = Math.floor(Math.random() * 4) + 4;
-    // Score increase: baseIncrease + (3 * current_streak)
-    newScore = score + baseIncrease + (3 * streak);
+    if (score < 50) {
+      // Set to random value between 52 and 57 (inclusive)
+      newScore = Math.floor(Math.random() * 7) + 52;
+    } else {
+      // Base increase: 4-7 (randomized for variation)
+      const baseIncrease = Math.floor(Math.random() * 4) + 4;
+      // Score increase: baseIncrease + (4 * current_streak)
+      const fiveInRowBonus = streak >= 4 ? 35 : 0;
+      newScore = score + baseIncrease + (4 * streak) + fiveInRowBonus;
+    }
     // Then increment streak for next time
     newStreak = streak + 1;
   } else {
