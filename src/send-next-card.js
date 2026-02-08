@@ -4,23 +4,7 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 export async function sendNextCard(userId, message) {
       // Send debug info directly to the user
-      try {
-        const { Client } = await import('discord.js');
-        const client = message.client || (globalThis.client && globalThis.client instanceof Client ? globalThis.client : null);
-        if (client) {
-          // Fetch discord_user_id from users table
-          const pool2 = new Pool({ connectionString: process.env.DATABASE_URL });
-          const { rows } = await pool2.query('SELECT discord_user_id FROM users WHERE id = $1', [userId]);
-          if (rows.length) {
-            const discordUserId = rows[0].discord_user_id;
-            const user = await client.users.fetch(discordUserId);
-            await user.send(`[DEBUG] reviewCards: ${reviewCards.map(c => c.card_front).join(', ')}`);
-            await user.send(`[DEBUG] newCards: ${newCards.map(c => c.card_front).join(', ')}`);
-          }
-        }
-      } catch (err) {
-        // Ignore debug errors
-      }
+      // ...existing code (removed debug DM to user)...
     // Get all new and review cards (ignore next_review)
     const { rows: newCards } = await pool.query(
       `SELECT * FROM cards WHERE user_id = $1 AND introduced = TRUE AND score = 50`,
@@ -31,9 +15,7 @@ export async function sendNextCard(userId, message) {
       [userId]
     );
 
-    // Send the review pool to the user for debugging
-    await message.reply(`[DEBUG] reviewCards: ${reviewCards.map(c => c.card_front).join(', ')}`);
-    await message.reply(`[DEBUG] newCards: ${newCards.map(c => c.card_front).join(', ')}`);
+    // ...existing code (removed debug reply to user)...
 
   if (newCards.length === 0 && reviewCards.length === 0) {
     return false; // No cards due

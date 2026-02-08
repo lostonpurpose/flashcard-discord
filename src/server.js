@@ -1,3 +1,34 @@
+// === BACKGROUND INTERVAL KANJI SENDER ===
+// This timer runs every minute and checks all users for due kanji
+setInterval(async () => {
+  try {
+    const { rows: users } = await pool.query('SELECT id, discord_user_id, last_card_sent, user_freq FROM users');
+    const now = new Date();
+    for (const user of users) {
+      const { id: userId, discord_user_id, last_card_sent, user_freq } = user;
+      const lastSent = last_card_sent ? new Date(last_card_sent) : null;
+      const freqMs = (user_freq || 3) * 60 * 1000;
+      if (!lastSent || (now - lastSent) >= freqMs) {
+        try {
+          const discordUser = await client.users.fetch(discord_user_id);
+          await introduceNextBatch(userId, { author: { id: discord_user_id }, reply: async () => {} }, 'easy');
+          await sendNextCard(userId, {
+            author: { id: discord_user_id },
+            client,
+            reply: async (msg) => { try { await discordUser.send(msg); } catch (e) { /* ignore DM errors */ } },
+          });
+          // Update last_card_sent immediately after sending
+          await pool.query('UPDATE users SET last_card_sent = $1 WHERE id = $2', [now.toISOString(), userId]);
+          console.log(`[TIMER] Sent kanji to user ${discord_user_id} and updated last_card_sent`);
+        } catch (err) {
+          console.error(`[TIMER] Failed to send kanji to user ${discord_user_id}:`, err);
+        }
+      }
+    }
+  } catch (err) {
+    console.error('[TIMER] Error in kanji interval sender:', err);
+  }
+}, 60 * 1000); // every minute
 import 'dotenv/config';
 import { Client, GatewayIntentBits, Partials } from 'discord.js';
 import { Pool } from 'pg';
@@ -245,11 +276,14 @@ client.on('messageCreate', async (message) => {
       const lastSent = last_card_sent ? new Date(last_card_sent) : null;
       // seeting user frequency, currently minutes ============== must change back to hours
       const freqMs = (user_freq || 3) * 60 * 1000;
+      const timeSinceLast = lastSent ? (now - lastSent) : null;
+      const timeLeft = lastSent ? (freqMs - timeSinceLast) : 0;
+      // ...existing code (removed interval debug logging and DM)...
       if (!lastSent || (now - lastSent) >= freqMs) {
-        console.log('[server.js] Calling sendNextCard after batch introduction check');
+        // ...existing code (removed debug log and DM for sendNextCard call)...
         await sendNextCard(userId, message);
       } else {
-        console.log('[server.js] Not enough time since last card sent, not sending new card.');
+        // ...existing code (removed debug log and DM for not sending new card)...
       }
     }
   } catch (err) {

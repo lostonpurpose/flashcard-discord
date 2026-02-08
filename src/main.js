@@ -1,3 +1,5 @@
+// this is UNUSED NOW. it was being called by compose.yml with cron but now things are done by server and other copilot files. keeping in case things break.
+
 import 'dotenv/config';
 import { Client, ChannelType } from 'discord.js';
 import { Pool } from 'pg';

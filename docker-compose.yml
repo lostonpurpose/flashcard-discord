@@ -30,19 +30,6 @@ services:
       - "5433:5432"
     restart: unless-stopped
 
-  cron:
-    build: .
-    working_dir: /app
-    volumes:
-      - .:/app
-      - node_modules:/app/node_modules
-    command: sh -c "while true; do node src/main.js; sleep 60; done"
-    environment:
-      - DATABASE_URL=postgres://postgres:postgres@db:5432/flashcard
-      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
-    depends_on:
-      - db
-    restart: unless-stopped
 
 volumes:
   postgres_data:
