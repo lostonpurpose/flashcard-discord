@@ -36,8 +36,8 @@ CREATE TABLE master_cards (
     id SERIAL PRIMARY KEY,
     card_front VARCHAR(255) NOT NULL,
     card_back TEXT NOT NULL,
-    difficulty VARCHAR(255) NOT NULL,
-    UNIQUE (card_front, card_back, difficulty)
+    readings TEXT,
+    difficulty VARCHAR(50) NOT NULL
 );
 
 -- New table to track individual meaning progress

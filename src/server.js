@@ -246,18 +246,18 @@ client.on('messageCreate', async (message) => {
       // Fetch old score for testing - can remove when i confirm scoring updates correctly
       const { rows: oldRows } = await pool.query(
         'SELECT score FROM cards WHERE id = $1 AND user_id = $2',
-        [cardId, userId]
+        [cardIdFromQuery, userId]
       );
       if (!oldRows.length) throw new Error('Card not found');
       let oldScore = Number(oldRows[0].score);
 
       // Update review stats before fetching new score/streak
-      await reviewCard(userId, cardId, correct);
+      await reviewCard(userId, cardIdFromQuery, correct);
 
       // Fetch updated score and streak
       const { rows: updatedRows } = await pool.query(
         'SELECT score, consecutive_correct FROM cards WHERE id = $1 AND user_id = $2',
-        [cardId, userId]
+        [cardIdFromQuery, userId]
       );
       if (!updatedRows.length) throw new Error('Card not found');
       let score = Number(updatedRows[0].score);
@@ -270,30 +270,25 @@ client.on('messageCreate', async (message) => {
       // Check if streak is 5 and readings not introduced
       const { rows: readingIntroRows } = await pool.query(
         'SELECT reading_introduced FROM cards WHERE id = $1',
-        [cardId]
+        [cardIdFromQuery]
       );
       const readingIntroduced = readingIntroRows[0]?.reading_introduced;
+      console.log(`[READINGS DEBUG] streak: ${streak}, cardId: ${cardIdFromQuery}, reading_introduced: ${readingIntroduced}`);
       if (streak >= 5 && !readingIntroduced) {
-        // Find readings for this kanji
-        let readings = null;
-        try {
-          // Try all kanji JSON files
-          const kanjiFiles = [
-            './kanji-n5.json', './kanji-n4.json', './kanji-n3-1.json', './kanji-n3-2.json',
-            './kanji-n2-1.json', './kanji-n2-2.json', './kanji-n2-3.json'
-          ];
-          for (const file of kanjiFiles) {
-            const kanjiData = require(file);
-            if (kanjiData[lastKanji] && kanjiData[lastKanji].readings) {
-              readings = kanjiData[lastKanji].readings;
-              break;
-            }
+        // Fetch readings from master_cards table
+        const { rows: masterRows } = await pool.query(
+          'SELECT readings FROM master_cards WHERE card_front = $1',
+          [lastKanji]
+        );
+        let readings = [];
+        if (masterRows.length && masterRows[0].readings) {
+          try {
+            readings = JSON.parse(masterRows[0].readings);
+          } catch {
+            readings = [];
           }
-        } catch (e) {
-          readings = null;
         }
-        if (readings && readings.length) {
-          // Send readings message
+        if (readings.length) {
           await message.reply(`Congratulations, you've answered ${lastKanji} 5 times in a row! Here are the readings for ${lastKanji}: ${readings.join(', ')}`);
           // Add readings card
           await pool.query(
@@ -304,7 +299,7 @@ client.on('messageCreate', async (message) => {
           // Mark original card as reading_introduced
           await pool.query(
             'UPDATE cards SET reading_introduced = TRUE WHERE id = $1',
-            [cardId]
+            [cardIdFromQuery]
           );
         }
       }
