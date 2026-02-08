@@ -42,6 +42,7 @@ import { onboardUser } from './onboard-user.js';
 import { reviewCard } from './review-card.js';
 import { introduceNextBatch } from './introduce-next-batch.js';
 import { sendNextCard } from './send-next-card.js';
+import { badges } from './badges.js';
 
 const botToken = process.env.DISCORD_BOT_TOKEN;
 if (!botToken) {
@@ -239,19 +240,34 @@ client.on('messageCreate', async (message) => {
         [cardIdFromQuery, matchedMeaning]
       );
 
+
+
+
+      // Fetch old score for testing - can remove when i confirm scoring updates correctly
+      const { rows: oldRows } = await pool.query(
+        'SELECT score FROM cards WHERE id = $1 AND user_id = $2',
+        [cardId, userId]
+      );
+      if (!oldRows.length) throw new Error('Card not found');
+      let oldScore = Number(oldRows[0].score);
+
       // Update review stats before fetching new score/streak
       await reviewCard(userId, cardId, correct);
 
       // Fetch updated score and streak
-      const { rows } = await pool.query(
+      const { rows: updatedRows } = await pool.query(
         'SELECT score, consecutive_correct FROM cards WHERE id = $1 AND user_id = $2',
         [cardId, userId]
       );
-      if (!rows.length) throw new Error('Card not found');
-      let score = Number(rows[0].score);
-      let streak = Number(rows[0].consecutive_correct);
+      if (!updatedRows.length) throw new Error('Card not found');
+      let score = Number(updatedRows[0].score);
+      let streak = Number(updatedRows[0].consecutive_correct);
 
-      feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (streak: ${streak} -- score: ${score})`;
+      // fun awards for big streaks
+      let badge = badges(streak);
+
+      // actual feedback to user on CORRECT answer !!!!!!!!!!!!
+      feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
     } else {
       // Track which meaning they failed to answer
       // We'll increment incorrect_count on the least-practiced meaning
