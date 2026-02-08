@@ -31,6 +31,7 @@ client.on('ready', () => {
 
 client.on('messageCreate', async (message) => {
   console.log(`Message received from ${message.author.tag}: "${message.content}" in channel type: ${message.channel.type}`);
+  console.log('[server.js] messageCreate handler triggered');
   
   // Ignore bot messages
   if (message.author.bot) return;
@@ -236,15 +237,20 @@ client.on('messageCreate', async (message) => {
   // 4. Try to introduce the next batch if ready
   try {
     const batchIntroduced = await introduceNextBatch(userId, message, 'easy');
-    // Only send a new card if one is actually due (next_review <= now)
-    const { rows: dueCards } = await pool.query(
-      `SELECT id FROM cards WHERE user_id = $1 AND introduced = TRUE AND (next_review IS NULL OR next_review <= NOW()) LIMIT 1`,
-      [userId]
-    );
-    if (dueCards.length > 0) {
-      await sendNextCard(userId, message);
-    } else {
-      console.log('[server.js] No card due, not sending new card.');
+    // Check user's last_card_sent and user_freq
+    const { rows: userRows } = await pool.query('SELECT last_card_sent, user_freq FROM users WHERE id = $1', [userId]);
+    if (userRows.length) {
+      const { last_card_sent, user_freq } = userRows[0];
+      const now = new Date();
+      const lastSent = last_card_sent ? new Date(last_card_sent) : null;
+      // seeting user frequency, currently minutes ============== must change back to hours
+      const freqMs = (user_freq || 3) * 60 * 1000;
+      if (!lastSent || (now - lastSent) >= freqMs) {
+        console.log('[server.js] Calling sendNextCard after batch introduction check');
+        await sendNextCard(userId, message);
+      } else {
+        console.log('[server.js] Not enough time since last card sent, not sending new card.');
+      }
     }
   } catch (err) {
     console.error("introduceNextBatch/sendNextCard failed:", err);

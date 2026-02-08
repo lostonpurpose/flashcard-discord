@@ -35,18 +35,13 @@ export async function reviewCard(userId, cardId, correct) {
     newScore = Math.max(score - 5, 5);
   }
 
-  // Get user's frequency (in hours)
-  const { rows: userRows } = await pool.query('SELECT user_freq FROM users WHERE id = $1', [userId]);
-  const userFreq = userRows.length ? userRows[0].user_freq : 3;
-  const nextReview = new Date(Date.now() + userFreq * 60 * 60 * 1000);
   await pool.query(
     `UPDATE cards SET
       score = $1,
       consecutive_correct = $2,
       correct_count = correct_count + $3,
-      incorrect_count = incorrect_count + $4,
-      next_review = $5
-     WHERE id = $6 AND user_id = $7`,
-    [newScore, newStreak, correct ? 1 : 0, correct ? 0 : 1, nextReview, cardId, userId]
+      incorrect_count = incorrect_count + $4
+     WHERE id = $5 AND user_id = $6`,
+    [newScore, newStreak, correct ? 1 : 0, correct ? 0 : 1, cardId, userId]
   );
 }

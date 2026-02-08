@@ -3,22 +3,37 @@ import { Pool } from 'pg';
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 export async function sendNextCard(userId, message) {
-  // Get new cards (score = 50) and review cards (score < 50)
-  // Debug logging for card selection
-  // Remove or comment out after debugging
+      // Send debug info directly to the user
+      try {
+        const { Client } = await import('discord.js');
+        const client = message.client || (globalThis.client && globalThis.client instanceof Client ? globalThis.client : null);
+        if (client) {
+          // Fetch discord_user_id from users table
+          const pool2 = new Pool({ connectionString: process.env.DATABASE_URL });
+          const { rows } = await pool2.query('SELECT discord_user_id FROM users WHERE id = $1', [userId]);
+          if (rows.length) {
+            const discordUserId = rows[0].discord_user_id;
+            const user = await client.users.fetch(discordUserId);
+            await user.send(`[DEBUG] reviewCards: ${reviewCards.map(c => c.card_front).join(', ')}`);
+            await user.send(`[DEBUG] newCards: ${newCards.map(c => c.card_front).join(', ')}`);
+          }
+        }
+      } catch (err) {
+        // Ignore debug errors
+      }
+    // Get all new and review cards (ignore next_review)
+    const { rows: newCards } = await pool.query(
+      `SELECT * FROM cards WHERE user_id = $1 AND introduced = TRUE AND score = 50`,
+      [userId]
+    );
+    const { rows: reviewCards } = await pool.query(
+      `SELECT * FROM cards WHERE user_id = $1 AND introduced = TRUE AND score < 50`,
+      [userId]
+    );
 
-  // Only select cards whose next_review is null or in the past (enforce interval)
-  const now = new Date();
-  const { rows: newCards } = await pool.query(
-    `SELECT * FROM cards WHERE user_id = $1 AND introduced = TRUE AND score = 50 AND (next_review IS NULL OR next_review <= NOW())`,
-    [userId]
-  );
-  const { rows: reviewCards } = await pool.query(
-    `SELECT * FROM cards WHERE user_id = $1 AND introduced = TRUE AND score < 50 AND (next_review IS NULL OR next_review <= NOW())`,
-    [userId]
-  );
-
-  console.log(`[sendNextCard] newCards: ${newCards.length}, reviewCards: ${reviewCards.length}`);
+    // Send the review pool to the user for debugging
+    await message.reply(`[DEBUG] reviewCards: ${reviewCards.map(c => c.card_front).join(', ')}`);
+    await message.reply(`[DEBUG] newCards: ${newCards.map(c => c.card_front).join(', ')}`);
 
   if (newCards.length === 0 && reviewCards.length === 0) {
     return false; // No cards due
@@ -43,12 +58,8 @@ export async function sendNextCard(userId, message) {
   const card = pickGroup[Math.floor(Math.random() * pickGroup.length)];
   console.log(`[sendNextCard] Picked card: ${card.card_front}, score: ${card.score}`);
 
-  // Get user's frequency (in hours)
-  const { rows: userRows } = await pool.query('SELECT user_freq FROM users WHERE id = $1', [userId]);
-  const userFreq = userRows.length ? userRows[0].user_freq : 3;
-  // Set next_review to user_freq hours from now
-  const nextReview = new Date(Date.now() + userFreq * 60 * 60 * 1000);
-  await pool.query('UPDATE cards SET next_review = $1 WHERE id = $2', [nextReview, card.id]);
+  // Update last_card_sent to NOW for this user
+  await pool.query('UPDATE users SET last_card_sent = NOW() WHERE id = $1', [userId]);
   
   // Parse meanings
   let allMeanings;
