@@ -87,8 +87,10 @@ client.on('messageCreate', async (message) => {
       console.log("Inserted new user", discordUserId);
       try {
         await onboardUser(discordUserId, message, 'easy');
+        return; // <-- Add this line to stop further processing for new users
       } catch (err) {
         console.error("onboardUser failed:", err);
+        return; // <-- Also return on error
       }
     } else {
       console.log("User already exists", discordUserId);
@@ -135,8 +137,10 @@ client.on('messageCreate', async (message) => {
       }
     } else {
       // Custom card creation
+              return; // Prevent further processing for new users
       const [cardFront, cardBack] = parts;
       if (cardFront && cardBack) {
+              return; // Prevent further processing if onboarding fails
         try {
           await pool.query(
             `INSERT INTO cards (user_id, card_front, card_back, introduced, next_review, is_custom) VALUES ($1, $2, $3, TRUE, NOW(), TRUE)`,

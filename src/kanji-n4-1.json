@@ -176,16 +176,6 @@
       "けん"
     ]
   },
-  "厳": {
-    "meanings": [
-      "strict",
-      "severe"
-    ],
-    "readings": [
-      "きびしい",
-      "げん"
-    ]
-  },
   "己": {
     "meanings": [
       "self"
@@ -467,15 +457,7 @@
       "しげき"
     ]
   },
-  "入場券": {
-    "meanings": [
-      "admission ticket"
-    ],
-    "readings": [
-      "にゅうじょうけん"
-    ]
-  },
-  "厳格": {
+  "厳": {
     "meanings": [
       "strict",
       "severe"
@@ -533,14 +515,6 @@
     ],
     "readings": [
       "ざせき"
-    ]
-  },
-  "骨折": {
-    "meanings": [
-      "bone fracture"
-    ],
-    "readings": [
-      "こっせつ"
     ]
   },
   "砂漠": {
@@ -1610,50 +1584,17 @@
   },
   "力": {
     "meanings": [
-      "power",
-      "strength"
-    ],
-    "readings": [
-      "ちから",
-      "りょく"
+      "yonder",
+      "facing"
     ]
   },
   "問": {
-    "meanings": [
-      "question"
-    ],
-    "readings": [
-      "とい",
-      "とう",
-      "もん"
-    ]
-  },
-  "代": {
-    "meanings": [
-      "substitute",
-      "generation"
-    ],
-    "readings": [
-      "かわる",
-      "だい"
-    ]
-  },
-  "明": {
-    "meanings": [
-      "bright",
-      "clear"
-    ],
-    "readings": [
-      "あかるい",
-      "めい"
-    ]
-  },
-  "動": {
-    "meanings": [
-      "move"
-    ],
-    "readings": [
-      "うごく",
+      "meanings": [
+        "question",
+        "finger"
+      ],
+      "readings": [
+        "うごく",
       "どう"
     ]
   },
@@ -1787,7 +1728,10 @@
   },
   "以": {
     "meanings": [
-      "by means"
+
+      "because",
+      "in view of",
+      "compared with"
     ],
     "readings": [
       "い"
@@ -2344,400 +2288,6 @@
     "readings": [
       "おそい",
       "ち"
-    ]
-  },
-  "悪": {
-    "meanings": [
-      "bad"
-    ],
-    "readings": [
-      "わるい",
-      "あく"
-    ]
-  },
-  "良": {
-    "meanings": [
-      "good"
-    ],
-    "readings": [
-      "よい",
-      "りょう"
-    ]
-  },
-  "晴": {
-    "meanings": [
-      "clear up"
-    ],
-    "readings": [
-      "はれる",
-      "せい"
-    ]
-  },
-  "雨": {
-    "meanings": [
-      "rain"
-    ],
-    "readings": [
-      "あめ",
-      "う"
-    ]
-  },
-  "雪": {
-    "meanings": [
-      "snow"
-    ],
-    "readings": [
-      "ゆき",
-      "せつ"
-    ]
-  },
-  "曇": {
-    "meanings": [
-      "cloudy"
-    ],
-    "readings": [
-      "くもる",
-      "どん"
-    ]
-  },
-  "風": {
-    "meanings": [
-      "wind"
-    ],
-    "readings": [
-      "かぜ",
-      "ふう"
-    ]
-  },
-  "音": {
-    "meanings": [
-      "sound"
-    ],
-    "readings": [
-      "おと",
-      "おん"
-    ]
-  },
-  "漢": {
-    "meanings": [
-      "Chinese",
-      "Han"
-    ],
-    "readings": [
-      "かん"
-    ]
-  },
-  "病院": {
-    "meanings": [
-      "hospital"
-    ],
-    "readings": [
-      "びょういん"
-    ]
-  },
-  "銀行": {
-    "meanings": [
-      "bank"
-    ],
-    "readings": [
-      "ぎんこう"
-    ]
-  },
-  "会社": {
-    "meanings": [
-      "company"
-    ],
-    "readings": [
-      "かいしゃ"
-    ]
-  },
-  "空港": {
-    "meanings": [
-      "airport"
-    ],
-    "readings": [
-      "くうこう"
-    ]
-  },
-  "電車": {
-    "meanings": [
-      "train"
-    ],
-    "readings": [
-      "でんしゃ"
-    ]
-  },
-  "自転車": {
-    "meanings": [
-      "bicycle"
-    ],
-    "readings": [
-      "じてんしゃ"
-    ]
-  },
-  "電話": {
-    "meanings": [
-      "telephone"
-    ],
-    "readings": [
-      "でんわ"
-    ]
-  },
-  "料理": {
-    "meanings": [
-      "cooking",
-      "cuisine"
-    ],
-    "readings": [
-      "りょうり"
-    ]
-  },
-  "買い物": {
-    "meanings": [
-      "shopping"
-    ],
-    "readings": [
-      "かいもの"
-    ]
-  },
-  "仕事": {
-    "meanings": [
-      "work",
-      "job"
-    ],
-    "readings": [
-      "しごと"
-    ]
-  },
-  "勉強": {
-    "meanings": [
-      "study"
-    ],
-    "readings": [
-      "べんきょう"
-    ]
-  },
-  "午前": {
-    "meanings": [
-      "a.m.",
-      "morning"
-    ],
-    "readings": [
-      "ごぜん"
-    ]
-  },
-  "午後": {
-    "meanings": [
-      "p.m.",
-      "afternoon"
-    ],
-    "readings": [
-      "ごご"
-    ]
-  },
-  "朝ご飯": {
-    "meanings": [
-      "breakfast"
-    ],
-    "readings": [
-      "あさごはん"
-    ]
-  },
-  "昼ご飯": {
-    "meanings": [
-      "lunch"
-    ],
-    "readings": [
-      "ひるごはん"
-    ]
-  },
-  "夜ご飯": {
-    "meanings": [
-      "dinner"
-    ],
-    "readings": [
-      "よるごはん"
-    ]
-  },
-  "毎日": {
-    "meanings": [
-      "every day"
-    ],
-    "readings": [
-      "まいにち"
-    ]
-  },
-  "休日": {
-    "meanings": [
-      "holiday"
-    ],
-    "readings": [
-      "きゅうじつ"
-    ]
-  },
-  "始まる": {
-    "meanings": [
-      "begin"
-    ],
-    "readings": [
-      "はじまる"
-    ]
-  },
-  "終わる": {
-    "meanings": [
-      "end",
-      "finish"
-    ],
-    "readings": [
-      "おわる"
-    ]
-  },
-  "働く": {
-    "meanings": [
-      "work"
-    ],
-    "readings": [
-      "はたらく"
-    ]
-  },
-  "休む": {
-    "meanings": [
-      "rest"
-    ],
-    "readings": [
-      "やすむ"
-    ]
-  },
-  "住む": {
-    "meanings": [
-      "live",
-      "reside"
-    ],
-    "readings": [
-      "すむ"
-    ]
-  },
-  "帰る": {
-    "meanings": [
-      "return"
-    ],
-    "readings": [
-      "かえる"
-    ]
-  },
-  "歩く": {
-    "meanings": [
-      "walk"
-    ],
-    "readings": [
-      "あるく"
-    ]
-  },
-  "走る": {
-    "meanings": [
-      "run"
-    ],
-    "readings": [
-      "はしる"
-    ]
-  },
-  "止まる": {
-    "meanings": [
-      "stop"
-    ],
-    "readings": [
-      "とまる"
-    ]
-  },
-  "有名": {
-    "meanings": [
-      "famous"
-    ],
-    "readings": [
-      "ゆうめい"
-    ]
-  },
-  "便利": {
-    "meanings": [
-      "convenient"
-    ],
-    "readings": [
-      "べんり"
-    ]
-  },
-  "元気": {
-    "meanings": [
-      "healthy",
-      "energetic"
-    ],
-    "readings": [
-      "げんき"
-    ]
-  },
-  "静か": {
-    "meanings": [
-      "quiet",
-      "calm"
-    ],
-    "readings": [
-      "しずか"
-    ]
-  },
-  "大切": {
-    "meanings": [
-      "important"
-    ],
-    "readings": [
-      "たいせつ"
-    ]
-  },
-  "簡単": {
-    "meanings": [
-      "simple",
-      "easy"
-    ],
-    "readings": [
-      "かんたん"
-    ]
-  },
-  "天気予報": {
-    "meanings": [
-      "weather forecast"
-    ],
-    "readings": [
-      "てんきよほう"
-    ]
-  },
-  "音楽": {
-    "meanings": [
-      "music"
-    ],
-    "readings": [
-      "おんがく"
-    ]
-  },
-  "漢字": {
-    "meanings": [
-      "kanji"
-    ],
-    "readings": [
-      "かんじ"
-    ]
-  },
-  "英語": {
-    "meanings": [
-      "English language"
-    ],
-    "readings": [
-      "えいご"
-    ]
-  },
-  "文法": {
-    "meanings": [
-      "grammar"
-    ],
-    "readings": [
-      "ぶんぽう"
     ]
   }
 }
