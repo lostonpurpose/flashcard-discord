@@ -17,11 +17,6 @@ setInterval(async () => {
             client,
             reply: async (msg) => { try { await discordUser.send(msg); } catch (e) { /* ignore DM errors */ } },
           });
-          // Decrease all kanji scores >50 by 1 for this user
-          await pool.query(
-            'UPDATE cards SET score = GREATEST(score - 1, 5) WHERE user_id = $1 AND introduced = TRUE AND score > 50',
-            [userId]
-          );
           // Update last_card_sent immediately after sending
           await pool.query('UPDATE users SET last_card_sent = $1 WHERE id = $2', [now.toISOString(), userId]);
           console.log(`[TIMER] Sent kanji to user ${discord_user_id} and updated last_card_sent`);
@@ -327,6 +322,12 @@ client.on('messageCreate', async (message) => {
     }
 
     await message.reply(feedbackText);
+
+    // Decrease all kanji scores >50 by 1 for this user ONLY when they attempt an answer
+    await pool.query(
+      'UPDATE cards SET score = GREATEST(score - 1, 5) WHERE user_id = $1 AND introduced = TRUE AND score > 50',
+      [userId]
+    );
 
     // Now update review stats for incorrect answers
     if (!correct) {
