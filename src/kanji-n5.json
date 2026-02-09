@@ -1,5 +1,55 @@
 {
-    "年": {
+  "本": {
+      "meanings": [
+        "book",
+        "origin"
+      ],
+      "readings": [
+        "ほん",
+        "もと"
+      ]
+  },
+  "大": {
+      "meanings": [
+        "big",
+        "large"
+      ],
+      "readings": [
+        "おお",
+        "だい",
+        "たい"
+      ]
+  },
+  "二": {
+      "meanings": [
+        "two"
+      ],
+      "readings": [
+        "に",
+        "ふた"
+      ]
+  },
+  "木": {
+      "meanings": [
+        "tree",
+        "wood"
+      ],
+      "readings": [
+        "き",
+        "もく",
+        "ぼく"
+      ]
+  },
+  "母": {
+      "meanings": [
+        "mother"
+      ],
+      "readings": [
+        "はは",
+        "ぼ"
+      ]
+  },
+  "年": {
     "meanings": [
       "year"
     ],
@@ -8,66 +58,10 @@
       "ねん"
     ]
   },
-  "本": {
-    "meanings": [
-      "book",
-      "origin"
-    ],
-    "readings": [
-      "ほん"
-    ]
-  },
-    "大": {
-    "meanings": [
-      "big",
-      "large"
-    ],
-    "readings": [
-      "おお",
-      "だい",
-      "たい"
-    ]
-  },
-  "二": {
-    "meanings": [
-      "two"
-    ],
-    "readings": [
-      "に",
-      "ふた"
-    ]
-  },
-    "母": {
-    "meanings": [
-      "mother"
-    ],
-    "readings": [
-      "はは",
-      "ぼ"
-    ]
-  },
-  "五": {
-    "meanings": [
-      "five"
-    ],
-    "readings": [
-      "ご",
-      "いつ"
-    ]
-  },
-  "九": {
-    "meanings": [
-      "nine"
-    ],
-    "readings": [
-      "きゅう",
-      "く"
-    ]
-  },
   "人": {
     "meanings": [
-      "person",
-      "human"
+      "human",
+      "person"
     ],
     "readings": [
       "ひと",
@@ -147,14 +141,14 @@
       "さ"
     ]
   },
-  "右": {
+  "口": {
     "meanings": [
-      "right"
+      "mouth"
     ],
     "readings": [
-      "みぎ",
-      "う",
-      "ゆう"
+      "くち",
+      "こう",
+      "く"
     ]
   },
   "山": {
@@ -230,6 +224,16 @@
       "だん"
     ]
   },
+    "土": {
+    "meanings": [
+      "earth",
+      "soil"
+    ],
+    "readings": [
+      "つち",
+      "ど"
+    ]
+  },
   "子": {
     "meanings": [
       "child"
@@ -246,6 +250,16 @@
     "readings": [
       "ちち",
       "ふ"
+    ]
+  },
+    "右": {
+    "meanings": [
+      "right"
+    ],
+    "readings": [
+      "みぎ",
+      "う",
+      "ゆう"
     ]
   },
   "友": {
@@ -286,6 +300,14 @@
       "い"
     ]
   },
+  "耳": {
+      "meanings": [
+        "ear"
+      ],
+      "readings": [
+        "みみ"
+      ]
+    },
   "先": {
     "meanings": [
       "before",
@@ -304,6 +326,15 @@
       "な",
       "めい",
       "みょう"
+    ]
+  },
+    "今": {
+    "meanings": [
+      "now"
+    ],
+    "readings": [
+      "いま",
+      "こん"
     ]
   },
   "字": {
@@ -342,14 +373,6 @@
       "すい"
     ]
   },
-    "火曜日": {
-    "meanings": [
-      "Tuesday"
-    ],
-    "readings": [
-      "かようび"
-    ]
-  },
   "火": {
     "meanings": [
       "fire"
@@ -357,17 +380,6 @@
     "readings": [
       "ひ",
       "か"
-    ]
-  },
-  "木": {
-    "meanings": [
-      "tree",
-      "wood"
-    ],
-    "readings": [
-      "き",
-      "もく",
-      "ぼく"
     ]
   },
   "金": {
@@ -390,16 +402,6 @@
       "よ"
     ]
   },
-  "土": {
-    "meanings": [
-      "earth",
-      "soil"
-    ],
-    "readings": [
-      "つち",
-      "ど"
-    ]
-  },
   "白": {
     "meanings": [
       "white"
@@ -407,6 +409,14 @@
     "readings": [
       "しろ",
       "はく"
+    ]
+  },
+      "火曜日": {
+    "meanings": [
+      "Tuesday"
+    ],
+    "readings": [
+      "かようび"
     ]
   },
   "黒": {
@@ -512,6 +522,14 @@
       "らい"
     ]
   },
+    "今日": {
+    "meanings": [
+      "today"
+    ],
+    "readings": [
+      "きょう"
+    ]
+  },
   "見": {
     "meanings": [
       "see",
@@ -588,15 +606,6 @@
       "しょ"
     ]
   },
-  "今": {
-    "meanings": [
-      "now"
-    ],
-    "readings": [
-      "いま",
-      "こん"
-    ]
-  },
   "何": {
     "meanings": [
       "what"
@@ -662,6 +671,14 @@
     "readings": [
       "さん",
       "み"
+    ]
+  },
+    "黒い": {
+    "meanings": [
+      "black"
+    ],
+    "readings": [
+      "くろい"
     ]
   },
   "大人": {
@@ -745,14 +762,6 @@
     ],
     "readings": [
       "いちにち"
-    ]
-  },
-  "今日": {
-    "meanings": [
-      "today"
-    ],
-    "readings": [
-      "きょう"
     ]
   },
   "今月": {
@@ -904,14 +913,6 @@
       "にちようび"
     ]
   },
-  "黒い": {
-    "meanings": [
-      "black"
-    ],
-    "readings": [
-      "くろい"
-    ]
-  },
   "赤い": {
     "meanings": [
       "red"
@@ -927,5 +928,246 @@
     "readings": [
       "あおい"
     ]
+  },
+  "足": {
+      "meanings": [
+        "foot",
+        "leg",
+        "sufficient"
+      ],
+      "readings": [
+        "あし",
+        "そく"
+      ]
+  },
+  "花": {
+      "meanings": [
+        "flower"
+      ],
+      "readings": [
+        "はな",
+        "か"
+      ]
+  },
+  "魚": {
+      "meanings": [
+        "fish"
+      ],
+      "readings": [
+        "さかな",
+        "ぎょ"
+      ]
+  },
+  "車": {
+      "meanings": [
+        "car",
+        "vehicle"
+      ],
+      "readings": [
+        "くるま",
+        "しゃ"
+      ]
+  },
+  "駅": {
+      "meanings": [
+        "station"
+      ],
+      "readings": [
+        "えき"
+      ]
+  },
+  "気": {
+      "meanings": [
+        "spirit",
+        "air",
+        "mood"
+      ],
+      "readings": [
+        "き",
+        "け"
+      ]
+  },
+  "国": {
+      "meanings": [
+        "country"
+      ],
+      "readings": [
+        "くに",
+        "こく"
+      ]
+  },
+  "会": {
+      "meanings": [
+        "meet",
+        "meeting"
+      ],
+      "readings": [
+        "あう",
+        "かい"
+      ]
+  },
+  "社": {
+      "meanings": [
+        "company",
+        "shrine"
+      ],
+      "readings": [
+        "やしろ",
+        "しゃ"
+      ]
+  },
+  "店": {
+      "meanings": [
+        "store",
+        "shop"
+      ],
+      "readings": [
+        "みせ",
+        "てん"
+      ]
+  },
+  "外": {
+      "meanings": [
+        "outside",
+        "external"
+      ],
+      "readings": [
+        "そと",
+        "がい"
+      ]
+  },
+  "電": {
+      "meanings": [
+        "electricity"
+      ],
+      "readings": [
+        "でん"
+      ]
+  },
+  "道": {
+      "meanings": [
+        "road",
+        "way",
+        "path"
+      ],
+      "readings": [
+        "みち",
+        "どう"
+      ]
+  },
+  "語": {
+      "meanings": [
+        "language",
+        "word"
+      ],
+      "readings": [
+        "かたる",
+        "ご"
+      ]
+  },
+  "買": {
+      "meanings": [
+        "buy"
+      ],
+      "readings": [
+        "かう",
+        "ばい"
+      ]
+  },
+  "多": {
+      "meanings": [
+        "many",
+        "much"
+      ],
+      "readings": [
+        "おおい",
+        "た"
+      ]
+  },
+  "少": {
+      "meanings": [
+        "few",
+        "little"
+      ],
+      "readings": [
+        "すくない",
+        "すこし",
+        "しょう"
+      ]
+  },
+  "長": {
+      "meanings": [
+        "long",
+        "leader"
+      ],
+      "readings": [
+        "ながい",
+        "ちょう"
+      ]
+  },
+  "高": {
+      "meanings": [
+        "high",
+        "expensive"
+      ],
+      "readings": [
+        "たかい",
+        "こう"
+      ]
+  },
+  "安": {
+      "meanings": [
+        "cheap",
+        "safe"
+      ],
+      "readings": [
+        "やすい",
+        "あん"
+      ]
+  },
+  "半": {
+      "meanings": [
+        "half"
+      ],
+      "readings": [
+        "はん"
+      ]
+  },
+  "午": {
+      "meanings": [
+        "noon"
+      ],
+      "readings": [
+        "ご"
+      ]
+  },
+  "前": {
+      "meanings": [
+        "before",
+        "front"
+      ],
+      "readings": [
+        "まえ",
+        "ぜん"
+      ]
+  },
+  "後": {
+      "meanings": [
+        "after",
+        "behind"
+      ],
+      "readings": [
+        "あと",
+        "うしろ",
+        "ご"
+      ]
+  },
+  "週": {
+      "meanings": [
+        "week"
+      ],
+      "readings": [
+        "しゅう"
+      ]
   }
 }

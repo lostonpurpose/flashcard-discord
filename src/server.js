@@ -17,11 +17,6 @@ setInterval(async () => {
             client,
             reply: async (msg) => { try { await discordUser.send(msg); } catch (e) { /* ignore DM errors */ } },
           });
-          // Decrease all kanji scores >50 by 1 for this user
-          await pool.query(
-            'UPDATE cards SET score = GREATEST(score - 1, 5) WHERE user_id = $1 AND introduced = TRUE AND score > 50',
-            [userId]
-          );
           // Update last_card_sent immediately after sending
           await pool.query('UPDATE users SET last_card_sent = $1 WHERE id = $2', [now.toISOString(), userId]);
           console.log(`[TIMER] Sent kanji to user ${discord_user_id} and updated last_card_sent`);
@@ -92,8 +87,10 @@ client.on('messageCreate', async (message) => {
       console.log("Inserted new user", discordUserId);
       try {
         await onboardUser(discordUserId, message, 'easy');
+        return; // <-- Add this line to stop further processing for new users
       } catch (err) {
         console.error("onboardUser failed:", err);
+        return; // <-- Also return on error
       }
     } else {
       console.log("User already exists", discordUserId);
@@ -140,8 +137,10 @@ client.on('messageCreate', async (message) => {
       }
     } else {
       // Custom card creation
+              return; // Prevent further processing for new users
       const [cardFront, cardBack] = parts;
       if (cardFront && cardBack) {
+              return; // Prevent further processing if onboarding fails
         try {
           await pool.query(
             `INSERT INTO cards (user_id, card_front, card_back, introduced, next_review, is_custom) VALUES ($1, $2, $3, TRUE, NOW(), TRUE)`,
@@ -246,18 +245,18 @@ client.on('messageCreate', async (message) => {
       // Fetch old score for testing - can remove when i confirm scoring updates correctly
       const { rows: oldRows } = await pool.query(
         'SELECT score FROM cards WHERE id = $1 AND user_id = $2',
-        [cardId, userId]
+        [cardIdFromQuery, userId]
       );
       if (!oldRows.length) throw new Error('Card not found');
       let oldScore = Number(oldRows[0].score);
 
       // Update review stats before fetching new score/streak
-      await reviewCard(userId, cardId, correct);
+      await reviewCard(userId, cardIdFromQuery, correct);
 
       // Fetch updated score and streak
       const { rows: updatedRows } = await pool.query(
         'SELECT score, consecutive_correct FROM cards WHERE id = $1 AND user_id = $2',
-        [cardId, userId]
+        [cardIdFromQuery, userId]
       );
       if (!updatedRows.length) throw new Error('Card not found');
       let score = Number(updatedRows[0].score);
@@ -265,6 +264,44 @@ client.on('messageCreate', async (message) => {
 
       // fun awards for big streaks
       let badge = badges(streak);
+
+      // === READINGS INTRODUCTION LOGIC ===
+      // Check if streak is 5 and readings not introduced
+      const { rows: readingIntroRows } = await pool.query(
+        'SELECT reading_introduced FROM cards WHERE id = $1',
+        [cardIdFromQuery]
+      );
+      const readingIntroduced = readingIntroRows[0]?.reading_introduced;
+      console.log(`[READINGS DEBUG] streak: ${streak}, cardId: ${cardIdFromQuery}, reading_introduced: ${readingIntroduced}`);
+      if (streak >= 5 && !readingIntroduced) {
+        // Fetch readings from master_cards table
+        const { rows: masterRows } = await pool.query(
+          'SELECT readings FROM master_cards WHERE card_front = $1',
+          [lastKanji]
+        );
+        let readings = [];
+        if (masterRows.length && masterRows[0].readings) {
+          try {
+            readings = JSON.parse(masterRows[0].readings);
+          } catch {
+            readings = [];
+          }
+        }
+        if (readings.length) {
+          await message.reply(`Congratulations, you've answered ${lastKanji} 5 times in a row! Here are the readings for ${lastKanji}: ${readings.join(', ')}`);
+          // Add readings card
+          await pool.query(
+            `INSERT INTO cards (user_id, card_front, card_back, introduced, is_custom, reading_introduced)
+             VALUES ($1, $2, $3, TRUE, FALSE, TRUE)`,
+            [userId, lastKanji, JSON.stringify(readings)]
+          );
+          // Mark original card as reading_introduced
+          await pool.query(
+            'UPDATE cards SET reading_introduced = TRUE WHERE id = $1',
+            [cardIdFromQuery]
+          );
+        }
+      }
 
       // actual feedback to user on CORRECT answer !!!!!!!!!!!!
       feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
@@ -289,6 +326,12 @@ client.on('messageCreate', async (message) => {
     }
 
     await message.reply(feedbackText);
+
+    // Decrease all kanji scores >50 by 1 for this user ONLY when they attempt an answer
+    await pool.query(
+      'UPDATE cards SET score = GREATEST(score - 1, 5) WHERE user_id = $1 AND introduced = TRUE AND score > 50',
+      [userId]
+    );
 
     // Now update review stats for incorrect answers
     if (!correct) {
