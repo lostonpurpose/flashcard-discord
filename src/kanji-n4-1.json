@@ -9,6 +9,16 @@
       "ぎ"
     ]
   },
+    "政": {
+    "meanings": [
+      "politics",
+      "government"
+    ],
+    "readings": [
+      "せい",
+      "まつりごと"
+    ]
+  },
   "逆": {
     "meanings": [
       "reverse",
@@ -1584,8 +1594,13 @@
   },
   "力": {
     "meanings": [
-      "yonder",
-      "facing"
+      "power",
+      "strength"
+    ],
+    "readings": [
+      "ちから",
+      "りょく",
+      "りき"
     ]
   },
   "問": {

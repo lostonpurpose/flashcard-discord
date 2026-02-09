@@ -124,7 +124,8 @@
   "下": {
     "meanings": [
       "down",
-      "below"
+      "below",
+      "under"
     ],
     "readings": [
       "した",
@@ -262,6 +263,15 @@
       "ゆう"
     ]
   },
+  "南": {
+    "meanings": [
+      "south"
+    ],
+    "readings": [
+      "みなみ",
+      "なん"
+    ]
+  },
   "友": {
     "meanings": [
       "friend"
@@ -346,7 +356,16 @@
       "じ"
     ]
   },
-    "土曜日": {
+  "千": {
+    "meanings": [
+      "thousand"
+    ],
+    "readings": [
+      "ち",
+      "せん"
+    ]
+  },
+  "土曜日": {
     "meanings": [
       "Saturday"
     ],
@@ -578,6 +597,15 @@
       "わ"
     ]
   },
+  "北": {
+    "meanings": [
+      "north"
+    ],
+    "readings": [
+      "きた",
+      "ほく"
+    ]
+  },
   "聞": {
     "meanings": [
       "hear",
@@ -631,12 +659,15 @@
       "にほんじん"
     ]
   },
-    "白い": {
+  "間": {
     "meanings": [
-      "white"
+      "interval",
+      "space"
     ],
     "readings": [
-      "しろい"
+      "あいだ",
+      "ま",
+      "あい"
     ]
   },
   "学生": {
@@ -673,20 +704,21 @@
       "み"
     ]
   },
-    "黒い": {
-    "meanings": [
-      "black"
-    ],
-    "readings": [
-      "くろい"
-    ]
-  },
   "大人": {
     "meanings": [
       "adult"
     ],
     "readings": [
       "おとな"
+    ]
+  },
+  "東": {
+    "meanings": [
+      "east"
+    ],
+    "readings": [
+      "ひがし",
+      "とう"
     ]
   },
   "男の子": {
@@ -789,31 +821,6 @@
       "じかん"
     ]
   },
-  "行く": {
-    "meanings": [
-      "go"
-    ],
-    "readings": [
-      "いく"
-    ]
-  },
-  "来る": {
-    "meanings": [
-      "come"
-    ],
-    "readings": [
-      "くる"
-    ]
-  },
-  "見る": {
-    "meanings": [
-      "see",
-      "watch"
-    ],
-    "readings": [
-      "みる"
-    ]
-  },
   "食べる": {
     "meanings": [
       "eat"
@@ -828,40 +835,6 @@
     ],
     "readings": [
       "のむ"
-    ]
-  },
-  "話す": {
-    "meanings": [
-      "speak",
-      "talk"
-    ],
-    "readings": [
-      "はなす"
-    ]
-  },
-  "聞く": {
-    "meanings": [
-      "listen",
-      "ask"
-    ],
-    "readings": [
-      "きく"
-    ]
-  },
-  "読む": {
-    "meanings": [
-      "read"
-    ],
-    "readings": [
-      "よむ"
-    ]
-  },
-  "書く": {
-    "meanings": [
-      "write"
-    ],
-    "readings": [
-      "かく"
     ]
   },
   "山川": {
@@ -913,22 +886,6 @@
       "にちようび"
     ]
   },
-  "赤い": {
-    "meanings": [
-      "red"
-    ],
-    "readings": [
-      "あかい"
-    ]
-  },
-  "青い": {
-    "meanings": [
-      "blue"
-    ],
-    "readings": [
-      "あおい"
-    ]
-  },
   "足": {
       "meanings": [
         "foot",
@@ -956,6 +913,16 @@
       "readings": [
         "さかな",
         "ぎょ"
+      ]
+  },
+  "西": {
+      "meanings": [
+        "west"
+      ],
+      "readings": [
+        "にし",
+        "せい",
+        "さい"
       ]
   },
   "車": {
@@ -1168,6 +1135,25 @@
       ],
       "readings": [
         "しゅう"
+      ]
+  },
+  "出": {
+      "meanings": [
+        "exit",
+        "leave"
+      ],
+      "readings": [
+        "でる",
+        "だす",
+        "しゅつ"
+      ]
+  },
+  "百": {
+      "meanings": [
+        "hundred"
+      ],
+      "readings": [
+        "ひゃく"
       ]
   }
 }
