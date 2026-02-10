@@ -288,7 +288,10 @@ client.on('messageCreate', async (message) => {
           }
         }
         if (readings.length) {
-          await message.reply(`Congratulations, you've answered ${lastKanji} 5 times in a row! Here are the readings for ${lastKanji}: ${readings.join(', ')}`);
+          // actual feedback to user on CORRECT answer !!!!!!!!!!!!
+          feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+          await message.reply(feedbackText);
+          await message.reply(`Congratulations, you've answered "${lastKanji}" 5 times in a row!\nYou will now receive cards with the readings. The readings for ${lastKanji} are:\n${readings.join(', ')}`);
           // Add readings card
           await pool.query(
             `INSERT INTO cards (user_id, card_front, card_back, introduced, is_custom, reading_introduced)
@@ -300,11 +303,16 @@ client.on('messageCreate', async (message) => {
             'UPDATE cards SET reading_introduced = TRUE WHERE id = $1',
             [cardIdFromQuery]
           );
+        } else {
+          // actual feedback to user on CORRECT answer !!!!!!!!!!!!
+          feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+          await message.reply(feedbackText);
         }
+      } else {
+        // actual feedback to user on CORRECT answer !!!!!!!!!!!!
+        feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+        await message.reply(feedbackText);
       }
-
-      // actual feedback to user on CORRECT answer !!!!!!!!!!!!
-      feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
     } else {
       // Track which meaning they failed to answer
       // We'll increment incorrect_count on the least-practiced meaning
