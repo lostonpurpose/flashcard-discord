@@ -12,6 +12,7 @@ export async function reviewCard(userId, cardId, correct) {
   
   let score = Number(rows[0].score);
   let streak = Number(rows[0].consecutive_correct);
+  console.log(`[reviewCard] BEFORE: cardId=${cardId}, userId=${userId}, score=${score}, streak=${streak}, correct=${correct}`);
 
   // Calculate new score and streak
   let newScore, newStreak;
@@ -25,7 +26,7 @@ export async function reviewCard(userId, cardId, correct) {
       // Base increase: 4-7 (randomized for variation)
       const baseIncrease = Math.floor(Math.random() * 4) + 4;
       // Score increase: baseIncrease + (4 * newStreak)
-      const fiveInRowBonus = newStreak >= 4 ? 35 : 0;
+      const fiveInRowBonus = newStreak >= 4 ? (35 + baseIncrease) : 0;
       newScore = score + baseIncrease + (4 * newStreak) + fiveInRowBonus;
     }
   } else {
@@ -44,4 +45,5 @@ export async function reviewCard(userId, cardId, correct) {
      WHERE id = $5 AND user_id = $6`,
     [newScore, newStreak, correct ? 1 : 0, correct ? 0 : 1, cardId, userId]
   );
+  console.log(`[reviewCard] AFTER: cardId=${cardId}, userId=${userId}, score=${newScore}, streak=${newStreak}, correct=${correct}`);
 }
