@@ -3,12 +3,17 @@
 import cron from 'node-cron';
 cron.schedule('* * * * *', async () => {
   try {
-    const { rows: users } = await pool.query('SELECT id, discord_user_id, last_card_sent, user_freq FROM users');
     const now = new Date();
+    console.log(`[CRON] >>> ENTERED CRON CALLBACK at ${now.toISOString()}`);
+    // ...existing code...
+    const { rows: users } = await pool.query('SELECT id, discord_user_id, last_card_sent, user_freq FROM users');
+    console.log(`[CRON] Checking ${users.length} users`);
     for (const user of users) {
       const { id: userId, discord_user_id, last_card_sent, user_freq } = user;
       const lastSent = last_card_sent ? new Date(last_card_sent) : null;
       const freqMs = (user_freq || 3) * 60 * 1000;
+      const timeSinceLast = lastSent ? (now - lastSent) : null;
+      console.log(`[CRON] User ${discord_user_id}: lastSent=${lastSent}, freqMs=${freqMs}, timeSinceLast=${timeSinceLast}`);
       if (!lastSent || (now - lastSent) >= freqMs) {
         try {
           const discordUser = await client.users.fetch(discord_user_id);
@@ -24,10 +29,12 @@ cron.schedule('* * * * *', async () => {
         } catch (err) {
           console.error(`[CRON] Failed to send kanji to user ${discord_user_id}:`, err);
         }
+      } else {
+        console.log(`[CRON] Skipped user ${discord_user_id}: not due yet.`);
       }
     }
   } catch (err) {
-    console.error('[CRON] Error in kanji sender:', err);
+    console.error('[CRON] TOP-LEVEL ERROR in cron callback:', err);
   }
 });
 import 'dotenv/config';
