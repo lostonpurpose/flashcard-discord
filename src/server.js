@@ -1,11 +1,30 @@
-// === CRON-BASED KANJI SENDER ===
-// This cron job runs every minute on the minute and checks all users for due kanji
-import cron from 'node-cron';
-cron.schedule('* * * * *', async () => {
+// === EVENT LOOP DELAY MONITORING ===
+import { monitorEventLoopDelay } from 'perf_hooks';
+const h = monitorEventLoopDelay({ resolution: 20 });
+h.enable();
+setInterval(() => {
+  const mean = Math.round(h.mean / 1e6); // ms
+  const max = Math.round(h.max / 1e6); // ms
+  if (mean > 50 || max > 200) {
+    console.warn(`[EVENT LOOP DELAY] mean: ${mean}ms, max: ${max}ms`);
+  } else {
+    console.log(`[EVENT LOOP DELAY] mean: ${mean}ms, max: ${max}ms`);
+  }
+  h.reset();
+}, 60000); // Log every minute
+// === CRON-BASED KANJI SENDER (using cron npm package) ===
+import { CronJob } from 'cron';
+let cronRunning = false;
+const job = new CronJob('* * * * *', async () => {
+  if (cronRunning) {
+    console.warn('[CRON] Previous run still in progress, skipping this tick.');
+    return;
+  }
+  cronRunning = true;
+  const start = Date.now();
   try {
     const now = new Date();
     console.log(`[CRON] >>> ENTERED CRON CALLBACK at ${now.toISOString()}`);
-    // ...existing code...
     const { rows: users } = await pool.query('SELECT id, discord_user_id, last_card_sent, user_freq FROM users');
     console.log(`[CRON] Checking ${users.length} users`);
     for (const user of users) {
@@ -35,8 +54,13 @@ cron.schedule('* * * * *', async () => {
     }
   } catch (err) {
     console.error('[CRON] TOP-LEVEL ERROR in cron callback:', err);
+  } finally {
+    cronRunning = false;
+    const elapsed = Date.now() - start;
+    console.log(`[CRON] Callback finished in ${elapsed}ms`);
   }
 });
+job.start();
 import 'dotenv/config';
 import { Client, GatewayIntentBits, Partials } from 'discord.js';
 import { Pool } from 'pg';
