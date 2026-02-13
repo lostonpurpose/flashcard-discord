@@ -77,7 +77,7 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
     }
 
     // Send spacing message
-    await message.reply("\n\n(Scroll up for the new words to avoid accidentally seeing the meanings!)");
+    await message.reply("\n/\n/\n/\n/\n/\n/\n\n/\n/\n/(This block is to keep you from seeing the answers :). Scroll up for the new words!)");
 
     return true; // Next batch introduced
   }

@@ -1,6 +1,7 @@
-// === BACKGROUND INTERVAL KANJI SENDER ===
-// This timer runs every minute and checks all users for due kanji
-setInterval(async () => {
+// === CRON-BASED KANJI SENDER ===
+// This cron job runs every minute on the minute and checks all users for due kanji
+import cron from 'node-cron';
+cron.schedule('* * * * *', async () => {
   try {
     const { rows: users } = await pool.query('SELECT id, discord_user_id, last_card_sent, user_freq FROM users');
     const now = new Date();
@@ -19,16 +20,16 @@ setInterval(async () => {
           });
           // Update last_card_sent immediately after sending
           await pool.query('UPDATE users SET last_card_sent = $1 WHERE id = $2', [now.toISOString(), userId]);
-          console.log(`[TIMER] Sent kanji to user ${discord_user_id} and updated last_card_sent`);
+          console.log(`[CRON] Sent kanji to user ${discord_user_id} and updated last_card_sent`);
         } catch (err) {
-          console.error(`[TIMER] Failed to send kanji to user ${discord_user_id}:`, err);
+          console.error(`[CRON] Failed to send kanji to user ${discord_user_id}:`, err);
         }
       }
     }
   } catch (err) {
-    console.error('[TIMER] Error in kanji interval sender:', err);
+    console.error('[CRON] Error in kanji sender:', err);
   }
-}, 60 * 1000); // every minute
+});
 import 'dotenv/config';
 import { Client, GatewayIntentBits, Partials } from 'discord.js';
 import { Pool } from 'pg';
@@ -87,17 +88,22 @@ client.on('messageCreate', async (message) => {
       console.log("Inserted new user", discordUserId);
       try {
         await onboardUser(discordUserId, message, 'easy');
-        return; // <-- Add this line to stop further processing for new users
+        return;
       } catch (err) {
         console.error("onboardUser failed:", err);
-        return; // <-- Also return on error
+        return;
       }
     } else {
       console.log("User already exists", discordUserId);
     }
     // Get userId for later use
-    const userRes = await pool.query('SELECT id FROM users WHERE discord_user_id = $1', [discordUserId]);
+    const userRes = await pool.query('SELECT id, last_kanji_sent FROM users WHERE discord_user_id = $1', [discordUserId]);
     userId = userRes.rows[0].id;
+    // Block if last_kanji_sent is null (no card to answer)
+    if (userRes.rows[0].last_kanji_sent === null) {
+      await message.reply("Please wait for your next card.");
+      return;
+    }
   } catch (err) {
     console.error("Failed to insert user", err);
     return;
@@ -215,7 +221,7 @@ client.on('messageCreate', async (message) => {
     const lastKanji = lastKanjiRes.rows[0]?.card_front;
     const cardBack = lastKanjiRes.rows[0]?.card_back;
     const cardIdFromQuery = lastKanjiRes.rows[0]?.id;
-    
+
     // Parse meanings
     let allMeanings;
     try {
@@ -227,7 +233,7 @@ client.on('messageCreate', async (message) => {
     // Build and send feedback message if right/wrong
     let feedbackText;
     const correct = checkResult !== null;
-    
+
     if (correct) {
       const matchedMeaning = checkResult.matchedMeaning;
       // Update the specific meaning's progress
@@ -238,9 +244,6 @@ client.on('messageCreate', async (message) => {
          DO UPDATE SET correct_count = card_meanings.correct_count + 1, last_tested = NOW()`,
         [cardIdFromQuery, matchedMeaning]
       );
-
-
-
 
       // Fetch old score for testing - can remove when i confirm scoring updates correctly
       const { rows: oldRows } = await pool.query(
@@ -288,7 +291,9 @@ client.on('messageCreate', async (message) => {
           }
         }
         if (readings.length) {
-          await message.reply(`Congratulations, you've answered ${lastKanji} 5 times in a row! Here are the readings for ${lastKanji}: ${readings.join(', ')}`);
+          feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+          await message.reply(feedbackText);
+          await message.reply(`Congratulations, you've answered "${lastKanji}" 5 times in a row!\nYou will now receive cards with the readings. The readings for ${lastKanji} are:\n${readings.join('\n')}`);
           // Add readings card
           await pool.query(
             `INSERT INTO cards (user_id, card_front, card_back, introduced, is_custom, reading_introduced)
@@ -300,11 +305,14 @@ client.on('messageCreate', async (message) => {
             'UPDATE cards SET reading_introduced = TRUE WHERE id = $1',
             [cardIdFromQuery]
           );
+        } else {
+          feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+          await message.reply(feedbackText);
         }
+      } else {
+        feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+        await message.reply(feedbackText);
       }
-
-      // actual feedback to user on CORRECT answer !!!!!!!!!!!!
-      feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
     } else {
       // Track which meaning they failed to answer
       // We'll increment incorrect_count on the least-practiced meaning
@@ -312,7 +320,7 @@ client.on('messageCreate', async (message) => {
         `SELECT meaning, correct_count FROM card_meanings WHERE card_id = $1 ORDER BY correct_count ASC LIMIT 1`,
         [cardIdFromQuery]
       );
-      
+
       if (meaningStatsRes.rows.length > 0) {
         const leastPracticedMeaning = meaningStatsRes.rows[0].meaning;
         await pool.query(
@@ -321,11 +329,10 @@ client.on('messageCreate', async (message) => {
           [cardIdFromQuery, leastPracticedMeaning]
         );
       }
-      
-      feedbackText = `Incorrect. ${lastKanji} means ${allMeanings.join(', ')}`;
-    }
 
-    await message.reply(feedbackText);
+      feedbackText = `Incorrect. ${lastKanji} means ${allMeanings.join(', ')}`;
+      await message.reply(feedbackText);
+    }
 
     // Decrease all kanji scores >50 by 1 for this user ONLY when they attempt an answer
     await pool.query(
@@ -337,6 +344,9 @@ client.on('messageCreate', async (message) => {
     if (!correct) {
       await reviewCard(userId, cardId, correct);
     }
+
+    // LOCK: Clear last_kanji_sent so further answers are ignored until next card is sent
+    await pool.query('UPDATE users SET last_kanji_sent = NULL WHERE id = $1', [userId]);
 
   } else {
     console.error("No valid cardId found, skipping reviewCard");
