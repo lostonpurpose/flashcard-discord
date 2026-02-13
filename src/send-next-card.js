@@ -40,11 +40,21 @@ export async function sendNextCard(userId, message) {
     }
 
     // Debug: print pickGroup before picking
-    console.log('[sendNextCard] pickGroup:', pickGroup.map(c => ({id: c.id, front: c.card_front, score: c.score, reading: c.reading_introduced})));
+    console.log('[sendNextCard] pickGroup:', pickGroup.map(c => ({id: c.id, front: c.card_front, score: c.score, reading: c.reading_introduced, back: c.card_back})));
 
     // Pick a random card from the chosen group
     const card = pickGroup[Math.floor(Math.random() * pickGroup.length)];
-    console.log(`[sendNextCard] Picked card: ${card.card_front}, score: ${card.score}, reading_introduced: ${card.reading_introduced}`);
+    console.log('[sendNextCard] Picked card FULL:', card);
+    // Extra: print all cards for this user/kanji for debugging
+    try {
+      const { rows: allDupes } = await pool.query(
+        'SELECT id, card_front, score, reading_introduced, card_back FROM cards WHERE user_id = $1 AND card_front = $2',
+        [userId, card.card_front]
+      );
+      console.log(`[sendNextCard] ALL cards for user ${userId} and kanji ${card.card_front}:`, allDupes);
+    } catch (e) {
+      console.error('[sendNextCard] Error fetching dupes:', e);
+    }
 
   // Update last_card_sent to NOW for this user
   await pool.query('UPDATE users SET last_card_sent = NOW() WHERE id = $1', [userId]);
@@ -62,9 +72,9 @@ export async function sendNextCard(userId, message) {
   if (allMeanings.length === 1) {
     // Show (reading) in prompt if this is a readings card
     if (card.reading_introduced) {
-      await message.reply(`${card.card_front} (reading) = ?`);
+      await message.reply(`${card.card_front} (reading) = ? [cardId: ${card.id}]`);
     } else {
-      await message.reply(`${card.card_front} = ?`);
+      await message.reply(`${card.card_front} = ? [cardId: ${card.id}]`);
     }
     return true;
   }

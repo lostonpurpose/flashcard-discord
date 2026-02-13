@@ -1,6 +1,7 @@
-// === BACKGROUND INTERVAL KANJI SENDER ===
-// This timer runs every minute and checks all users for due kanji
-setInterval(async () => {
+// === CRON-BASED KANJI SENDER ===
+// This cron job runs every minute on the minute and checks all users for due kanji
+import cron from 'node-cron';
+cron.schedule('* * * * *', async () => {
   try {
     const { rows: users } = await pool.query('SELECT id, discord_user_id, last_card_sent, user_freq FROM users');
     const now = new Date();
@@ -19,16 +20,16 @@ setInterval(async () => {
           });
           // Update last_card_sent immediately after sending
           await pool.query('UPDATE users SET last_card_sent = $1 WHERE id = $2', [now.toISOString(), userId]);
-          console.log(`[TIMER] Sent kanji to user ${discord_user_id} and updated last_card_sent`);
+          console.log(`[CRON] Sent kanji to user ${discord_user_id} and updated last_card_sent`);
         } catch (err) {
-          console.error(`[TIMER] Failed to send kanji to user ${discord_user_id}:`, err);
+          console.error(`[CRON] Failed to send kanji to user ${discord_user_id}:`, err);
         }
       }
     }
   } catch (err) {
-    console.error('[TIMER] Error in kanji interval sender:', err);
+    console.error('[CRON] Error in kanji sender:', err);
   }
-}, 60 * 1000); // every minute
+});
 import 'dotenv/config';
 import { Client, GatewayIntentBits, Partials } from 'discord.js';
 import { Pool } from 'pg';
