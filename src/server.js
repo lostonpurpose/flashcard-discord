@@ -15,7 +15,7 @@ setInterval(() => {
 // === CRON-BASED KANJI SENDER (using cron npm package) ===
 import { CronJob } from 'cron';
 let cronRunning = false;
-const job = new CronJob('* * * * *', async () => {
+const job = new CronJob('*/30 * * * * *', async () => {
   if (cronRunning) {
     console.warn('[CRON] Previous run still in progress, skipping this tick.');
     return;

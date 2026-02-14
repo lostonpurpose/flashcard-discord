@@ -25,9 +25,9 @@ export async function reviewCard(userId, cardId, correct) {
     } else {
       // Base increase: 4-7 (randomized for variation)
       const baseIncrease = Math.floor(Math.random() * 4) + 4;
-      // Score increase: baseIncrease + (4 * newStreak)
+      // Score increase: baseIncrease + (5 * newStreak)
       const fiveInRowBonus = newStreak >= 4 ? (35 + baseIncrease) : 0;
-      newScore = score + baseIncrease + (4 * newStreak) + fiveInRowBonus;
+      newScore = score + baseIncrease + (5 * newStreak) + fiveInRowBonus;
     }
   } else {
     // Reset streak on wrong answer
