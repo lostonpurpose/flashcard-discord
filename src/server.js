@@ -186,11 +186,7 @@ client.on('messageCreate', async (message) => {
     }
   }
 
-  // Block if last_kanji_sent is null (no card to answer) -- moved after command checks
-  if (lastKanjiSent === null) {
-    await message.reply("Please wait for your next card.");
-    return;
-  }
+  // ...existing code...
 
   // Check if user wants to delete a card (format: "x :: delete")
   if (userAnswer.includes(' :: delete')) {
@@ -233,6 +229,12 @@ client.on('messageCreate', async (message) => {
     cardId = cardRes.rows[0]?.id;
   } catch (err) {
     console.error("Failed to get card id", err);
+  }
+
+  // Block answer attempts if no card is available
+  if (!cardId && !userAnswer.includes(' = ') && !userAnswer.includes(' :: delete') && userAnswer.toLowerCase() !== 'help') {
+    await message.reply("Please wait for your next card.");
+    return;
   }
 
   // 3. Check answer and update review stats
