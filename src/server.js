@@ -130,11 +130,8 @@ client.on('messageCreate', async (message) => {
     // Get userId for later use
     const userRes = await pool.query('SELECT id, last_kanji_sent FROM users WHERE discord_user_id = $1', [discordUserId]);
     userId = userRes.rows[0].id;
-    // Block if last_kanji_sent is null (no card to answer)
-    if (userRes.rows[0].last_kanji_sent === null) {
-      await message.reply("Please wait for your next card.");
-      return;
-    }
+    // Store last_kanji_sent for later blocking check
+    const lastKanjiSent = userRes.rows[0].last_kanji_sent;
   } catch (err) {
     console.error("Failed to insert user", err);
     return;
@@ -146,7 +143,6 @@ client.on('messageCreate', async (message) => {
   // Check if user is creating a custom card or changing difficulty (format: "x = y")
   if (userAnswer.includes(' = ')) {
     const parts = userAnswer.split(' = ').map(s => s.trim());
-    
     // Check if it's a frequency change command
     if (parts[0].toLowerCase() === 'freq' && parts[1]) {
       const freqInt = parseInt(parts[1], 10);
@@ -174,10 +170,8 @@ client.on('messageCreate', async (message) => {
       }
     } else {
       // Custom card creation
-              return; // Prevent further processing for new users
       const [cardFront, cardBack] = parts;
       if (cardFront && cardBack) {
-              return; // Prevent further processing if onboarding fails
         try {
           await pool.query(
             `INSERT INTO cards (user_id, card_front, card_back, introduced, next_review, is_custom) VALUES ($1, $2, $3, TRUE, NOW(), TRUE)`,
@@ -190,6 +184,12 @@ client.on('messageCreate', async (message) => {
         }
       }
     }
+  }
+
+  // Block if last_kanji_sent is null (no card to answer) -- moved after command checks
+  if (lastKanjiSent === null) {
+    await message.reply("Please wait for your next card.");
+    return;
   }
 
   // Check if user wants to delete a card (format: "x :: delete")
