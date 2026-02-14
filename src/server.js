@@ -1,14 +1,38 @@
-// === CRON-BASED KANJI SENDER ===
-// This cron job runs every minute on the minute and checks all users for due kanji
-import cron from 'node-cron';
-cron.schedule('* * * * *', async () => {
+// === EVENT LOOP DELAY MONITORING ===
+import { monitorEventLoopDelay } from 'perf_hooks';
+const h = monitorEventLoopDelay({ resolution: 20 });
+h.enable();
+setInterval(() => {
+  const mean = Math.round(h.mean / 1e6); // ms
+  const max = Math.round(h.max / 1e6); // ms
+  if (mean > 50 || max > 200) {
+    console.warn(`[EVENT LOOP DELAY] mean: ${mean}ms, max: ${max}ms`);
+  } else {
+    console.log(`[EVENT LOOP DELAY] mean: ${mean}ms, max: ${max}ms`);
+  }
+  h.reset();
+}, 60000); // Log every minute
+// === CRON-BASED KANJI SENDER (using cron npm package) ===
+import { CronJob } from 'cron';
+let cronRunning = false;
+const job = new CronJob('* * * * *', async () => {
+  if (cronRunning) {
+    console.warn('[CRON] Previous run still in progress, skipping this tick.');
+    return;
+  }
+  cronRunning = true;
+  const start = Date.now();
   try {
-    const { rows: users } = await pool.query('SELECT id, discord_user_id, last_card_sent, user_freq FROM users');
     const now = new Date();
+    console.log(`[CRON] >>> ENTERED CRON CALLBACK at ${now.toISOString()}`);
+    const { rows: users } = await pool.query('SELECT id, discord_user_id, last_card_sent, user_freq FROM users');
+    console.log(`[CRON] Checking ${users.length} users`);
     for (const user of users) {
       const { id: userId, discord_user_id, last_card_sent, user_freq } = user;
       const lastSent = last_card_sent ? new Date(last_card_sent) : null;
       const freqMs = (user_freq || 3) * 60 * 1000;
+      const timeSinceLast = lastSent ? (now - lastSent) : null;
+      console.log(`[CRON] User ${discord_user_id}: lastSent=${lastSent}, freqMs=${freqMs}, timeSinceLast=${timeSinceLast}`);
       if (!lastSent || (now - lastSent) >= freqMs) {
         try {
           const discordUser = await client.users.fetch(discord_user_id);
@@ -24,12 +48,19 @@ cron.schedule('* * * * *', async () => {
         } catch (err) {
           console.error(`[CRON] Failed to send kanji to user ${discord_user_id}:`, err);
         }
+      } else {
+        console.log(`[CRON] Skipped user ${discord_user_id}: not due yet.`);
       }
     }
   } catch (err) {
-    console.error('[CRON] Error in kanji sender:', err);
+    console.error('[CRON] TOP-LEVEL ERROR in cron callback:', err);
+  } finally {
+    cronRunning = false;
+    const elapsed = Date.now() - start;
+    console.log(`[CRON] Callback finished in ${elapsed}ms`);
   }
 });
+job.start();
 import 'dotenv/config';
 import { Client, GatewayIntentBits, Partials } from 'discord.js';
 import { Pool } from 'pg';
@@ -99,11 +130,8 @@ client.on('messageCreate', async (message) => {
     // Get userId for later use
     const userRes = await pool.query('SELECT id, last_kanji_sent FROM users WHERE discord_user_id = $1', [discordUserId]);
     userId = userRes.rows[0].id;
-    // Block if last_kanji_sent is null (no card to answer)
-    if (userRes.rows[0].last_kanji_sent === null) {
-      await message.reply("Please wait for your next card.");
-      return;
-    }
+    // Store last_kanji_sent for later blocking check
+    const lastKanjiSent = userRes.rows[0].last_kanji_sent;
   } catch (err) {
     console.error("Failed to insert user", err);
     return;
@@ -115,7 +143,6 @@ client.on('messageCreate', async (message) => {
   // Check if user is creating a custom card or changing difficulty (format: "x = y")
   if (userAnswer.includes(' = ')) {
     const parts = userAnswer.split(' = ').map(s => s.trim());
-    
     // Check if it's a frequency change command
     if (parts[0].toLowerCase() === 'freq' && parts[1]) {
       const freqInt = parseInt(parts[1], 10);
@@ -143,10 +170,8 @@ client.on('messageCreate', async (message) => {
       }
     } else {
       // Custom card creation
-              return; // Prevent further processing for new users
       const [cardFront, cardBack] = parts;
       if (cardFront && cardBack) {
-              return; // Prevent further processing if onboarding fails
         try {
           await pool.query(
             `INSERT INTO cards (user_id, card_front, card_back, introduced, next_review, is_custom) VALUES ($1, $2, $3, TRUE, NOW(), TRUE)`,
@@ -160,6 +185,8 @@ client.on('messageCreate', async (message) => {
       }
     }
   }
+
+  // ...existing code...
 
   // Check if user wants to delete a card (format: "x :: delete")
   if (userAnswer.includes(' :: delete')) {
@@ -202,6 +229,12 @@ client.on('messageCreate', async (message) => {
     cardId = cardRes.rows[0]?.id;
   } catch (err) {
     console.error("Failed to get card id", err);
+  }
+
+  // Block answer attempts if no card is available
+  if (!cardId && !userAnswer.includes(' = ') && !userAnswer.includes(' :: delete') && userAnswer.toLowerCase() !== 'help') {
+    await message.reply("Please wait for your next card.");
+    return;
   }
 
   // 3. Check answer and update review stats

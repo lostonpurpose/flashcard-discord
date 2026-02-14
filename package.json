@@ -1,9 +1,13 @@
 {
   "type": "module",
   "dependencies": {
+    "cron": "^4.4.0",
     "discord.js": "^14.14.0",
     "dotenv": "^17.2.3",
     "node-cron": "^4.2.1",
     "pg": "^8.18.0"
+  },
+  "scripts": {
+    "postinstall": "npm install cron"
   }
 }

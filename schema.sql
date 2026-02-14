@@ -5,7 +5,17 @@ CREATE TABLE users (
   last_kanji_sent VARCHAR(255),
   difficulty VARCHAR(50) DEFAULT 'easy',
   user_freq INT NOT NULL DEFAULT 3,
-  last_card_sent TIMESTAMP
+  last_card_sent TIMESTAMP,
+  next_card_due TIMESTAMP
+);
+-- Table for tracking kanji readings per card
+CREATE TABLE card_readings (
+  id SERIAL PRIMARY KEY,
+  card_id INT NOT NULL REFERENCES cards(id),
+  reading VARCHAR(255) NOT NULL,
+  correct_count INT NOT NULL DEFAULT 0,
+  incorrect_count INT NOT NULL DEFAULT 0,
+  last_tested TIMESTAMP
 );
 
 CREATE TABLE cards (
