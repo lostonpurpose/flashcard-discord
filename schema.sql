@@ -22,7 +22,8 @@ CREATE TABLE cards (
     incorrect_count INT NOT NULL DEFAULT 0,
     consecutive_correct INT NOT NULL DEFAULT 0,
     score INT NOT NULL DEFAULT 50,
-    reading_introduced BOOLEAN NOT NULL DEFAULT FALSE
+    reading_introduced BOOLEAN NOT NULL DEFAULT FALSE,
+    UNIQUE(user_id, card_front, reading_introduced)
 );
 
 CREATE TABLE card_readings (

@@ -151,7 +151,7 @@ client.on('messageCreate', async (message) => {
         return;
       }
       await pool.query('UPDATE users SET user_freq = $1 WHERE id = $2', [freqInt, userId]);
-      await message.reply(`Card frequency updated: you will get a card every ${freqInt} hour(s).`);
+      await message.reply(`Card frequency updated: you will get a card every ${freqInt} minutes(s).`);
       return;
     }
     // Check if it's a difficulty change command
@@ -343,7 +343,8 @@ client.on('messageCreate', async (message) => {
           // Add readings card
           await pool.query(
             `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
-             VALUES ($1, $2, $3, TRUE, TRUE)`,
+             VALUES ($1, $2, $3, TRUE, TRUE)
+             ON CONFLICT (user_id, card_front, reading_introduced) DO NOTHING`,
             [userId, lastKanji, JSON.stringify(readings)]
           );
           // Mark original card as reading_introduced

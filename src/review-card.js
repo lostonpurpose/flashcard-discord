@@ -54,20 +54,28 @@ export async function reviewCard(userId, cardId, correct) {
     );
     const kanji = cardRows.length ? cardRows[0].card_front : null;
     if (kanji) {
-      // Fetch readings from card_readings
-      const { rows: readingsRows } = await pool.query(
-        'SELECT reading FROM card_readings WHERE card_id = $1',
-        [cardId]
+      // Check if a readings card already exists for this user and kanji
+      const { rows: existingReadingsCards } = await pool.query(
+        'SELECT id FROM cards WHERE user_id = $1 AND card_front = $2 AND reading_introduced = TRUE',
+        [userId, kanji]
       );
-      const readings = readingsRows.map(r => r.reading);
-      if (readings.length > 0) {
-        // Insert new readings card for this user
-        await pool.query(
-          `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
-           VALUES ($1, $2, $3, TRUE, TRUE)`,
-          [userId, kanji, JSON.stringify(readings)]
+      if (existingReadingsCards.length === 0) {
+        // Fetch readings from card_readings
+        const { rows: readingsRows } = await pool.query(
+          'SELECT reading FROM card_readings WHERE card_id = $1',
+          [cardId]
         );
-        console.log(`[reviewCard] Created readings card for kanji=${kanji}, userId=${userId}`);
+        const readings = readingsRows.map(r => r.reading);
+        if (readings.length > 0) {
+          // Insert new readings card for this user
+          await pool.query(
+            `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
+             VALUES ($1, $2, $3, TRUE, TRUE)
+             ON CONFLICT (user_id, card_front, reading_introduced) DO NOTHING`,
+            [userId, kanji, JSON.stringify(readings)]
+          );
+          console.log(`[reviewCard] Created readings card for kanji=${kanji}, userId=${userId}`);
+        }
       }
     }
   }
