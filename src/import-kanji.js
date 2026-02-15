@@ -2,10 +2,11 @@ import fs from 'fs';
 import { Pool } from 'pg';
 import 'dotenv/config';
 
-const [,, jsonFile, difficulty] = process.argv;
 
-if (!jsonFile || !difficulty) {
-  console.error('Usage: node import-kanji.js <jsonFile> <difficulty>');
+const [,, jsonFile, difficulty, kanjiLevel] = process.argv;
+
+if (!jsonFile || !difficulty || !kanjiLevel) {
+  console.error('Usage: node import-kanji.js <jsonFile> <difficulty> <kanji_level>');
   process.exit(1);
 }
 
@@ -30,8 +31,8 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL });
     const meaningsJson = JSON.stringify(meaningsArray);
     const readingsJson = JSON.stringify(readingsArray);
     await pool.query(
-      'INSERT INTO master_cards (card_front, card_back, readings, difficulty) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING',
-      [kanjiChar, meaningsJson, readingsJson, difficulty]
+      'INSERT INTO master_cards (card_front, card_back, readings, difficulty, kanji_level) VALUES ($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING',
+      [kanjiChar, meaningsJson, readingsJson, difficulty, kanjiLevel]
     );
   }
   await pool.end();
