@@ -45,5 +45,31 @@ export async function reviewCard(userId, cardId, correct) {
      WHERE id = $5 AND user_id = $6`,
     [newScore, newStreak, correct ? 1 : 0, correct ? 0 : 1, cardId, userId]
   );
+  // Unlock readings when streak hits 5
+  if (newStreak === 5) {
+    // Fetch readings for this kanji from card_readings
+    const { rows: cardRows } = await pool.query(
+      'SELECT card_front FROM cards WHERE id = $1 AND user_id = $2',
+      [cardId, userId]
+    );
+    const kanji = cardRows.length ? cardRows[0].card_front : null;
+    if (kanji) {
+      // Fetch readings from card_readings
+      const { rows: readingsRows } = await pool.query(
+        'SELECT reading FROM card_readings WHERE card_id = $1',
+        [cardId]
+      );
+      const readings = readingsRows.map(r => r.reading);
+      if (readings.length > 0) {
+        // Insert new readings card for this user
+        await pool.query(
+          `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
+           VALUES ($1, $2, $3, TRUE, TRUE)`,
+          [userId, kanji, JSON.stringify(readings)]
+        );
+        console.log(`[reviewCard] Created readings card for kanji=${kanji}, userId=${userId}`);
+      }
+    }
+  }
   console.log(`[reviewCard] AFTER: cardId=${cardId}, userId=${userId}, score=${newScore}, streak=${newStreak}, correct=${correct}`);
 }

@@ -9,14 +9,7 @@ CREATE TABLE users (
   next_card_due TIMESTAMP
 );
 -- Table for tracking kanji readings per card
-CREATE TABLE card_readings (
-  id SERIAL PRIMARY KEY,
-  card_id INT NOT NULL REFERENCES cards(id),
-  reading VARCHAR(255) NOT NULL,
-  correct_count INT NOT NULL DEFAULT 0,
-  incorrect_count INT NOT NULL DEFAULT 0,
-  last_tested TIMESTAMP
-);
+
 
 CREATE TABLE cards (
     id SERIAL PRIMARY KEY,
@@ -30,6 +23,15 @@ CREATE TABLE cards (
     consecutive_correct INT NOT NULL DEFAULT 0,
     score INT NOT NULL DEFAULT 50,
     reading_introduced BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+CREATE TABLE card_readings (
+  id SERIAL PRIMARY KEY,
+  card_id INT NOT NULL REFERENCES cards(id),
+  reading VARCHAR(255) NOT NULL,
+  correct_count INT NOT NULL DEFAULT 0,
+  incorrect_count INT NOT NULL DEFAULT 0,
+  last_tested TIMESTAMP
 );
 
 CREATE TABLE reviews (
