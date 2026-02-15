@@ -345,7 +345,7 @@ client.on('messageCreate', async (message) => {
             `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
              VALUES ($1, $2, $3, TRUE, TRUE)
              ON CONFLICT (user_id, card_front, reading_introduced) DO NOTHING`,
-            [userId, lastKanji, JSON.stringify(readings)]
+            [userId, `${lastKanji} (reading)`, JSON.stringify(readings)]
           );
           // Mark original card as reading_introduced
           await pool.query(

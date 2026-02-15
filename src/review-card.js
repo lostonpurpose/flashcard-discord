@@ -72,7 +72,7 @@ export async function reviewCard(userId, cardId, correct) {
             `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
              VALUES ($1, $2, $3, TRUE, TRUE)
              ON CONFLICT (user_id, card_front, reading_introduced) DO NOTHING`,
-            [userId, kanji, JSON.stringify(readings)]
+            [userId, `${kanji} (reading)`, JSON.stringify(readings)]
           );
           console.log(`[reviewCard] Created readings card for kanji=${kanji}, userId=${userId}`);
         }
