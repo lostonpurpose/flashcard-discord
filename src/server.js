@@ -173,11 +173,24 @@ client.on('messageCreate', async (message) => {
       const [cardFront, cardBack] = parts;
       if (cardFront && cardBack) {
         try {
+          // Find the next available custom card id above 1,000,000
+          const { rows: maxRows } = await pool.query(`SELECT MAX(id) AS max_id FROM cards WHERE id >= 1000000`);
+          let nextCustomId = 1000001;
+          if (maxRows[0].max_id && maxRows[0].max_id >= 1000000) {
+            nextCustomId = maxRows[0].max_id + 1;
+          }
+          // Insert into cards table with custom id
+          const cardResult = await pool.query(
+            `INSERT INTO cards (id, user_id, card_front, card_back, introduced, next_review) VALUES ($1, $2, $3, $4, TRUE, NOW()) RETURNING id`,
+            [nextCustomId, userId, cardFront, cardBack]
+          );
+          const newCardId = cardResult.rows[0].id;
+          // Insert into user_created_cards table
           await pool.query(
-            `INSERT INTO cards (user_id, card_front, card_back, introduced, next_review) VALUES ($1, $2, $3, TRUE, NOW())`,
+            `INSERT INTO user_created_cards (user_id, card_front, card_back, master_card_id) VALUES ($1, $2, $3, NULL)`,
             [userId, cardFront, cardBack]
           );
-          await message.reply(`Card created: ${cardFront} = ${cardBack}`);
+          await message.reply(`Custom card created: ${cardFront} = ${cardBack} (ID: ${newCardId})`);
           return;
         } catch (err) {
           console.error("Failed to create custom card", err);
