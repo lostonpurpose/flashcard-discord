@@ -7,7 +7,7 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
   const { rows: userCards } = await pool.query(
     `SELECT c.id, c.card_front, c.card_back, c.correct_count
      FROM cards c
-     WHERE c.user_id = $1 AND c.introduced = TRUE AND c.is_custom = FALSE
+     WHERE c.user_id = $1 AND c.introduced = TRUE
      ORDER BY c.id ASC`,
     [userId]
   );

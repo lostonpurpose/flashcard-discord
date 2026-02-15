@@ -174,7 +174,7 @@ client.on('messageCreate', async (message) => {
       if (cardFront && cardBack) {
         try {
           await pool.query(
-            `INSERT INTO cards (user_id, card_front, card_back, introduced, next_review, is_custom) VALUES ($1, $2, $3, TRUE, NOW(), TRUE)`,
+            `INSERT INTO cards (user_id, card_front, card_back, introduced, next_review) VALUES ($1, $2, $3, TRUE, NOW())`,
             [userId, cardFront, cardBack]
           );
           await message.reply(`Card created: ${cardFront} = ${cardBack}`);
@@ -329,8 +329,8 @@ client.on('messageCreate', async (message) => {
           await message.reply(`Congratulations, you've answered "${lastKanji}" 5 times in a row!\nYou will now receive cards with the readings. The readings for ${lastKanji} are:\n${readings.join('\n')}`);
           // Add readings card
           await pool.query(
-            `INSERT INTO cards (user_id, card_front, card_back, introduced, is_custom, reading_introduced)
-             VALUES ($1, $2, $3, TRUE, FALSE, TRUE)`,
+            `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
+             VALUES ($1, $2, $3, TRUE, TRUE)`,
             [userId, lastKanji, JSON.stringify(readings)]
           );
           // Mark original card as reading_introduced
