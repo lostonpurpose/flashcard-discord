@@ -54,9 +54,8 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
          RETURNING id`,
         [userId, card.card_front, card.card_back]
       );
-      
       const newCardId = insertResult.rows[0].id;
-      
+
       // Initialize card_meanings for each meaning
       let meanings;
       try {
@@ -64,13 +63,33 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
       } catch {
         meanings = [card.card_back];
       }
-      
       for (const meaning of meanings) {
         await pool.query(
           `INSERT INTO card_meanings (card_id, meaning) VALUES ($1, $2) ON CONFLICT DO NOTHING`,
           [newCardId, meaning]
         );
       }
+
+      // Import readings for this card from master_cards
+      const { rows: readingRows } = await pool.query(
+        `SELECT readings FROM master_cards WHERE card_front = $1 AND difficulty = $2`,
+        [card.card_front, difficulty]
+      );
+      if (readingRows.length && readingRows[0].readings) {
+        let readings;
+        try {
+          readings = JSON.parse(readingRows[0].readings);
+        } catch {
+          readings = [];
+        }
+        for (const reading of readings) {
+          await pool.query(
+            `INSERT INTO card_readings (card_id, reading) VALUES ($1, $2) ON CONFLICT DO NOTHING`,
+            [newCardId, reading]
+          );
+        }
+      }
+
       // Send next five flashcards to learn via Discord
       const meaningText = meanings.join(', ');
       await message.reply(`${card.card_front} = ${meaningText}`);
