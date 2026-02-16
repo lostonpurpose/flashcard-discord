@@ -339,12 +339,11 @@ client.on('messageCreate', async (message) => {
         if (readings.length) {
           feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
           await message.reply(feedbackText);
-          await message.reply(`Congratulations, you've answered "${lastKanji}" 5 times in a row!\nYou will now receive cards with the readings. The readings for ${lastKanji} are:\n${readings.join('\n')}`);
+          await message.reply(`Congratulations, you answered "${lastKanji}" 5 times in a row!\nYou will now start seeing a card asking for ${lastKanji} (reading). Use hiragana to answer. The reading(s) for ${lastKanji} are:\n${readings.join('\n')}`);
           // Add readings card
           await pool.query(
             `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
-             VALUES ($1, $2, $3, TRUE, TRUE)
-             ON CONFLICT (user_id, card_front, reading_introduced) DO NOTHING`,
+             VALUES ($1, $2, $3, TRUE, TRUE)`,
             [userId, `${lastKanji} (reading)`, JSON.stringify(readings)]
           );
           // Mark original card as reading_introduced

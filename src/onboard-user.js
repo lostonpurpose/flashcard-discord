@@ -51,7 +51,7 @@ export async function onboardUser(discordUserId, message, difficulty = 'easy') {
   }
 
   // Send the very first welcome greeting
-  await message.reply("Welcome to the Kanji Study Discord Bot!\nYou'll be getting a kanji every few hours. Just respond to the message with your answer like a regular Discord message.\n\nHere are your first five kanji to learn:");
+  await message.reply("Welcome to the Kanji Study Discord Bot!\nYou'll be getting a kanji every few hours (actually defaults to 3 minutes at the moment). Just respond to each kanji question with your answer like a regular Discord message.\n\nThere are many things you can do, like creating your own cards, changing how often you receive cards, etc. For a menu with all options just type 'help!' (with the exclamation point) at any time (that feature coming soon... just ask Will for all options).\n\nHere are your first five kanji to learn:");
 
   // Send study message (kanji + meaning) for each card
   for (const card of cardRows) {
