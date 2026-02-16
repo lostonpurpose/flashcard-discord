@@ -280,6 +280,11 @@ client.on('messageCreate', async (message) => {
     let feedbackText;
     const correct = checkResult !== null;
 
+    // Determine if this is a reading card
+    const isReadingCard = lastKanji && lastKanji.trim().endsWith('(reading)');
+    // For reading cards, extract the kanji (remove ' (reading)')
+    const kanjiOnly = isReadingCard ? lastKanji.replace(/\s*\(reading\)$/,'').trim() : lastKanji;
+
     if (correct) {
       const matchedMeaning = checkResult.matchedMeaning;
       // Update the specific meaning's progress
@@ -337,9 +342,12 @@ client.on('messageCreate', async (message) => {
           }
         }
         if (readings.length) {
-          feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+          // Use new template for reading card intro message
+          feedbackText = isReadingCard
+            ? `Correct! The reading(s) for ${kanjiOnly} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
+            : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
           await message.reply(feedbackText);
-          await message.reply(`Congratulations, you answered "${lastKanji}" 5 times in a row!\nYou will now start seeing a card asking for ${lastKanji} (reading). Use hiragana to answer. The reading(s) for ${lastKanji} are:\n${readings.join('\n')}`);
+          await message.reply(`Congratulations, you answered "${lastKanji}" (${allMeanings.join(', ')})5 times in a row!\nYou will now start seeing a card asking for ${lastKanji} (reading). Use hiragana to answer. The reading(s) for ${lastKanji} are:\n${readings.join('\n')}`);
           // Add readings card
           await pool.query(
             `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
@@ -352,11 +360,15 @@ client.on('messageCreate', async (message) => {
             [cardIdFromQuery]
           );
         } else {
-          feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+          feedbackText = isReadingCard
+            ? `Correct! The reading(s) for ${kanjiOnly} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
+            : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
           await message.reply(feedbackText);
         }
       } else {
-        feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+        feedbackText = isReadingCard
+          ? `Correct! The reading(s) for ${kanjiOnly} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
+          : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
         await message.reply(feedbackText);
       }
     } else {
@@ -376,7 +388,9 @@ client.on('messageCreate', async (message) => {
         );
       }
 
-      feedbackText = `Incorrect. ${lastKanji} means ${allMeanings.join(', ')}`;
+      feedbackText = isReadingCard
+        ? `Incorrect. The reading(s) for ${kanjiOnly} are: ${allMeanings.join(', ')}`
+        : `Incorrect. ${lastKanji} means ${allMeanings.join(', ')}`;
       await message.reply(feedbackText);
     }
 
