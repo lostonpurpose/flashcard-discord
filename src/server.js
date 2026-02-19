@@ -140,7 +140,13 @@ client.on('messageCreate', async (message) => {
   // Skip empty messages
   if (!userAnswer) return;
 
-  // Check if user is creating a custom card or changing difficulty (format: "x = y")
+  // Check if user is creating a custom card, needs help, frequency change, or changing difficulty (format: "x = y")
+  
+  if (userAnswer === 'help!') {
+    await message.reply('Welcome to the help menu! Here are some commands you can use:\n\nCREATE CARDS\nTo create your own cards send a message in this format: card front = card back. For example, 犬 = dog. Super simple.\n\nFREQUENCY\nTo change how often you receive cards, type "freq =" followed by the number in minutes. So freq = 10 will send you a card every 10 minutes. You can type any number up to 1440 (one day).\n\n');
+    return;
+  }
+  
   if (userAnswer.includes(' = ')) {
     const parts = userAnswer.split(' = ').map(s => s.trim());
     // Check if it's a frequency change command
@@ -329,9 +335,11 @@ client.on('messageCreate', async (message) => {
       console.log(`[READINGS DEBUG] streak: ${streak}, cardId: ${cardIdFromQuery}, reading_introduced: ${readingIntroduced}`);
       if (streak >= 5 && !readingIntroduced) {
         // Fetch readings from master_cards table
+        // Always use the original kanji (no '(reading)') for reading card creation
+        const baseKanji = lastKanji ? lastKanji.replace(/\s*\(reading\)$/,'').trim() : '';
         const { rows: masterRows } = await pool.query(
           'SELECT readings FROM master_cards WHERE card_front = $1',
-          [lastKanji]
+          [baseKanji]
         );
         let readings = [];
         if (masterRows.length && masterRows[0].readings) {
@@ -344,15 +352,16 @@ client.on('messageCreate', async (message) => {
         if (readings.length) {
           // Use new template for reading card intro message
           feedbackText = isReadingCard
-            ? `Correct! The reading(s) for ${kanjiOnly} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
+            ? `Correct! The reading(s) for ${baseKanji} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
             : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
           await message.reply(feedbackText);
-          await message.reply(`Congratulations, you answered "${lastKanji}" (${allMeanings.join(', ')})5 times in a row!\nYou will now start seeing a card asking for ${lastKanji} (reading). Use hiragana to answer. The reading(s) for ${lastKanji} are:\n${readings.join('\n')}`);
-          // Add readings card
+          await message.reply(`Congratulations, you answered "${lastKanji}" (${allMeanings.join(', ')}) 5 times in a row!\n\nYou will now start seeing a card asking for ${baseKanji} (reading). Use hiragana to answer. The reading(s) for ${baseKanji} are:\n\n${readings.join('\n')}`);
+          // Always create reading card as 'KANJI (reading)'
+          let readingCardFront = `${baseKanji} (reading)`;
           await pool.query(
             `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
              VALUES ($1, $2, $3, TRUE, TRUE)`,
-            [userId, `${lastKanji} (reading)`, JSON.stringify(readings)]
+            [userId, readingCardFront, JSON.stringify(readings)]
           );
           // Mark original card as reading_introduced
           await pool.query(
@@ -361,7 +370,7 @@ client.on('messageCreate', async (message) => {
           );
         } else {
           feedbackText = isReadingCard
-            ? `Correct! The reading(s) for ${kanjiOnly} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
+            ? `Correct! The reading(s) for ${baseKanji} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
             : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
           await message.reply(feedbackText);
         }
