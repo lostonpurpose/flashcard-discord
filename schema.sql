@@ -9,6 +9,24 @@ CREATE TABLE users (
   next_card_due TIMESTAMP
 );
 -- Table for tracking kanji readings per card
+
+
+CREATE TABLE cards (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES users(id),
+    card_front VARCHAR(255) NOT NULL,
+    card_back TEXT NOT NULL,
+    card_type VARCHAR(16) NOT NULL DEFAULT 'meaning',
+    introduced BOOLEAN NOT NULL DEFAULT FALSE,
+    next_review TIMESTAMP,
+    correct_count INT NOT NULL DEFAULT 0,
+    incorrect_count INT NOT NULL DEFAULT 0,
+    consecutive_correct INT NOT NULL DEFAULT 0,
+    score INT NOT NULL DEFAULT 50,
+    reading_introduced BOOLEAN NOT NULL DEFAULT FALSE,
+    UNIQUE(user_id, card_front, reading_introduced)
+);
+
 CREATE TABLE card_readings (
   id SERIAL PRIMARY KEY,
   card_id INT NOT NULL REFERENCES cards(id),
@@ -16,21 +34,6 @@ CREATE TABLE card_readings (
   correct_count INT NOT NULL DEFAULT 0,
   incorrect_count INT NOT NULL DEFAULT 0,
   last_tested TIMESTAMP
-);
-
-CREATE TABLE cards (
-    id SERIAL PRIMARY KEY,
-    user_id INT NOT NULL REFERENCES users(id),
-    card_front VARCHAR(255) NOT NULL,
-    card_back TEXT NOT NULL,
-    introduced BOOLEAN NOT NULL DEFAULT FALSE,
-    is_custom BOOLEAN NOT NULL DEFAULT FALSE,
-    next_review TIMESTAMP,
-    correct_count INT NOT NULL DEFAULT 0,
-    incorrect_count INT NOT NULL DEFAULT 0,
-    consecutive_correct INT NOT NULL DEFAULT 0,
-    score INT NOT NULL DEFAULT 50,
-    reading_introduced BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE reviews (
@@ -47,9 +50,18 @@ CREATE TABLE master_cards (
     card_front VARCHAR(255) NOT NULL,
     card_back TEXT NOT NULL,
     readings TEXT,
-    difficulty VARCHAR(50) NOT NULL
+    difficulty VARCHAR(50) NOT NULL,
+    kanji_level VARCHAR(10)
 );
 
+CREATE TABLE user_created_cards (
+  id SERIAL PRIMARY KEY,
+  user_id INT NOT NULL REFERENCES users(id),
+  card_front VARCHAR(255) NOT NULL,
+  card_back TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  master_card_id INT REFERENCES master_cards(id)
+);
 -- New table to track individual meaning progress
 CREATE TABLE card_meanings (
   id SERIAL PRIMARY KEY,

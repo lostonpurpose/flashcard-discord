@@ -15,7 +15,7 @@ setInterval(() => {
 // === CRON-BASED KANJI SENDER (using cron npm package) ===
 import { CronJob } from 'cron';
 let cronRunning = false;
-const job = new CronJob('* * * * *', async () => {
+const job = new CronJob('*/30 * * * * *', async () => {
   if (cronRunning) {
     console.warn('[CRON] Previous run still in progress, skipping this tick.');
     return;
@@ -140,7 +140,13 @@ client.on('messageCreate', async (message) => {
   // Skip empty messages
   if (!userAnswer) return;
 
-  // Check if user is creating a custom card or changing difficulty (format: "x = y")
+  // Check if user is creating a custom card, needs help, frequency change, or changing difficulty (format: "x = y")
+  
+  if (userAnswer === 'help!') {
+    await message.reply('Welcome to the help menu! Here are some commands you can use:\n\nCREATE CARDS\nTo create your own cards send a message in this format: card front = card back. For example, 犬 = dog. Super simple.\n\nFREQUENCY\nTo change how often you receive cards, type "freq =" followed by the number in minutes. So freq = 10 will send you a card every 10 minutes. You can type any number up to 1440 (one day).\n\n');
+    return;
+  }
+  
   if (userAnswer.includes(' = ')) {
     const parts = userAnswer.split(' = ').map(s => s.trim());
     // Check if it's a frequency change command
@@ -151,7 +157,7 @@ client.on('messageCreate', async (message) => {
         return;
       }
       await pool.query('UPDATE users SET user_freq = $1 WHERE id = $2', [freqInt, userId]);
-      await message.reply(`Card frequency updated: you will get a card every ${freqInt} hour(s).`);
+      await message.reply(`Card frequency updated: you will get a card every ${freqInt} minutes(s).`);
       return;
     }
     // Check if it's a difficulty change command
@@ -173,11 +179,24 @@ client.on('messageCreate', async (message) => {
       const [cardFront, cardBack] = parts;
       if (cardFront && cardBack) {
         try {
+          // Find the next available custom card id above 1,000,000
+          const { rows: maxRows } = await pool.query(`SELECT MAX(id) AS max_id FROM cards WHERE id >= 1000000`);
+          let nextCustomId = 1000001;
+          if (maxRows[0].max_id && maxRows[0].max_id >= 1000000) {
+            nextCustomId = maxRows[0].max_id + 1;
+          }
+          // Insert into cards table with custom id
+          const cardResult = await pool.query(
+            `INSERT INTO cards (id, user_id, card_front, card_back, introduced, next_review) VALUES ($1, $2, $3, $4, TRUE, NOW()) RETURNING id`,
+            [nextCustomId, userId, cardFront, cardBack]
+          );
+          const newCardId = cardResult.rows[0].id;
+          // Insert into user_created_cards table
           await pool.query(
-            `INSERT INTO cards (user_id, card_front, card_back, introduced, next_review, is_custom) VALUES ($1, $2, $3, TRUE, NOW(), TRUE)`,
+            `INSERT INTO user_created_cards (user_id, card_front, card_back, master_card_id) VALUES ($1, $2, $3, NULL)`,
             [userId, cardFront, cardBack]
           );
-          await message.reply(`Card created: ${cardFront} = ${cardBack}`);
+          await message.reply(`Custom card created: ${cardFront} = ${cardBack} (ID: ${newCardId})`);
           return;
         } catch (err) {
           console.error("Failed to create custom card", err);
@@ -267,6 +286,11 @@ client.on('messageCreate', async (message) => {
     let feedbackText;
     const correct = checkResult !== null;
 
+    // Determine if this is a reading card
+    const isReadingCard = lastKanji && lastKanji.trim().endsWith('(reading)');
+    // For reading cards, extract the kanji (remove ' (reading)')
+    const kanjiOnly = isReadingCard ? lastKanji.replace(/\s*\(reading\)$/,'').trim() : lastKanji;
+
     if (correct) {
       const matchedMeaning = checkResult.matchedMeaning;
       // Update the specific meaning's progress
@@ -311,9 +335,11 @@ client.on('messageCreate', async (message) => {
       console.log(`[READINGS DEBUG] streak: ${streak}, cardId: ${cardIdFromQuery}, reading_introduced: ${readingIntroduced}`);
       if (streak >= 5 && !readingIntroduced) {
         // Fetch readings from master_cards table
+        // Always use the original kanji (no '(reading)') for reading card creation
+        const baseKanji = lastKanji ? lastKanji.replace(/\s*\(reading\)$/,'').trim() : '';
         const { rows: masterRows } = await pool.query(
           'SELECT readings FROM master_cards WHERE card_front = $1',
-          [lastKanji]
+          [baseKanji]
         );
         let readings = [];
         if (masterRows.length && masterRows[0].readings) {
@@ -324,14 +350,18 @@ client.on('messageCreate', async (message) => {
           }
         }
         if (readings.length) {
-          feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+          // Use new template for reading card intro message
+          feedbackText = isReadingCard
+            ? `Correct! The reading(s) for ${baseKanji} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
+            : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
           await message.reply(feedbackText);
-          await message.reply(`Congratulations, you've answered "${lastKanji}" 5 times in a row!\nYou will now receive cards with the readings. The readings for ${lastKanji} are:\n${readings.join('\n')}`);
-          // Add readings card
+          await message.reply(`Congratulations, you answered "${lastKanji}" (${allMeanings.join(', ')}) 5 times in a row!\n\nYou will now start seeing a card asking for ${baseKanji} (reading). Use hiragana to answer. The reading(s) for ${baseKanji} are:\n\n${readings.join('\n')}`);
+          // Always create reading card as 'KANJI (reading)'
+          let readingCardFront = `${baseKanji} (reading)`;
           await pool.query(
-            `INSERT INTO cards (user_id, card_front, card_back, introduced, is_custom, reading_introduced)
-             VALUES ($1, $2, $3, TRUE, FALSE, TRUE)`,
-            [userId, lastKanji, JSON.stringify(readings)]
+            `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
+             VALUES ($1, $2, $3, TRUE, TRUE)`,
+            [userId, readingCardFront, JSON.stringify(readings)]
           );
           // Mark original card as reading_introduced
           await pool.query(
@@ -339,11 +369,15 @@ client.on('messageCreate', async (message) => {
             [cardIdFromQuery]
           );
         } else {
-          feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+          feedbackText = isReadingCard
+            ? `Correct! The reading(s) for ${baseKanji} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
+            : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
           await message.reply(feedbackText);
         }
       } else {
-        feedbackText = `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+        feedbackText = isReadingCard
+          ? `Correct! The reading(s) for ${kanjiOnly} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
+          : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
         await message.reply(feedbackText);
       }
     } else {
@@ -363,7 +397,9 @@ client.on('messageCreate', async (message) => {
         );
       }
 
-      feedbackText = `Incorrect. ${lastKanji} means ${allMeanings.join(', ')}`;
+      feedbackText = isReadingCard
+        ? `Incorrect. The reading(s) for ${kanjiOnly} are: ${allMeanings.join(', ')}`
+        : `Incorrect. ${lastKanji} means ${allMeanings.join(', ')}`;
       await message.reply(feedbackText);
     }
 

@@ -69,15 +69,11 @@ export async function sendNextCard(userId, message) {
 
   // Restore multiple meaning prompt logic
   await pool.query('UPDATE users SET last_kanji_sent = $1 WHERE id = $2', [card.card_front, userId]);
-  if (allMeanings.length === 1) {
-    // Show (reading) in prompt if this is a readings card
-    if (card.reading_introduced) {
-      await message.reply(`${card.card_front} (reading) = ? [cardId: ${card.id}]`);
-    } else {
+    if (allMeanings.length === 1) {
+      // Always use card.card_front as-is for the prompt
       await message.reply(`${card.card_front} = ? [cardId: ${card.id}]`);
+      return true;
     }
-    return true;
-  }
 
   // For multiple meanings, check progress on each
   const meaningStatsRes = await pool.query(
