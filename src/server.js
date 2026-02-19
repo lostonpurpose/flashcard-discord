@@ -137,13 +137,23 @@ client.on('messageCreate', async (message) => {
     return;
   }
 
+
   // Skip empty messages
   if (!userAnswer) return;
 
+  // Handle 'sleep!' command to pause card delivery for 7 hours
+  if (userAnswer.trim().toLowerCase() === 'sleep!') {
+    // Set last_card_sent to now + 7 hours
+    const sleepUntil = new Date(Date.now() + 7 * 60 * 60 * 1000);
+    await pool.query('UPDATE users SET last_card_sent = $1 WHERE id = $2', [sleepUntil.toISOString(), userId]);
+    await message.reply('You will not receive new cards for the next 7 hours. Sleep well!');
+    return;
+  }
+
   // Check if user is creating a custom card, needs help, frequency change, or changing difficulty (format: "x = y")
   
-  if (userAnswer === 'help!') {
-    await message.reply('Welcome to the help menu! Here are some commands you can use:\n\nCREATE CARDS\nTo create your own cards send a message in this format: card front = card back. For example, 犬 = dog. Super simple.\n\nFREQUENCY\nTo change how often you receive cards, type "freq =" followed by the number in minutes. So freq = 10 will send you a card every 10 minutes. You can type any number up to 1440 (one day).\n\n');
+  if (userAnswer.trim().toLowerCase() === 'help!') {
+    await message.reply('Welcome to the help menu! Here are some commands you can use:\n\nCREATE CARDS\nTo create your own cards send a message in this format: card front = card back. For example, 犬 = dog. Super simple.\n\nFREQUENCY\nTo change how often you receive cards, type "freq =" followed by the number in minutes. So freq = 10 will send you a card every 10 minutes. You can type any number up to 1440 (one day).\n\nSLEEP MODE\nBed time? Type "sleep!" and you won\'t get any card for 7 hours.');
     return;
   }
   
