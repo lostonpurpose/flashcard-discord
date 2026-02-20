@@ -9,7 +9,6 @@ node_modules/
 .env
 users.json
 webhook.log
-package-lock.json
 
 # Package manager logs
 npm-debug.log*
