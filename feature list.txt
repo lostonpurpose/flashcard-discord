@@ -1,3 +1,0 @@
-get cards on schedule: check.
-
-get readings after 5 streak: check (tentative)
