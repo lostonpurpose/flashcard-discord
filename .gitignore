@@ -1,4 +1,5 @@
-.env
+.env.test
+.env.production
 users.json
 webhook.log
 
