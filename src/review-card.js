@@ -27,8 +27,8 @@ export async function reviewCard(userId, cardId, correct) {
       const baseIncrease = Math.floor(Math.random() * 4) + 4;
       // Score increase: baseIncrease + (5 * newStreak)
 
-      const threeInRowBonus = newStreak >= 2 && newStreak <= 3 ? (25 + baseIncrease) : 0;
-      const fiveInRowBonus = newStreak >= 4 && newStreak <= 9 ? (35 + baseIncrease) : 0;
+      const threeInRowBonus = newStreak >= 3 && newStreak <= 4 ? (25 + baseIncrease) : 0;
+      const fiveInRowBonus = newStreak >= 5 && newStreak <= 9 ? (35 + baseIncrease) : 0;
       const tenInRowBonus = newStreak >= 10 ? (50 + baseIncrease) : 0;
 
       // final calc for score
@@ -74,9 +74,9 @@ export async function reviewCard(userId, cardId, correct) {
         if (readings.length > 0) {
           // Insert new readings card for this user
           await pool.query(
-            `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced, score)
-             VALUES ($1, $2, $3, TRUE, TRUE, $4)`,
-            [userId, `${kanji} (reading)`, JSON.stringify(readings), Number(process.env.INITIAL_SCORE || 49)]
+            `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
+             VALUES ($1, $2, $3, TRUE, TRUE)`,
+            [userId, `${kanji} (reading)`, JSON.stringify(readings)]
           );
           console.log(`[reviewCard] Created readings card for kanji=${kanji}, userId=${userId}`);
         }
