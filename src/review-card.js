@@ -20,14 +20,19 @@ export async function reviewCard(userId, cardId, correct) {
     // Increment streak first so bonus applies immediately
     newStreak = streak + 1;
     if (score < 50) {
-      // Set to random value between 52 and 57 (inclusive)
+      // Set to random value between 52 and 58 (inclusive)
       newScore = Math.floor(Math.random() * 7) + 52;
     } else {
       // Base increase: 4-7 (randomized for variation)
       const baseIncrease = Math.floor(Math.random() * 4) + 4;
       // Score increase: baseIncrease + (5 * newStreak)
-      const fiveInRowBonus = newStreak >= 4 ? (35 + baseIncrease) : 0;
-      newScore = score + baseIncrease + (5 * newStreak) + fiveInRowBonus;
+
+      const threeInRowBonus = newStreak >= 3 && newStreak <= 4 ? (25 + baseIncrease) : 0;
+      const fiveInRowBonus = newStreak >= 5 && newStreak <= 9 ? (35 + baseIncrease) : 0;
+      const tenInRowBonus = newStreak >= 10 ? (50 + baseIncrease) : 0;
+
+      // final calc for score
+      newScore = score + baseIncrease + (5 * newStreak) + threeInRowBonus + fiveInRowBonus + tenInRowBonus;
     }
   } else {
     // Reset streak on wrong answer

@@ -6,7 +6,7 @@ node_modules/
 *.swp
 
 # Local env and data
-.env.test
+.env
 .env.production
 users.json
 webhook.log

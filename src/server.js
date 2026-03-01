@@ -167,6 +167,21 @@ client.on('messageCreate', async (message) => {
     return;
   }
 
+  // Handle 'wake!' command to cancel sleep early and restore schedule
+  if (userAnswer.trim().toLowerCase() === 'wake!') {
+    try {
+      const { rows: uf } = await pool.query('SELECT user_freq FROM users WHERE id = $1', [userId]);
+      const userFreq = uf.length ? Number(uf[0].user_freq) : 3;
+      const lastSent = new Date(Date.now() - (userFreq * 60 * 1000)).toISOString();
+      await pool.query('UPDATE users SET last_card_sent = $1 WHERE id = $2', [lastSent, userId]);
+      await message.reply(`Woke you up — you'll start receiving cards at your set frequency (${userFreq} minute(s)).`);
+    } catch (err) {
+      console.error('Failed to process wake! for user', userId, err);
+      await message.reply('Sorry, I could not wake you up right now. Try again later.');
+    }
+    return;
+  }
+
   // Check if user is creating a custom card, needs help, frequency change, or changing difficulty (format: "x = y")
   
   if (userAnswer.trim().toLowerCase() === 'help!') {
@@ -179,12 +194,12 @@ client.on('messageCreate', async (message) => {
     // Check if it's a frequency change command
     if (parts[0].toLowerCase() === 'freq' && parts[1]) {
       const freqInt = parseInt(parts[1], 10);
-      if (isNaN(freqInt) || freqInt < 1 || freqInt > 24) {
-        await message.reply('Frequency must be an integer between 1 and 24 (hours).');
+      if (isNaN(freqInt) || freqInt < 1 || freqInt > 1440) {
+        await message.reply('Frequency must be an integer between 1 and 1440 (minutes).');
         return;
       }
       await pool.query('UPDATE users SET user_freq = $1 WHERE id = $2', [freqInt, userId]);
-      await message.reply(`Card frequency updated: you will get a card every ${freqInt} minutes(s).`);
+      await message.reply(`Card frequency updated: you will get a card every ${freqInt} minute(s).`);
       return;
     }
     // Check if it's a difficulty change command
