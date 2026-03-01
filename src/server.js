@@ -89,6 +89,23 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
+// Log environment and database summary for clarity on startup
+(function startupLog() {
+  try {
+    const appEnv = process.env.APP_ENV || 'production';
+    const dbUrl = process.env.DATABASE_URL || '';
+    let dbSummary = dbUrl;
+    try {
+      const u = new URL(dbUrl);
+      dbSummary = `${u.hostname}${u.port ? ':' + u.port : ''}${u.pathname ? u.pathname : ''}`;
+    } catch (e) {
+      // ignore parse errors
+    }
+    console.log(`[STARTUP] APP_ENV=${appEnv} DATABASE=${dbSummary}`);
+  } catch (e) {
+    console.warn('[STARTUP] Failed to log APP_ENV/DATABASE_URL', e);
+  }
+})();
 client.on('ready', () => {
   console.log(`Discord bot logged in as ${client.user.tag}`);
 });
