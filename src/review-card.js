@@ -74,9 +74,9 @@ export async function reviewCard(userId, cardId, correct) {
         if (readings.length > 0) {
           // Insert new readings card for this user
           await pool.query(
-            `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
-             VALUES ($1, $2, $3, TRUE, TRUE)`,
-            [userId, `${kanji} (reading)`, JSON.stringify(readings)]
+            `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced, score)
+             VALUES ($1, $2, $3, TRUE, TRUE, $4)`,
+            [userId, `${kanji} (reading)`, JSON.stringify(readings), Number(process.env.INITIAL_SCORE || 49)]
           );
           console.log(`[reviewCard] Created readings card for kanji=${kanji}, userId=${userId}`);
         }
