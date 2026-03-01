@@ -184,7 +184,7 @@ client.on('messageCreate', async (message) => {
         return;
       }
       await pool.query('UPDATE users SET user_freq = $1 WHERE id = $2', [freqInt, userId]);
-      await message.reply(`Card frequency updated: you will get a card every ${freqInt} minutes(s).`);
+      await message.reply(`Card frequency updated: you will get a card every ${freqInt} minute(s).`);
       return;
     }
     // Check if it's a difficulty change command
