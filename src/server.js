@@ -179,8 +179,8 @@ client.on('messageCreate', async (message) => {
     // Check if it's a frequency change command
     if (parts[0].toLowerCase() === 'freq' && parts[1]) {
       const freqInt = parseInt(parts[1], 10);
-      if (isNaN(freqInt) || freqInt < 1 || freqInt > 24) {
-        await message.reply('Frequency must be an integer between 1 and 24 (hours).');
+      if (isNaN(freqInt) || freqInt < 1 || freqInt > 1440) {
+        await message.reply('Frequency must be an integer between 1 and 1440 (minutes).');
         return;
       }
       await pool.query('UPDATE users SET user_freq = $1 WHERE id = $2', [freqInt, userId]);
