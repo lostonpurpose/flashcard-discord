@@ -18,12 +18,27 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
     batches.push(userCards.slice(i, i + 5));
   }
 
-  // 3. Find the latest full batch (ignore partial trailing batch)
+  // 3. Find full batches (ignore partial trailing batch)
   const fullBatches = batches.filter(batch => batch.length === 5);
-  const currentBatch = fullBatches[fullBatches.length - 1];
 
-  // 4. Check if current batch is mastered (all answered correctly at least once)
-  const mastered = currentBatch && currentBatch.length === 5 && currentBatch.every(card => card.correct_count >= 1);
+  // 4. Determine the "current working batch": the first full batch that is not yet mastered
+  //    This avoids advancing because an earlier (older) batch was mastered while a later
+  //    batch is still being practiced. If all full batches are already mastered, use the
+  //    last full batch so the next batch can be introduced.
+  let currentBatch = null;
+  for (const b of fullBatches) {
+    const anyUnmastered = b.some(card => !card.correct_count || Number(card.correct_count) < 1);
+    if (anyUnmastered) {
+      currentBatch = b;
+      break;
+    }
+  }
+  if (!currentBatch && fullBatches.length) {
+    currentBatch = fullBatches[fullBatches.length - 1];
+  }
+
+  // 5. Check if current batch is mastered (all answered correctly at least once)
+  const mastered = currentBatch && currentBatch.length === 5 && currentBatch.every(card => Number(card.correct_count) >= 1);
 
   if (mastered) {
     // 5. Get next 5 master_cards not yet assigned to user, filtered by difficulty
