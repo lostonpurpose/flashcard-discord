@@ -16,27 +16,45 @@ export async function sendNextCard(userId, message) {
         [userId]
     );
 
-    // Debug: print all candidate cards
-    console.log('[sendNextCard] Candidate newCards:', newCards.map(c => ({id: c.id, front: c.card_front, score: c.score, reading: c.reading_introduced})));
-    console.log('[sendNextCard] Candidate reviewCards:', reviewCards.map(c => ({id: c.id, front: c.card_front, score: c.score, reading: c.reading_introduced})));
+    // split the 50‑score cards into fresh (never answered) vs answered
+    const freshNew = newCards.filter(c => Number(c.correct_count) === 0);
+    const answeredNew = newCards.filter(c => Number(c.correct_count) > 0);
 
-    if (newCards.length === 0 && reviewCards.length === 0) {
+    // Debug: print all candidate cards
+    console.log('[sendNextCard] Candidate reviewCards:', reviewCards.map(c => ({id: c.id, front: c.card_front, score: c.score, reading: c.reading_introduced})));
+    console.log('[sendNextCard] Candidate answeredNew:', answeredNew.map(c => ({id: c.id, front: c.card_front, score: c.score, reading: c.reading_introduced})));
+    console.log('[sendNextCard] Candidate freshNew:', freshNew.map(c => ({id: c.id, front: c.card_front, score: c.score, reading: c.reading_introduced})));
+
+    if (freshNew.length === 0 && answeredNew.length === 0 && reviewCards.length === 0) {
         return false; // No cards due
     }
 
-    // Weighted random: reviewCards 3x as likely as newCards
+    // Weighted random across three pools
+    // weights: reviewCards=3, freshNew=2, answeredNew=1
     let pickGroup;
-    if (newCards.length === 0) {
+    if (reviewCards.length === 0 && freshNew.length === 0 && answeredNew.length > 0) {
+        pickGroup = answeredNew;
+        console.log('[sendNextCard] Picking from answeredNew (only group available)');
+    } else if (reviewCards.length === 0 && answeredNew.length === 0 && freshNew.length > 0) {
+        pickGroup = freshNew;
+        console.log('[sendNextCard] Picking from freshNew (only group available)');
+    } else if (freshNew.length === 0 && answeredNew.length === 0 && reviewCards.length > 0) {
         pickGroup = reviewCards;
         console.log('[sendNextCard] Picking from reviewCards (only group available)');
-    } else if (reviewCards.length === 0) {
-        pickGroup = newCards;
-        console.log('[sendNextCard] Picking from newCards (only group available)');
     } else {
-        // 0-3: review, 4: new (3:1 odds)
-        const r = Math.floor(Math.random() * 4);
-        pickGroup = r < 3 ? reviewCards : newCards;
-        console.log(`[sendNextCard] Weighted pick: ${r < 3 ? 'reviewCards' : 'newCards'}`);
+        // compute total weight
+        const totalWeight = (reviewCards.length ? 3 : 0) + (freshNew.length ? 2 : 0) + (answeredNew.length ? 1 : 0);
+        const r = Math.floor(Math.random() * totalWeight);
+        if (reviewCards.length && r < 3) {
+            pickGroup = reviewCards;
+            console.log('[sendNextCard] Weighted pick: reviewCards');
+        } else if (freshNew.length && r < (3 + 2)) {
+            pickGroup = freshNew;
+            console.log('[sendNextCard] Weighted pick: freshNew');
+        } else {
+            pickGroup = answeredNew;
+            console.log('[sendNextCard] Weighted pick: answeredNew');
+        }
     }
 
     // Debug: print pickGroup before picking
