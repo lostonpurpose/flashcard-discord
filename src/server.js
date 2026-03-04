@@ -221,27 +221,39 @@ client.on('messageCreate', async (message) => {
       const [cardFront, cardBack] = parts;
       if (cardFront && cardBack) {
         try {
-          // Find the next available custom card id above 1,000,000
-          const { rows: maxRows } = await pool.query(`SELECT MAX(id) AS max_id FROM cards WHERE id >= 1000000`);
-          let nextCustomId = 1000001;
-          if (maxRows[0].max_id && maxRows[0].max_id >= 1000000) {
-            nextCustomId = maxRows[0].max_id + 1;
+          // allocate an id from the serial sequence and guarantee it's
+          // >= 1_000_000 so it lives in the custom‑card range. using the
+          // sequence avoids races with concurrent inserts (e.g. reading
+          // introduction) which could otherwise lead to duplicate‑key
+          // failures when we computed MAX(id) previously.
+          let nextCustomId;
+          while (true) {
+            const seqRes = await pool.query("SELECT nextval('cards_id_seq') AS val");
+            nextCustomId = seqRes.rows[0].val;
+            if (nextCustomId >= 1000000) break;
           }
-          // Insert into cards table with custom id
+
           const cardResult = await pool.query(
-            `INSERT INTO cards (id, user_id, card_front, card_back, introduced, next_review) VALUES ($1, $2, $3, $4, TRUE, NOW()) RETURNING id`,
+            `INSERT INTO cards (id, user_id, card_front, card_back, introduced, next_review)
+             VALUES ($1, $2, $3, $4, TRUE, NOW()) RETURNING id`,
             [nextCustomId, userId, cardFront, cardBack]
           );
           const newCardId = cardResult.rows[0].id;
-          // Insert into user_created_cards table
+
           await pool.query(
-            `INSERT INTO user_created_cards (user_id, card_front, card_back, master_card_id) VALUES ($1, $2, $3, NULL)`,
+            `INSERT INTO user_created_cards (user_id, card_front, card_back, master_card_id)
+             VALUES ($1, $2, $3, NULL)`,
             [userId, cardFront, cardBack]
           );
+
           await message.reply(`Custom card created: ${cardFront} = ${cardBack} (ID: ${newCardId})`);
           return;
         } catch (err) {
           console.error("Failed to create custom card", err);
+          // let the user know something went wrong instead of falling
+          // through to normal review logic and leaving them wondering
+          await message.reply('Sorry, I couldn\'t create that custom card right now.');
+          return;
         }
       }
     }

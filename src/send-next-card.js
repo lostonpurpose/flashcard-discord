@@ -74,6 +74,8 @@ export async function sendNextCard(userId, message) {
       await message.reply(`${card.card_front} = ? [cardId: ${card.id}]`);
       return true;
     }
+    // no return yet for multi-meaning cards, but still log ID for telemetry
+    console.log(`[sendNextCard] multi-meaning card selected id=${card.id}`);
 
   // For multiple meanings, check progress on each
   const meaningStatsRes = await pool.query(
@@ -89,7 +91,7 @@ export async function sendNextCard(userId, message) {
         [card.id, meaning]
       );
     }
-    await message.reply(`${card.card_front} = ?`);
+    await message.reply(`${card.card_front} = ? [cardId: ${card.id}]`);
     return true;
   }
 
@@ -115,7 +117,7 @@ export async function sendNextCard(userId, message) {
     // All meanings are balanced, use kanji = ?
     promptText = `${card.card_front} = ?`;
   }
-  await message.reply(promptText);
+  await message.reply(`${promptText} [cardId: ${card.id}]`);
   return true;
 
 }
