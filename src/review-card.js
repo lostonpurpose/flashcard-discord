@@ -59,10 +59,12 @@ export async function reviewCard(userId, cardId, correct) {
     );
     const kanji = cardRows.length ? cardRows[0].card_front : null;
     if (kanji) {
+      // Build the expected front text for the readings card
+      const readingFront = `${kanji} (reading)`;
       // Check if a readings card already exists for this user and kanji
       const { rows: existingReadingsCards } = await pool.query(
         'SELECT id FROM cards WHERE user_id = $1 AND card_front = $2 AND reading_introduced = TRUE',
-        [userId, kanji]
+        [userId, readingFront]
       );
       if (existingReadingsCards.length === 0) {
         // Fetch readings from card_readings
@@ -76,7 +78,12 @@ export async function reviewCard(userId, cardId, correct) {
           await pool.query(
             `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
              VALUES ($1, $2, $3, TRUE, TRUE)`,
-            [userId, `${kanji} (reading)`, JSON.stringify(readings)]
+            [userId, readingFront, JSON.stringify(readings)]
+          );
+          // mark original card so this condition won't fire again even if streak resets
+          await pool.query(
+            'UPDATE cards SET reading_introduced = TRUE WHERE id = $1 AND user_id = $2',
+            [cardId, userId]
           );
           console.log(`[reviewCard] Created readings card for kanji=${kanji}, userId=${userId}`);
         }
