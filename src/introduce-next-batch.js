@@ -26,8 +26,8 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
   }
 
   // otherwise all meaning cards have been answered and we can pull the next five
-    // 5. Get next 5 master_cards not yet assigned to user, filtered by difficulty
-    const { rows: nextCards } = await pool.query(
+  // 5. Get next 5 master_cards not yet assigned to user, filtered by difficulty
+  const { rows: nextCards } = await pool.query(
       `SELECT card_front, card_back FROM master_cards
        WHERE difficulty = $2
        AND card_front NOT IN (
@@ -37,17 +37,17 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
       [userId, difficulty]
     );
 
-    if (nextCards.length === 0) {
-      // No more cards available
-      await message.reply("You've completed all available cards at this difficulty level! 🎉");
-      return false;
-    }
+  if (nextCards.length === 0) {
+    // No more cards available
+    await message.reply("You've completed all available cards at this difficulty level! 🎉");
+    return false;
+  }
 
-    // Send message telling them about next 5 kanji
-    await message.reply("Nice work! You're on to the next 5 cards. Here they are:");
+  // Send message telling them about next 5 kanji
+  await message.reply("Nice work! You're on to the next 5 cards. Here they are:");
 
-    // 6. Insert new cards and send study messages
-    for (const card of nextCards) {
+  // 6. Insert new cards and send study messages
+  for (const card of nextCards) {
       const insertResult = await pool.query(
         `INSERT INTO cards (user_id, card_front, card_back, introduced)
          VALUES ($1, $2, $3, TRUE)
@@ -95,10 +95,8 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
       await message.reply(`${card.card_front} = ${meaningText}`);
     }
 
-    // Send spacing message
-    await message.reply("\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/(This block is to keep you from seeing the answers :). Scroll up for the new words!)");
+  // Send spacing message
+  await message.reply("\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/(This block is to keep you from seeing the answers :). Scroll up for the new words!)");
 
-    return true; // Next batch introduced
-  }
-  return false; // Not ready for next batch
+  return true; // Next batch introduced
 }
