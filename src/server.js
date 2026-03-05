@@ -157,18 +157,18 @@ client.on('messageCreate', async (message) => {
 
   // Skip empty messages
   if (!userAnswer) return;
+  const userAnswerLower = userAnswer.trim().toLowerCase();
 
-  // Handle 'sleep!' command to pause card delivery for 7 hours
-  if (userAnswer.trim().toLowerCase() === 'sleep!') {
-    // Set last_card_sent to now + 7 hours
+  // === COMMANDS ===
+  // handle standalone keywords first
+  if (userAnswerLower === 'sleep!') {
     const sleepUntil = new Date(Date.now() + 7 * 60 * 60 * 1000);
     await pool.query('UPDATE users SET last_card_sent = $1 WHERE id = $2', [sleepUntil.toISOString(), userId]);
     await message.reply('You will not receive new cards for the next 7 hours. Sleep well!');
     return;
   }
 
-  // Handle 'wake!' command to cancel sleep early and restore schedule
-  if (userAnswer.trim().toLowerCase() === 'wake!') {
+  if (userAnswerLower === 'wake!') {
     try {
       const { rows: uf } = await pool.query('SELECT user_freq FROM users WHERE id = $1', [userId]);
       const userFreq = uf.length ? Number(uf[0].user_freq) : 3;
@@ -182,16 +182,14 @@ client.on('messageCreate', async (message) => {
     return;
   }
 
-  // Check if user is creating a custom card, needs help, frequency change, or changing difficulty (format: "x = y")
-  
-  if (userAnswer.trim().toLowerCase() === 'help!') {
-    await message.reply('Welcome to the help menu! Here are some commands you can use:\n\nCREATE CARDS\nTo create your own cards send a message in this format: card front = card back. For example, 犬 = dog. Super simple.\n\nFREQUENCY\nTo change how often you receive cards, type "freq =" followed by the number in minutes. So freq = 10 will send you a card every 10 minutes. You can type any number up to 1440 (one day).\n\nSLEEP MODE\nBed time? Type "sleep!" and you won\'t get any card for 7 hours.');
+  if (userAnswerLower === 'help' || userAnswerLower === 'help!') {
+    await message.reply("Commands:\n- `sleep!` / `wake!` to pause or resume sending\n- `freq = N` to set card frequency in minutes\n- `difficulty = easy|medium|hard` to restart on a different level\n- `front = back` to create a custom card\n- `front :: delete` to remove a card");
     return;
   }
-  
+
+  // handle = commands next (freq, difficulty, custom card)
   if (userAnswer.includes(' = ')) {
     const parts = userAnswer.split(' = ').map(s => s.trim());
-    // Check if it's a frequency change command
     if (parts[0].toLowerCase() === 'freq' && parts[1]) {
       const freqInt = parseInt(parts[1], 10);
       if (isNaN(freqInt) || freqInt < 1 || freqInt > 1440) {
@@ -202,7 +200,6 @@ client.on('messageCreate', async (message) => {
       await message.reply(`Card frequency updated: you will get a card every ${freqInt} minute(s).`);
       return;
     }
-    // Check if it's a difficulty change command
     if (parts[0].toLowerCase() === 'difficulty' && parts[1]) {
       const newDifficulty = parts[1].toLowerCase();
       if (['easy', 'medium', 'hard'].includes(newDifficulty)) {
@@ -285,13 +282,6 @@ client.on('messageCreate', async (message) => {
     }
   }
 
-  // Skip webhook processing for 'help'
-  if (userAnswer.toLowerCase() === 'help') {
-    await message.reply("Commands:\n- `difficulty = easy|medium|hard` - Change difficulty\n- `front = back` - Create custom card\n- `front :: delete` - Delete a card");
-    return;
-  }
-
-  const userAnswerLower = userAnswer.toLowerCase();
 
   let cardId;
   try {
@@ -304,8 +294,9 @@ client.on('messageCreate', async (message) => {
     console.error("Failed to get card id", err);
   }
 
-  // Block answer attempts if no card is available
-  if (!cardId && !userAnswer.includes(' = ') && !userAnswer.includes(' :: delete') && userAnswer.toLowerCase() !== 'help') {
+  // If there is no pending card and we haven't returned earlier for a command,
+  // tell the user to wait rather than proceeding with answer logic.
+  if (!cardId) {
     await message.reply("Please wait for your next card.");
     return;
   }
@@ -380,14 +371,14 @@ client.on('messageCreate', async (message) => {
       let badge = badges(streak);
 
       // === READINGS INTRODUCTION LOGIC ===
-      // Check if streak is 5 and readings not introduced
+      // Only fire once when the streak hits exactly 5, not on 6/7/etc.
       const { rows: readingIntroRows } = await pool.query(
         'SELECT reading_introduced FROM cards WHERE id = $1',
         [cardIdFromQuery]
       );
       const readingIntroduced = readingIntroRows[0]?.reading_introduced;
       console.log(`[READINGS DEBUG] streak: ${streak}, cardId: ${cardIdFromQuery}, reading_introduced: ${readingIntroduced}`);
-      if (streak >= 5 && !readingIntroduced) {
+      if (streak === 5 && !readingIntroduced) {
         // Fetch readings from master_cards table
         // Always use the original kanji (no '(reading)') for reading card creation
         const baseKanji = lastKanji ? lastKanji.replace(/\s*\(reading\)$/,'').trim() : '';
