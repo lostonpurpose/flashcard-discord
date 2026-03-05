@@ -3,46 +3,31 @@ import { Pool } from 'pg';
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 export async function introduceNextBatch(userId, message, difficulty = 'easy') {
-  // 1. Get all cards for user with their mastery status
+  // 1. Get all *meaning* cards the user has seen (exclude readings) and their correct counts
   const { rows: userCards } = await pool.query(
     `SELECT c.id, c.card_front, c.card_back, c.correct_count
      FROM cards c
-     WHERE c.user_id = $1 AND c.introduced = TRUE AND c.id < 1000000
+     WHERE c.user_id = $1
+       AND c.introduced = TRUE
+       AND c.id < 1000000
+       AND c.card_front NOT LIKE '%(reading)'
      ORDER BY c.id ASC`,
     [userId]
   );
 
-  // 2. Split into batches of 5
-  const batches = [];
-  for (let i = 0; i < userCards.length; i += 5) {
-    batches.push(userCards.slice(i, i + 5));
+  // 2. Find any unmastered meaning cards (correct_count === 0)
+  const unmastered = userCards.filter(c => Number(c.correct_count) === 0);
+
+  // if there's at least one unmastered card remaining, we're still working
+  // through the current batch; don't introduce more.
+  if (unmastered.length > 0) {
+    console.log('[introduceNextBatch] still have', unmastered.length, 'unmastered cards:', unmastered.map(c=>c.card_front));
+    return false;
   }
 
-  // 3. Find full batches (ignore partial trailing batch)
-  const fullBatches = batches.filter(batch => batch.length === 5);
-
-  // 4. Determine the "current working batch": the first full batch that is not yet mastered
-  //    This avoids advancing because an earlier (older) batch was mastered while a later
-  //    batch is still being practiced. If all full batches are already mastered, use the
-  //    last full batch so the next batch can be introduced.
-  let currentBatch = null;
-  for (const b of fullBatches) {
-    const anyUnmastered = b.some(card => !card.correct_count || Number(card.correct_count) < 1);
-    if (anyUnmastered) {
-      currentBatch = b;
-      break;
-    }
-  }
-  if (!currentBatch && fullBatches.length) {
-    currentBatch = fullBatches[fullBatches.length - 1];
-  }
-
-  // 5. Check if current batch is mastered (all answered correctly at least once)
-  const mastered = currentBatch && currentBatch.length === 5 && currentBatch.every(card => Number(card.correct_count) >= 1);
-
-  if (mastered) {
-    // 5. Get next 5 master_cards not yet assigned to user, filtered by difficulty
-    const { rows: nextCards } = await pool.query(
+  // otherwise all meaning cards have been answered and we can pull the next five
+  // 5. Get next 5 master_cards not yet assigned to user, filtered by difficulty
+  const { rows: nextCards } = await pool.query(
       `SELECT card_front, card_back FROM master_cards
        WHERE difficulty = $2
        AND card_front NOT IN (
@@ -52,17 +37,17 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
       [userId, difficulty]
     );
 
-    if (nextCards.length === 0) {
-      // No more cards available
-      await message.reply("You've completed all available cards at this difficulty level! 🎉");
-      return false;
-    }
+  if (nextCards.length === 0) {
+    // No more cards available
+    await message.reply("You've completed all available cards at this difficulty level! 🎉");
+    return false;
+  }
 
-    // Send message telling them about next 5 kanji
-    await message.reply("Nice work! You're on to the next 5 cards. Here they are:");
+  // Send message telling them about next 5 kanji
+  await message.reply("Nice work! You're on to the next 5 cards. Here they are:");
 
-    // 6. Insert new cards and send study messages
-    for (const card of nextCards) {
+  // 6. Insert new cards and send study messages
+  for (const card of nextCards) {
       const insertResult = await pool.query(
         `INSERT INTO cards (user_id, card_front, card_back, introduced)
          VALUES ($1, $2, $3, TRUE)
@@ -110,10 +95,8 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
       await message.reply(`${card.card_front} = ${meaningText}`);
     }
 
-    // Send spacing message
-    await message.reply("\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/(This block is to keep you from seeing the answers :). Scroll up for the new words!)");
+  // Send spacing message
+  await message.reply("\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/(This block is to keep you from seeing the answers :). Scroll up for the new words!)");
 
-    return true; // Next batch introduced
-  }
-  return false; // Not ready for next batch
+  return true; // Next batch introduced
 }
