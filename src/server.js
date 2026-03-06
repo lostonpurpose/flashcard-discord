@@ -30,7 +30,7 @@ const job = new CronJob('*/30 * * * * *', async () => {
     for (const user of users) {
       const { id: userId, discord_user_id, last_card_sent, user_freq } = user;
       const lastSent = last_card_sent ? new Date(last_card_sent) : null;
-      const freqMs = (user_freq || 3) * 60 * 1000;
+      const freqMs = (user_freq || 30) * 60 * 1000;
       const timeSinceLast = lastSent ? (now - lastSent) : null;
       console.log(`[CRON] User ${discord_user_id}: lastSent=${lastSent}, freqMs=${freqMs}, timeSinceLast=${timeSinceLast}`);
       if (!lastSent || (now - lastSent) >= freqMs) {
@@ -171,7 +171,7 @@ client.on('messageCreate', async (message) => {
   if (userAnswerLower === 'wake!') {
     try {
       const { rows: uf } = await pool.query('SELECT user_freq FROM users WHERE id = $1', [userId]);
-      const userFreq = uf.length ? Number(uf[0].user_freq) : 3;
+      const userFreq = uf.length ? Number(uf[0].user_freq) : 30;
       const lastSent = new Date(Date.now() - (userFreq * 60 * 1000)).toISOString();
       await pool.query('UPDATE users SET last_card_sent = $1 WHERE id = $2', [lastSent, userId]);
       await message.reply(`Woke you up — you'll start receiving cards at your set frequency (${userFreq} minute(s)).`);
@@ -225,14 +225,16 @@ client.on('messageCreate', async (message) => {
           // failures when we computed MAX(id) previously.
           let nextCustomId;
           while (true) {
-            const seqRes = await pool.query("SELECT nextval('cards_id_seq') AS val");
+            const seqRes = await pool.query(
+              "SELECT nextval('custom_cards_id_seq') AS val"
+            );
             nextCustomId = seqRes.rows[0].val;
             if (nextCustomId >= 1000000) break;
           }
 
           const cardResult = await pool.query(
             `INSERT INTO cards (id, user_id, card_front, card_back, introduced, next_review)
-             VALUES ($1, $2, $3, $4, TRUE, NOW()) RETURNING id`,
+             VALUES ($1,$2,$3,$4,TRUE,NOW()) RETURNING id`,
             [nextCustomId, userId, cardFront, cardBack]
           );
           const newCardId = cardResult.rows[0].id;
@@ -255,8 +257,6 @@ client.on('messageCreate', async (message) => {
       }
     }
   }
-
-  // ...existing code...
 
   // Check if user wants to delete a card (format: "x :: delete")
   if (userAnswer.includes(' :: delete')) {
@@ -475,8 +475,8 @@ client.on('messageCreate', async (message) => {
       const { last_card_sent, user_freq } = userRows[0];
       const now = new Date();
       const lastSent = last_card_sent ? new Date(last_card_sent) : null;
-      // seeting user frequency, currently minutes ============== must change back to hours
-      const freqMs = (user_freq || 3) * 60 * 1000;
+      // setting user frequency, currently minutes (default 30)
+      const freqMs = (user_freq || 30) * 60 * 1000;
       const timeSinceLast = lastSent ? (now - lastSent) : null;
       const timeLeft = lastSent ? (freqMs - timeSinceLast) : 0;
       // ...existing code (removed interval debug logging and DM)...
@@ -493,3 +493,14 @@ client.on('messageCreate', async (message) => {
 });
 
 client.login(botToken);
+
+(async function ensureSeq() {
+  try {
+    await pool.query(
+      `SELECT setval('cards_id_seq',
+          (SELECT COALESCE(MAX(id),0) FROM cards) + 1, false)`
+    );
+  } catch (e) {
+    console.warn('Failed to sync cards_id_seq on startup', e);
+  }
+})();

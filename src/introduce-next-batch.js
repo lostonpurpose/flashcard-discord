@@ -48,13 +48,28 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
 
   // 6. Insert new cards and send study messages
   for (const card of nextCards) {
-      const insertResult = await pool.query(
-        `INSERT INTO cards (user_id, card_front, card_back, introduced)
-         VALUES ($1, $2, $3, TRUE)
-         RETURNING id`,
-        [userId, card.card_front, card.card_back]
-      );
-      const newCardId = insertResult.rows[0].id;
+      let newCardId;
+      try {
+        const insertResult = await pool.query(
+          `INSERT INTO cards (user_id, card_front, card_back, introduced)
+           VALUES ($1, $2, $3, TRUE)
+           RETURNING id`,
+          [userId, card.card_front, card.card_back]
+        );
+        newCardId = insertResult.rows[0].id;
+      } catch (err) {
+        if (err.code === '23505' && err.constraint === 'cards_pkey') {
+          await pool.query(`SELECT setval('cards_id_seq',
+              (SELECT COALESCE(MAX(id),0) FROM cards) + 1, false)`);
+          const retry = await pool.query(
+            `INSERT INTO cards (user_id, card_front, card_back, introduced)
+             VALUES ($1, $2, $3, TRUE)
+             RETURNING id`,
+            [userId, card.card_front, card.card_back]
+          );
+          newCardId = retry.rows[0].id;
+        } else throw err;
+      }
 
       // Initialize card_meanings for each meaning
       let meanings;
@@ -96,7 +111,7 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
     }
 
   // Send spacing message
-  await message.reply("\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/(This block is to keep you from seeing the answers :). Scroll up for the new words!)");
+  await message.reply("\n\n\n\n\n\n\n\n\n\n(This block is to keep you from seeing the answers :). Scroll up for the new words!)");
 
   return true; // Next batch introduced
 }

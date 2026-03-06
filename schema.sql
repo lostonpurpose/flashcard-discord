@@ -1,10 +1,13 @@
+-- schema.sql (add near the top, before user_created_cards)
+CREATE SEQUENCE IF NOT EXISTS custom_cards_id_seq START 1000000;
+
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   discord_user_id VARCHAR(255) UNIQUE NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
   last_kanji_sent VARCHAR(255),
   difficulty VARCHAR(50) DEFAULT 'easy',
-  user_freq INT NOT NULL DEFAULT 3,
+  user_freq INT NOT NULL DEFAULT 30,
   last_card_sent TIMESTAMP,
   next_card_due TIMESTAMP
 );
