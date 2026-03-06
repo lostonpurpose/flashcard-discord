@@ -19,7 +19,7 @@ export async function onboardUser(discordUserId, message, difficulty = 'easy') {
 
   // Insert into cards table for this user
   const { rows: userFreqRows } = await pool.query('SELECT user_freq FROM users WHERE id = $1', [userId]);
-  const userFreq = userFreqRows.length ? userFreqRows[0].user_freq : 3;
+  const userFreq = userFreqRows.length ? userFreqRows[0].user_freq : 30;
   for (const card of cardRows) {
     const insertResult = await pool.query(
       `INSERT INTO cards (user_id, card_front, card_back, introduced)
@@ -51,7 +51,7 @@ export async function onboardUser(discordUserId, message, difficulty = 'easy') {
   }
 
   // Send the very first welcome greeting
-  await message.reply("Welcome to the Kanji Study Discord Bot!\nYou'll be getting a kanji every few hours (actually defaults to 3 minutes at the moment). Just respond to each kanji question with your answer like a regular Discord message.\n\nThere are many things you can do, like creating your own cards, changing how often you receive cards, etc. For a menu with all options just type 'help!' (with the exclamation point) at any time.\n\nHere are your first five kanji to learn:");
+  await message.reply("Welcome to the Kanji Study Discord Bot!\n\nYou'll be getting a kanji every 30 minutes (you can change this). Just respond to each kanji question with your answer like a regular Discord message.\n\nThere are many things you can do, like creating your own cards, changing how often you receive cards, etc. For a menu with all options just type 'help!' (with the exclamation point) at any time.\n\nHere are your first five kanji to learn:");
 
   // Send study message (kanji + meaning) for each card
   for (const card of cardRows) {
@@ -59,5 +59,5 @@ export async function onboardUser(discordUserId, message, difficulty = 'easy') {
   }
 
   // Send spacing message
-  await message.reply("\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/(Scroll up for your first five cards to avoid accidentally seeing the meanings!)");
+  await message.reply("\n\n\n\n\n\n\n\n\n\n(Scroll up for your first five cards to avoid accidentally seeing the meanings!)");
 }
