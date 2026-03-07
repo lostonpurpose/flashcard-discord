@@ -89,6 +89,11 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
+// pendingDeletion maps user_id -> card_front when a deletion awaits confirmation.
+// initialization happens after pool creation; the sequence sync occurs at the
+// end of the file.
+let pendingDeletion = new Map();
+
 // Log environment and database summary for clarity on startup
 (function startupLog() {
   try {
@@ -159,6 +164,22 @@ client.on('messageCreate', async (message) => {
   if (!userAnswer) return;
   const userAnswerLower = userAnswer.trim().toLowerCase();
 
+  // handle pending deletion confirmations (yes/no) before any other commands
+  if (pendingDeletion.has(userId)) {
+    const cardFront = pendingDeletion.get(userId);
+    if (userAnswerLower === 'yes') {
+      await pool.query('DELETE FROM cards WHERE user_id = $1 AND card_front = $2', [userId, cardFront]);
+      await pool.query('DELETE FROM custom_cards WHERE user_id = $1 AND card_front = $2', [userId, cardFront]);
+      pendingDeletion.delete(userId);
+      await message.reply(`Card deleted: ${cardFront}`);
+      return;
+    } else if (userAnswerLower === 'no') {
+      pendingDeletion.delete(userId);
+      await message.reply('Deletion cancelled.');
+      return;
+    }
+  }
+
   // === COMMANDS ===
   // handle standalone keywords first
   if (userAnswerLower === 'sleep!') {
@@ -218,24 +239,10 @@ client.on('messageCreate', async (message) => {
       const [cardFront, cardBack] = parts;
       if (cardFront && cardBack) {
         try {
-          // allocate an id from the serial sequence and guarantee it's
-          // >= 1_000_000 so it lives in the custom‑card range. using the
-          // sequence avoids races with concurrent inserts (e.g. reading
-          // introduction) which could otherwise lead to duplicate‑key
-          // failures when we computed MAX(id) previously.
-          let nextCustomId;
-          while (true) {
-            const seqRes = await pool.query(
-              "SELECT nextval('custom_cards_id_seq') AS val"
-            );
-            nextCustomId = seqRes.rows[0].val;
-            if (nextCustomId >= 1000000) break;
-          }
-
           const cardResult = await pool.query(
-            `INSERT INTO cards (id, user_id, card_front, card_back, introduced, next_review)
-             VALUES ($1,$2,$3,$4,TRUE,NOW()) RETURNING id`,
-            [nextCustomId, userId, cardFront, cardBack]
+            `INSERT INTO custom_cards (user_id, card_front, card_back, introduced, next_review)
+             VALUES ($1,$2,$3,TRUE,NOW()) RETURNING id`,
+            [userId, cardFront, cardBack]
           );
           const newCardId = cardResult.rows[0].id;
 
@@ -249,8 +256,6 @@ client.on('messageCreate', async (message) => {
           return;
         } catch (err) {
           console.error("Failed to create custom card", err);
-          // let the user know something went wrong instead of falling
-          // through to normal review logic and leaving them wondering
           await message.reply('Sorry, I couldn\'t create that custom card right now.');
           return;
         }
@@ -261,48 +266,43 @@ client.on('messageCreate', async (message) => {
   // Check if user wants to delete a card (format: "x :: delete")
   if (userAnswer.includes(' :: delete')) {
     const cardFront = userAnswer.replace(' :: delete', '').trim();
-    
     if (cardFront) {
-      try {
-        const deleteResult = await pool.query(
-          'DELETE FROM cards WHERE user_id = $1 AND card_front = $2 RETURNING card_front, card_back',
-          [userId, cardFront]
-        );
-        
-        if (deleteResult.rowCount > 0) {
-          const deletedCard = deleteResult.rows[0];
-          await message.reply(`Card deleted: ${deletedCard.card_front} = ${deletedCard.card_back}`);
-        } else {
-          await message.reply(`Card not found: ${cardFront}`);
-        }
-        return;
-      } catch (err) {
-        console.error("Failed to delete card", err);
-      }
+      pendingDeletion.set(userId, cardFront);
+      await message.reply(`Are you sure you want to delete the card "${cardFront}"? Reply 'yes' or 'no'.`);
+      return;
     }
   }
 
 
-  let cardId;
+  let cardIdFromQuery;
+  let cardTable = 'cards';
   try {
     const cardRes = await pool.query(
-      'SELECT id FROM cards WHERE user_id = $1 AND card_front = (SELECT last_kanji_sent FROM users WHERE id = $1) LIMIT 1',
+      `SELECT id, 'cards' AS table_name
+       FROM cards
+       WHERE user_id = $1 AND card_front = (SELECT last_kanji_sent FROM users WHERE id = $1)
+       UNION ALL
+       SELECT id, 'custom_cards' AS table_name
+       FROM custom_cards
+       WHERE user_id = $1 AND card_front = (SELECT last_kanji_sent FROM users WHERE id = $1)
+       LIMIT 1`,
       [userId]
     );
-    cardId = cardRes.rows[0]?.id;
+    cardIdFromQuery = cardRes.rows[0]?.id;
+    cardTable = cardRes.rows[0]?.table_name || 'cards';
   } catch (err) {
     console.error("Failed to get card id", err);
   }
 
   // If there is no pending card and we haven't returned earlier for a command,
   // tell the user to wait rather than proceeding with answer logic.
-  if (!cardId) {
+  if (!cardIdFromQuery) {
     await message.reply("Please wait for your next card.");
     return;
   }
 
   // 3. Check answer and update review stats
-  if (cardId) {
+  if (cardIdFromQuery) {
     let checkResult = null;
     try {
       checkResult = await checkMessage(userAnswerLower, userId);
@@ -310,14 +310,18 @@ client.on('messageCreate', async (message) => {
       console.error("checkMessage failed:", err);
     }
 
-    // Fetch last kanji sent and its meanings from cards table
+    // Fetch last kanji sent and its meanings from whichever table we found
     const lastKanjiRes = await pool.query(
-      'SELECT c.id, c.card_front, c.card_back FROM cards c JOIN users u ON u.id = c.user_id WHERE u.id = $1 AND c.card_front = u.last_kanji_sent LIMIT 1',
+      `SELECT c.id, c.card_front, c.card_back
+       FROM ${cardTable} c
+       JOIN users u ON u.id = c.user_id
+       WHERE u.id = $1 AND c.card_front = u.last_kanji_sent
+       LIMIT 1`,
       [userId]
     );
     const lastKanji = lastKanjiRes.rows[0]?.card_front;
     const cardBack = lastKanjiRes.rows[0]?.card_back;
-    const cardIdFromQuery = lastKanjiRes.rows[0]?.id;
+    // cardIdFromQuery was already set above
 
     // Parse meanings
     let allMeanings;
@@ -456,7 +460,7 @@ client.on('messageCreate', async (message) => {
 
     // Now update review stats for incorrect answers
     if (!correct) {
-      await reviewCard(userId, cardId, correct);
+      await reviewCard(userId, cardIdFromQuery, correct);
     }
 
     // LOCK: Clear last_kanji_sent so further answers are ignored until next card is sent

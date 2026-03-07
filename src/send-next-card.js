@@ -7,12 +7,17 @@ export async function sendNextCard(userId, message) {
       // ...existing code (removed debug DM to user)...
     // Get all new and review cards (ignore next_review)
 
+    // include customs by unioning custom_cards
     const { rows: newCards } = await pool.query(
-        `SELECT * FROM cards WHERE user_id = $1 AND introduced = TRUE AND score = 50`,
+        `SELECT * FROM cards WHERE user_id = $1 AND introduced = TRUE AND score = 50
+         UNION ALL
+         SELECT * FROM custom_cards WHERE user_id = $1 AND introduced = TRUE AND score = 50`,
         [userId]
     );
     const { rows: reviewCards } = await pool.query(
-        `SELECT * FROM cards WHERE user_id = $1 AND introduced = TRUE AND score < 50`,
+        `SELECT * FROM cards WHERE user_id = $1 AND introduced = TRUE AND score < 50
+         UNION ALL
+         SELECT * FROM custom_cards WHERE user_id = $1 AND introduced = TRUE AND score < 50`,
         [userId]
     );
 

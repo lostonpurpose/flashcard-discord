@@ -4,11 +4,22 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 export async function reviewCard(userId, cardId, correct) {
   // Get current score and streak
-  const { rows } = await pool.query(
+  // look up the card in either table
+  let table = 'cards';
+  let { rows } = await pool.query(
     'SELECT score, consecutive_correct FROM cards WHERE id = $1 AND user_id = $2',
     [cardId, userId]
   );
-  if (!rows.length) throw new Error('Card not found');
+  if (!rows.length) {
+    // fallback to custom_cards
+    const { rows: alt } = await pool.query(
+      'SELECT score, consecutive_correct FROM custom_cards WHERE id = $1 AND user_id = $2',
+      [cardId, userId]
+    );
+    if (!alt.length) throw new Error('Card not found');
+    rows = alt;
+    table = 'custom_cards';
+  }
   
   let score = Number(rows[0].score);
   let streak = Number(rows[0].consecutive_correct);
@@ -42,7 +53,7 @@ export async function reviewCard(userId, cardId, correct) {
   }
 
   await pool.query(
-    `UPDATE cards SET
+    `UPDATE ${table} SET
       score = $1,
       consecutive_correct = $2,
       correct_count = correct_count + $3,
@@ -54,7 +65,7 @@ export async function reviewCard(userId, cardId, correct) {
   if (newStreak === 5) {
     // Fetch readings for this kanji from card_readings
     const { rows: cardRows } = await pool.query(
-      'SELECT card_front FROM cards WHERE id = $1 AND user_id = $2',
+      `SELECT card_front FROM ${table} WHERE id = $1 AND user_id = $2`,
       [cardId, userId]
     );
     const kanji = cardRows.length ? cardRows[0].card_front : null;

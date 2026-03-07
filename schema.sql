@@ -57,6 +57,24 @@ CREATE TABLE master_cards (
     kanji_level VARCHAR(10)
 );
 
+
+-- new table for actual custom cards; this is simpler than `cards` and
+-- does not track readings, since customs never get reading cards.
+CREATE TABLE custom_cards (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES users(id),
+    card_front VARCHAR(255) NOT NULL,
+    card_back TEXT NOT NULL,
+    introduced BOOLEAN NOT NULL DEFAULT FALSE,
+    next_review TIMESTAMP,
+    correct_count INT NOT NULL DEFAULT 0,
+    incorrect_count INT NOT NULL DEFAULT 0,
+    consecutive_correct INT NOT NULL DEFAULT 0,
+    score INT NOT NULL DEFAULT 50,
+    UNIQUE(user_id, card_front)
+);
+
+-- now old table, apparently it was just logging the cards, not actually managing them
 CREATE TABLE user_created_cards (
   id SERIAL PRIMARY KEY,
   user_id INT NOT NULL REFERENCES users(id),

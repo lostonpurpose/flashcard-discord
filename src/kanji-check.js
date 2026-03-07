@@ -31,7 +31,12 @@ export async function checkMessage(userAnswer, userId) {
     let cardId;
     try {
         const result = await pool.query(
-            'SELECT id, card_back FROM cards WHERE card_front = $1 AND user_id = $2 LIMIT 1',
+            `SELECT id, card_back FROM cards
+             WHERE card_front = $1 AND user_id = $2
+             UNION ALL
+             SELECT id, card_back FROM custom_cards
+             WHERE card_front = $1 AND user_id = $2
+             LIMIT 1`,
             [lastKanji, userId]
         );
         cardId = result.rows[0]?.id;
