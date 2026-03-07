@@ -6,18 +6,10 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
   // 1. Get all *meaning* cards the user has seen (exclude readings) and their correct counts
   const { rows: userCards } = await pool.query(
     `SELECT id, card_front, card_back, correct_count
-     FROM (
-       SELECT id, card_front, card_back, correct_count
-       FROM cards
-       WHERE user_id = $1
-         AND introduced = TRUE
-         AND card_front NOT LIKE '%(reading)'
-       UNION ALL
-       SELECT id, card_front, card_back, correct_count
-       FROM custom_cards
-       WHERE user_id = $1
-         AND introduced = TRUE
-     ) AS c
+     FROM cards
+     WHERE user_id = $1
+       AND introduced = TRUE
+       AND card_front NOT LIKE '%(reading)'
      ORDER BY id ASC`,
     [userId]
   );
