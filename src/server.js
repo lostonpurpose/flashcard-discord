@@ -457,6 +457,11 @@ client.on('messageCreate', async (message) => {
       'UPDATE cards SET score = GREATEST(score - 1, 5) WHERE user_id = $1 AND introduced = TRUE AND score > 50',
       [userId]
     );
+    // apply same penalty to custom cards
+    await pool.query(
+      'UPDATE custom_cards SET score = GREATEST(score - 1, 5) WHERE user_id = $1 AND introduced = TRUE AND score > 50',
+      [userId]
+    );
 
     // Now update review stats for incorrect answers
     if (!correct) {
