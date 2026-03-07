@@ -31,11 +31,14 @@ export async function checkMessage(userAnswer, userId) {
     let cardId;
     try {
         const result = await pool.query(
-            `SELECT id, card_back FROM cards
-             WHERE card_front = $1 AND user_id = $2
-             UNION ALL
-             SELECT id, card_back FROM custom_cards
-             WHERE card_front = $1 AND user_id = $2
+            `SELECT id, card_back FROM (
+                 SELECT id, card_back, 0 as src FROM cards
+                 WHERE card_front = $1 AND user_id = $2
+               UNION ALL
+                 SELECT id, card_back, 1 as src FROM custom_cards
+                 WHERE card_front = $1 AND user_id = $2
+             ) AS both
+             ORDER BY src ASC
              LIMIT 1`,
             [lastKanji, userId]
         );

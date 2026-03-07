@@ -168,8 +168,11 @@ client.on('messageCreate', async (message) => {
   if (pendingDeletion.has(userId)) {
     const cardFront = pendingDeletion.get(userId);
     if (userAnswerLower === 'yes') {
-      await pool.query('DELETE FROM cards WHERE user_id = $1 AND card_front = $2', [userId, cardFront]);
-      await pool.query('DELETE FROM custom_cards WHERE user_id = $1 AND card_front = $2', [userId, cardFront]);
+      if (cardFront.endsWith(' (custom)')) {
+        await pool.query('DELETE FROM custom_cards WHERE user_id = $1 AND card_front = $2', [userId, cardFront]);
+      } else {
+        await pool.query('DELETE FROM cards WHERE user_id = $1 AND card_front = $2', [userId, cardFront]);
+      }
       pendingDeletion.delete(userId);
       await message.reply(`Card deleted: ${cardFront}`);
       return;
@@ -204,7 +207,7 @@ client.on('messageCreate', async (message) => {
   }
 
   if (userAnswerLower === 'help' || userAnswerLower === 'help!') {
-    await message.reply("Commands:\n- `sleep!` / `wake!` to pause or resume sending\n- `freq = N` to set card frequency in minutes\n- `difficulty = easy|medium|hard` to restart on a different level\n- `front = back` to create a custom card\n- `front :: delete` to remove a card");
+    await message.reply("Commands:\n- `sleep!` / `wake!` to pause or resume sending\n- `freq = N` to set card frequency in minutes\n- `difficulty = easy|medium|hard` to restart on a different level\n- `front = back` to create a custom card (the front will be tagged ` (custom)` )\n- `front :: delete` to remove a regular card; append ` (custom)` to delete a custom one");
     return;
   }
 
@@ -236,8 +239,12 @@ client.on('messageCreate', async (message) => {
       }
     } else {
       // Custom card creation
-      const [cardFront, cardBack] = parts;
+      let [cardFront, cardBack] = parts;
       if (cardFront && cardBack) {
+        // tag custom cards in the front text
+        if (!cardFront.endsWith(' (custom)')) {
+          cardFront = `${cardFront} (custom)`;
+        }
         try {
           const cardResult = await pool.query(
             `INSERT INTO custom_cards (user_id, card_front, card_back, introduced, next_review)
@@ -284,8 +291,7 @@ client.on('messageCreate', async (message) => {
        UNION ALL
        SELECT id, 'custom_cards' AS table_name
        FROM custom_cards
-       WHERE user_id = $1 AND card_front = (SELECT last_kanji_sent FROM users WHERE id = $1)
-       LIMIT 1`,
+       WHERE user_id = $1 AND card_front = (SELECT last_kanji_sent FROM users WHERE id = $1)       ORDER BY table_name ASC       LIMIT 1`,
       [userId]
     );
     cardIdFromQuery = cardRes.rows[0]?.id;
