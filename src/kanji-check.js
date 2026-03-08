@@ -56,6 +56,17 @@ export async function checkMessage(userAnswer, userId) {
         } catch {
             correctMeanings = [cardBack]; // Old format compatibility
         }
+        // some older rows were stored as a single comma-separated string
+        // e.g. "store, shop"; treat those as separate meanings
+        if (Array.isArray(correctMeanings)) {
+            correctMeanings = correctMeanings.flatMap(m =>
+                typeof m === 'string' && m.includes(',')
+                    ? m.split(',').map(x => x.trim())
+                    : m
+            );
+        } else if (typeof correctMeanings === 'string' && correctMeanings.includes(',')) {
+            correctMeanings = correctMeanings.split(',').map(x => x.trim());
+        }
         
         console.log('[checkMessage] correctMeanings from DB:', correctMeanings);
     } catch (err) {

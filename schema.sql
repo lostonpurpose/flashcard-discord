@@ -19,7 +19,6 @@ CREATE TABLE cards (
     user_id INT NOT NULL REFERENCES users(id),
     card_front VARCHAR(255) NOT NULL,
     card_back TEXT NOT NULL,
-    card_type VARCHAR(16) NOT NULL DEFAULT 'meaning',
     introduced BOOLEAN NOT NULL DEFAULT FALSE,
     next_review TIMESTAMP,
     correct_count INT NOT NULL DEFAULT 0,

@@ -9,21 +9,21 @@ export async function sendNextCard(userId, message) {
 
     // include customs by unioning custom_cards
     const { rows: newCards } = await pool.query(
-        `SELECT id, user_id, card_front, card_back, card_type, introduced, next_review,
+        `SELECT id, user_id, card_front, card_back, introduced, next_review,
                 correct_count, incorrect_count, consecutive_correct, score, reading_introduced
          FROM cards WHERE user_id = $1 AND introduced = TRUE AND score = 50
          UNION ALL
-         SELECT id, user_id, card_front, card_back, NULL AS card_type, introduced, next_review,
+         SELECT id, user_id, card_front, card_back, introduced, next_review,
                 correct_count, incorrect_count, consecutive_correct, score, FALSE AS reading_introduced
          FROM custom_cards WHERE user_id = $1 AND introduced = TRUE AND score = 50`,
         [userId]
     );
     const { rows: reviewCards } = await pool.query(
-        `SELECT id, user_id, card_front, card_back, card_type, introduced, next_review,
+        `SELECT id, user_id, card_front, card_back, introduced, next_review,
                 correct_count, incorrect_count, consecutive_correct, score, reading_introduced
          FROM cards WHERE user_id = $1 AND introduced = TRUE AND score < 50
          UNION ALL
-         SELECT id, user_id, card_front, card_back, NULL AS card_type, introduced, next_review,
+         SELECT id, user_id, card_front, card_back, introduced, next_review,
                 correct_count, incorrect_count, consecutive_correct, score, FALSE AS reading_introduced
          FROM custom_cards WHERE user_id = $1 AND introduced = TRUE AND score < 50`,
         [userId]

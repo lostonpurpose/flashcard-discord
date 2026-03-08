@@ -329,12 +329,21 @@ client.on('messageCreate', async (message) => {
     const cardBack = lastKanjiRes.rows[0]?.card_back;
     // cardIdFromQuery was already set above
 
-    // Parse meanings
+    // Parse meanings and normalise comma-separated strings
     let allMeanings;
     try {
       allMeanings = JSON.parse(cardBack);
     } catch {
       allMeanings = [cardBack]; // Old format compatibility
+    }
+    if (Array.isArray(allMeanings)) {
+      allMeanings = allMeanings.flatMap(m =>
+        typeof m === 'string' && m.includes(',')
+          ? m.split(',').map(x => x.trim())
+          : m
+      );
+    } else if (typeof allMeanings === 'string' && allMeanings.includes(',')) {
+      allMeanings = allMeanings.split(',').map(x => x.trim());
     }
 
     // Build and send feedback message if right/wrong
