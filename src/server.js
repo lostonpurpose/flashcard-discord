@@ -118,17 +118,18 @@ client.on('ready', () => {
 client.on('messageCreate', async (message) => {
   console.log(`Message received from ${message.author.tag}: "${message.content}" in channel type: ${message.channel.type}`);
   console.log('[server.js] messageCreate handler triggered');
-  
-  // Ignore bot messages
-  if (message.author.bot) return;
 
-  // Only handle DMs
-  if (message.guild !== null) return;
+  try {
+    // Ignore bot messages
+    if (message.author.bot) return;
 
-  const discordUserId = message.author.id;
-  const userAnswer = message.content.trim();
+    // Only handle DMs
+    if (message.guild !== null) return;
 
-  console.log(`DM from ${message.author.tag} (${discordUserId}): ${userAnswer}`);
+    const discordUserId = message.author.id;
+    const userAnswer = message.content.trim();
+
+    console.log(`DM from ${message.author.tag} (${discordUserId}): ${userAnswer}`);
 
   // 1. Ensure user exists
   let userId;
@@ -303,10 +304,11 @@ client.on('messageCreate', async (message) => {
   // If there is no pending card and we haven't returned earlier for a command,
   // tell the user to wait rather than proceeding with answer logic.
   if (!cardIdFromQuery) {
-    await message.reply("Please wait for your next card.");
-    return;
-  }
-
+      const replyText = "Please wait for your next card.";
+      await message.reply(replyText);
+      console.log('[server.js] replied with:', replyText);
+      return;
+    }
   // 3. Check answer and update review stats
   if (cardIdFromQuery) {
     let checkResult = null;
@@ -336,15 +338,14 @@ client.on('messageCreate', async (message) => {
     } catch {
       allMeanings = [cardBack]; // Old format compatibility
     }
-    if (Array.isArray(allMeanings)) {
-      allMeanings = allMeanings.flatMap(m =>
-        typeof m === 'string' && m.includes(',')
-          ? m.split(',').map(x => x.trim())
-          : m
-      );
-    } else if (typeof allMeanings === 'string' && allMeanings.includes(',')) {
-      allMeanings = allMeanings.split(',').map(x => x.trim());
+    if (!Array.isArray(allMeanings)) {
+      allMeanings = [allMeanings];
     }
+    allMeanings = allMeanings.flatMap(m =>
+      typeof m === 'string' && m.includes(',')
+        ? m.split(',').map(x => x.trim())
+        : m
+    );
 
     // Build and send feedback message if right/wrong
     let feedbackText;
@@ -419,7 +420,9 @@ client.on('messageCreate', async (message) => {
             ? `Correct! The reading(s) for ${baseKanji} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
             : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
           await message.reply(feedbackText);
+          console.log('[server.js] replied with:', feedbackText);
           await message.reply(`Congratulations, you answered "${lastKanji}" (${allMeanings.join(', ')}) 5 times in a row!\n\nYou will now start seeing a card asking for ${baseKanji} (reading). Use hiragana to answer. The reading(s) for ${baseKanji} are:\n\n${readings.join('\n')}`);
+          console.log('[server.js] replied with: reading intro');
           // Always create reading card as 'KANJI (reading)'
           let readingCardFront = `${baseKanji} (reading)`;
           await pool.query(
@@ -436,13 +439,13 @@ client.on('messageCreate', async (message) => {
           feedbackText = isReadingCard
             ? `Correct! The reading(s) for ${baseKanji} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
             : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
-          await message.reply(feedbackText);
-        }
+          await message.reply(feedbackText);          console.log('[server.js] replied with:', feedbackText);        }
       } else {
         feedbackText = isReadingCard
           ? `Correct! The reading(s) for ${kanjiOnly} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
           : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
         await message.reply(feedbackText);
+        console.log('[server.js] replied with:', feedbackText);
       }
     } else {
       // Track which meaning they failed to answer
@@ -465,6 +468,7 @@ client.on('messageCreate', async (message) => {
         ? `Incorrect. The reading(s) for ${kanjiOnly} are: ${allMeanings.join(', ')}`
         : `Incorrect. ${lastKanji} means ${allMeanings.join(', ')}`;
       await message.reply(feedbackText);
+      console.log('[server.js] replied with:', feedbackText);
     }
 
     // Decrease all kanji scores >50 by 1 for this user ONLY when they attempt an answer
@@ -485,9 +489,17 @@ client.on('messageCreate', async (message) => {
 
     // LOCK: Clear last_kanji_sent so further answers are ignored until next card is sent
     await pool.query('UPDATE users SET last_kanji_sent = NULL WHERE id = $1', [userId]);
-
   } else {
     console.error("No valid cardId found, skipping reviewCard");
+  }
+  } catch (err) {
+    console.error('[server.js] unhandled error in message handler:', err);
+    try {
+      await message.reply('Sorry, something went wrong processing your message.');
+      console.log('[server.js] replied with: error fallback');
+    } catch (e) {
+      console.error('[server.js] failed to send fallback reply:', e);
+    }
   }
 
   // 4. Try to introduce the next batch if ready

@@ -59,5 +59,5 @@ export async function onboardUser(discordUserId, message, difficulty = 'easy') {
   }
 
   // Send spacing message
-  await message.reply("\n\n\n\n\n\n\n\n\n\n(Scroll up for your first five cards to avoid accidentally seeing the meanings!)");
+  await message.reply("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*(Scroll up for your first five cards to avoid accidentally seeing the meanings!)");
 }
