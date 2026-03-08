@@ -7,12 +7,25 @@ export async function sendNextCard(userId, message) {
       // ...existing code (removed debug DM to user)...
     // Get all new and review cards (ignore next_review)
 
+    // include customs by unioning custom_cards
     const { rows: newCards } = await pool.query(
-        `SELECT * FROM cards WHERE user_id = $1 AND introduced = TRUE AND score = 50`,
+        `SELECT id, user_id, card_front, card_back, introduced, next_review,
+                correct_count, incorrect_count, consecutive_correct, score, reading_introduced
+         FROM cards WHERE user_id = $1 AND introduced = TRUE AND score = 50
+         UNION ALL
+         SELECT id, user_id, card_front, card_back, introduced, next_review,
+                correct_count, incorrect_count, consecutive_correct, score, FALSE AS reading_introduced
+         FROM custom_cards WHERE user_id = $1 AND introduced = TRUE AND score = 50`,
         [userId]
     );
     const { rows: reviewCards } = await pool.query(
-        `SELECT * FROM cards WHERE user_id = $1 AND introduced = TRUE AND score < 50`,
+        `SELECT id, user_id, card_front, card_back, introduced, next_review,
+                correct_count, incorrect_count, consecutive_correct, score, reading_introduced
+         FROM cards WHERE user_id = $1 AND introduced = TRUE AND score < 50
+         UNION ALL
+         SELECT id, user_id, card_front, card_back, introduced, next_review,
+                correct_count, incorrect_count, consecutive_correct, score, FALSE AS reading_introduced
+         FROM custom_cards WHERE user_id = $1 AND introduced = TRUE AND score < 50`,
         [userId]
     );
 
@@ -66,7 +79,11 @@ export async function sendNextCard(userId, message) {
     // Extra: print all cards for this user/kanji for debugging
     try {
       const { rows: allDupes } = await pool.query(
-        'SELECT id, card_front, score, reading_introduced, card_back FROM cards WHERE user_id = $1 AND card_front = $2',
+        `SELECT id, card_front, score, reading_introduced, card_back
+         FROM cards WHERE user_id = $1 AND card_front = $2
+         UNION ALL
+         SELECT id, card_front, score, NULL AS reading_introduced, card_back
+         FROM custom_cards WHERE user_id = $1 AND card_front = $2`,
         [userId, card.card_front]
       );
       console.log(`[sendNextCard] ALL cards for user ${userId} and kanji ${card.card_front}:`, allDupes);

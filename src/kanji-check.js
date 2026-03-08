@@ -31,7 +31,15 @@ export async function checkMessage(userAnswer, userId) {
     let cardId;
     try {
         const result = await pool.query(
-            'SELECT id, card_back FROM cards WHERE card_front = $1 AND user_id = $2 LIMIT 1',
+            `SELECT id, card_back FROM (
+                 SELECT id, card_back, 0 as src FROM cards
+                 WHERE card_front = $1 AND user_id = $2
+               UNION ALL
+                 SELECT id, card_back, 1 as src FROM custom_cards
+                 WHERE card_front = $1 AND user_id = $2
+             ) AS combined -- "both" is a reserved word in Postgres, hence alias change
+             ORDER BY src ASC
+             LIMIT 1`,
             [lastKanji, userId]
         );
         cardId = result.rows[0]?.id;
@@ -48,6 +56,17 @@ export async function checkMessage(userAnswer, userId) {
         } catch {
             correctMeanings = [cardBack]; // Old format compatibility
         }
+        // make sure we always have an array (JSON.parse could return a string)
+        if (!Array.isArray(correctMeanings)) {
+            correctMeanings = [correctMeanings];
+        }
+        // some older rows were stored as a single comma-separated string
+        // e.g. "store, shop"; treat those as separate meanings
+        correctMeanings = correctMeanings.flatMap(m =>
+            typeof m === 'string' && m.includes(',')
+                ? m.split(',').map(x => x.trim())
+                : m
+        );
         
         console.log('[checkMessage] correctMeanings from DB:', correctMeanings);
     } catch (err) {

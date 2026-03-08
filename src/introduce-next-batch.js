@@ -5,13 +5,12 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 export async function introduceNextBatch(userId, message, difficulty = 'easy') {
   // 1. Get all *meaning* cards the user has seen (exclude readings) and their correct counts
   const { rows: userCards } = await pool.query(
-    `SELECT c.id, c.card_front, c.card_back, c.correct_count
-     FROM cards c
-     WHERE c.user_id = $1
-       AND c.introduced = TRUE
-       AND c.id < 1000000
-       AND c.card_front NOT LIKE '%(reading)'
-     ORDER BY c.id ASC`,
+    `SELECT id, card_front, card_back, correct_count
+     FROM cards
+     WHERE user_id = $1
+       AND introduced = TRUE
+       AND card_front NOT LIKE '%(reading)'
+     ORDER BY id ASC`,
     [userId]
   );
 
@@ -111,7 +110,7 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
     }
 
   // Send spacing message
-  await message.reply("\n\n\n\n\n\n\n\n\n\n(This block is to keep you from seeing the answers :). Scroll up for the new words!)");
+  await message.reply("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*(This block is to keep you from seeing the answers :). Scroll up for the new words!)");
 
   return true; // Next batch introduced
 }
