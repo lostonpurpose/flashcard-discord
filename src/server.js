@@ -29,6 +29,7 @@ const job = new CronJob('*/30 * * * * *', async () => {
     console.log(`[CRON] Checking ${users.length} users`);
     for (const user of users) {
       const { id: userId, discord_user_id, last_card_sent, user_freq } = user;
+
       const lastSent = last_card_sent ? new Date(last_card_sent) : null;
       const freqMs = (user_freq || 30) * 60 * 1000;
       const timeSinceLast = lastSent ? (now - lastSent) : null;
@@ -292,7 +293,9 @@ client.on('messageCreate', async (message) => {
        UNION ALL
        SELECT id, 'custom_cards' AS table_name
        FROM custom_cards
-       WHERE user_id = $1 AND card_front = (SELECT last_kanji_sent FROM users WHERE id = $1)       ORDER BY table_name ASC       LIMIT 1`,
+       WHERE user_id = $1 AND card_front = (SELECT last_kanji_sent FROM users WHERE id = $1)
+       ORDER BY table_name ASC
+       LIMIT 1`,
       [userId]
     );
     cardIdFromQuery = cardRes.rows[0]?.id;
@@ -301,7 +304,7 @@ client.on('messageCreate', async (message) => {
     console.error("Failed to get card id", err);
   }
 
-  // If there is no pending card and we haven't returned earlier for a command,
+  // If we didn't find a card matching last_kanji_sent (or no card sent yet),
   // tell the user to wait rather than proceeding with answer logic.
   if (!cardIdFromQuery) {
       const replyText = "Please wait for your next card.";
@@ -311,6 +314,8 @@ client.on('messageCreate', async (message) => {
     }
   // 3. Check answer and update review stats
   if (cardIdFromQuery) {
+
+    // check the user's answer against the appropriate card
     let checkResult = null;
     try {
       checkResult = await checkMessage(userAnswerLower, userId);
@@ -358,18 +363,22 @@ client.on('messageCreate', async (message) => {
 
     if (correct) {
       const matchedMeaning = checkResult.matchedMeaning;
-      // Update the specific meaning's progress
-      await pool.query(
-        `INSERT INTO card_meanings (card_id, meaning, correct_count, last_tested)
-         VALUES ($1, $2, 1, NOW())
-         ON CONFLICT (card_id, meaning)
-         DO UPDATE SET correct_count = card_meanings.correct_count + 1, last_tested = NOW()`,
-        [cardIdFromQuery, matchedMeaning]
-      );
+      // Update the specific meaning's progress (only for regular cards)
+      if (cardTable === 'cards') {
+        await pool.query(
+          `INSERT INTO card_meanings (card_id, meaning, correct_count, last_tested)
+           VALUES ($1, $2, 1, NOW())
+           ON CONFLICT (card_id, meaning)
+           DO UPDATE SET correct_count = card_meanings.correct_count + 1, last_tested = NOW()`,
+          [cardIdFromQuery, matchedMeaning]
+        );
+      }
 
       // Fetch old score for testing - can remove when i confirm scoring updates correctly
+      // Use whichever table the card actually came from (cards or custom_cards).
+      const scoreTable = cardTable === 'cards' ? 'cards' : 'custom_cards';
       const { rows: oldRows } = await pool.query(
-        'SELECT score FROM cards WHERE id = $1 AND user_id = $2',
+        `SELECT score FROM ${scoreTable} WHERE id = $1 AND user_id = $2`,
         [cardIdFromQuery, userId]
       );
       if (!oldRows.length) throw new Error('Card not found');
@@ -378,9 +387,9 @@ client.on('messageCreate', async (message) => {
       // Update review stats before fetching new score/streak
       await reviewCard(userId, cardIdFromQuery, correct);
 
-      // Fetch updated score and streak
+      // Fetch updated score and streak from the correct table as well
       const { rows: updatedRows } = await pool.query(
-        'SELECT score, consecutive_correct FROM cards WHERE id = $1 AND user_id = $2',
+        `SELECT score, consecutive_correct FROM ${scoreTable} WHERE id = $1 AND user_id = $2`,
         [cardIdFromQuery, userId]
       );
       if (!updatedRows.length) throw new Error('Card not found');
@@ -392,11 +401,15 @@ client.on('messageCreate', async (message) => {
 
       // === READINGS INTRODUCTION LOGIC ===
       // Only fire once when the streak hits exactly 5, not on 6/7/etc.
-      const { rows: readingIntroRows } = await pool.query(
-        'SELECT reading_introduced FROM cards WHERE id = $1',
-        [cardIdFromQuery]
-      );
-      const readingIntroduced = readingIntroRows[0]?.reading_introduced;
+      // only regular cards have a reading_introduced column; skip for customs
+      let readingIntroduced = false;
+      if (cardTable === 'cards') {
+        const { rows: readingIntroRows } = await pool.query(
+          'SELECT reading_introduced FROM cards WHERE id = $1',
+          [cardIdFromQuery]
+        );
+        readingIntroduced = readingIntroRows[0]?.reading_introduced;
+      }
       console.log(`[READINGS DEBUG] streak: ${streak}, cardId: ${cardIdFromQuery}, reading_introduced: ${readingIntroduced}`);
       if (streak === 5 && !readingIntroduced) {
         // Fetch readings from master_cards table
@@ -450,18 +463,21 @@ client.on('messageCreate', async (message) => {
     } else {
       // Track which meaning they failed to answer
       // We'll increment incorrect_count on the least-practiced meaning
-      const meaningStatsRes = await pool.query(
-        `SELECT meaning, correct_count FROM card_meanings WHERE card_id = $1 ORDER BY correct_count ASC LIMIT 1`,
-        [cardIdFromQuery]
-      );
-
-      if (meaningStatsRes.rows.length > 0) {
-        const leastPracticedMeaning = meaningStatsRes.rows[0].meaning;
-        await pool.query(
-          `UPDATE card_meanings SET incorrect_count = incorrect_count + 1, last_tested = NOW()
-           WHERE card_id = $1 AND meaning = $2`,
-          [cardIdFromQuery, leastPracticedMeaning]
+      // on wrong answers we update meaning stats too, but only for regular cards
+      if (cardTable === 'cards') {
+        const meaningStatsRes = await pool.query(
+          `SELECT meaning, correct_count FROM card_meanings WHERE card_id = $1 ORDER BY correct_count ASC LIMIT 1`,
+          [cardIdFromQuery]
         );
+
+        if (meaningStatsRes.rows.length > 0) {
+          const leastPracticedMeaning = meaningStatsRes.rows[0].meaning;
+          await pool.query(
+            `UPDATE card_meanings SET incorrect_count = incorrect_count + 1, last_tested = NOW()
+             WHERE card_id = $1 AND meaning = $2`,
+            [cardIdFromQuery, leastPracticedMeaning]
+          );
+        }
       }
 
       feedbackText = isReadingCard

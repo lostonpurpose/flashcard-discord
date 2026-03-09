@@ -10,21 +10,21 @@ export async function sendNextCard(userId, message) {
     // include customs by unioning custom_cards
     const { rows: newCards } = await pool.query(
         `SELECT id, user_id, card_front, card_back, introduced, next_review,
-                correct_count, incorrect_count, consecutive_correct, score, reading_introduced
+                correct_count, incorrect_count, consecutive_correct, score, reading_introduced, FALSE AS is_custom
          FROM cards WHERE user_id = $1 AND introduced = TRUE AND score = 50
          UNION ALL
          SELECT id, user_id, card_front, card_back, introduced, next_review,
-                correct_count, incorrect_count, consecutive_correct, score, FALSE AS reading_introduced
+                correct_count, incorrect_count, consecutive_correct, score, FALSE AS reading_introduced, TRUE AS is_custom
          FROM custom_cards WHERE user_id = $1 AND introduced = TRUE AND score = 50`,
         [userId]
     );
     const { rows: reviewCards } = await pool.query(
         `SELECT id, user_id, card_front, card_back, introduced, next_review,
-                correct_count, incorrect_count, consecutive_correct, score, reading_introduced
+                correct_count, incorrect_count, consecutive_correct, score, reading_introduced, FALSE AS is_custom
          FROM cards WHERE user_id = $1 AND introduced = TRUE AND score < 50
          UNION ALL
          SELECT id, user_id, card_front, card_back, introduced, next_review,
-                correct_count, incorrect_count, consecutive_correct, score, FALSE AS reading_introduced
+                correct_count, incorrect_count, consecutive_correct, score, FALSE AS reading_introduced, TRUE AS is_custom
          FROM custom_cards WHERE user_id = $1 AND introduced = TRUE AND score < 50`,
         [userId]
     );
@@ -93,6 +93,7 @@ export async function sendNextCard(userId, message) {
 
   // Update last_card_sent to NOW for this user
   await pool.query('UPDATE users SET last_card_sent = NOW() WHERE id = $1', [userId]);
+
   
   // Parse meanings
   let allMeanings;
@@ -112,20 +113,27 @@ export async function sendNextCard(userId, message) {
     // no return yet for multi-meaning cards, but still log ID for telemetry
     console.log(`[sendNextCard] multi-meaning card selected id=${card.id}`);
 
-  // For multiple meanings, check progress on each
-  const meaningStatsRes = await pool.query(
-    `SELECT meaning, correct_count FROM card_meanings WHERE card_id = $1 ORDER BY correct_count ASC`,
-    [card.id]
-  );
+  // For multiple meanings, check progress on each – only for regular cards
+  let meaningStatsRes;
+  if (!card.is_custom) {
+    meaningStatsRes = await pool.query(
+      `SELECT meaning, correct_count FROM card_meanings WHERE card_id = $1 ORDER BY correct_count ASC`,
+      [card.id]
+    );
 
-  // Initialize meanings if they don't exist yet
-  if (meaningStatsRes.rows.length === 0) {
-    for (const meaning of allMeanings) {
-      await pool.query(
-        `INSERT INTO card_meanings (card_id, meaning) VALUES ($1, $2) ON CONFLICT DO NOTHING`,
-        [card.id, meaning]
-      );
+    // Initialize meanings if they don't exist yet
+    if (meaningStatsRes.rows.length === 0) {
+      for (const meaning of allMeanings) {
+        await pool.query(
+          `INSERT INTO card_meanings (card_id, meaning) VALUES ($1, $2) ON CONFLICT DO NOTHING`,
+          [card.id, meaning]
+        );
+      }
+      await message.reply(`${card.card_front} = ? [cardId: ${card.id}]`);
+      return true;
     }
+  } else {
+    // custom card, skip meaning tracking
     await message.reply(`${card.card_front} = ? [cardId: ${card.id}]`);
     return true;
   }
