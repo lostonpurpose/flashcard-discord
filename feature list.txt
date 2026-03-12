@@ -1,5 +1,8 @@
 newest local edits:
 
-1. changed freq to allow up to 1440 minutes. max was 24 before fix.
-2. some text changes
-3.
+1. delete all cards, make your own
+2. go straight to n3, n2 etc
+3. make push notification that can go to all users at whim
+4. 
+
+my user id: 458525008759750657

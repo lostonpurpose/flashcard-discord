@@ -37,7 +37,24 @@ const job = new CronJob('*/30 * * * * *', async () => {
       if (!lastSent || (now - lastSent) >= freqMs) {
         try {
           const discordUser = await client.users.fetch(discord_user_id);
-          await introduceNextBatch(userId, { author: { id: discord_user_id }, reply: async () => {} }, 'easy');
+          // build a pseudo‑message object that will DM the user when reply() is called
+          const dmMessage = {
+            author: { id: discord_user_id },
+            reply: async (msg) => {
+              try {
+                await discordUser.send(msg);
+              } catch (e) {
+                /* ignore failures (user closed DMs, etc.) */
+              }
+            },
+          };
+
+          // introduceNextBatch will now be able to send the "Nice work" text and study cards
+          const introduced = await introduceNextBatch(userId, dmMessage, 'easy');
+          if (introduced) {
+            console.log(`[CRON] introduced new batch for ${discord_user_id}`);
+          }
+
           await sendNextCard(userId, {
             author: { id: discord_user_id },
             client,
