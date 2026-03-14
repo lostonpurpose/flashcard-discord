@@ -1,0 +1,708 @@
+{
+  "整": {
+    "meanings": [
+      "adjust",
+      "arrange"
+    ],
+    "readings": [
+      "ととのえる",
+      "せい"
+    ]
+  },
+  "改": {
+    "meanings": [
+      "reform",
+      "change"
+    ],
+    "readings": [
+      "あらためる",
+      "かい"
+    ]
+  },
+  "応": {
+    "meanings": [
+      "respond"
+    ],
+    "readings": [
+      "おう"
+    ]
+  },
+  "調": {
+    "meanings": [
+      "investigate",
+      "tune"
+    ],
+    "readings": [
+      "しらべる",
+      "ちょう"
+    ]
+  },
+  "操": {
+    "meanings": [
+      "operate",
+      "manipulate"
+    ],
+    "readings": [
+      "あやつる",
+      "そう"
+    ]
+  },
+  "調整": {
+    "meanings": [
+      "adjustment"
+    ],
+    "readings": [
+      "ちょうせい"
+    ]
+  },
+  "改善": {
+    "meanings": [
+      "improvement"
+    ],
+    "readings": [
+      "かいぜん"
+    ]
+  },
+  "対応": {
+    "meanings": [
+      "response",
+      "deal with"
+    ],
+    "readings": [
+      "たいおう"
+    ]
+  },
+  "操作": {
+    "meanings": [
+      "operation",
+      "manipulation"
+    ],
+    "readings": [
+      "そうさ"
+    ]
+  },
+  "継": {
+    "meanings": [
+      "continue",
+      "inherit"
+    ],
+    "readings": [
+      "けい",
+      "つぐ"
+    ]
+  },
+  "期": {
+    "meanings": [
+      "period"
+    ],
+    "readings": [
+      "き"
+    ]
+  },
+  "段": {
+    "meanings": [
+      "stage",
+      "step"
+    ],
+    "readings": [
+      "だん"
+    ]
+  },
+  "模": {
+    "meanings": [
+      "scale",
+      "pattern"
+    ],
+    "readings": [
+      "も"
+    ]
+  },
+  "程": {
+    "meanings": [
+      "degree",
+      "extent"
+    ],
+    "readings": [
+      "ほど",
+      "てい"
+    ]
+  },
+  "完": {
+    "meanings": [
+      "complete"
+    ],
+    "readings": [
+      "かん"
+    ]
+  },
+  "継続": {
+    "meanings": [
+      "continuation"
+    ],
+    "readings": [
+      "けいぞく"
+    ]
+  },
+  "時期": {
+    "meanings": [
+      "time",
+      "season"
+    ],
+    "readings": [
+      "じき"
+    ]
+  },
+  "段階": {
+    "meanings": [
+      "stage",
+      "phase"
+    ],
+    "readings": [
+      "だんかい"
+    ]
+  },
+  "規模": {
+    "meanings": [
+      "scale"
+    ],
+    "readings": [
+      "きぼ"
+    ]
+  },
+  "程度": {
+    "meanings": [
+      "degree",
+      "extent"
+    ],
+    "readings": [
+      "ていど"
+    ]
+  },
+  "完成": {
+    "meanings": [
+      "completion"
+    ],
+    "readings": [
+      "かんせい"
+    ]
+  },
+  "員": {
+    "meanings": [
+      "member"
+    ],
+    "readings": [
+      "いん"
+    ]
+  },
+  "代表": {
+    "meanings": [
+      "representative"
+    ],
+    "readings": [
+      "だいひょう"
+    ]
+  },
+  "管": {
+    "meanings": [
+      "manage"
+    ],
+    "readings": [
+      "かん"
+    ]
+  },
+  "属": {
+    "meanings": [
+      "belong"
+    ],
+    "readings": [
+      "ぞく"
+    ]
+  },
+  "官": {
+    "meanings": [
+      "official"
+    ],
+    "readings": [
+      "かん"
+    ]
+  },
+  "士": {
+    "meanings": [
+      "professional"
+    ],
+    "readings": [
+      "し"
+    ]
+  },
+  "職員": {
+    "meanings": [
+      "staff"
+    ],
+    "readings": [
+      "しょくいん"
+    ]
+  },
+  "代表者": {
+    "meanings": [
+      "representative"
+    ],
+    "readings": [
+      "だいひょうしゃ"
+    ]
+  },
+  "管轄": {
+    "meanings": [
+      "jurisdiction"
+    ],
+    "readings": [
+      "かんかつ"
+    ]
+  },
+  "所属": {
+    "meanings": [
+      "affiliation"
+    ],
+    "readings": [
+      "しょぞく"
+    ]
+  },
+  "官僚": {
+    "meanings": [
+      "bureaucrat"
+    ],
+    "readings": [
+      "かんりょう"
+    ]
+  },
+  "弁護士": {
+    "meanings": [
+      "lawyer"
+    ],
+    "readings": [
+      "べんごし"
+    ]
+  },
+  "際": {
+    "meanings": [
+      "occasion",
+      "international"
+    ],
+    "readings": [
+      "さい"
+    ]
+  },
+  "域": {
+    "meanings": [
+      "region",
+      "area"
+    ],
+    "readings": [
+      "いき"
+    ]
+  },
+  "向": {
+    "meanings": [
+      "toward",
+      "orientation"
+    ],
+    "readings": [
+      "むく",
+      "こう"
+    ]
+  },
+  "態": {
+    "meanings": [
+      "condition",
+      "state"
+    ],
+    "readings": [
+      "たい"
+    ]
+  },
+  "兆": {
+    "meanings": [
+      "sign",
+      "trillion"
+    ],
+    "readings": [
+      "ちょう",
+      "きざし"
+    ]
+  },
+  "国際": {
+    "meanings": [
+      "international"
+    ],
+    "readings": [
+      "こくさい"
+    ]
+  },
+  "地域": {
+    "meanings": [
+      "region",
+      "area"
+    ],
+    "readings": [
+      "ちいき"
+    ]
+  },
+  "動向": {
+    "meanings": [
+      "trend",
+      "movement"
+    ],
+    "readings": [
+      "どうこう"
+    ]
+  },
+  "実態": {
+    "meanings": [
+      "actual state"
+    ],
+    "readings": [
+      "じったい"
+    ]
+  },
+  "前兆": {
+    "meanings": [
+      "omen",
+      "sign"
+    ],
+    "readings": [
+      "ぜんちょう"
+    ]
+  },
+  "経": {
+    "meanings": [
+      "pass through",
+      "manage"
+    ],
+    "readings": [
+      "けい"
+    ]
+  },
+  "易": {
+    "meanings": [
+      "easy",
+      "trade"
+    ],
+    "readings": [
+      "えき",
+      "やさしい"
+    ]
+  },
+  "貨": {
+    "meanings": [
+      "currency",
+      "goods"
+    ],
+    "readings": [
+      "か"
+    ]
+  },
+  "通貨": {
+    "meanings": [
+      "currency"
+    ],
+    "readings": [
+      "つうか"
+    ]
+  },
+  "危": {
+    "meanings": [
+      "dangerous"
+    ],
+    "readings": [
+      "あぶない",
+      "き"
+    ]
+  },
+  "懸": {
+    "meanings": [
+      "suspend",
+      "concern"
+    ],
+    "readings": [
+      "けん",
+      "かける"
+    ]
+  },
+  "険": {
+    "meanings": [
+      "steep",
+      "danger"
+    ],
+    "readings": [
+      "けわしい",
+      "けん"
+    ]
+  },
+  "難": {
+    "meanings": [
+      "difficult"
+    ],
+    "readings": [
+      "むずかしい",
+      "なん"
+    ]
+  },
+  "負": {
+    "meanings": [
+      "bear",
+      "lose"
+    ],
+    "readings": [
+      "まける",
+      "ふ"
+    ]
+  },
+  "損": {
+    "meanings": [
+      "loss"
+    ],
+    "readings": [
+      "そん"
+    ]
+  },
+  "災": {
+    "meanings": [
+      "disaster"
+    ],
+    "readings": [
+      "さい"
+    ]
+  },
+  "危険": {
+    "meanings": [
+      "danger"
+    ],
+    "readings": [
+      "きけん"
+    ]
+  },
+  "危機": {
+    "meanings": [
+      "crisis"
+    ],
+    "readings": [
+      "きき"
+    ]
+  },
+  "険悪": {
+    "meanings": [
+      "tense",
+      "threatening"
+    ],
+    "readings": [
+      "けんあく"
+    ]
+  },
+  "困難": {
+    "meanings": [
+      "difficulty"
+    ],
+    "readings": [
+      "こんなん"
+    ]
+  },
+  "負担": {
+    "meanings": [
+      "burden"
+    ],
+    "readings": [
+      "ふたん"
+    ]
+  },
+  "損失": {
+    "meanings": [
+      "loss"
+    ],
+    "readings": [
+      "そんしつ"
+    ]
+  },
+  "災害": {
+    "meanings": [
+      "disaster"
+    ],
+    "readings": [
+      "さいがい"
+    ]
+  },
+  "科": {
+    "meanings": [
+      "department",
+      "science"
+    ],
+    "readings": [
+      "か"
+    ]
+  },
+  "技": {
+    "meanings": [
+      "skill"
+    ],
+    "readings": [
+      "わざ",
+      "ぎ"
+    ]
+  },
+  "装": {
+    "meanings": [
+      "equip",
+      "install"
+    ],
+    "readings": [
+      "そう"
+    ]
+  },
+  "科学": {
+    "meanings": [
+      "science"
+    ],
+    "readings": [
+      "かがく"
+    ]
+  },
+  "技術": {
+    "meanings": [
+      "technology"
+    ],
+    "readings": [
+      "ぎじゅつ"
+    ]
+  },
+  "装置": {
+    "meanings": [
+      "device",
+      "equipment"
+    ],
+    "readings": [
+      "そうち"
+    ]
+  },
+  "載": {
+    "meanings": [
+      "publish",
+      "place on"
+    ],
+    "readings": [
+      "のせる",
+      "さい"
+    ]
+  },
+  "査": {
+    "meanings": [
+      "inspect",
+      "investigate"
+    ],
+    "readings": [
+      "さ"
+    ]
+  },
+  "編": {
+    "meanings": [
+      "edit",
+      "compile"
+    ],
+    "readings": [
+      "へん"
+    ]
+  },
+  "記": {
+    "meanings": [
+      "record",
+      "write"
+    ],
+    "readings": [
+      "き",
+      "しるす"
+    ]
+  },
+  "述": {
+    "meanings": [
+      "state",
+      "mention"
+    ],
+    "readings": [
+      "のべる",
+      "じゅつ"
+    ]
+  },
+  "掲載": {
+    "meanings": [
+      "publication"
+    ],
+    "readings": [
+      "けいさい"
+    ]
+  },
+  "調査": {
+    "meanings": [
+      "investigation",
+      "survey"
+    ],
+    "readings": [
+      "ちょうさ"
+    ]
+  },
+  "編集": {
+    "meanings": [
+      "editing"
+    ],
+    "readings": [
+      "へんしゅう"
+    ]
+  },
+  "記録": {
+    "meanings": [
+      "record"
+    ],
+    "readings": [
+      "きろく"
+    ]
+  },
+  "述べる": {
+    "meanings": [
+      "state",
+      "mention"
+    ],
+    "readings": [
+      "のべる"
+    ]
+  },
+  "観点": {
+    "meanings": [
+      "point of view"
+    ],
+    "readings": [
+      "かんてん"
+    ]
+  },
+  "考察": {
+    "meanings": [
+      "consideration",
+      "analysis"
+    ],
+    "readings": [
+      "こうさつ"
+    ]
+  },
+  "対": {
+    "meanings": [
+      "opposite",
+      "versus"
+    ],
+    "readings": [
+      "たい"
+    ]
+  },
+  "拡大": {
+    "meanings": [
+      "expansion"
+    ],
+    "readings": [
+      "かくだい"
+    ]
+  }
+}

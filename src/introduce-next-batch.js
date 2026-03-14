@@ -44,6 +44,7 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
 
   // Send message telling them about next 5 kanji
   await message.reply("Nice work! You're on to the next 5 cards. Here they are:");
+  console.log(`[introduceNextBatch] introduced ${nextCards.length} new cards for user ${userId}`);
 
   // 6. Insert new cards and send study messages
   for (const card of nextCards) {

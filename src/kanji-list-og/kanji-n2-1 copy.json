@@ -1,0 +1,780 @@
+{
+  "府": {
+    "meanings": [
+      "government office",
+      "prefecture"
+    ],
+    "readings": [
+      "ふ"
+    ]
+  },
+  "省": {
+    "meanings": [
+      "ministry",
+      "omit"
+    ],
+    "readings": [
+      "しょう"
+    ]
+  },
+  "庁": {
+    "meanings": [
+      "government office"
+    ],
+    "readings": [
+      "ちょう"
+    ]
+  },
+  "県": {
+    "meanings": [
+      "prefecture"
+    ],
+    "readings": [
+      "けん"
+    ]
+  },
+  "党": {
+    "meanings": [
+      "party"
+    ],
+    "readings": [
+      "とう"
+    ]
+  },
+  "議": {
+    "meanings": [
+      "deliberation"
+    ],
+    "readings": [
+      "ぎ"
+    ]
+  },
+  "権": {
+    "meanings": [
+      "right",
+      "authority"
+    ],
+    "readings": [
+      "けん"
+    ]
+  },
+  "政府": {
+    "meanings": [
+      "government"
+    ],
+    "readings": [
+      "せいふ"
+    ]
+  },
+  "省庁": {
+    "meanings": [
+      "ministries and agencies"
+    ],
+    "readings": [
+      "しょうちょう"
+    ]
+  },
+  "官庁": {
+    "meanings": [
+      "government office"
+    ],
+    "readings": [
+      "かんちょう"
+    ]
+  },
+  "都道府県": {
+    "meanings": [
+      "prefectures of Japan"
+    ],
+    "readings": [
+      "とどうふけん"
+    ]
+  },
+  "政党": {
+    "meanings": [
+      "political party"
+    ],
+    "readings": [
+      "せいとう"
+    ]
+  },
+  "会議": {
+    "meanings": [
+      "meeting",
+      "conference"
+    ],
+    "readings": [
+      "かいぎ"
+    ]
+  },
+  "権利": {
+    "meanings": [
+      "right",
+      "privilege"
+    ],
+    "readings": [
+      "けんり"
+    ]
+  },
+  "裁": {
+    "meanings": [
+      "judge",
+      "decide"
+    ],
+    "readings": [
+      "さい",
+      "さばく"
+    ]
+  },
+  "刑": {
+    "meanings": [
+      "penalty",
+      "criminal"
+    ],
+    "readings": [
+      "けい"
+    ]
+  },
+  "罰": {
+    "meanings": [
+      "punishment"
+    ],
+    "readings": [
+      "ばつ"
+    ]
+  },
+  "律": {
+    "meanings": [
+      "law",
+      "rhythm"
+    ],
+    "readings": [
+      "りつ"
+    ]
+  },
+  "裁判": {
+    "meanings": [
+      "trial",
+      "judgment"
+    ],
+    "readings": [
+      "さいばん"
+    ]
+  },
+  "刑事": {
+    "meanings": [
+      "criminal case",
+      "detective"
+    ],
+    "readings": [
+      "けいじ"
+    ]
+  },
+  "罰金": {
+    "meanings": [
+      "fine"
+    ],
+    "readings": [
+      "ばっきん"
+    ]
+  },
+  "法律": {
+    "meanings": [
+      "law"
+    ],
+    "readings": [
+      "ほうりつ"
+    ]
+  },
+  "営": {
+    "meanings": [
+      "manage",
+      "operate"
+    ],
+    "readings": [
+      "えい",
+      "いとなむ"
+    ]
+  },
+  "企": {
+    "meanings": [
+      "plan",
+      "project"
+    ],
+    "readings": [
+      "き",
+      "くわだてる"
+    ]
+  },
+  "販": {
+    "meanings": [
+      "sell"
+    ],
+    "readings": [
+      "はん"
+    ]
+  },
+  "株": {
+    "meanings": [
+      "stock"
+    ],
+    "readings": [
+      "かぶ"
+    ]
+  },
+  "財": {
+    "meanings": [
+      "wealth",
+      "finance"
+    ],
+    "readings": [
+      "ざい"
+    ]
+  },
+  "益": {
+    "meanings": [
+      "benefit",
+      "profit"
+    ],
+    "readings": [
+      "えき"
+    ]
+  },
+  "額": {
+    "meanings": [
+      "amount",
+      "sum"
+    ],
+    "readings": [
+      "がく"
+    ]
+  },
+  "営業": {
+    "meanings": [
+      "business",
+      "sales"
+    ],
+    "readings": [
+      "えいぎょう"
+    ]
+  },
+  "企業": {
+    "meanings": [
+      "enterprise",
+      "company"
+    ],
+    "readings": [
+      "きぎょう"
+    ]
+  },
+  "販売": {
+    "meanings": [
+      "sales"
+    ],
+    "readings": [
+      "はんばい"
+    ]
+  },
+  "株式": {
+    "meanings": [
+      "stock",
+      "shares"
+    ],
+    "readings": [
+      "かぶしき"
+    ]
+  },
+  "財政": {
+    "meanings": [
+      "public finance"
+    ],
+    "readings": [
+      "ざいせい"
+    ]
+  },
+  "利益": {
+    "meanings": [
+      "profit",
+      "benefit"
+    ],
+    "readings": [
+      "りえき"
+    ]
+  },
+  "金額": {
+    "meanings": [
+      "amount of money"
+    ],
+    "readings": [
+      "きんがく"
+    ]
+  },
+  "職": {
+    "meanings": [
+      "job",
+      "post"
+    ],
+    "readings": [
+      "しょく"
+    ]
+  },
+  "課": {
+    "meanings": [
+      "section",
+      "task"
+    ],
+    "readings": [
+      "か"
+    ]
+  },
+  "任": {
+    "meanings": [
+      "duty",
+      "appoint"
+    ],
+    "readings": [
+      "にん",
+      "まかせる"
+    ]
+  },
+  "職業": {
+    "meanings": [
+      "occupation"
+    ],
+    "readings": [
+      "しょくぎょう"
+    ]
+  },
+  "課題": {
+    "meanings": [
+      "issue",
+      "task"
+    ],
+    "readings": [
+      "かだい"
+    ]
+  },
+  "責任": {
+    "meanings": [
+      "responsibility"
+    ],
+    "readings": [
+      "せきにん"
+    ]
+  },
+  "管理": {
+    "meanings": [
+      "management"
+    ],
+    "readings": [
+      "かんり"
+    ]
+  },
+  "因": {
+    "meanings": [
+      "cause"
+    ],
+    "readings": [
+      "いん"
+    ]
+  },
+  "傾": {
+    "meanings": [
+      "incline",
+      "tendency"
+    ],
+    "readings": [
+      "かたむく",
+      "けい"
+    ]
+  },
+  "減": {
+    "meanings": [
+      "decrease"
+    ],
+    "readings": [
+      "げん",
+      "へる"
+    ]
+  },
+  "拡": {
+    "meanings": [
+      "expand"
+    ],
+    "readings": [
+      "かく"
+    ]
+  },
+  "移": {
+    "meanings": [
+      "move",
+      "shift"
+    ],
+    "readings": [
+      "い",
+      "うつる"
+    ]
+  },
+  "増": {
+    "meanings": [
+      "increase"
+    ],
+    "readings": [
+      "ぞう",
+      "ふえる"
+    ]
+  },
+  "要因": {
+    "meanings": [
+      "factor",
+      "cause"
+    ],
+    "readings": [
+      "よういん"
+    ]
+  },
+  "傾向": {
+    "meanings": [
+      "tendency"
+    ],
+    "readings": [
+      "けいこう"
+    ]
+  },
+  "減少": {
+    "meanings": [
+      "decrease",
+      "decline"
+    ],
+    "readings": [
+      "げんしょう"
+    ]
+  },
+  "移行": {
+    "meanings": [
+      "transition",
+      "shift"
+    ],
+    "readings": [
+      "いこう"
+    ]
+  },
+  "増加": {
+    "meanings": [
+      "increase"
+    ],
+    "readings": [
+      "ぞうか"
+    ]
+  },
+  "評": {
+    "meanings": [
+      "evaluate"
+    ],
+    "readings": [
+      "ひょう"
+    ]
+  },
+  "断": {
+    "meanings": [
+      "decide",
+      "cut off"
+    ],
+    "readings": [
+      "だん",
+      "たつ"
+    ]
+  },
+  "認": {
+    "meanings": [
+      "recognize"
+    ],
+    "readings": [
+      "にん",
+      "みとめる"
+    ]
+  },
+  "否": {
+    "meanings": [
+      "deny"
+    ],
+    "readings": [
+      "ひ"
+    ]
+  },
+  "賛": {
+    "meanings": [
+      "approve"
+    ],
+    "readings": [
+      "さん"
+    ]
+  },
+  "評価": {
+    "meanings": [
+      "evaluation"
+    ],
+    "readings": [
+      "ひょうか"
+    ]
+  },
+  "判断": {
+    "meanings": [
+      "judgment"
+    ],
+    "readings": [
+      "はんだん"
+    ]
+  },
+  "認定": {
+    "meanings": [
+      "certification"
+    ],
+    "readings": [
+      "にんてい"
+    ]
+  },
+  "否定": {
+    "meanings": [
+      "denial"
+    ],
+    "readings": [
+      "ひてい"
+    ]
+  },
+  "賛成": {
+    "meanings": [
+      "approval",
+      "agree"
+    ],
+    "readings": [
+      "さんせい"
+    ]
+  },
+  "象": {
+    "meanings": [
+      "phenomenon",
+      "image"
+    ],
+    "readings": [
+      "しょう",
+      "ぞう"
+    ]
+  },
+  "概": {
+    "meanings": [
+      "general",
+      "outline"
+    ],
+    "readings": [
+      "がい"
+    ]
+  },
+  "抽": {
+    "meanings": [
+      "abstract"
+    ],
+    "readings": [
+      "ちゅう"
+    ]
+  },
+  "範": {
+    "meanings": [
+      "range",
+      "model"
+    ],
+    "readings": [
+      "はん"
+    ]
+  },
+  "系": {
+    "meanings": [
+      "system",
+      "lineage"
+    ],
+    "readings": [
+      "けい"
+    ]
+  },
+  "例": {
+    "meanings": [
+      "example"
+    ],
+    "readings": [
+      "れい"
+    ]
+  },
+  "般": {
+    "meanings": [
+      "general"
+    ],
+    "readings": [
+      "はん"
+    ]
+  },
+  "対象": {
+    "meanings": [
+      "target",
+      "subject"
+    ],
+    "readings": [
+      "たいしょう"
+    ]
+  },
+  "概要": {
+    "meanings": [
+      "outline",
+      "summary"
+    ],
+    "readings": [
+      "がいよう"
+    ]
+  },
+  "抽象的": {
+    "meanings": [
+      "abstract"
+    ],
+    "readings": [
+      "ちゅうしょうてき"
+    ]
+  },
+  "範囲": {
+    "meanings": [
+      "range",
+      "scope"
+    ],
+    "readings": [
+      "はんい"
+    ]
+  },
+  "体系": {
+    "meanings": [
+      "system",
+      "framework"
+    ],
+    "readings": [
+      "たいけい"
+    ]
+  },
+  "事例": {
+    "meanings": [
+      "case",
+      "example"
+    ],
+    "readings": [
+      "じれい"
+    ]
+  },
+  "一般": {
+    "meanings": [
+      "general"
+    ],
+    "readings": [
+      "いっぱん"
+    ]
+  },
+  "福": {
+    "meanings": [
+      "welfare",
+      "fortune"
+    ],
+    "readings": [
+      "ふく"
+    ]
+  },
+  "障": {
+    "meanings": [
+      "obstacle",
+      "hinder"
+    ],
+    "readings": [
+      "しょう"
+    ]
+  },
+  "被": {
+    "meanings": [
+      "suffer"
+    ],
+    "readings": [
+      "ひ",
+      "こうむる"
+    ]
+  },
+  "支": {
+    "meanings": [
+      "support"
+    ],
+    "readings": [
+      "し"
+    ]
+  },
+  "福祉": {
+    "meanings": [
+      "welfare"
+    ],
+    "readings": [
+      "ふくし"
+    ]
+  },
+  "障害": {
+    "meanings": [
+      "obstacle",
+      "disability"
+    ],
+    "readings": [
+      "しょうがい"
+    ]
+  },
+  "被害": {
+    "meanings": [
+      "damage",
+      "harm"
+    ],
+    "readings": [
+      "ひがい"
+    ]
+  },
+  "避難": {
+    "meanings": [
+      "evacuation"
+    ],
+    "readings": [
+      "ひなん"
+    ]
+  },
+  "支援": {
+    "meanings": [
+      "support",
+      "aid"
+    ],
+    "readings": [
+      "しえん"
+    ]
+  },
+  "術": {
+    "meanings": [
+      "technique"
+    ],
+    "readings": [
+      "じゅつ"
+    ]
+  },
+  "設": {
+    "meanings": [
+      "establish"
+    ],
+    "readings": [
+      "せつ",
+      "もうける"
+    ]
+  },
+  "設備": {
+    "meanings": [
+      "facilities",
+      "equipment"
+    ],
+    "readings": [
+      "せつび"
+    ]
+  }
+}
