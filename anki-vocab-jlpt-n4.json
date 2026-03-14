@@ -1,0 +1,6215 @@
+{
+  "踏む": {
+    "meanings": [
+      "to step on",
+      "to tread on",
+      "to trample on"
+    ],
+    "readings": [
+      "ふ"
+    ]
+  },
+  "漸と": {
+    "meanings": [
+      "at last",
+      "finally"
+    ],
+    "readings": [
+      "やっと"
+    ]
+  },
+  "ピアノ": {
+    "meanings": [
+      "piano (instrument)"
+    ],
+    "readings": [
+      "ピアノ"
+    ]
+  },
+  "ご馳走": {
+    "meanings": [
+      "treat (esp. food and drink)",
+      "entertainment",
+      "treating someone (to a meal)",
+      "taking someone to dinner"
+    ],
+    "readings": [
+      "ちそう"
+    ]
+  },
+  "玩具": {
+    "meanings": [
+      "toy"
+    ],
+    "readings": [
+      "おもちゃ"
+    ]
+  },
+  "再来月": {
+    "meanings": [
+      "month after next"
+    ],
+    "readings": [
+      "さらいげつ"
+    ]
+  },
+  "西洋": {
+    "meanings": [
+      "the West",
+      "the Occident",
+      "Western countries"
+    ],
+    "readings": [
+      "せいよう"
+    ]
+  },
+  "泥棒": {
+    "meanings": [
+      "thief",
+      "burglar",
+      "robber"
+    ],
+    "readings": [
+      "どろぼう"
+    ]
+  },
+  "スーツケース": {
+    "meanings": [
+      "suitcase"
+    ],
+    "readings": [
+      "スーツケース"
+    ]
+  },
+  "建てる": {
+    "meanings": [
+      "to build",
+      "to construct"
+    ],
+    "readings": [
+      "た"
+    ]
+  },
+  "勿論": {
+    "meanings": [
+      "of course",
+      "certainly",
+      "naturally"
+    ],
+    "readings": [
+      "もちろん"
+    ]
+  },
+  "送る": {
+    "meanings": [
+      "to send",
+      "to dispatch",
+      "to forward",
+      "to transmit",
+      "to ship",
+      "to remit"
+    ],
+    "readings": [
+      "おく"
+    ]
+  },
+  "技術": {
+    "meanings": [
+      "technology",
+      "engineering"
+    ],
+    "readings": [
+      "ぎじゅつ"
+    ]
+  },
+  "アルバイト": {
+    "meanings": [
+      "part-time job",
+      "side job"
+    ],
+    "readings": [
+      "アルバイト"
+    ]
+  },
+  "適当": {
+    "meanings": [
+      "suitable",
+      "proper",
+      "appropriate",
+      "adequate",
+      "fit",
+      "fair"
+    ],
+    "readings": [
+      "てきとう"
+    ]
+  },
+  "パート": {
+    "meanings": [
+      "part"
+    ],
+    "readings": [
+      "パート"
+    ]
+  },
+  "屹度": {
+    "meanings": [
+      "surely",
+      "undoubtedly",
+      "almost certainly",
+      "most likely (e.g. 90 percent)"
+    ],
+    "readings": [
+      "きっと"
+    ]
+  },
+  "新聞社": {
+    "meanings": [
+      "newspaper company"
+    ],
+    "readings": [
+      "しんぶんしゃ"
+    ]
+  },
+  "二階建て": {
+    "meanings": [
+      "two-storied building"
+    ],
+    "readings": [
+      "にかいだ"
+    ]
+  },
+  "参る": {
+    "meanings": [
+      "to go",
+      "to come",
+      "to call"
+    ],
+    "readings": [
+      "まいる"
+    ]
+  },
+  "周り": {
+    "meanings": [
+      "circumference",
+      "girth"
+    ],
+    "readings": [
+      "まわ"
+    ]
+  },
+  "男性": {
+    "meanings": [
+      "man",
+      "male"
+    ],
+    "readings": [
+      "だんせい"
+    ]
+  },
+  "迎える": {
+    "meanings": [
+      "to go out to meet",
+      "to receive",
+      "to welcome",
+      "to greet",
+      "to salute",
+      "to hail"
+    ],
+    "readings": [
+      "むか"
+    ]
+  },
+  "力": {
+    "meanings": [
+      "force",
+      "strength",
+      "might",
+      "vigour",
+      "vigor",
+      "energy"
+    ],
+    "readings": [
+      "ちから"
+    ]
+  },
+  "砂": {
+    "meanings": [
+      "sand",
+      "grit"
+    ],
+    "readings": [
+      "すな"
+    ]
+  },
+  "祖父": {
+    "meanings": [
+      "grandfather"
+    ],
+    "readings": [
+      "そふ"
+    ]
+  },
+  "細かい": {
+    "meanings": [
+      "small"
+    ],
+    "readings": [
+      "こま"
+    ]
+  },
+  "別": {
+    "meanings": [
+      "distinction",
+      "difference",
+      "discrimination"
+    ],
+    "readings": [
+      "べつ"
+    ]
+  },
+  "港": {
+    "meanings": [
+      "harbour",
+      "harbor",
+      "port"
+    ],
+    "readings": [
+      "みなと"
+    ]
+  },
+  "逃げる": {
+    "meanings": [
+      "to run away",
+      "to flee",
+      "to get away (e.g. from danger)",
+      "to escape",
+      "to break out",
+      "to leave (e.g. one's spouse)",
+      "to take cover"
+    ],
+    "readings": [
+      "に"
+    ]
+  },
+  "理由": {
+    "meanings": [
+      "reason",
+      "grounds",
+      "pretext",
+      "excuse",
+      "motive"
+    ],
+    "readings": [
+      "りゆう"
+    ]
+  },
+  "硝子": {
+    "meanings": [
+      "glass",
+      "pane"
+    ],
+    "readings": [
+      "ガラス"
+    ]
+  },
+  "紹介": {
+    "meanings": [
+      "introduction",
+      "presentation",
+      "referral",
+      "showcase (of a product)"
+    ],
+    "readings": [
+      "しょうかい"
+    ]
+  },
+  "踊り": {
+    "meanings": [
+      "dance"
+    ],
+    "readings": [
+      "おど"
+    ]
+  },
+  "祖母": {
+    "meanings": [
+      "grandmother"
+    ],
+    "readings": [
+      "そぼ"
+    ]
+  },
+  "上がる": {
+    "meanings": [
+      "to rise",
+      "to go up",
+      "to come up",
+      "to ascend",
+      "to be raised"
+    ],
+    "readings": [
+      "あ"
+    ]
+  },
+  "そんなに": {
+    "meanings": [
+      "so much",
+      "so",
+      "like that"
+    ],
+    "readings": [
+      "そんなに"
+    ]
+  },
+  "見える": {
+    "meanings": [
+      "to be seen",
+      "to be visible",
+      "to be in sight"
+    ],
+    "readings": [
+      "み"
+    ]
+  },
+  "安心": {
+    "meanings": [
+      "peace of mind",
+      "relief",
+      "(sense of) security",
+      "safety",
+      "assurance",
+      "confidence"
+    ],
+    "readings": [
+      "あんしん"
+    ]
+  },
+  "特に": {
+    "meanings": [
+      "particularly",
+      "especially",
+      "in particular",
+      "expressly"
+    ],
+    "readings": [
+      "とく"
+    ]
+  },
+  "込む": {
+    "meanings": [
+      "to be crowded",
+      "to be packed",
+      "to be congested",
+      "to be thronged (with)"
+    ],
+    "readings": [
+      "こ"
+    ]
+  },
+  "決して": {
+    "meanings": [
+      "(not) ever",
+      "(not) by any means",
+      "(not) in the least",
+      "(not) in any way",
+      "(not) at all"
+    ],
+    "readings": [
+      "けっ"
+    ]
+  },
+  "医学": {
+    "meanings": [
+      "medical science",
+      "medicine"
+    ],
+    "readings": [
+      "いがく"
+    ]
+  },
+  "行う": {
+    "meanings": [
+      "to perform",
+      "to do",
+      "to conduct oneself",
+      "to carry out"
+    ],
+    "readings": [
+      "おこな"
+    ]
+  },
+  "社会": {
+    "meanings": [
+      "society",
+      "public",
+      "community",
+      "the world"
+    ],
+    "readings": [
+      "しゃかい"
+    ]
+  },
+  "事故": {
+    "meanings": [
+      "accident",
+      "incident",
+      "trouble"
+    ],
+    "readings": [
+      "じこ"
+    ]
+  },
+  "急行": {
+    "meanings": [
+      "hurrying (to somewhere)",
+      "rushing",
+      "hastening"
+    ],
+    "readings": [
+      "きゅうこう"
+    ]
+  },
+  "品物": {
+    "meanings": [
+      "article",
+      "item",
+      "thing",
+      "goods",
+      "wares"
+    ],
+    "readings": [
+      "しなもの"
+    ]
+  },
+  "投げる": {
+    "meanings": [
+      "to throw",
+      "to hurl",
+      "to fling",
+      "to toss",
+      "to cast"
+    ],
+    "readings": [
+      "な"
+    ]
+  },
+  "生きる": {
+    "meanings": [
+      "to live",
+      "to exist"
+    ],
+    "readings": [
+      "い"
+    ]
+  },
+  "為": {
+    "meanings": [
+      "good",
+      "advantage",
+      "benefit",
+      "welfare"
+    ],
+    "readings": [
+      "ため"
+    ]
+  },
+  "冷房": {
+    "meanings": [
+      "air conditioning",
+      "air cooling"
+    ],
+    "readings": [
+      "れいぼう"
+    ]
+  },
+  "けれど": {
+    "meanings": [
+      "but",
+      "however",
+      "although"
+    ],
+    "readings": [
+      "けれど"
+    ]
+  },
+  "会話": {
+    "meanings": [
+      "conversation",
+      "talk",
+      "chat"
+    ],
+    "readings": [
+      "かいわ"
+    ]
+  },
+  "合う": {
+    "meanings": [
+      "to come together",
+      "to merge",
+      "to unite",
+      "to meet"
+    ],
+    "readings": [
+      "あ"
+    ]
+  },
+  "髭": {
+    "meanings": [
+      "moustache",
+      "mustache",
+      "beard",
+      "whiskers",
+      "sideburns"
+    ],
+    "readings": [
+      "ひげ"
+    ]
+  },
+  "嬉しい": {
+    "meanings": [
+      "happy",
+      "glad",
+      "pleased",
+      "delighted",
+      "overjoyed"
+    ],
+    "readings": [
+      "うれ"
+    ]
+  },
+  "付く": {
+    "meanings": [
+      "to be attached",
+      "to be connected with",
+      "to adhere",
+      "to stick",
+      "to cling"
+    ],
+    "readings": [
+      "つ"
+    ]
+  },
+  "気分": {
+    "meanings": [
+      "feeling",
+      "mood"
+    ],
+    "readings": [
+      "きぶん"
+    ]
+  },
+  "決まる": {
+    "meanings": [
+      "to be decided",
+      "to be settled",
+      "to be fixed",
+      "to be arranged"
+    ],
+    "readings": [
+      "き"
+    ]
+  },
+  "近所": {
+    "meanings": [
+      "neighbourhood",
+      "neighborhood",
+      "vicinity"
+    ],
+    "readings": [
+      "きんじょ"
+    ]
+  },
+  "親切": {
+    "meanings": [
+      "kind",
+      "gentle",
+      "considerate",
+      "generous",
+      "friendly",
+      "nice"
+    ],
+    "readings": [
+      "しんせつ"
+    ]
+  },
+  "あんな": {
+    "meanings": [
+      "that sort of",
+      "that kind of",
+      "like that",
+      "such",
+      "so"
+    ],
+    "readings": [
+      "あんな"
+    ]
+  },
+  "首": {
+    "meanings": [
+      "neck"
+    ],
+    "readings": [
+      "くび"
+    ]
+  },
+  "葡萄": {
+    "meanings": [
+      "grape",
+      "grapevine"
+    ],
+    "readings": [
+      "ぶどう"
+    ]
+  },
+  "太る": {
+    "meanings": [
+      "to put on weight",
+      "to gain weight",
+      "to grow fat",
+      "to get stout"
+    ],
+    "readings": [
+      "ふと"
+    ]
+  },
+  "斯う": {
+    "meanings": [
+      "in this way",
+      "like this",
+      "so",
+      "thus"
+    ],
+    "readings": [
+      "こう"
+    ]
+  },
+  "亡くなる": {
+    "meanings": [
+      "to die",
+      "to pass away"
+    ],
+    "readings": [
+      "な"
+    ]
+  },
+  "漫画": {
+    "meanings": [
+      "cartoon",
+      "comic",
+      "comic strip",
+      "manga"
+    ],
+    "readings": [
+      "まんが"
+    ]
+  },
+  "サンダル": {
+    "meanings": [
+      "sandal"
+    ],
+    "readings": [
+      "サンダル"
+    ]
+  },
+  "続く": {
+    "meanings": [
+      "to continue",
+      "to last",
+      "to go on"
+    ],
+    "readings": [
+      "つづ"
+    ]
+  },
+  "準備": {
+    "meanings": [
+      "preparation",
+      "arrangements",
+      "getting ready",
+      "provision",
+      "setup",
+      "reserving"
+    ],
+    "readings": [
+      "じゅんび"
+    ]
+  },
+  "糸": {
+    "meanings": [
+      "thread",
+      "yarn",
+      "string"
+    ],
+    "readings": [
+      "いと"
+    ]
+  },
+  "貿易": {
+    "meanings": [
+      "(foreign) trade",
+      "(international) commerce",
+      "importing and exporting"
+    ],
+    "readings": [
+      "ぼうえき"
+    ]
+  },
+  "足す": {
+    "meanings": [
+      "to add (numbers)"
+    ],
+    "readings": [
+      "た"
+    ]
+  },
+  "折る": {
+    "meanings": [
+      "to break",
+      "to fracture",
+      "to break off",
+      "to snap off",
+      "to pick (e.g. flowers)"
+    ],
+    "readings": [
+      "お"
+    ]
+  },
+  "約束": {
+    "meanings": [
+      "promise",
+      "agreement",
+      "arrangement",
+      "one's word",
+      "contract",
+      "pact"
+    ],
+    "readings": [
+      "やくそく"
+    ]
+  },
+  "珍しい": {
+    "meanings": [
+      "rare",
+      "uncommon",
+      "unusual",
+      "curious"
+    ],
+    "readings": [
+      "めずら"
+    ]
+  },
+  "昼間": {
+    "meanings": [
+      "daytime",
+      "during the day",
+      "time from sunrise until sunset",
+      "diurnal period"
+    ],
+    "readings": [
+      "ひるま"
+    ]
+  },
+  "警察": {
+    "meanings": [
+      "police"
+    ],
+    "readings": [
+      "けいさつ"
+    ]
+  },
+  "十分": {
+    "meanings": [
+      "enough",
+      "sufficient",
+      "plenty",
+      "adequate",
+      "satisfactory"
+    ],
+    "readings": [
+      "じゅうぶん"
+    ]
+  },
+  "冷える": {
+    "meanings": [
+      "to grow cold",
+      "to get chilly",
+      "to cool down"
+    ],
+    "readings": [
+      "ひ"
+    ]
+  },
+  "具合": {
+    "meanings": [
+      "condition",
+      "state"
+    ],
+    "readings": [
+      "ぐあい"
+    ]
+  },
+  "然る": {
+    "meanings": [
+      "a particular",
+      "a certain"
+    ],
+    "readings": [
+      "さる"
+    ]
+  },
+  "心配": {
+    "meanings": [
+      "worry",
+      "concern",
+      "anxiety",
+      "uneasiness",
+      "fear"
+    ],
+    "readings": [
+      "しんぱい"
+    ]
+  },
+  "意見": {
+    "meanings": [
+      "opinion",
+      "view",
+      "comment"
+    ],
+    "readings": [
+      "いけん"
+    ]
+  },
+  "小学校": {
+    "meanings": [
+      "primary school",
+      "elementary school",
+      "grade school"
+    ],
+    "readings": [
+      "しょうがっこう"
+    ]
+  },
+  "お釣り": {
+    "meanings": [
+      "change (for a purchase)"
+    ],
+    "readings": [
+      "つ"
+    ]
+  },
+  "お見舞い": {
+    "meanings": [
+      "visit (to someone affected by illness or misfortune)",
+      "call",
+      "inquiry (about someone's health)",
+      "expression of sympathy"
+    ],
+    "readings": [
+      "みま"
+    ]
+  },
+  "柔らかい": {
+    "meanings": [
+      "soft",
+      "tender",
+      "supple",
+      "flexible",
+      "limber",
+      "limp"
+    ],
+    "readings": [
+      "やわ"
+    ]
+  },
+  "連れる": {
+    "meanings": [
+      "to take (someone) with one",
+      "to bring along",
+      "to go with",
+      "to be accompanied by"
+    ],
+    "readings": [
+      "つ"
+    ]
+  },
+  "下がる": {
+    "meanings": [
+      "to come down",
+      "to go down",
+      "to fall",
+      "to drop",
+      "to sink",
+      "to get lower"
+    ],
+    "readings": [
+      "さ"
+    ]
+  },
+  "最初": {
+    "meanings": [
+      "beginning",
+      "outset",
+      "first",
+      "onset"
+    ],
+    "readings": [
+      "さいしょ"
+    ]
+  },
+  "卒業": {
+    "meanings": [
+      "graduation",
+      "completion (of a course)"
+    ],
+    "readings": [
+      "そつぎょう"
+    ]
+  },
+  "焼ける": {
+    "meanings": [
+      "to burn",
+      "to burn down",
+      "to go down in flames"
+    ],
+    "readings": [
+      "や"
+    ]
+  },
+  "公務員": {
+    "meanings": [
+      "public employee",
+      "government employee",
+      "public-sector worker",
+      "public servant",
+      "civil servant"
+    ],
+    "readings": [
+      "こうむいん"
+    ]
+  },
+  "壁": {
+    "meanings": [
+      "wall",
+      "partition"
+    ],
+    "readings": [
+      "かべ"
+    ]
+  },
+  "調べる": {
+    "meanings": [
+      "to examine",
+      "to look up",
+      "to investigate",
+      "to check up",
+      "to sense",
+      "to study",
+      "to inquire",
+      "to search"
+    ],
+    "readings": [
+      "しら"
+    ]
+  },
+  "戻る": {
+    "meanings": [
+      "to turn back (e.g. half-way)"
+    ],
+    "readings": [
+      "もど"
+    ]
+  },
+  "運動": {
+    "meanings": [
+      "exercise",
+      "physical training",
+      "workout",
+      "sports",
+      "athletics"
+    ],
+    "readings": [
+      "うんどう"
+    ]
+  },
+  "石": {
+    "meanings": [
+      "stone",
+      "rock",
+      "pebble"
+    ],
+    "readings": [
+      "いし"
+    ]
+  },
+  "騒ぐ": {
+    "meanings": [
+      "to make noise",
+      "to make racket",
+      "to be noisy"
+    ],
+    "readings": [
+      "さわ"
+    ]
+  },
+  "鳴る": {
+    "meanings": [
+      "to sound",
+      "to ring",
+      "to resound",
+      "to echo",
+      "to roar",
+      "to rumble"
+    ],
+    "readings": [
+      "な"
+    ]
+  },
+  "折れる": {
+    "meanings": [
+      "to break",
+      "to be broken",
+      "to snap",
+      "to fracture"
+    ],
+    "readings": [
+      "お"
+    ]
+  },
+  "申す": {
+    "meanings": [
+      "to say",
+      "to be called"
+    ],
+    "readings": [
+      "もう"
+    ]
+  },
+  "気持ち": {
+    "meanings": [
+      "feeling",
+      "sensation",
+      "mood",
+      "state of mind"
+    ],
+    "readings": [
+      "きも"
+    ]
+  },
+  "空港": {
+    "meanings": [
+      "airport"
+    ],
+    "readings": [
+      "くうこう"
+    ]
+  },
+  "翻訳": {
+    "meanings": [
+      "translation"
+    ],
+    "readings": [
+      "ほんやく"
+    ]
+  },
+  "屋上": {
+    "meanings": [
+      "rooftop"
+    ],
+    "readings": [
+      "おくじょう"
+    ]
+  },
+  "店員": {
+    "meanings": [
+      "employee (of a store)",
+      "shop assistant",
+      "clerk",
+      "salesperson"
+    ],
+    "readings": [
+      "てんいん"
+    ]
+  },
+  "招待": {
+    "meanings": [
+      "invitation"
+    ],
+    "readings": [
+      "しょうたい"
+    ]
+  },
+  "過ぎる": {
+    "meanings": [
+      "to pass through",
+      "to pass by",
+      "to go beyond"
+    ],
+    "readings": [
+      "す"
+    ]
+  },
+  "見つかる": {
+    "meanings": [
+      "to be found",
+      "to be discovered"
+    ],
+    "readings": [
+      "み"
+    ]
+  },
+  "代わり": {
+    "meanings": [
+      "substitute",
+      "replacement",
+      "substituting",
+      "replacing"
+    ],
+    "readings": [
+      "か"
+    ]
+  },
+  "召し上がる": {
+    "meanings": [
+      "to eat",
+      "to drink"
+    ],
+    "readings": [
+      "め"
+    ]
+  },
+  "間違える": {
+    "meanings": [
+      "to make a mistake (in)",
+      "to commit an error",
+      "to get wrong",
+      "to do incorrectly"
+    ],
+    "readings": [
+      "まちが"
+    ]
+  },
+  "すると": {
+    "meanings": [
+      "(and) then",
+      "and",
+      "thereupon",
+      "whereupon"
+    ],
+    "readings": [
+      "すると"
+    ]
+  },
+  "始める": {
+    "meanings": [
+      "to start",
+      "to begin",
+      "to commence",
+      "to initiate",
+      "to originate"
+    ],
+    "readings": [
+      "はじ"
+    ]
+  },
+  "寄る": {
+    "meanings": [
+      "to approach",
+      "to draw near",
+      "to come near",
+      "to be close to"
+    ],
+    "readings": [
+      "よ"
+    ]
+  },
+  "隅": {
+    "meanings": [
+      "corner",
+      "nook",
+      "recess"
+    ],
+    "readings": [
+      "すみ"
+    ]
+  },
+  "ビル": {
+    "meanings": [
+      "multi-floor building",
+      "multi-storey building"
+    ],
+    "readings": [
+      "ビル"
+    ]
+  },
+  "飾る": {
+    "meanings": [
+      "to decorate",
+      "to ornament",
+      "to adorn"
+    ],
+    "readings": [
+      "かざ"
+    ]
+  },
+  "森": {
+    "meanings": [
+      "forest"
+    ],
+    "readings": [
+      "もり"
+    ]
+  },
+  "政治": {
+    "meanings": [
+      "politics",
+      "government"
+    ],
+    "readings": [
+      "せいじ"
+    ]
+  },
+  "寺": {
+    "meanings": [
+      "temple (Buddhist)"
+    ],
+    "readings": [
+      "てら"
+    ]
+  },
+  "残念": {
+    "meanings": [
+      "regrettable",
+      "unfortunate",
+      "disappointing",
+      "vexing"
+    ],
+    "readings": [
+      "ざんねん"
+    ]
+  },
+  "以上": {
+    "meanings": [
+      "not less than ...",
+      "... and over",
+      "... and above",
+      "... and upwards",
+      "... or more"
+    ],
+    "readings": [
+      "いじょう"
+    ]
+  },
+  "一杯": {
+    "meanings": [
+      "one cup (of)",
+      "one glass (of)",
+      "one bowl (of)",
+      "cupful",
+      "glassful",
+      "bowlful",
+      "spoonful"
+    ],
+    "readings": [
+      "いっぱい"
+    ]
+  },
+  "到頭": {
+    "meanings": [
+      "finally",
+      "at last",
+      "in the end",
+      "ultimately"
+    ],
+    "readings": [
+      "とうとう"
+    ]
+  },
+  "上手い": {
+    "meanings": [
+      "skillful",
+      "skilful",
+      "skilled",
+      "good",
+      "expert",
+      "clever (expression",
+      "trick",
+      "etc.)",
+      "apt",
+      "appropriate"
+    ],
+    "readings": [
+      "うまい"
+    ]
+  },
+  "素晴らしい": {
+    "meanings": [
+      "wonderful",
+      "splendid",
+      "magnificent"
+    ],
+    "readings": [
+      "すば"
+    ]
+  },
+  "お祝い": {
+    "meanings": [
+      "congratulation",
+      "congratulations",
+      "celebration",
+      "festival"
+    ],
+    "readings": [
+      "いわ"
+    ]
+  },
+  "暖房": {
+    "meanings": [
+      "(indoor) heating"
+    ],
+    "readings": [
+      "だんぼう"
+    ]
+  },
+  "濡れる": {
+    "meanings": [
+      "to get wet"
+    ],
+    "readings": [
+      "ぬ"
+    ]
+  },
+  "着物": {
+    "meanings": [
+      "kimono",
+      "Japanese traditional clothing (esp. full-length)"
+    ],
+    "readings": [
+      "きもの"
+    ]
+  },
+  "開く": {
+    "meanings": [
+      "to open",
+      "to undo",
+      "to unseal",
+      "to unpack"
+    ],
+    "readings": [
+      "ひら"
+    ]
+  },
+  "息子": {
+    "meanings": [
+      "son"
+    ],
+    "readings": [
+      "むすこ"
+    ]
+  },
+  "喧嘩": {
+    "meanings": [
+      "quarrel",
+      "brawl",
+      "fight",
+      "squabble",
+      "scuffle",
+      "argument"
+    ],
+    "readings": [
+      "けんか"
+    ]
+  },
+  "子": {
+    "meanings": [
+      "child",
+      "kid",
+      "teenager",
+      "youngster",
+      "young (non-adult) person"
+    ],
+    "readings": [
+      "こ"
+    ]
+  },
+  "注意": {
+    "meanings": [
+      "attention",
+      "notice",
+      "heed"
+    ],
+    "readings": [
+      "ちゅうい"
+    ]
+  },
+  "最も": {
+    "meanings": [
+      "most",
+      "extremely"
+    ],
+    "readings": [
+      "もっと"
+    ]
+  },
+  "探す": {
+    "meanings": [
+      "to search for",
+      "to look for",
+      "to hunt for",
+      "to seek"
+    ],
+    "readings": [
+      "さが"
+    ]
+  },
+  "仕方": {
+    "meanings": [
+      "way",
+      "method",
+      "means",
+      "resource",
+      "course"
+    ],
+    "readings": [
+      "しかた"
+    ]
+  },
+  "だから": {
+    "meanings": [
+      "so",
+      "therefore",
+      "accordingly",
+      "consequently",
+      "on those grounds",
+      "that is why",
+      "for that reason"
+    ],
+    "readings": [
+      "だから"
+    ]
+  },
+  "数学": {
+    "meanings": [
+      "mathematics"
+    ],
+    "readings": [
+      "すうがく"
+    ]
+  },
+  "例えば": {
+    "meanings": [
+      "for example",
+      "for instance",
+      "e.g."
+    ],
+    "readings": [
+      "たと"
+    ]
+  },
+  "今夜": {
+    "meanings": [
+      "this evening",
+      "tonight"
+    ],
+    "readings": [
+      "こんや"
+    ]
+  },
+  "飛行場": {
+    "meanings": [
+      "airfield",
+      "airport"
+    ],
+    "readings": [
+      "ひこうじょう"
+    ]
+  },
+  "アルコール": {
+    "meanings": [
+      "alcohol"
+    ],
+    "readings": [
+      "アルコール"
+    ]
+  },
+  "嘘": {
+    "meanings": [
+      "lie",
+      "fib",
+      "falsehood",
+      "untruth"
+    ],
+    "readings": [
+      "うそ"
+    ]
+  },
+  "花見": {
+    "meanings": [
+      "cherry blossom viewing",
+      "flower viewing"
+    ],
+    "readings": [
+      "はなみ"
+    ]
+  },
+  "仰る": {
+    "meanings": [
+      "to say",
+      "to speak",
+      "to tell"
+    ],
+    "readings": [
+      "おっしゃる"
+    ]
+  },
+  "拾う": {
+    "meanings": [
+      "to pick up",
+      "to gather"
+    ],
+    "readings": [
+      "ひろ"
+    ]
+  },
+  "真ん中": {
+    "meanings": [
+      "middle",
+      "centre",
+      "center",
+      "midpoint",
+      "heart"
+    ],
+    "readings": [
+      "ま"
+    ]
+  },
+  "倍": {
+    "meanings": [
+      "double",
+      "twice (as much)"
+    ],
+    "readings": [
+      "ばい"
+    ]
+  },
+  "忘れ物": {
+    "meanings": [
+      "lost article",
+      "thing left behind"
+    ],
+    "readings": [
+      "わす"
+    ]
+  },
+  "程": {
+    "meanings": [
+      "extent",
+      "degree",
+      "measure"
+    ],
+    "readings": [
+      "ほど"
+    ]
+  },
+  "こと": {
+    "meanings": [
+      "particle indicating a command"
+    ],
+    "readings": [
+      "こと"
+    ]
+  },
+  "湖": {
+    "meanings": [
+      "lake"
+    ],
+    "readings": [
+      "みずうみ"
+    ]
+  },
+  "課長": {
+    "meanings": [
+      "section manager",
+      "section chief"
+    ],
+    "readings": [
+      "かちょう"
+    ]
+  },
+  "彼": {
+    "meanings": [
+      "he",
+      "him"
+    ],
+    "readings": [
+      "かれ"
+    ]
+  },
+  "赤ん坊": {
+    "meanings": [
+      "baby",
+      "infant"
+    ],
+    "readings": [
+      "あか"
+    ]
+  },
+  "泣く": {
+    "meanings": [
+      "to cry",
+      "to shed tears",
+      "to weep",
+      "to sob"
+    ],
+    "readings": [
+      "な"
+    ]
+  },
+  "楽しみ": {
+    "meanings": [
+      "enjoyment",
+      "pleasure",
+      "amusement",
+      "delight",
+      "joy",
+      "fun",
+      "diversion",
+      "hobby"
+    ],
+    "readings": [
+      "たの"
+    ]
+  },
+  "点": {
+    "meanings": [
+      "dot",
+      "spot",
+      "point",
+      "speck",
+      "mark"
+    ],
+    "readings": [
+      "てん"
+    ]
+  },
+  "反対": {
+    "meanings": [
+      "opposition",
+      "resistance",
+      "antagonism",
+      "hostility",
+      "objection",
+      "dissent"
+    ],
+    "readings": [
+      "はんたい"
+    ]
+  },
+  "国際": {
+    "meanings": [
+      "international"
+    ],
+    "readings": [
+      "こくさい"
+    ]
+  },
+  "再来週": {
+    "meanings": [
+      "week after next"
+    ],
+    "readings": [
+      "さらいしゅう"
+    ]
+  },
+  "交通": {
+    "meanings": [
+      "traffic",
+      "transportation"
+    ],
+    "readings": [
+      "こうつう"
+    ]
+  },
+  "噛む": {
+    "meanings": [
+      "to bite"
+    ],
+    "readings": [
+      "か"
+    ]
+  },
+  "盛ん": {
+    "meanings": [
+      "prosperous",
+      "flourishing",
+      "thriving",
+      "successful"
+    ],
+    "readings": [
+      "さか"
+    ]
+  },
+  "経験": {
+    "meanings": [
+      "experience"
+    ],
+    "readings": [
+      "けいけん"
+    ]
+  },
+  "大抵": {
+    "meanings": [
+      "mostly",
+      "ordinarily",
+      "usually",
+      "generally"
+    ],
+    "readings": [
+      "たいてい"
+    ]
+  },
+  "非常に": {
+    "meanings": [
+      "very",
+      "extremely",
+      "exceedingly"
+    ],
+    "readings": [
+      "ひじょう"
+    ]
+  },
+  "電灯": {
+    "meanings": [
+      "electric light"
+    ],
+    "readings": [
+      "でんとう"
+    ]
+  },
+  "自由": {
+    "meanings": [
+      "freedom",
+      "liberty"
+    ],
+    "readings": [
+      "じゆう"
+    ]
+  },
+  "下げる": {
+    "meanings": [
+      "to hang",
+      "to suspend",
+      "to wear (e.g. decoration)"
+    ],
+    "readings": [
+      "さ"
+    ]
+  },
+  "そんな": {
+    "meanings": [
+      "such",
+      "that sort of",
+      "that kind of",
+      "like that"
+    ],
+    "readings": [
+      "そんな"
+    ]
+  },
+  "ソフト": {
+    "meanings": [
+      "soft"
+    ],
+    "readings": [
+      "ソフト"
+    ]
+  },
+  "月": {
+    "meanings": [
+      "Moon"
+    ],
+    "readings": [
+      "つき"
+    ]
+  },
+  "落ちる": {
+    "meanings": [
+      "to fall",
+      "to drop",
+      "to come down",
+      "to crash",
+      "to collapse",
+      "to cave in",
+      "to give way"
+    ],
+    "readings": [
+      "お"
+    ]
+  },
+  "船": {
+    "meanings": [
+      "ship",
+      "boat",
+      "watercraft",
+      "vessel",
+      "seaplane"
+    ],
+    "readings": [
+      "ふね"
+    ]
+  },
+  "捕まえる": {
+    "meanings": [
+      "to catch",
+      "to capture",
+      "to arrest",
+      "to seize",
+      "to restrain"
+    ],
+    "readings": [
+      "つか"
+    ]
+  },
+  "乾く": {
+    "meanings": [
+      "to get dry"
+    ],
+    "readings": [
+      "かわ"
+    ]
+  },
+  "天気予報": {
+    "meanings": [
+      "weather forecast",
+      "weather report"
+    ],
+    "readings": [
+      "てんきよほう"
+    ]
+  },
+  "回る": {
+    "meanings": [
+      "to turn",
+      "to rotate",
+      "to revolve",
+      "to spin"
+    ],
+    "readings": [
+      "まわ"
+    ]
+  },
+  "サンドイッチ": {
+    "meanings": [
+      "sandwich"
+    ],
+    "readings": [
+      "サンドイッチ"
+    ]
+  },
+  "どんどん": {
+    "meanings": [
+      "drumming (noise)",
+      "beating",
+      "pounding",
+      "banging",
+      "booming",
+      "stamping"
+    ],
+    "readings": [
+      "どんどん"
+    ]
+  },
+  "電報": {
+    "meanings": [
+      "telegram"
+    ],
+    "readings": [
+      "でんぽう"
+    ]
+  },
+  "怪我": {
+    "meanings": [
+      "injury",
+      "wound"
+    ],
+    "readings": [
+      "けが"
+    ]
+  },
+  "原因": {
+    "meanings": [
+      "cause",
+      "origin",
+      "source"
+    ],
+    "readings": [
+      "げんいん"
+    ]
+  },
+  "足りる": {
+    "meanings": [
+      "to be sufficient",
+      "to be enough"
+    ],
+    "readings": [
+      "た"
+    ]
+  },
+  "此れから": {
+    "meanings": [
+      "from now on",
+      "after this",
+      "in the future",
+      "in future"
+    ],
+    "readings": [
+      "これから"
+    ]
+  },
+  "線": {
+    "meanings": [
+      "line",
+      "stripe",
+      "stria"
+    ],
+    "readings": [
+      "せん"
+    ]
+  },
+  "割れる": {
+    "meanings": [
+      "to break",
+      "to be smashed"
+    ],
+    "readings": [
+      "わ"
+    ]
+  },
+  "匂い": {
+    "meanings": [
+      "smell",
+      "scent",
+      "odour",
+      "odor",
+      "stench"
+    ],
+    "readings": [
+      "にお"
+    ]
+  },
+  "ＦＡＸ": {
+    "meanings": [
+      "fax",
+      "facsimile"
+    ],
+    "readings": [
+      "ァックス"
+    ]
+  },
+  "間に合う": {
+    "meanings": [
+      "to be in time (for)"
+    ],
+    "readings": [
+      "ま"
+    ]
+  },
+  "一生懸命": {
+    "meanings": [
+      "very hard",
+      "with utmost effort",
+      "as hard as one can",
+      "with all one's might",
+      "for dear life",
+      "eagerly",
+      "desperately"
+    ],
+    "readings": [
+      "いっしょうけんめい"
+    ]
+  },
+  "丁寧": {
+    "meanings": [
+      "polite",
+      "courteous",
+      "civil"
+    ],
+    "readings": [
+      "ていねい"
+    ]
+  },
+  "途中": {
+    "meanings": [
+      "on the way",
+      "en route"
+    ],
+    "readings": [
+      "とちゅう"
+    ]
+  },
+  "変": {
+    "meanings": [
+      "strange",
+      "odd",
+      "peculiar",
+      "weird",
+      "curious",
+      "eccentric",
+      "funny",
+      "suspicious",
+      "fishy"
+    ],
+    "readings": [
+      "へん"
+    ]
+  },
+  "其れに": {
+    "meanings": [
+      "besides",
+      "in addition",
+      "also",
+      "moreover"
+    ],
+    "readings": [
+      "それに"
+    ]
+  },
+  "パソコン": {
+    "meanings": [
+      "personal computer",
+      "PC"
+    ],
+    "readings": [
+      "パソコン"
+    ]
+  },
+  "入院": {
+    "meanings": [
+      "hospitalization",
+      "hospitalisation"
+    ],
+    "readings": [
+      "にゅういん"
+    ]
+  },
+  "もう直ぐ": {
+    "meanings": [
+      "soon",
+      "shortly",
+      "before long",
+      "nearly",
+      "almost"
+    ],
+    "readings": [
+      "もうすぐ"
+    ]
+  },
+  "揺れる": {
+    "meanings": [
+      "to shake",
+      "to sway",
+      "to rock",
+      "to swing",
+      "to tremble",
+      "to jolt",
+      "to pitch",
+      "to roll",
+      "to flicker"
+    ],
+    "readings": [
+      "ゆ"
+    ]
+  },
+  "文学": {
+    "meanings": [
+      "literature"
+    ],
+    "readings": [
+      "ぶんがく"
+    ]
+  },
+  "些とも": {
+    "meanings": [
+      "(not) at all",
+      "(not) a bit",
+      "(not) in the least",
+      "(not) in the slightest"
+    ],
+    "readings": [
+      "ちっとも"
+    ]
+  },
+  "大体": {
+    "meanings": [
+      "generally",
+      "on the whole",
+      "mostly",
+      "almost",
+      "nearly",
+      "approximately",
+      "roughly",
+      "about"
+    ],
+    "readings": [
+      "だいたい"
+    ]
+  },
+  "続ける": {
+    "meanings": [
+      "to continue",
+      "to keep up",
+      "to keep on"
+    ],
+    "readings": [
+      "つづ"
+    ]
+  },
+  "予習": {
+    "meanings": [
+      "preparation for a lesson"
+    ],
+    "readings": [
+      "よしゅう"
+    ]
+  },
+  "お陰": {
+    "meanings": [
+      "grace (of God)",
+      "benevolence (of Buddha)",
+      "blessing"
+    ],
+    "readings": [
+      "おかげ"
+    ]
+  },
+  "事務所": {
+    "meanings": [
+      "office"
+    ],
+    "readings": [
+      "じむしょ"
+    ]
+  },
+  "食料品": {
+    "meanings": [
+      "foodstuff",
+      "groceries"
+    ],
+    "readings": [
+      "しょくりょうひん"
+    ]
+  },
+  "そろそろ": {
+    "meanings": [
+      "soon",
+      "before long",
+      "any time now",
+      "momentarily"
+    ],
+    "readings": [
+      "そろそろ"
+    ]
+  },
+  "驚く": {
+    "meanings": [
+      "to be surprised",
+      "to be taken aback",
+      "to be amazed",
+      "to be astonished",
+      "to be shocked"
+    ],
+    "readings": [
+      "おどろ"
+    ]
+  },
+  "怖い": {
+    "meanings": [
+      "scary",
+      "frightening",
+      "eerie",
+      "dreadful"
+    ],
+    "readings": [
+      "こわ"
+    ]
+  },
+  "美術館": {
+    "meanings": [
+      "art museum",
+      "art gallery"
+    ],
+    "readings": [
+      "びじゅつかん"
+    ]
+  },
+  "アクセサリー": {
+    "meanings": [
+      "accessory (fashion)",
+      "jewelry"
+    ],
+    "readings": [
+      "アクセサリー"
+    ]
+  },
+  "一度": {
+    "meanings": [
+      "once",
+      "one time",
+      "on one occasion"
+    ],
+    "readings": [
+      "いちど"
+    ]
+  },
+  "生産": {
+    "meanings": [
+      "production",
+      "manufacture"
+    ],
+    "readings": [
+      "せいさん"
+    ]
+  },
+  "はっきり": {
+    "meanings": [
+      "clearly",
+      "plainly",
+      "distinctly"
+    ],
+    "readings": [
+      "はっきり"
+    ]
+  },
+  "今度": {
+    "meanings": [
+      "this time",
+      "now"
+    ],
+    "readings": [
+      "こんど"
+    ]
+  },
+  "割合": {
+    "meanings": [
+      "rate",
+      "ratio",
+      "percentage",
+      "proportion"
+    ],
+    "readings": [
+      "わりあい"
+    ]
+  },
+  "変わる": {
+    "meanings": [
+      "to change",
+      "to be transformed",
+      "to be altered",
+      "to vary"
+    ],
+    "readings": [
+      "か"
+    ]
+  },
+  "味": {
+    "meanings": [
+      "flavor",
+      "flavour",
+      "taste"
+    ],
+    "readings": [
+      "あじ"
+    ]
+  },
+  "もし": {
+    "meanings": [
+      "excuse me! (when calling out to someone)"
+    ],
+    "readings": [
+      "もし"
+    ]
+  },
+  "下着": {
+    "meanings": [
+      "underwear",
+      "undergarment",
+      "underclothes",
+      "lingerie"
+    ],
+    "readings": [
+      "したぎ"
+    ]
+  },
+  "髪": {
+    "meanings": [
+      "hair (on the head)"
+    ],
+    "readings": [
+      "かみ"
+    ]
+  },
+  "引き出す": {
+    "meanings": [
+      "to pull out",
+      "to take out",
+      "to draw out"
+    ],
+    "readings": [
+      "ひ"
+    ]
+  },
+  "退院": {
+    "meanings": [
+      "leaving hospital",
+      "discharge from hospital"
+    ],
+    "readings": [
+      "たいいん"
+    ]
+  },
+  "育てる": {
+    "meanings": [
+      "to raise",
+      "to rear",
+      "to bring up"
+    ],
+    "readings": [
+      "そだ"
+    ]
+  },
+  "美しい": {
+    "meanings": [
+      "beautiful",
+      "pretty",
+      "lovely",
+      "sweet",
+      "pure (heart",
+      "friendship",
+      "etc.)"
+    ],
+    "readings": [
+      "うつく"
+    ]
+  },
+  "光る": {
+    "meanings": [
+      "to shine",
+      "to glitter",
+      "to be bright"
+    ],
+    "readings": [
+      "ひか"
+    ]
+  },
+  "支度": {
+    "meanings": [
+      "preparation",
+      "arrangements"
+    ],
+    "readings": [
+      "したく"
+    ]
+  },
+  "届ける": {
+    "meanings": [
+      "to deliver",
+      "to forward",
+      "to send"
+    ],
+    "readings": [
+      "とど"
+    ]
+  },
+  "立てる": {
+    "meanings": [
+      "to stand up",
+      "to put up",
+      "to set up",
+      "to erect",
+      "to raise"
+    ],
+    "readings": [
+      "た"
+    ]
+  },
+  "受ける": {
+    "meanings": [
+      "to receive",
+      "to get"
+    ],
+    "readings": [
+      "う"
+    ]
+  },
+  "泊まる": {
+    "meanings": [
+      "to stay at (e.g. hotel)"
+    ],
+    "readings": [
+      "と"
+    ]
+  },
+  "知らせる": {
+    "meanings": [
+      "to notify",
+      "to advise",
+      "to inform"
+    ],
+    "readings": [
+      "し"
+    ]
+  },
+  "壊す": {
+    "meanings": [
+      "to break",
+      "to destroy",
+      "to demolish"
+    ],
+    "readings": [
+      "こわ"
+    ]
+  },
+  "内": {
+    "meanings": [
+      "inside",
+      "within"
+    ],
+    "readings": [
+      "うち"
+    ]
+  },
+  "正しい": {
+    "meanings": [
+      "right",
+      "correct"
+    ],
+    "readings": [
+      "ただ"
+    ]
+  },
+  "小鳥": {
+    "meanings": [
+      "small bird",
+      "little bird"
+    ],
+    "readings": [
+      "ことり"
+    ]
+  },
+  "差し上げる": {
+    "meanings": [
+      "to lift up",
+      "to hold up",
+      "to raise"
+    ],
+    "readings": [
+      "さ"
+    ]
+  },
+  "片付ける": {
+    "meanings": [
+      "to put in order",
+      "to tidy up",
+      "to clean up",
+      "to put away",
+      "to clear away"
+    ],
+    "readings": [
+      "かたづ"
+    ]
+  },
+  "引っ越す": {
+    "meanings": [
+      "to move (house)",
+      "to change residence"
+    ],
+    "readings": [
+      "ひ"
+    ]
+  },
+  "亜細亜": {
+    "meanings": [
+      "Asia"
+    ],
+    "readings": [
+      "アジア"
+    ]
+  },
+  "矢張り": {
+    "meanings": [
+      "as expected",
+      "sure enough",
+      "just as one thought"
+    ],
+    "readings": [
+      "やはり"
+    ]
+  },
+  "葉": {
+    "meanings": [
+      "leaf",
+      "blade (of grass)",
+      "(pine) needle"
+    ],
+    "readings": [
+      "は"
+    ]
+  },
+  "人口": {
+    "meanings": [
+      "population"
+    ],
+    "readings": [
+      "じんこう"
+    ]
+  },
+  "最近": {
+    "meanings": [
+      "recently",
+      "lately",
+      "these days",
+      "nowadays",
+      "right now"
+    ],
+    "readings": [
+      "さいきん"
+    ]
+  },
+  "運ぶ": {
+    "meanings": [
+      "to carry",
+      "to transport",
+      "to move",
+      "to convey"
+    ],
+    "readings": [
+      "はこ"
+    ]
+  },
+  "増える": {
+    "meanings": [
+      "to increase",
+      "to multiply"
+    ],
+    "readings": [
+      "ふ"
+    ]
+  },
+  "ジャム": {
+    "meanings": [
+      "jam"
+    ],
+    "readings": [
+      "ジャム"
+    ]
+  },
+  "大分": {
+    "meanings": [
+      "considerably",
+      "greatly",
+      "a lot"
+    ],
+    "readings": [
+      "だいぶ"
+    ]
+  },
+  "寝坊": {
+    "meanings": [
+      "sleeping in late",
+      "oversleeping"
+    ],
+    "readings": [
+      "ねぼう"
+    ]
+  },
+  "積もり": {
+    "meanings": [
+      "intention",
+      "plan",
+      "purpose",
+      "expectation"
+    ],
+    "readings": [
+      "つもり"
+    ]
+  },
+  "お宅": {
+    "meanings": [
+      "your house",
+      "your home",
+      "your family"
+    ],
+    "readings": [
+      "たく"
+    ]
+  },
+  "楽しむ": {
+    "meanings": [
+      "to enjoy",
+      "to take pleasure in",
+      "to have a good time",
+      "to have fun",
+      "to amuse oneself"
+    ],
+    "readings": [
+      "たの"
+    ]
+  },
+  "産業": {
+    "meanings": [
+      "industry"
+    ],
+    "readings": [
+      "さんぎょう"
+    ]
+  },
+  "ワープロ": {
+    "meanings": [
+      "word processor"
+    ],
+    "readings": [
+      "ワープロ"
+    ]
+  },
+  "倒れる": {
+    "meanings": [
+      "to fall (over",
+      "down)",
+      "to collapse",
+      "to take a fall",
+      "to topple"
+    ],
+    "readings": [
+      "たお"
+    ]
+  },
+  "プレゼント": {
+    "meanings": [
+      "present",
+      "gift"
+    ],
+    "readings": [
+      "プレゼント"
+    ]
+  },
+  "コンサート": {
+    "meanings": [
+      "concert"
+    ],
+    "readings": [
+      "コンサート"
+    ]
+  },
+  "枝": {
+    "meanings": [
+      "branch",
+      "bough",
+      "limb",
+      "twig",
+      "sprig",
+      "spray"
+    ],
+    "readings": [
+      "えだ"
+    ]
+  },
+  "無理": {
+    "meanings": [
+      "unreasonable",
+      "unnatural",
+      "unjustifiable"
+    ],
+    "readings": [
+      "むり"
+    ]
+  },
+  "コンピュータ": {
+    "meanings": [
+      "computer"
+    ],
+    "readings": [
+      "コンピュータ"
+    ]
+  },
+  "思う": {
+    "meanings": [
+      "to think",
+      "to consider",
+      "to believe",
+      "to reckon"
+    ],
+    "readings": [
+      "おも"
+    ]
+  },
+  "駄目": {
+    "meanings": [
+      "no good",
+      "not serving its purpose",
+      "useless",
+      "broken"
+    ],
+    "readings": [
+      "だめ"
+    ]
+  },
+  "遅れる": {
+    "meanings": [
+      "to be late",
+      "to be delayed",
+      "to fall behind schedule",
+      "to be overdue"
+    ],
+    "readings": [
+      "おく"
+    ]
+  },
+  "確り": {
+    "meanings": [
+      "tightly (holding on)",
+      "firmly",
+      "securely"
+    ],
+    "readings": [
+      "しっかり"
+    ]
+  },
+  "場所": {
+    "meanings": [
+      "place",
+      "location",
+      "spot",
+      "position",
+      "area"
+    ],
+    "readings": [
+      "ばしょ"
+    ]
+  },
+  "ご存知": {
+    "meanings": [
+      "knowing",
+      "being aware (of)"
+    ],
+    "readings": [
+      "ぞんじ"
+    ]
+  },
+  "久しぶり": {
+    "meanings": [
+      "a long time (since the last time)",
+      "first in a long time"
+    ],
+    "readings": [
+      "ひさ"
+    ]
+  },
+  "進む": {
+    "meanings": [
+      "to advance",
+      "to go forward"
+    ],
+    "readings": [
+      "すす"
+    ]
+  },
+  "チェック": {
+    "meanings": [
+      "check (pattern)",
+      "plaid"
+    ],
+    "readings": [
+      "チェック"
+    ]
+  },
+  "酷い": {
+    "meanings": [
+      "cruel",
+      "heartless",
+      "hard",
+      "harsh",
+      "severe"
+    ],
+    "readings": [
+      "ひどい"
+    ]
+  },
+  "触る": {
+    "meanings": [
+      "to touch",
+      "to feel",
+      "to handle"
+    ],
+    "readings": [
+      "さわ"
+    ]
+  },
+  "申し上げる": {
+    "meanings": [
+      "to say",
+      "to tell",
+      "to state",
+      "to express",
+      "to offer",
+      "to extend (greetings",
+      "congratulations",
+      "etc.)"
+    ],
+    "readings": [
+      "もう"
+    ]
+  },
+  "運転手": {
+    "meanings": [
+      "driver",
+      "chauffeur"
+    ],
+    "readings": [
+      "うんてんしゅ"
+    ]
+  },
+  "大学生": {
+    "meanings": [
+      "university student",
+      "college student"
+    ],
+    "readings": [
+      "だいがくせい"
+    ]
+  },
+  "硬い": {
+    "meanings": [
+      "hard",
+      "solid",
+      "tough"
+    ],
+    "readings": [
+      "かた"
+    ]
+  },
+  "湯": {
+    "meanings": [
+      "hot water"
+    ],
+    "readings": [
+      "ゆ"
+    ]
+  },
+  "用意": {
+    "meanings": [
+      "preparation",
+      "arrangements",
+      "provision",
+      "getting ready",
+      "laying out (e.g. a meal)"
+    ],
+    "readings": [
+      "ようい"
+    ]
+  },
+  "伝える": {
+    "meanings": [
+      "to convey",
+      "to report",
+      "to transmit",
+      "to communicate",
+      "to tell",
+      "to impart",
+      "to propagate",
+      "to teach",
+      "to bequeath"
+    ],
+    "readings": [
+      "つた"
+    ]
+  },
+  "特別": {
+    "meanings": [
+      "special",
+      "particular",
+      "extraordinary",
+      "exceptional",
+      "especial"
+    ],
+    "readings": [
+      "とくべつ"
+    ]
+  },
+  "棚": {
+    "meanings": [
+      "shelf",
+      "ledge",
+      "rack"
+    ],
+    "readings": [
+      "たな"
+    ]
+  },
+  "壊れる": {
+    "meanings": [
+      "to be broken",
+      "to break",
+      "to fall apart",
+      "to collapse",
+      "to be destroyed",
+      "to be damaged"
+    ],
+    "readings": [
+      "こわ"
+    ]
+  },
+  "床屋": {
+    "meanings": [
+      "barbershop",
+      "barber shop",
+      "barber"
+    ],
+    "readings": [
+      "とこや"
+    ]
+  },
+  "気": {
+    "meanings": [
+      "spirit",
+      "mind",
+      "heart"
+    ],
+    "readings": [
+      "き"
+    ]
+  },
+  "構う": {
+    "meanings": [
+      "to mind",
+      "to care about",
+      "to be concerned about",
+      "to have a regard for"
+    ],
+    "readings": [
+      "かま"
+    ]
+  },
+  "其れで": {
+    "meanings": [
+      "so",
+      "therefore",
+      "and",
+      "(and) then"
+    ],
+    "readings": [
+      "それで"
+    ]
+  },
+  "残る": {
+    "meanings": [
+      "to remain",
+      "to be left"
+    ],
+    "readings": [
+      "のこ"
+    ]
+  },
+  "考える": {
+    "meanings": [
+      "to think (about",
+      "of)",
+      "to think over",
+      "to ponder",
+      "to contemplate",
+      "to reflect (on)",
+      "to meditate (on)"
+    ],
+    "readings": [
+      "かんが"
+    ]
+  },
+  "凄い": {
+    "meanings": [
+      "terrible",
+      "dreadful"
+    ],
+    "readings": [
+      "すごい"
+    ]
+  },
+  "時代": {
+    "meanings": [
+      "period",
+      "epoch",
+      "era",
+      "age"
+    ],
+    "readings": [
+      "じだい"
+    ]
+  },
+  "指輪": {
+    "meanings": [
+      "(finger) ring"
+    ],
+    "readings": [
+      "ゆびわ"
+    ]
+  },
+  "動物園": {
+    "meanings": [
+      "zoo",
+      "zoological gardens"
+    ],
+    "readings": [
+      "どうぶつえん"
+    ]
+  },
+  "光": {
+    "meanings": [
+      "light"
+    ],
+    "readings": [
+      "ひかり"
+    ]
+  },
+  "スーツ": {
+    "meanings": [
+      "suit (clothing)"
+    ],
+    "readings": [
+      "スーツ"
+    ]
+  },
+  "役に立つ": {
+    "meanings": [
+      "to be helpful",
+      "to be useful"
+    ],
+    "readings": [
+      "やく"
+    ]
+  },
+  "神社": {
+    "meanings": [
+      "Shinto shrine"
+    ],
+    "readings": [
+      "じんじゃ"
+    ]
+  },
+  "伺う": {
+    "meanings": [
+      "to call on someone",
+      "to call at a place",
+      "to pay a visit",
+      "to wait on someone"
+    ],
+    "readings": [
+      "うかが"
+    ]
+  },
+  "試験": {
+    "meanings": [
+      "examination",
+      "exam",
+      "test"
+    ],
+    "readings": [
+      "しけん"
+    ]
+  },
+  "瓦斯": {
+    "meanings": [
+      "gas (as a fuel)"
+    ],
+    "readings": [
+      "ガス"
+    ]
+  },
+  "随分": {
+    "meanings": [
+      "very",
+      "extremely",
+      "surprisingly",
+      "fairly",
+      "quite",
+      "considerably",
+      "awfully",
+      "terribly"
+    ],
+    "readings": [
+      "ずいぶん"
+    ]
+  },
+  "見物": {
+    "meanings": [
+      "sightseeing",
+      "watching",
+      "viewing"
+    ],
+    "readings": [
+      "けんぶつ"
+    ]
+  },
+  "世界": {
+    "meanings": [
+      "the world",
+      "society",
+      "the universe"
+    ],
+    "readings": [
+      "せかい"
+    ]
+  },
+  "眠い": {
+    "meanings": [
+      "sleepy",
+      "drowsy",
+      "somnolent"
+    ],
+    "readings": [
+      "ねむ"
+    ]
+  },
+  "動く": {
+    "meanings": [
+      "to move",
+      "to stir",
+      "to shift",
+      "to shake",
+      "to swing"
+    ],
+    "readings": [
+      "うご"
+    ]
+  },
+  "生活": {
+    "meanings": [
+      "life",
+      "living"
+    ],
+    "readings": [
+      "せいかつ"
+    ]
+  },
+  "ステーキ": {
+    "meanings": [
+      "steak"
+    ],
+    "readings": [
+      "ステーキ"
+    ]
+  },
+  "毛": {
+    "meanings": [
+      "hair"
+    ],
+    "readings": [
+      "け"
+    ]
+  },
+  "下さる": {
+    "meanings": [
+      "to give",
+      "to confer",
+      "to bestow"
+    ],
+    "readings": [
+      "くださる"
+    ]
+  },
+  "贈り物": {
+    "meanings": [
+      "present",
+      "gift"
+    ],
+    "readings": [
+      "おく"
+    ]
+  },
+  "市民": {
+    "meanings": [
+      "citizen (of a country)",
+      "citizenry"
+    ],
+    "readings": [
+      "しみん"
+    ]
+  },
+  "昔": {
+    "meanings": [
+      "the old days",
+      "the past",
+      "former times",
+      "a long time ago"
+    ],
+    "readings": [
+      "むかし"
+    ]
+  },
+  "金持ち": {
+    "meanings": [
+      "rich person",
+      "wealthy person"
+    ],
+    "readings": [
+      "かねも"
+    ]
+  },
+  "呉れる": {
+    "meanings": [
+      "to give",
+      "to let (one) have"
+    ],
+    "readings": [
+      "くれる"
+    ]
+  },
+  "踊る": {
+    "meanings": [
+      "to dance (orig. a hopping dance)"
+    ],
+    "readings": [
+      "おど"
+    ]
+  },
+  "空気": {
+    "meanings": [
+      "air",
+      "atmosphere"
+    ],
+    "readings": [
+      "くうき"
+    ]
+  },
+  "又は": {
+    "meanings": [
+      "or",
+      "either ... or ..."
+    ],
+    "readings": [
+      "または"
+    ]
+  },
+  "入学": {
+    "meanings": [
+      "admission (to a school or university)",
+      "entrance",
+      "enrolment",
+      "enrollment",
+      "matriculation"
+    ],
+    "readings": [
+      "にゅうがく"
+    ]
+  },
+  "故障": {
+    "meanings": [
+      "fault",
+      "trouble",
+      "breakdown",
+      "failure",
+      "being out of order"
+    ],
+    "readings": [
+      "こしょう"
+    ]
+  },
+  "以下": {
+    "meanings": [
+      "not exceeding ...",
+      "not more than ...",
+      "... and under",
+      "... and below",
+      "... or fewer"
+    ],
+    "readings": [
+      "いか"
+    ]
+  },
+  "謝る": {
+    "meanings": [
+      "to apologize (apologise)"
+    ],
+    "readings": [
+      "あやま"
+    ]
+  },
+  "先": {
+    "meanings": [
+      "a short while ago",
+      "a moment ago",
+      "just now",
+      "some time ago"
+    ],
+    "readings": [
+      "さっき"
+    ]
+  },
+  "漬ける": {
+    "meanings": [
+      "to soak (in)",
+      "to steep",
+      "to dip",
+      "to dunk"
+    ],
+    "readings": [
+      "つ"
+    ]
+  },
+  "テキスト": {
+    "meanings": [
+      "text"
+    ],
+    "readings": [
+      "テキスト"
+    ]
+  },
+  "日記": {
+    "meanings": [
+      "diary",
+      "journal"
+    ],
+    "readings": [
+      "にっき"
+    ]
+  },
+  "工業": {
+    "meanings": [
+      "(manufacturing) industry"
+    ],
+    "readings": [
+      "こうぎょう"
+    ]
+  },
+  "別れる": {
+    "meanings": [
+      "to part (usu. of people)",
+      "to part from",
+      "to part with",
+      "to be apart from"
+    ],
+    "readings": [
+      "わか"
+    ]
+  },
+  "深い": {
+    "meanings": [
+      "deep"
+    ],
+    "readings": [
+      "ふか"
+    ]
+  },
+  "海岸": {
+    "meanings": [
+      "seashore",
+      "coast",
+      "seaside",
+      "waterfront",
+      "beach"
+    ],
+    "readings": [
+      "かいがん"
+    ]
+  },
+  "受付": {
+    "meanings": [
+      "reception (desk)",
+      "information desk",
+      "receptionist",
+      "information clerk"
+    ],
+    "readings": [
+      "うけつけ"
+    ]
+  },
+  "世話": {
+    "meanings": [
+      "care",
+      "looking after",
+      "help",
+      "assistance",
+      "aid"
+    ],
+    "readings": [
+      "せわ"
+    ]
+  },
+  "留守": {
+    "meanings": [
+      "absence",
+      "being away from home"
+    ],
+    "readings": [
+      "るす"
+    ]
+  },
+  "この間": {
+    "meanings": [
+      "the other day",
+      "lately",
+      "recently",
+      "during this period"
+    ],
+    "readings": [
+      "あいだ"
+    ]
+  },
+  "レジ": {
+    "meanings": [
+      "(cash) register"
+    ],
+    "readings": [
+      "レジ"
+    ]
+  },
+  "集まる": {
+    "meanings": [
+      "to gather",
+      "to collect",
+      "to assemble"
+    ],
+    "readings": [
+      "あつ"
+    ]
+  },
+  "可笑しい": {
+    "meanings": [
+      "funny",
+      "amusing",
+      "comical",
+      "laughable",
+      "ridiculous"
+    ],
+    "readings": [
+      "おかしい"
+    ]
+  },
+  "阿弗利加": {
+    "meanings": [
+      "Africa"
+    ],
+    "readings": [
+      "アフリカ"
+    ]
+  },
+  "中々": {
+    "meanings": [
+      "very",
+      "considerably",
+      "easily",
+      "readily",
+      "fairly",
+      "quite",
+      "highly",
+      "rather"
+    ],
+    "readings": [
+      "なかなか"
+    ]
+  },
+  "払う": {
+    "meanings": [
+      "to pay (e.g. money",
+      "bill)"
+    ],
+    "readings": [
+      "はら"
+    ]
+  },
+  "番組": {
+    "meanings": [
+      "program (e.g. TV)",
+      "programme"
+    ],
+    "readings": [
+      "ばんぐみ"
+    ]
+  },
+  "先ず": {
+    "meanings": [
+      "first (of all)",
+      "firstly",
+      "to begin with",
+      "before anything else"
+    ],
+    "readings": [
+      "まず"
+    ]
+  },
+  "田舎": {
+    "meanings": [
+      "rural area",
+      "countryside",
+      "the sticks"
+    ],
+    "readings": [
+      "いなか"
+    ]
+  },
+  "島": {
+    "meanings": [
+      "island"
+    ],
+    "readings": [
+      "しま"
+    ]
+  },
+  "駐車場": {
+    "meanings": [
+      "parking lot",
+      "car park",
+      "carpark",
+      "parking garage"
+    ],
+    "readings": [
+      "ちゅうしゃじょう"
+    ]
+  },
+  "汽車": {
+    "meanings": [
+      "train (esp. long distance train)"
+    ],
+    "readings": [
+      "きしゃ"
+    ]
+  },
+  "君": {
+    "meanings": [
+      "Mr",
+      "master",
+      "boy"
+    ],
+    "readings": [
+      "くん"
+    ]
+  },
+  "機会": {
+    "meanings": [
+      "chance",
+      "opportunity",
+      "occasion"
+    ],
+    "readings": [
+      "きかい"
+    ]
+  },
+  "戦争": {
+    "meanings": [
+      "war"
+    ],
+    "readings": [
+      "せんそう"
+    ]
+  },
+  "地理": {
+    "meanings": [
+      "geography"
+    ],
+    "readings": [
+      "ちり"
+    ]
+  },
+  "教育": {
+    "meanings": [
+      "education",
+      "schooling",
+      "training",
+      "instruction",
+      "teaching",
+      "upbringing"
+    ],
+    "readings": [
+      "きょういく"
+    ]
+  },
+  "お祭り": {
+    "meanings": [
+      "festival",
+      "feast",
+      "carnival",
+      "matsuri"
+    ],
+    "readings": [
+      "まつ"
+    ]
+  },
+  "訪ねる": {
+    "meanings": [
+      "to visit",
+      "to call on",
+      "to pay a visit to"
+    ],
+    "readings": [
+      "たず"
+    ]
+  },
+  "水泳": {
+    "meanings": [
+      "swimming"
+    ],
+    "readings": [
+      "すいえい"
+    ]
+  },
+  "ちゃん": {
+    "meanings": [
+      "suffix for familiar person"
+    ],
+    "readings": [
+      "ちゃん"
+    ]
+  },
+  "部長": {
+    "meanings": [
+      "head (chief",
+      "director) of a section or department"
+    ],
+    "readings": [
+      "ぶちょう"
+    ]
+  },
+  "是非": {
+    "meanings": [
+      "certainly",
+      "without fail"
+    ],
+    "readings": [
+      "ぜひ"
+    ]
+  },
+  "滑る": {
+    "meanings": [
+      "to slide",
+      "to glide",
+      "to skate",
+      "to ski"
+    ],
+    "readings": [
+      "すべ"
+    ]
+  },
+  "通う": {
+    "meanings": [
+      "to go to and from (a place)",
+      "to go back and forth between",
+      "to run between (e.g. bus",
+      "train",
+      "etc.)",
+      "to ply between"
+    ],
+    "readings": [
+      "かよ"
+    ]
+  },
+  "輸出": {
+    "meanings": [
+      "export",
+      "exportation"
+    ],
+    "readings": [
+      "ゆしゅつ"
+    ]
+  },
+  "それ程": {
+    "meanings": [
+      "to that degree",
+      "to that extent",
+      "that much"
+    ],
+    "readings": [
+      "それほど"
+    ]
+  },
+  "妻": {
+    "meanings": [
+      "wife"
+    ],
+    "readings": [
+      "つま"
+    ]
+  },
+  "空く": {
+    "meanings": [
+      "to become less crowded",
+      "to thin out",
+      "to get empty"
+    ],
+    "readings": [
+      "す"
+    ]
+  },
+  "痩せる": {
+    "meanings": [
+      "to become thin",
+      "to lose weight",
+      "to slim"
+    ],
+    "readings": [
+      "や"
+    ]
+  },
+  "宜しい": {
+    "meanings": [
+      "good",
+      "OK",
+      "all right",
+      "fine",
+      "very well",
+      "will do",
+      "may",
+      "can"
+    ],
+    "readings": [
+      "よろしい"
+    ]
+  },
+  "関係": {
+    "meanings": [
+      "relation",
+      "relationship",
+      "connection"
+    ],
+    "readings": [
+      "かんけい"
+    ]
+  },
+  "ガソリンスタンド": {
+    "meanings": [
+      "gas station",
+      "petrol station",
+      "filling station"
+    ],
+    "readings": [
+      "ガソリンスタンド"
+    ]
+  },
+  "確か": {
+    "meanings": [
+      "sure",
+      "certain",
+      "positive",
+      "definite"
+    ],
+    "readings": [
+      "たし"
+    ]
+  },
+  "相談": {
+    "meanings": [
+      "consultation",
+      "discussion",
+      "discussing",
+      "asking (someone) for advice"
+    ],
+    "readings": [
+      "そうだん"
+    ]
+  },
+  "テニス": {
+    "meanings": [
+      "tennis"
+    ],
+    "readings": [
+      "テニス"
+    ]
+  },
+  "急": {
+    "meanings": [
+      "sudden",
+      "abrupt",
+      "unexpected"
+    ],
+    "readings": [
+      "きゅう"
+    ]
+  },
+  "火事": {
+    "meanings": [
+      "fire",
+      "conflagration"
+    ],
+    "readings": [
+      "かじ"
+    ]
+  },
+  "草": {
+    "meanings": [
+      "grass",
+      "weed",
+      "herb",
+      "thatch"
+    ],
+    "readings": [
+      "くさ"
+    ]
+  },
+  "親": {
+    "meanings": [
+      "parent",
+      "parents",
+      "mother and father"
+    ],
+    "readings": [
+      "おや"
+    ]
+  },
+  "案内": {
+    "meanings": [
+      "guidance",
+      "leading (the way)",
+      "showing around"
+    ],
+    "readings": [
+      "あんない"
+    ]
+  },
+  "展覧会": {
+    "meanings": [
+      "exhibition"
+    ],
+    "readings": [
+      "てんらんかい"
+    ]
+  },
+  "郊外": {
+    "meanings": [
+      "suburb",
+      "residential area on the outskirt of a city",
+      "commuter belt"
+    ],
+    "readings": [
+      "こうがい"
+    ]
+  },
+  "見つける": {
+    "meanings": [
+      "to find",
+      "to discover",
+      "to come across",
+      "to spot",
+      "to catch (someone doing)"
+    ],
+    "readings": [
+      "み"
+    ]
+  },
+  "心": {
+    "meanings": [
+      "mind",
+      "heart",
+      "spirit"
+    ],
+    "readings": [
+      "こころ"
+    ]
+  },
+  "辞典": {
+    "meanings": [
+      "dictionary",
+      "lexicon"
+    ],
+    "readings": [
+      "じてん"
+    ]
+  },
+  "止む": {
+    "meanings": [
+      "to cease",
+      "to stop",
+      "to be over"
+    ],
+    "readings": [
+      "や"
+    ]
+  },
+  "研究室": {
+    "meanings": [
+      "laboratory"
+    ],
+    "readings": [
+      "けんきゅうしつ"
+    ]
+  },
+  "旅館": {
+    "meanings": [
+      "ryokan",
+      "traditional Japanese inn"
+    ],
+    "readings": [
+      "りょかん"
+    ]
+  },
+  "小説": {
+    "meanings": [
+      "novel",
+      "story",
+      "(work of) fiction"
+    ],
+    "readings": [
+      "しょうせつ"
+    ]
+  },
+  "家内": {
+    "meanings": [
+      "(my) wife"
+    ],
+    "readings": [
+      "かない"
+    ]
+  },
+  "眠る": {
+    "meanings": [
+      "to sleep"
+    ],
+    "readings": [
+      "ねむ"
+    ]
+  },
+  "経済": {
+    "meanings": [
+      "economy",
+      "economics"
+    ],
+    "readings": [
+      "けいざい"
+    ]
+  },
+  "捨てる": {
+    "meanings": [
+      "to throw away",
+      "to cast away",
+      "to dump",
+      "to discard"
+    ],
+    "readings": [
+      "す"
+    ]
+  },
+  "笑う": {
+    "meanings": [
+      "to laugh"
+    ],
+    "readings": [
+      "わら"
+    ]
+  },
+  "用": {
+    "meanings": [
+      "business",
+      "task",
+      "errand",
+      "engagement"
+    ],
+    "readings": [
+      "よう"
+    ]
+  },
+  "規則": {
+    "meanings": [
+      "rule",
+      "regulation"
+    ],
+    "readings": [
+      "きそく"
+    ]
+  },
+  "運転": {
+    "meanings": [
+      "operation (of a machine)",
+      "running",
+      "working"
+    ],
+    "readings": [
+      "うんてん"
+    ]
+  },
+  "集める": {
+    "meanings": [
+      "to collect",
+      "to assemble",
+      "to gather"
+    ],
+    "readings": [
+      "あつ"
+    ]
+  },
+  "無くなる": {
+    "meanings": [
+      "to be lost (e.g. luggage)",
+      "to be missing"
+    ],
+    "readings": [
+      "なくなる"
+    ]
+  },
+  "以内": {
+    "meanings": [
+      "within",
+      "inside of",
+      "less than"
+    ],
+    "readings": [
+      "いない"
+    ]
+  },
+  "盗む": {
+    "meanings": [
+      "to steal"
+    ],
+    "readings": [
+      "ぬす"
+    ]
+  },
+  "止める": {
+    "meanings": [
+      "to stop (an activity)",
+      "to cease",
+      "to discontinue",
+      "to end",
+      "to quit"
+    ],
+    "readings": [
+      "やめる"
+    ]
+  },
+  "講義": {
+    "meanings": [
+      "lecture"
+    ],
+    "readings": [
+      "こうぎ"
+    ]
+  },
+  "水道": {
+    "meanings": [
+      "water supply",
+      "water service",
+      "waterworks",
+      "tap water"
+    ],
+    "readings": [
+      "すいどう"
+    ]
+  },
+  "競争": {
+    "meanings": [
+      "competition",
+      "contest",
+      "rivalry",
+      "race"
+    ],
+    "readings": [
+      "きょうそう"
+    ]
+  },
+  "景色": {
+    "meanings": [
+      "scenery",
+      "scene",
+      "landscape"
+    ],
+    "readings": [
+      "けしき"
+    ]
+  },
+  "鏡": {
+    "meanings": [
+      "mirror",
+      "looking-glass"
+    ],
+    "readings": [
+      "かがみ"
+    ]
+  },
+  "億": {
+    "meanings": [
+      "hundred million",
+      "100",
+      "000",
+      "000",
+      "10^8"
+    ],
+    "readings": [
+      "おく"
+    ]
+  },
+  "慣れる": {
+    "meanings": [
+      "to get used to",
+      "to grow accustomed to",
+      "to become familiar with"
+    ],
+    "readings": [
+      "な"
+    ]
+  },
+  "校長": {
+    "meanings": [
+      "principal",
+      "head teacher",
+      "headmaster",
+      "headmistress"
+    ],
+    "readings": [
+      "こうちょう"
+    ]
+  },
+  "真面目": {
+    "meanings": [
+      "serious",
+      "earnest",
+      "sober",
+      "grave"
+    ],
+    "readings": [
+      "まじめ"
+    ]
+  },
+  "釣る": {
+    "meanings": [
+      "to fish",
+      "to angle",
+      "to catch"
+    ],
+    "readings": [
+      "つ"
+    ]
+  },
+  "指": {
+    "meanings": [
+      "finger",
+      "toe",
+      "digit"
+    ],
+    "readings": [
+      "ゆび"
+    ]
+  },
+  "用事": {
+    "meanings": [
+      "business",
+      "things to do",
+      "engagement",
+      "errand",
+      "affairs"
+    ],
+    "readings": [
+      "ようじ"
+    ]
+  },
+  "塵": {
+    "meanings": [
+      "rubbish",
+      "trash",
+      "garbage",
+      "refuse",
+      "litter"
+    ],
+    "readings": [
+      "ゴミ"
+    ]
+  },
+  "落とす": {
+    "meanings": [
+      "to drop",
+      "to lose",
+      "to let fall",
+      "to shed (light)",
+      "to cast (one's gaze)",
+      "to pour in (liquid)",
+      "to leave behind"
+    ],
+    "readings": [
+      "お"
+    ]
+  },
+  "為さる": {
+    "meanings": [
+      "to do"
+    ],
+    "readings": [
+      "なさる"
+    ]
+  },
+  "必要": {
+    "meanings": [
+      "necessary",
+      "needed",
+      "essential",
+      "indispensable"
+    ],
+    "readings": [
+      "ひつよう"
+    ]
+  },
+  "お礼": {
+    "meanings": [
+      "thanks",
+      "gratitude"
+    ],
+    "readings": [
+      "れい"
+    ]
+  },
+  "赤ちゃん": {
+    "meanings": [
+      "baby",
+      "infant"
+    ],
+    "readings": [
+      "あか"
+    ]
+  },
+  "この頃": {
+    "meanings": [
+      "these days",
+      "nowadays",
+      "now",
+      "at present",
+      "recently",
+      "lately"
+    ],
+    "readings": [
+      "ごろ"
+    ]
+  },
+  "比べる": {
+    "meanings": [
+      "to compare",
+      "to make a comparison (between)"
+    ],
+    "readings": [
+      "くら"
+    ]
+  },
+  "失敗": {
+    "meanings": [
+      "failure",
+      "mistake",
+      "blunder"
+    ],
+    "readings": [
+      "しっぱい"
+    ]
+  },
+  "布団": {
+    "meanings": [
+      "futon",
+      "Japanese bedding consisting of a mattress and a duvet"
+    ],
+    "readings": [
+      "ふとん"
+    ]
+  },
+  "あっ": {
+    "meanings": [
+      "ah",
+      "oh"
+    ],
+    "readings": [
+      "あっ"
+    ]
+  },
+  "夢": {
+    "meanings": [
+      "dream"
+    ],
+    "readings": [
+      "ゆめ"
+    ]
+  },
+  "恥ずかしい": {
+    "meanings": [
+      "embarrassing",
+      "embarrassed",
+      "ashamed",
+      "humiliated",
+      "shy"
+    ],
+    "readings": [
+      "は"
+    ]
+  },
+  "祈る": {
+    "meanings": [
+      "to pray",
+      "to say a prayer",
+      "to say grace"
+    ],
+    "readings": [
+      "いの"
+    ]
+  },
+  "予定": {
+    "meanings": [
+      "plans",
+      "arrangement",
+      "schedule",
+      "program",
+      "programme",
+      "expectation",
+      "estimate"
+    ],
+    "readings": [
+      "よてい"
+    ]
+  },
+  "出発": {
+    "meanings": [
+      "departure",
+      "leaving",
+      "setting off"
+    ],
+    "readings": [
+      "しゅっぱつ"
+    ]
+  },
+  "苛める": {
+    "meanings": [
+      "to ill-treat",
+      "to bully",
+      "to torment",
+      "to pick on",
+      "to tease",
+      "to be cruel to",
+      "to persecute"
+    ],
+    "readings": [
+      "いじめる"
+    ]
+  },
+  "スクリーン": {
+    "meanings": [
+      "screen"
+    ],
+    "readings": [
+      "スクリーン"
+    ]
+  },
+  "挨拶": {
+    "meanings": [
+      "greeting",
+      "greetings",
+      "salutation",
+      "salute",
+      "polite set phrase used when meeting or parting from someone"
+    ],
+    "readings": [
+      "あいさつ"
+    ]
+  },
+  "木綿": {
+    "meanings": [
+      "cotton (material)"
+    ],
+    "readings": [
+      "もめん"
+    ]
+  },
+  "聞こえる": {
+    "meanings": [
+      "to be heard",
+      "to be audible",
+      "to reach one's ears"
+    ],
+    "readings": [
+      "き"
+    ]
+  },
+  "成る程": {
+    "meanings": [
+      "I see",
+      "that's right",
+      "indeed"
+    ],
+    "readings": [
+      "なるほど"
+    ]
+  },
+  "教会": {
+    "meanings": [
+      "church",
+      "congregation"
+    ],
+    "readings": [
+      "きょうかい"
+    ]
+  },
+  "熱心": {
+    "meanings": [
+      "zealous",
+      "enthusiastic",
+      "ardent",
+      "fervent",
+      "keen",
+      "eager"
+    ],
+    "readings": [
+      "ねっしん"
+    ]
+  },
+  "急ぐ": {
+    "meanings": [
+      "to hurry",
+      "to rush",
+      "to hasten",
+      "to make something happen sooner"
+    ],
+    "readings": [
+      "いそ"
+    ]
+  },
+  "似る": {
+    "meanings": [
+      "to resemble",
+      "to look like",
+      "to be like",
+      "to be alike",
+      "to be similar",
+      "to take after"
+    ],
+    "readings": [
+      "に"
+    ]
+  },
+  "そう": {
+    "meanings": [
+      "appearing that",
+      "seeming that",
+      "looking like",
+      "having the appearance of"
+    ],
+    "readings": [
+      "そう"
+    ]
+  },
+  "選ぶ": {
+    "meanings": [
+      "to choose",
+      "to select",
+      "to pick (out)"
+    ],
+    "readings": [
+      "えら"
+    ]
+  },
+  "輸入": {
+    "meanings": [
+      "import",
+      "importation",
+      "introduction"
+    ],
+    "readings": [
+      "ゆにゅう"
+    ]
+  },
+  "致す": {
+    "meanings": [
+      "to do"
+    ],
+    "readings": [
+      "いたす"
+    ]
+  },
+  "季節": {
+    "meanings": [
+      "season",
+      "time of year"
+    ],
+    "readings": [
+      "きせつ"
+    ]
+  },
+  "負ける": {
+    "meanings": [
+      "to lose",
+      "to be defeated"
+    ],
+    "readings": [
+      "ま"
+    ]
+  },
+  "席": {
+    "meanings": [
+      "seat"
+    ],
+    "readings": [
+      "せき"
+    ]
+  },
+  "工場": {
+    "meanings": [
+      "factory",
+      "plant",
+      "mill",
+      "workshop"
+    ],
+    "readings": [
+      "こうじょう"
+    ]
+  },
+  "ガソリン": {
+    "meanings": [
+      "gasoline",
+      "petrol"
+    ],
+    "readings": [
+      "ガソリン"
+    ]
+  },
+  "放送": {
+    "meanings": [
+      "broadcasting",
+      "broadcast",
+      "program",
+      "announcement"
+    ],
+    "readings": [
+      "ほうそう"
+    ]
+  },
+  "夫": {
+    "meanings": [
+      "husband"
+    ],
+    "readings": [
+      "おっと"
+    ]
+  },
+  "背中": {
+    "meanings": [
+      "back (of the body)"
+    ],
+    "readings": [
+      "せなか"
+    ]
+  },
+  "歯医者": {
+    "meanings": [
+      "dentist"
+    ],
+    "readings": [
+      "はいしゃ"
+    ]
+  },
+  "偶に": {
+    "meanings": [
+      "occasionally",
+      "once in a while",
+      "now and then"
+    ],
+    "readings": [
+      "たまに"
+    ]
+  },
+  "娘": {
+    "meanings": [
+      "daughter"
+    ],
+    "readings": [
+      "むすめ"
+    ]
+  },
+  "お金持ち": {
+    "meanings": [
+      "rich person",
+      "wealthy person"
+    ],
+    "readings": [
+      "かねも"
+    ]
+  },
+  "すっかり": {
+    "meanings": [
+      "all",
+      "completely",
+      "totally",
+      "entirely",
+      "thoroughly"
+    ],
+    "readings": [
+      "すっかり"
+    ]
+  },
+  "泳ぎ方": {
+    "meanings": [
+      "way of swimming"
+    ],
+    "readings": [
+      "およ"
+    ]
+  },
+  "計画": {
+    "meanings": [
+      "plan",
+      "project",
+      "schedule",
+      "scheme",
+      "program",
+      "programme"
+    ],
+    "readings": [
+      "けいかく"
+    ]
+  },
+  "不便": {
+    "meanings": [
+      "inconvenience",
+      "inexpediency",
+      "unhandiness"
+    ],
+    "readings": [
+      "ふべん"
+    ]
+  },
+  "消しゴム": {
+    "meanings": [
+      "eraser",
+      "rubber"
+    ],
+    "readings": [
+      "け"
+    ]
+  },
+  "移る": {
+    "meanings": [
+      "to move (house)",
+      "to transfer (department)"
+    ],
+    "readings": [
+      "うつ"
+    ]
+  },
+  "会議室": {
+    "meanings": [
+      "conference room",
+      "council room"
+    ],
+    "readings": [
+      "かいぎしつ"
+    ]
+  },
+  "頂く": {
+    "meanings": [
+      "to receive",
+      "to get",
+      "to accept",
+      "to take",
+      "to buy"
+    ],
+    "readings": [
+      "いただく"
+    ]
+  },
+  "値段": {
+    "meanings": [
+      "price",
+      "cost"
+    ],
+    "readings": [
+      "ねだん"
+    ]
+  },
+  "習慣": {
+    "meanings": [
+      "habit"
+    ],
+    "readings": [
+      "しゅうかん"
+    ]
+  },
+  "以外": {
+    "meanings": [
+      "excluding",
+      "except (for)",
+      "apart from",
+      "other than",
+      "besides",
+      "in addition to"
+    ],
+    "readings": [
+      "いがい"
+    ]
+  },
+  "居らっしゃる": {
+    "meanings": [
+      "to come",
+      "to go",
+      "to be (somewhere)"
+    ],
+    "readings": [
+      "いらっしゃる"
+    ]
+  },
+  "説明": {
+    "meanings": [
+      "explanation",
+      "exposition",
+      "description",
+      "account",
+      "caption",
+      "legend"
+    ],
+    "readings": [
+      "せつめい"
+    ]
+  },
+  "復習": {
+    "meanings": [
+      "review (of learned material)",
+      "revision"
+    ],
+    "readings": [
+      "ふくしゅう"
+    ]
+  },
+  "塗る": {
+    "meanings": [
+      "to paint",
+      "to spread",
+      "to plaster",
+      "to apply (cream",
+      "lotion)",
+      "to smear",
+      "to lacquer",
+      "to varnish",
+      "to put up (wallpaper)"
+    ],
+    "readings": [
+      "ぬ"
+    ]
+  },
+  "出来るだけ": {
+    "meanings": [
+      "as much as one can",
+      "as much as possible",
+      "if at all possible"
+    ],
+    "readings": [
+      "できるだけ"
+    ]
+  },
+  "安全": {
+    "meanings": [
+      "safety",
+      "security"
+    ],
+    "readings": [
+      "あんぜん"
+    ]
+  },
+  "邪魔": {
+    "meanings": [
+      "hindrance",
+      "obstacle",
+      "nuisance",
+      "disturbance",
+      "interruption",
+      "interference"
+    ],
+    "readings": [
+      "じゃま"
+    ]
+  },
+  "沸かす": {
+    "meanings": [
+      "to boil",
+      "to heat (a liquid)",
+      "to prepare (a bath",
+      "hot drink)"
+    ],
+    "readings": [
+      "わ"
+    ]
+  },
+  "植える": {
+    "meanings": [
+      "to plant",
+      "to grow",
+      "to raise"
+    ],
+    "readings": [
+      "う"
+    ]
+  },
+  "中学校": {
+    "meanings": [
+      "junior high school",
+      "middle school",
+      "lower secondary school"
+    ],
+    "readings": [
+      "ちゅうがっこう"
+    ]
+  },
+  "星": {
+    "meanings": [
+      "star (usu. excluding the Sun)",
+      "planet (usu. excluding Earth)",
+      "heavenly body"
+    ],
+    "readings": [
+      "ほし"
+    ]
+  },
+  "講堂": {
+    "meanings": [
+      "auditorium",
+      "lecture hall"
+    ],
+    "readings": [
+      "こうどう"
+    ]
+  },
+  "向かう": {
+    "meanings": [
+      "to face"
+    ],
+    "readings": [
+      "む"
+    ]
+  },
+  "裏": {
+    "meanings": [
+      "opposite side",
+      "bottom",
+      "other side",
+      "side hidden from view",
+      "undersurface",
+      "reverse side"
+    ],
+    "readings": [
+      "うら"
+    ]
+  },
+  "最後": {
+    "meanings": [
+      "end",
+      "conclusion"
+    ],
+    "readings": [
+      "さいご"
+    ]
+  },
+  "直す": {
+    "meanings": [
+      "to repair",
+      "to mend",
+      "to fix",
+      "to correct (a mistake",
+      "bad habit",
+      "etc.)",
+      "to put right",
+      "to restore",
+      "to straighten (e.g. a tie)",
+      "to tidy up (one's hair",
+      "make-up",
+      "etc.)",
+      "to revive (one's spirits)"
+    ],
+    "readings": [
+      "なお"
+    ]
+  },
+  "必ず": {
+    "meanings": [
+      "always",
+      "without exception",
+      "necessarily",
+      "certainly",
+      "without fail",
+      "positively",
+      "invariably"
+    ],
+    "readings": [
+      "かなら"
+    ]
+  },
+  "全然": {
+    "meanings": [
+      "(not) at all",
+      "(not) in the slightest"
+    ],
+    "readings": [
+      "ぜんぜん"
+    ]
+  },
+  "タイプ": {
+    "meanings": [
+      "type",
+      "kind",
+      "sort",
+      "style"
+    ],
+    "readings": [
+      "タイプ"
+    ]
+  },
+  "趣味": {
+    "meanings": [
+      "hobby",
+      "pastime"
+    ],
+    "readings": [
+      "しゅみ"
+    ]
+  },
+  "危険": {
+    "meanings": [
+      "danger",
+      "peril",
+      "hazard"
+    ],
+    "readings": [
+      "きけん"
+    ]
+  },
+  "済む": {
+    "meanings": [
+      "to finish",
+      "to end",
+      "to be completed",
+      "to be resolved"
+    ],
+    "readings": [
+      "す"
+    ]
+  },
+  "彼ら": {
+    "meanings": [
+      "they",
+      "them"
+    ],
+    "readings": [
+      "かれ"
+    ]
+  },
+  "発音": {
+    "meanings": [
+      "pronunciation"
+    ],
+    "readings": [
+      "はつおん"
+    ]
+  },
+  "予約": {
+    "meanings": [
+      "reservation",
+      "appointment",
+      "booking",
+      "advance order"
+    ],
+    "readings": [
+      "よやく"
+    ]
+  },
+  "浅い": {
+    "meanings": [
+      "shallow",
+      "superficial"
+    ],
+    "readings": [
+      "あさ"
+    ]
+  },
+  "ああ": {
+    "meanings": [
+      "like that",
+      "so"
+    ],
+    "readings": [
+      "ああ"
+    ]
+  },
+  "簡単": {
+    "meanings": [
+      "simple",
+      "easy",
+      "uncomplicated"
+    ],
+    "readings": [
+      "かんたん"
+    ]
+  },
+  "お土産": {
+    "meanings": [
+      "local specialty or souvenir bought as a gift while traveling (travelling)"
+    ],
+    "readings": [
+      "みやげ"
+    ]
+  },
+  "複雑": {
+    "meanings": [
+      "complex",
+      "complicated",
+      "intricate",
+      "mixed (feelings)"
+    ],
+    "readings": [
+      "ふくざつ"
+    ]
+  },
+  "アナウンサー": {
+    "meanings": [
+      "announcer",
+      "presenter",
+      "broadcaster",
+      "reporter"
+    ],
+    "readings": [
+      "アナウンサー"
+    ]
+  },
+  "高校": {
+    "meanings": [
+      "senior high school",
+      "high school"
+    ],
+    "readings": [
+      "こうこう"
+    ]
+  },
+  "苦い": {
+    "meanings": [
+      "bitter"
+    ],
+    "readings": [
+      "にが"
+    ]
+  },
+  "決める": {
+    "meanings": [
+      "to decide",
+      "to choose",
+      "to determine",
+      "to make up one's mind",
+      "to resolve",
+      "to set one's heart on",
+      "to settle",
+      "to arrange",
+      "to set",
+      "to appoint",
+      "to fix"
+    ],
+    "readings": [
+      "き"
+    ]
+  },
+  "会議": {
+    "meanings": [
+      "meeting",
+      "conference",
+      "session",
+      "assembly",
+      "council",
+      "convention",
+      "congress"
+    ],
+    "readings": [
+      "かいぎ"
+    ]
+  },
+  "両方": {
+    "meanings": [
+      "both",
+      "both sides",
+      "both parties"
+    ],
+    "readings": [
+      "りょうほう"
+    ]
+  },
+  "注射": {
+    "meanings": [
+      "injection",
+      "jab",
+      "shot"
+    ],
+    "readings": [
+      "ちゅうしゃ"
+    ]
+  },
+  "法律": {
+    "meanings": [
+      "law"
+    ],
+    "readings": [
+      "ほうりつ"
+    ]
+  },
+  "優しい": {
+    "meanings": [
+      "tender",
+      "kind",
+      "gentle",
+      "graceful",
+      "affectionate",
+      "amiable"
+    ],
+    "readings": [
+      "やさ"
+    ]
+  },
+  "味噌": {
+    "meanings": [
+      "miso",
+      "fermented condiment usu. made from soybeans"
+    ],
+    "readings": [
+      "みそ"
+    ]
+  },
+  "写す": {
+    "meanings": [
+      "to copy",
+      "to duplicate",
+      "to reproduce",
+      "to trace",
+      "to transcribe"
+    ],
+    "readings": [
+      "うつ"
+    ]
+  },
+  "うん": {
+    "meanings": [
+      "yes",
+      "yeah",
+      "uh huh"
+    ],
+    "readings": [
+      "うん"
+    ]
+  },
+  "ハンドバッグ": {
+    "meanings": [
+      "handbag",
+      "purse"
+    ],
+    "readings": [
+      "ハンドバッグ"
+    ]
+  },
+  "答え": {
+    "meanings": [
+      "answer",
+      "reply",
+      "response"
+    ],
+    "readings": [
+      "こた"
+    ]
+  },
+  "雲": {
+    "meanings": [
+      "cloud"
+    ],
+    "readings": [
+      "くも"
+    ]
+  },
+  "ステレオ": {
+    "meanings": [
+      "stereo (sound)"
+    ],
+    "readings": [
+      "ステレオ"
+    ]
+  },
+  "拝見": {
+    "meanings": [
+      "seeing",
+      "looking at"
+    ],
+    "readings": [
+      "はいけん"
+    ]
+  },
+  "科学": {
+    "meanings": [
+      "science"
+    ],
+    "readings": [
+      "かがく"
+    ]
+  },
+  "筈": {
+    "meanings": [
+      "should (be)",
+      "bound (to be)",
+      "expected (to be)",
+      "must (be)"
+    ],
+    "readings": [
+      "はず"
+    ]
+  },
+  "連絡": {
+    "meanings": [
+      "contacting",
+      "(making) contact",
+      "getting in touch",
+      "communication",
+      "correspondence",
+      "call",
+      "message"
+    ],
+    "readings": [
+      "れんらく"
+    ]
+  },
+  "矢っ張り": {
+    "meanings": [
+      "as expected",
+      "sure enough",
+      "just as one thought"
+    ],
+    "readings": [
+      "やっぱり"
+    ]
+  },
+  "会場": {
+    "meanings": [
+      "assembly hall",
+      "meeting place",
+      "venue",
+      "site",
+      "grounds"
+    ],
+    "readings": [
+      "かいじょう"
+    ]
+  },
+  "高校生": {
+    "meanings": [
+      "senior high school student"
+    ],
+    "readings": [
+      "こうこうせい"
+    ]
+  },
+  "乗り換える": {
+    "meanings": [
+      "to transfer (trains)",
+      "to change (bus",
+      "train)"
+    ],
+    "readings": [
+      "の"
+    ]
+  },
+  "都合": {
+    "meanings": [
+      "circumstances",
+      "condition",
+      "convenience"
+    ],
+    "readings": [
+      "つごう"
+    ]
+  },
+  "承知": {
+    "meanings": [
+      "knowledge",
+      "awareness"
+    ],
+    "readings": [
+      "しょうち"
+    ]
+  },
+  "暫く": {
+    "meanings": [
+      "for a moment",
+      "for a minute"
+    ],
+    "readings": [
+      "しばらく"
+    ]
+  },
+  "形": {
+    "meanings": [
+      "form",
+      "shape",
+      "figure"
+    ],
+    "readings": [
+      "かたち"
+    ]
+  },
+  "帰り": {
+    "meanings": [
+      "return",
+      "coming back"
+    ],
+    "readings": [
+      "かえ"
+    ]
+  },
+  "厳しい": {
+    "meanings": [
+      "severe",
+      "strict",
+      "rigid",
+      "unsparing",
+      "relentless"
+    ],
+    "readings": [
+      "きび"
+    ]
+  },
+  "殆ど": {
+    "meanings": [
+      "almost",
+      "nearly",
+      "mostly",
+      "practically",
+      "virtually",
+      "basically",
+      "just about",
+      "all but"
+    ],
+    "readings": [
+      "ほとんど"
+    ]
+  },
+  "遠く": {
+    "meanings": [
+      "far away",
+      "distant place",
+      "a (great) distance",
+      "a long way off",
+      "afar"
+    ],
+    "readings": [
+      "とお"
+    ]
+  },
+  "貰う": {
+    "meanings": [
+      "to receive",
+      "to take",
+      "to accept"
+    ],
+    "readings": [
+      "もらう"
+    ]
+  },
+  "手袋": {
+    "meanings": [
+      "glove",
+      "mitten",
+      "mitt"
+    ],
+    "readings": [
+      "てぶくろ"
+    ]
+  },
+  "格好": {
+    "meanings": [
+      "shape",
+      "form",
+      "figure",
+      "posture",
+      "pose"
+    ],
+    "readings": [
+      "かっこう"
+    ]
+  },
+  "高等学校": {
+    "meanings": [
+      "senior high school",
+      "high school"
+    ],
+    "readings": [
+      "こうとうがっこう"
+    ]
+  },
+  "人形": {
+    "meanings": [
+      "doll",
+      "puppet",
+      "marionette"
+    ],
+    "readings": [
+      "にんぎょう"
+    ]
+  },
+  "ベル": {
+    "meanings": [
+      "bell"
+    ],
+    "readings": [
+      "ベル"
+    ]
+  },
+  "出席": {
+    "meanings": [
+      "attendance",
+      "presence",
+      "appearance"
+    ],
+    "readings": [
+      "しゅっせき"
+    ]
+  },
+  "お嬢さん": {
+    "meanings": [
+      "(another's) daughter"
+    ],
+    "readings": [
+      "じょう"
+    ]
+  },
+  "虫": {
+    "meanings": [
+      "insect",
+      "bug",
+      "cricket",
+      "moth"
+    ],
+    "readings": [
+      "むし"
+    ]
+  },
+  "血": {
+    "meanings": [
+      "blood"
+    ],
+    "readings": [
+      "ち"
+    ]
+  },
+  "返事": {
+    "meanings": [
+      "reply",
+      "answer",
+      "response"
+    ],
+    "readings": [
+      "へんじ"
+    ]
+  },
+  "尋ねる": {
+    "meanings": [
+      "to ask",
+      "to enquire",
+      "to inquire"
+    ],
+    "readings": [
+      "たず"
+    ]
+  },
+  "坂": {
+    "meanings": [
+      "slope",
+      "incline",
+      "hill"
+    ],
+    "readings": [
+      "さか"
+    ]
+  },
+  "エスカレーター": {
+    "meanings": [
+      "escalator"
+    ],
+    "readings": [
+      "エスカレーター"
+    ]
+  },
+  "手伝う": {
+    "meanings": [
+      "to help",
+      "to assist",
+      "to aid"
+    ],
+    "readings": [
+      "てつだ"
+    ]
+  },
+  "文法": {
+    "meanings": [
+      "grammar"
+    ],
+    "readings": [
+      "ぶんぽう"
+    ]
+  },
+  "悲しい": {
+    "meanings": [
+      "sad",
+      "miserable",
+      "unhappy",
+      "sorrowful"
+    ],
+    "readings": [
+      "かな"
+    ]
+  },
+  "研究": {
+    "meanings": [
+      "research",
+      "study",
+      "investigation"
+    ],
+    "readings": [
+      "けんきゅう"
+    ]
+  },
+  "取り替える": {
+    "meanings": [
+      "to exchange",
+      "to swap",
+      "to barter",
+      "to trade"
+    ],
+    "readings": [
+      "と"
+    ]
+  },
+  "女性": {
+    "meanings": [
+      "woman",
+      "female"
+    ],
+    "readings": [
+      "じょせい"
+    ]
+  },
+  "特急": {
+    "meanings": [
+      "limited express (train for which a limited-express ticket is required)"
+    ],
+    "readings": [
+      "とっきゅう"
+    ]
+  },
+  "普通": {
+    "meanings": [
+      "normal",
+      "ordinary",
+      "regular",
+      "usual",
+      "common",
+      "average"
+    ],
+    "readings": [
+      "ふつう"
+    ]
+  },
+  "場合": {
+    "meanings": [
+      "case",
+      "occasion",
+      "situation",
+      "circumstances"
+    ],
+    "readings": [
+      "ばあい"
+    ]
+  },
+  "台風": {
+    "meanings": [
+      "typhoon",
+      "hurricane"
+    ],
+    "readings": [
+      "たいふう"
+    ]
+  },
+  "火": {
+    "meanings": [
+      "fire",
+      "flame",
+      "blaze"
+    ],
+    "readings": [
+      "ひ"
+    ]
+  },
+  "遠慮": {
+    "meanings": [
+      "reserve",
+      "constraint",
+      "restraint",
+      "modesty",
+      "diffidence",
+      "hesitation",
+      "holding back",
+      "discretion",
+      "tact",
+      "thoughtfulness"
+    ],
+    "readings": [
+      "えんりょ"
+    ]
+  },
+  "下宿": {
+    "meanings": [
+      "boarding",
+      "lodging",
+      "board and lodging",
+      "room and board"
+    ],
+    "readings": [
+      "げしゅく"
+    ]
+  },
+  "吃驚": {
+    "meanings": [
+      "to be surprised",
+      "to be amazed",
+      "to be frightened",
+      "to be astonished",
+      "to get startled",
+      "to jump"
+    ],
+    "readings": [
+      "びっくり"
+    ]
+  },
+  "喉": {
+    "meanings": [
+      "throat"
+    ],
+    "readings": [
+      "のど"
+    ]
+  },
+  "食事": {
+    "meanings": [
+      "meal (e.g. lunch",
+      "dinner)"
+    ],
+    "readings": [
+      "しょくじ"
+    ]
+  },
+  "看護婦": {
+    "meanings": [
+      "(female) nurse"
+    ],
+    "readings": [
+      "かんごふ"
+    ]
+  },
+  "寂しい": {
+    "meanings": [
+      "lonely",
+      "lonesome",
+      "solitary",
+      "desolate"
+    ],
+    "readings": [
+      "さび"
+    ]
+  },
+  "オートバイ": {
+    "meanings": [
+      "motorcycle",
+      "motorbike"
+    ],
+    "readings": [
+      "オートバイ"
+    ]
+  },
+  "引き出し": {
+    "meanings": [
+      "drawer"
+    ],
+    "readings": [
+      "ひ"
+    ]
+  },
+  "暮れる": {
+    "meanings": [
+      "to get dark",
+      "to grow dark"
+    ],
+    "readings": [
+      "く"
+    ]
+  },
+  "起こす": {
+    "meanings": [
+      "to raise",
+      "to raise up",
+      "to set up",
+      "to pick up"
+    ],
+    "readings": [
+      "お"
+    ]
+  },
+  "沸く": {
+    "meanings": [
+      "to grow hot (e.g. water)",
+      "to boil"
+    ],
+    "readings": [
+      "わ"
+    ]
+  },
+  "ケーキ": {
+    "meanings": [
+      "cake"
+    ],
+    "readings": [
+      "ケーキ"
+    ]
+  },
+  "将来": {
+    "meanings": [
+      "future",
+      "(future) prospects"
+    ],
+    "readings": [
+      "しょうらい"
+    ]
+  },
+  "興味": {
+    "meanings": [
+      "interest (in something)",
+      "curiosity (about something)",
+      "zest (for)"
+    ],
+    "readings": [
+      "きょうみ"
+    ]
+  },
+  "ご覧になる": {
+    "meanings": [
+      "to see",
+      "to look",
+      "to watch"
+    ],
+    "readings": [
+      "らん"
+    ]
+  },
+  "変える": {
+    "meanings": [
+      "to change",
+      "to alter",
+      "to transform",
+      "to convert",
+      "to turn",
+      "to vary"
+    ],
+    "readings": [
+      "か"
+    ]
+  },
+  "亜米利加": {
+    "meanings": [
+      "(United States of) America",
+      "United States",
+      "US",
+      "USA"
+    ],
+    "readings": [
+      "アメリカ"
+    ]
+  },
+  "治る": {
+    "meanings": [
+      "to get better",
+      "to get well",
+      "to recover (from an illness)",
+      "to be cured",
+      "to be restored",
+      "to heal"
+    ],
+    "readings": [
+      "なお"
+    ]
+  },
+  "遊び": {
+    "meanings": [
+      "play",
+      "playing",
+      "game"
+    ],
+    "readings": [
+      "あそ"
+    ]
+  },
+  "腕": {
+    "meanings": [
+      "arm"
+    ],
+    "readings": [
+      "うで"
+    ]
+  },
+  "乗り物": {
+    "meanings": [
+      "vehicle",
+      "conveyance",
+      "(means of) transport"
+    ],
+    "readings": [
+      "の"
+    ]
+  },
+  "熱": {
+    "meanings": [
+      "heat"
+    ],
+    "readings": [
+      "ねつ"
+    ]
+  },
+  "すっと": {
+    "meanings": [
+      "straight",
+      "quickly",
+      "directly",
+      "all of a sudden"
+    ],
+    "readings": [
+      "すっと"
+    ]
+  },
+  "焼く": {
+    "meanings": [
+      "to burn"
+    ],
+    "readings": [
+      "や"
+    ]
+  },
+  "米": {
+    "meanings": [
+      "(husked grains of) rice"
+    ],
+    "readings": [
+      "こめ"
+    ]
+  },
+  "レポート": {
+    "meanings": [
+      "report",
+      "paper"
+    ],
+    "readings": [
+      "レポート"
+    ]
+  },
+  "終わり": {
+    "meanings": [
+      "end",
+      "ending",
+      "close",
+      "conclusion"
+    ],
+    "readings": [
+      "お"
+    ]
+  },
+  "カーテン": {
+    "meanings": [
+      "curtain",
+      "curtains"
+    ],
+    "readings": [
+      "カーテン"
+    ]
+  },
+  "柔道": {
+    "meanings": [
+      "judo"
+    ],
+    "readings": [
+      "じゅうどう"
+    ]
+  },
+  "褒める": {
+    "meanings": [
+      "to praise",
+      "to commend",
+      "to compliment",
+      "to speak well of",
+      "to speak highly of"
+    ],
+    "readings": [
+      "ほ"
+    ]
+  },
+  "売り場": {
+    "meanings": [
+      "selling area",
+      "counter",
+      "section",
+      "department",
+      "sales floor"
+    ],
+    "readings": [
+      "う"
+    ]
+  },
+  "住所": {
+    "meanings": [
+      "address (of a home",
+      "business",
+      "etc.)",
+      "residence",
+      "domicile"
+    ],
+    "readings": [
+      "じゅうしょ"
+    ]
+  },
+  "押入れ": {
+    "meanings": [
+      "closet (built into the wall",
+      "usu. with sliding doors)",
+      "(built-in) wardrobe"
+    ],
+    "readings": [
+      "おしい"
+    ]
+  },
+  "勝つ": {
+    "meanings": [
+      "to win",
+      "to gain victory"
+    ],
+    "readings": [
+      "か"
+    ]
+  },
+  "試合": {
+    "meanings": [
+      "match",
+      "game",
+      "bout",
+      "contest"
+    ],
+    "readings": [
+      "しあい"
+    ]
+  },
+  "彼女": {
+    "meanings": [
+      "she",
+      "her"
+    ],
+    "readings": [
+      "かのじょ"
+    ]
+  },
+  "ご主人": {
+    "meanings": [
+      "your husband",
+      "her husband"
+    ],
+    "readings": [
+      "しゅじん"
+    ]
+  },
+  "昼休み": {
+    "meanings": [
+      "lunch break",
+      "noon recess",
+      "noon rest period"
+    ],
+    "readings": [
+      "ひるやす"
+    ]
+  },
+  "思い出す": {
+    "meanings": [
+      "to recall",
+      "to remember",
+      "to recollect"
+    ],
+    "readings": [
+      "おも"
+    ]
+  },
+  "掏摸": {
+    "meanings": [
+      "pickpocket"
+    ],
+    "readings": [
+      "すり"
+    ]
+  },
+  "文化": {
+    "meanings": [
+      "culture",
+      "civilization",
+      "civilisation"
+    ],
+    "readings": [
+      "ぶんか"
+    ]
+  },
+  "喜ぶ": {
+    "meanings": [
+      "to be delighted",
+      "to be glad",
+      "to be pleased",
+      "to rejoice"
+    ],
+    "readings": [
+      "よろこ"
+    ]
+  },
+  "サラダ": {
+    "meanings": [
+      "salad"
+    ],
+    "readings": [
+      "サラダ"
+    ]
+  },
+  "道具": {
+    "meanings": [
+      "tool",
+      "implement",
+      "instrument",
+      "utensil",
+      "apparatus",
+      "device"
+    ],
+    "readings": [
+      "どうぐ"
+    ]
+  },
+  "絹": {
+    "meanings": [
+      "silk"
+    ],
+    "readings": [
+      "きぬ"
+    ]
+  },
+  "直る": {
+    "meanings": [
+      "to get mended",
+      "to be repaired",
+      "to be fixed"
+    ],
+    "readings": [
+      "なお"
+    ]
+  },
+  "社長": {
+    "meanings": [
+      "company president",
+      "manager",
+      "director"
+    ],
+    "readings": [
+      "しゃちょう"
+    ]
+  },
+  "先輩": {
+    "meanings": [
+      "senior (at work or school)",
+      "superior",
+      "elder",
+      "older graduate",
+      "progenitor",
+      "old-timer"
+    ],
+    "readings": [
+      "せんぱい"
+    ]
+  },
+  "利用": {
+    "meanings": [
+      "use",
+      "utilization",
+      "utilisation",
+      "application"
+    ],
+    "readings": [
+      "りよう"
+    ]
+  },
+  "地震": {
+    "meanings": [
+      "earthquake"
+    ],
+    "readings": [
+      "じしん"
+    ]
+  },
+  "通る": {
+    "meanings": [
+      "to go by",
+      "to go past",
+      "to go along",
+      "to travel along",
+      "to pass through",
+      "to use (a road)",
+      "to take (a route)",
+      "to go via",
+      "to go by way of"
+    ],
+    "readings": [
+      "とお"
+    ]
+  },
+  "林": {
+    "meanings": [
+      "wood",
+      "woods",
+      "forest",
+      "grove",
+      "copse",
+      "thicket"
+    ],
+    "readings": [
+      "はやし"
+    ]
+  },
+  "客": {
+    "meanings": [
+      "guest",
+      "visitor"
+    ],
+    "readings": [
+      "きゃく"
+    ]
+  },
+  "歴史": {
+    "meanings": [
+      "history"
+    ],
+    "readings": [
+      "れきし"
+    ]
+  },
+  "降り出す": {
+    "meanings": [
+      "to begin to rain",
+      "to begin to snow"
+    ],
+    "readings": [
+      "ふ"
+    ]
+  },
+  "成るべく": {
+    "meanings": [
+      "as (much) as possible",
+      "as (much) as one can",
+      "wherever practicable",
+      "if possible"
+    ],
+    "readings": [
+      "なるべく"
+    ]
+  },
+  "お出でになる": {
+    "meanings": [
+      "to be"
+    ],
+    "readings": [
+      "おいでになる"
+    ]
+  }
+}
