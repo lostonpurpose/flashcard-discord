@@ -538,7 +538,16 @@ client.on('messageCreate', async (message) => {
   // 4. Try to introduce the next batch if ready
   try {
     const batchIntroduced = await introduceNextBatch(userId, message, 'easy');
-    // Check user's last_card_sent and user_freq
+    // If we just unlocked a new batch, send the next card immediately (no rate-limit check)
+    if (batchIntroduced) {
+      const now = new Date();
+      await sendNextCard(userId, message);
+      await pool.query('UPDATE users SET last_card_sent = $1 WHERE id = $2', [now.toISOString(), userId]);
+      console.log(`[server.js] new batch introduced + sent next card for user ${userId}`);
+      return;
+    }
+
+    // Otherwise fall back to the normal rate-limiting logic
     const { rows: userRows } = await pool.query('SELECT last_card_sent, user_freq FROM users WHERE id = $1', [userId]);
     if (userRows.length) {
       const { last_card_sent, user_freq } = userRows[0];

@@ -1,0 +1,511 @@
+{
+  "遵": {
+    "meanings": [
+      "obey",
+      "follow"
+    ],
+    "readings": [
+      "じゅん"
+    ]
+  },
+  "申": {
+    "meanings": [
+      "say",
+      "apply"
+    ],
+    "readings": [
+      "もうす",
+      "しん"
+    ]
+  },
+  "請": {
+    "meanings": [
+      "request"
+    ],
+    "readings": [
+      "せい",
+      "こう"
+    ]
+  },
+  "届": {
+    "meanings": [
+      "deliver",
+      "notify"
+    ],
+    "readings": [
+      "とどける"
+    ]
+  },
+  "承": {
+    "meanings": [
+      "consent",
+      "acknowledge"
+    ],
+    "readings": [
+      "しょう",
+      "うけたまわる"
+    ]
+  },
+  "遵守": {
+    "meanings": [
+      "compliance",
+      "observance"
+    ],
+    "readings": [
+      "じゅんしゅ"
+    ]
+  },
+  "申請": {
+    "meanings": [
+      "application"
+    ],
+    "readings": [
+      "しんせい"
+    ]
+  },
+  "届出": {
+    "meanings": [
+      "notification",
+      "report"
+    ],
+    "readings": [
+      "とどけで"
+    ]
+  },
+  "承認": {
+    "meanings": [
+      "approval",
+      "consent"
+    ],
+    "readings": [
+      "しょうにん"
+    ]
+  },
+  "避": {
+    "meanings": [
+      "avoid"
+    ],
+    "readings": [
+      "さける",
+      "ひ"
+    ]
+  },
+  "防": {
+    "meanings": [
+      "prevent",
+      "defend"
+    ],
+    "readings": [
+      "ぼう",
+      "ふせぐ"
+    ]
+  },
+  "保": {
+    "meanings": [
+      "protect",
+      "preserve"
+    ],
+    "readings": [
+      "ほ",
+      "たもつ"
+    ]
+  },
+  "除": {
+    "meanings": [
+      "remove",
+      "exclude"
+    ],
+    "readings": [
+      "じょ",
+      "のぞく"
+    ]
+  },
+  "救": {
+    "meanings": [
+      "rescue",
+      "save"
+    ],
+    "readings": [
+      "すくう",
+      "きゅう"
+    ]
+  },
+  "回避": {
+    "meanings": [
+      "avoidance"
+    ],
+    "readings": [
+      "かいひ"
+    ]
+  },
+  "防止": {
+    "meanings": [
+      "prevention"
+    ],
+    "readings": [
+      "ぼうし"
+    ]
+  },
+  "保険": {
+    "meanings": [
+      "insurance"
+    ],
+    "readings": [
+      "ほけん"
+    ]
+  },
+  "除去": {
+    "meanings": [
+      "removal"
+    ],
+    "readings": [
+      "じょきょ"
+    ]
+  },
+  "救済": {
+    "meanings": [
+      "relief",
+      "aid"
+    ],
+    "readings": [
+      "きゅうさい"
+    ]
+  },
+  "測": {
+    "meanings": [
+      "measure"
+    ],
+    "readings": [
+      "そく",
+      "はかる"
+    ]
+  },
+  "維": {
+    "meanings": [
+      "maintain"
+    ],
+    "readings": [
+      "い"
+    ]
+  },
+  "資": {
+    "meanings": [
+      "resources",
+      "capital"
+    ],
+    "readings": [
+      "し"
+    ]
+  },
+  "源": {
+    "meanings": [
+      "source"
+    ],
+    "readings": [
+      "みなもと",
+      "げん"
+    ]
+  },
+  "構": {
+    "meanings": [
+      "structure",
+      "construct"
+    ],
+    "readings": [
+      "こう",
+      "かまえる"
+    ]
+  },
+  "測定": {
+    "meanings": [
+      "measurement"
+    ],
+    "readings": [
+      "そくてい"
+    ]
+  },
+  "維持": {
+    "meanings": [
+      "maintenance",
+      "preserve"
+    ],
+    "readings": [
+      "いじ"
+    ]
+  },
+  "資源": {
+    "meanings": [
+      "resources"
+    ],
+    "readings": [
+      "しげん"
+    ]
+  },
+  "構造": {
+    "meanings": [
+      "structure"
+    ],
+    "readings": [
+      "こうぞう"
+    ]
+  },
+  "貿": {
+    "meanings": [
+      "trade"
+    ],
+    "readings": [
+      "ぼう"
+    ]
+  },
+  "流": {
+    "meanings": [
+      "flow"
+    ],
+    "readings": [
+      "ながれる",
+      "りゅう"
+    ]
+  },
+  "需": {
+    "meanings": [
+      "demand"
+    ],
+    "readings": [
+      "じゅ"
+    ]
+  },
+  "供": {
+    "meanings": [
+      "supply",
+      "offer"
+    ],
+    "readings": [
+      "きょう",
+      "そなえる"
+    ]
+  },
+  "輸": {
+    "meanings": [
+      "transport",
+      "import/export"
+    ],
+    "readings": [
+      "ゆ"
+    ]
+  },
+  "貿易": {
+    "meanings": [
+      "trade"
+    ],
+    "readings": [
+      "ぼうえき"
+    ]
+  },
+  "流通": {
+    "meanings": [
+      "distribution"
+    ],
+    "readings": [
+      "りゅうつう"
+    ]
+  },
+  "需要": {
+    "meanings": [
+      "demand"
+    ],
+    "readings": [
+      "じゅよう"
+    ]
+  },
+  "供給": {
+    "meanings": [
+      "supply"
+    ],
+    "readings": [
+      "きょうきゅう"
+    ]
+  },
+  "輸出": {
+    "meanings": [
+      "export"
+    ],
+    "readings": [
+      "ゆしゅつ"
+    ]
+  },
+  "輸入": {
+    "meanings": [
+      "import"
+    ],
+    "readings": [
+      "ゆにゅう"
+    ]
+  },
+  "観": {
+    "meanings": [
+      "viewpoint",
+      "observe"
+    ],
+    "readings": [
+      "かん"
+    ]
+  },
+  "察": {
+    "meanings": [
+      "inspect",
+      "guess"
+    ],
+    "readings": [
+      "さつ"
+    ]
+  },
+  "論": {
+    "meanings": [
+      "argument",
+      "theory"
+    ],
+    "readings": [
+      "ろん"
+    ]
+  },
+  "析": {
+    "meanings": [
+      "analyze"
+    ],
+    "readings": [
+      "せき"
+    ]
+  },
+  "視": {
+    "meanings": [
+      "view",
+      "see"
+    ],
+    "readings": [
+      "し"
+    ]
+  },
+  "観察": {
+    "meanings": [
+      "observation"
+    ],
+    "readings": [
+      "かんさつ"
+    ]
+  },
+  "論文": {
+    "meanings": [
+      "thesis",
+      "paper"
+    ],
+    "readings": [
+      "ろんぶん"
+    ]
+  },
+  "分析": {
+    "meanings": [
+      "analysis"
+    ],
+    "readings": [
+      "ぶんせき"
+    ]
+  },
+  "視点": {
+    "meanings": [
+      "viewpoint"
+    ],
+    "readings": [
+      "してん"
+    ]
+  },
+  "施": {
+    "meanings": [
+      "carry out",
+      "施行"
+    ],
+    "readings": [
+      "し",
+      "ほどこす"
+    ]
+  },
+  "導": {
+    "meanings": [
+      "guide",
+      "lead"
+    ],
+    "readings": [
+      "みちびく",
+      "どう"
+    ]
+  },
+  "標": {
+    "meanings": [
+      "mark",
+      "standard"
+    ],
+    "readings": [
+      "ひょう"
+    ]
+  },
+  "促": {
+    "meanings": [
+      "urge",
+      "prompt"
+    ],
+    "readings": [
+      "うながす",
+      "そく"
+    ]
+  },
+  "終": {
+    "meanings": [
+      "end"
+    ],
+    "readings": [
+      "おわる",
+      "しゅう"
+    ]
+  },
+  "実施": {
+    "meanings": [
+      "implementation"
+    ],
+    "readings": [
+      "じっし"
+    ]
+  },
+  "指導": {
+    "meanings": [
+      "guidance",
+      "leadership"
+    ],
+    "readings": [
+      "しどう"
+    ]
+  },
+  "目標": {
+    "meanings": [
+      "goal",
+      "target"
+    ],
+    "readings": [
+      "もくひょう"
+    ]
+  },
+  "促進": {
+    "meanings": [
+      "promotion"
+    ],
+    "readings": [
+      "そくしん"
+    ]
+  },
+  "最終": {
+    "meanings": [
+      "final"
+    ],
+    "readings": [
+      "さいしゅう"
+    ]
+  }
+}

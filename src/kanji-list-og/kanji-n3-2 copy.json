@@ -1,0 +1,1442 @@
+{
+  "規": {
+    "meanings": [
+      "rule",
+      "standard"
+    ],
+    "readings": [
+      "き"
+    ]
+  },
+  "規則": {
+    "meanings": [
+      "rule",
+      "regulation"
+    ],
+    "readings": [
+      "きそく"
+    ]
+  },
+  "則": {
+    "meanings": [
+      "rule",
+      "law"
+    ],
+    "readings": [
+      "そく"
+    ]
+  },
+  "精": {
+    "meanings": [
+      "spirit",
+      "refined"
+    ],
+    "readings": [
+      "せい"
+    ]
+  },
+  "精神": {
+    "meanings": [
+      "spirit",
+      "mind"
+    ],
+    "readings": [
+      "せいしん"
+    ]
+  },
+  "基": {
+    "meanings": [
+      "base",
+      "foundation"
+    ],
+    "readings": [
+      "き",
+      "もと"
+    ]
+  },
+  "基本": {
+    "meanings": [
+      "basic",
+      "foundation"
+    ],
+    "readings": [
+      "きほん"
+    ]
+  },
+  "準": {
+    "meanings": [
+      "standard",
+      "prepare"
+    ],
+    "readings": [
+      "じゅん"
+    ]
+  },
+  "基準": {
+    "meanings": [
+      "standard",
+      "criterion"
+    ],
+    "readings": [
+      "きじゅん"
+    ]
+  },
+  "設計": {
+    "meanings": [
+      "design",
+      "plan"
+    ],
+    "readings": [
+      "せっけい"
+    ]
+  },
+  "備": {
+    "meanings": [
+      "prepare",
+      "equip"
+    ],
+    "readings": [
+      "そなえる",
+      "び"
+    ]
+  },
+  "準備": {
+    "meanings": [
+      "preparation"
+    ],
+    "readings": [
+      "じゅんび"
+    ]
+  },
+  "限": {
+    "meanings": [
+      "limit"
+    ],
+    "readings": [
+      "かぎる",
+      "げん"
+    ]
+  },
+  "制限": {
+    "meanings": [
+      "limit",
+      "restriction"
+    ],
+    "readings": [
+      "せいげん"
+    ]
+  },
+  "告": {
+    "meanings": [
+      "notify",
+      "tell"
+    ],
+    "readings": [
+      "つげる",
+      "こく"
+    ]
+  },
+  "報告": {
+    "meanings": [
+      "report"
+    ],
+    "readings": [
+      "ほうこく"
+    ]
+  },
+  "示": {
+    "meanings": [
+      "show",
+      "indicate"
+    ],
+    "readings": [
+      "しめす",
+      "じ"
+    ]
+  },
+  "表示": {
+    "meanings": [
+      "display",
+      "indication"
+    ],
+    "readings": [
+      "ひょうじ"
+    ]
+  },
+  "伝": {
+    "meanings": [
+      "transmit",
+      "tell"
+    ],
+    "readings": [
+      "つたえる",
+      "でん"
+    ]
+  },
+  "伝達": {
+    "meanings": [
+      "communication",
+      "transmission"
+    ],
+    "readings": [
+      "でんたつ"
+    ]
+  },
+  "達": {
+    "meanings": [
+      "reach",
+      "plural suffix"
+    ],
+    "readings": [
+      "たっする",
+      "たち"
+    ]
+  },
+  "到達": {
+    "meanings": [
+      "arrival",
+      "attainment"
+    ],
+    "readings": [
+      "とうたつ"
+    ]
+  },
+  "案": {
+    "meanings": [
+      "plan",
+      "proposal"
+    ],
+    "readings": [
+      "あん"
+    ]
+  },
+  "提案": {
+    "meanings": [
+      "proposal"
+    ],
+    "readings": [
+      "ていあん"
+    ]
+  },
+  "紹": {
+    "meanings": [
+      "introduce"
+    ],
+    "readings": [
+      "しょう"
+    ]
+  },
+  "紹介": {
+    "meanings": [
+      "introduction"
+    ],
+    "readings": [
+      "しょうかい"
+    ]
+  },
+  "参": {
+    "meanings": [
+      "participate"
+    ],
+    "readings": [
+      "さん",
+      "まいる"
+    ]
+  },
+  "参加": {
+    "meanings": [
+      "participation"
+    ],
+    "readings": [
+      "さんか"
+    ]
+  },
+  "録": {
+    "meanings": [
+      "record"
+    ],
+    "readings": [
+      "ろく"
+    ]
+  },
+  "原因": {
+    "meanings": [
+      "cause"
+    ],
+    "readings": [
+      "げんいん"
+    ]
+  },
+  "由": {
+    "meanings": [
+      "reason"
+    ],
+    "readings": [
+      "ゆ",
+      "よし"
+    ]
+  },
+  "理由": {
+    "meanings": [
+      "reason"
+    ],
+    "readings": [
+      "りゆう"
+    ]
+  },
+  "果": {
+    "meanings": [
+      "result",
+      "fruit"
+    ],
+    "readings": [
+      "か",
+      "はたす"
+    ]
+  },
+  "効果": {
+    "meanings": [
+      "effect"
+    ],
+    "readings": [
+      "こうか"
+    ]
+  },
+  "結": {
+    "meanings": [
+      "tie",
+      "conclude"
+    ],
+    "readings": [
+      "けつ",
+      "むすぶ"
+    ]
+  },
+  "結果": {
+    "meanings": [
+      "result"
+    ],
+    "readings": [
+      "けっか"
+    ]
+  },
+  "影": {
+    "meanings": [
+      "shadow"
+    ],
+    "readings": [
+      "かげ",
+      "えい"
+    ]
+  },
+  "影響": {
+    "meanings": [
+      "influence",
+      "effect"
+    ],
+    "readings": [
+      "えいきょう"
+    ]
+  },
+  "比": {
+    "meanings": [
+      "compare"
+    ],
+    "readings": [
+      "ひ",
+      "くらべる"
+    ]
+  },
+  "比較": {
+    "meanings": [
+      "comparison"
+    ],
+    "readings": [
+      "ひかく"
+    ]
+  },
+  "差": {
+    "meanings": [
+      "difference"
+    ],
+    "readings": [
+      "さ",
+      "さす"
+    ]
+  },
+  "差別": {
+    "meanings": [
+      "discrimination",
+      "distinction"
+    ],
+    "readings": [
+      "さべつ"
+    ]
+  },
+  "手段": {
+    "meanings": [
+      "means",
+      "method"
+    ],
+    "readings": [
+      "しゅだん"
+    ]
+  },
+  "価": {
+    "meanings": [
+      "value",
+      "price"
+    ],
+    "readings": [
+      "か"
+    ]
+  },
+  "価格": {
+    "meanings": [
+      "price"
+    ],
+    "readings": [
+      "かかく"
+    ]
+  },
+  "費": {
+    "meanings": [
+      "expense"
+    ],
+    "readings": [
+      "ひ"
+    ]
+  },
+  "費用": {
+    "meanings": [
+      "cost",
+      "expense"
+    ],
+    "readings": [
+      "ひよう"
+    ]
+  },
+  "収": {
+    "meanings": [
+      "obtain",
+      "income"
+    ],
+    "readings": [
+      "しゅう",
+      "おさめる"
+    ]
+  },
+  "収入": {
+    "meanings": [
+      "income"
+    ],
+    "readings": [
+      "しゅうにゅう"
+    ]
+  },
+  "支出": {
+    "meanings": [
+      "expenditure"
+    ],
+    "readings": [
+      "ししゅつ"
+    ]
+  },
+  "税": {
+    "meanings": [
+      "tax"
+    ],
+    "readings": [
+      "ぜい"
+    ]
+  },
+  "税金": {
+    "meanings": [
+      "tax"
+    ],
+    "readings": [
+      "ぜいきん"
+    ]
+  },
+  "産": {
+    "meanings": [
+      "produce",
+      "give birth"
+    ],
+    "readings": [
+      "さん",
+      "うむ"
+    ]
+  },
+  "生産": {
+    "meanings": [
+      "production"
+    ],
+    "readings": [
+      "せいさん"
+    ]
+  },
+  "病": {
+    "meanings": [
+      "illness"
+    ],
+    "readings": [
+      "やまい",
+      "びょう"
+    ]
+  },
+  "病気": {
+    "meanings": [
+      "illness",
+      "disease"
+    ],
+    "readings": [
+      "びょうき"
+    ]
+  },
+  "医": {
+    "meanings": [
+      "medical"
+    ],
+    "readings": [
+      "い"
+    ]
+  },
+  "医者": {
+    "meanings": [
+      "doctor"
+    ],
+    "readings": [
+      "いしゃ"
+    ]
+  },
+  "治": {
+    "meanings": [
+      "heal",
+      "govern"
+    ],
+    "readings": [
+      "なおす",
+      "ち"
+    ]
+  },
+  "治療": {
+    "meanings": [
+      "treatment"
+    ],
+    "readings": [
+      "ちりょう"
+    ]
+  },
+  "命": {
+    "meanings": [
+      "life",
+      "fate"
+    ],
+    "readings": [
+      "いのち",
+      "めい"
+    ]
+  },
+  "生命": {
+    "meanings": [
+      "life"
+    ],
+    "readings": [
+      "せいめい"
+    ]
+  },
+  "健": {
+    "meanings": [
+      "healthy"
+    ],
+    "readings": [
+      "けん"
+    ]
+  },
+  "健康": {
+    "meanings": [
+      "health"
+    ],
+    "readings": [
+      "けんこう"
+    ]
+  },
+  "疲": {
+    "meanings": [
+      "tired"
+    ],
+    "readings": [
+      "つかれる",
+      "ひ"
+    ]
+  },
+  "疲労": {
+    "meanings": [
+      "fatigue"
+    ],
+    "readings": [
+      "ひろう"
+    ]
+  },
+  "痛": {
+    "meanings": [
+      "pain"
+    ],
+    "readings": [
+      "いたい",
+      "つう"
+    ]
+  },
+  "頭痛": {
+    "meanings": [
+      "headache"
+    ],
+    "readings": [
+      "ずつう"
+    ]
+  },
+  "薬": {
+    "meanings": [
+      "medicine"
+    ],
+    "readings": [
+      "くすり",
+      "やく"
+    ]
+  },
+  "薬品": {
+    "meanings": [
+      "medicine",
+      "drug"
+    ],
+    "readings": [
+      "やくひん"
+    ]
+  },
+  "害": {
+    "meanings": [
+      "harm",
+      "damage"
+    ],
+    "readings": [
+      "がい"
+    ]
+  },
+  "喜": {
+    "meanings": [
+      "joy"
+    ],
+    "readings": [
+      "よろこぶ",
+      "き"
+    ]
+  },
+  "怒": {
+    "meanings": [
+      "anger"
+    ],
+    "readings": [
+      "いかる",
+      "ど"
+    ]
+  },
+  "悲": {
+    "meanings": [
+      "sad"
+    ],
+    "readings": [
+      "かなしい",
+      "ひ"
+    ]
+  },
+  "楽": {
+    "meanings": [
+      "comfort",
+      "enjoy"
+    ],
+    "readings": [
+      "たのしい",
+      "らく"
+    ]
+  },
+  "驚": {
+    "meanings": [
+      "surprise"
+    ],
+    "readings": [
+      "おどろく",
+      "きょう"
+    ]
+  },
+  "安": {
+    "meanings": [
+      "safe",
+      "cheap"
+    ],
+    "readings": [
+      "やすい",
+      "あん"
+    ]
+  },
+  "安心": {
+    "meanings": [
+      "relief",
+      "peace of mind"
+    ],
+    "readings": [
+      "あんしん"
+    ]
+  },
+  "不": {
+    "meanings": [
+      "not"
+    ],
+    "readings": [
+      "ふ",
+      "ぶ"
+    ]
+  },
+  "不安": {
+    "meanings": [
+      "anxiety"
+    ],
+    "readings": [
+      "ふあん"
+    ]
+  },
+  "満": {
+    "meanings": [
+      "full",
+      "satisfy"
+    ],
+    "readings": [
+      "まん",
+      "みちる"
+    ]
+  },
+  "満足": {
+    "meanings": [
+      "satisfaction"
+    ],
+    "readings": [
+      "まんぞく"
+    ]
+  },
+  "嫌": {
+    "meanings": [
+      "dislike"
+    ],
+    "readings": [
+      "きらい",
+      "いや"
+    ]
+  },
+  "許": {
+    "meanings": [
+      "permit"
+    ],
+    "readings": [
+      "ゆるす",
+      "きょ"
+    ]
+  },
+  "許可": {
+    "meanings": [
+      "permission"
+    ],
+    "readings": [
+      "きょか"
+    ]
+  },
+  "禁": {
+    "meanings": [
+      "prohibit"
+    ],
+    "readings": [
+      "きん"
+    ]
+  },
+  "禁止": {
+    "meanings": [
+      "prohibition"
+    ],
+    "readings": [
+      "きんし"
+    ]
+  },
+  "要": {
+    "meanings": [
+      "need",
+      "important"
+    ],
+    "readings": [
+      "よう"
+    ]
+  },
+  "必要": {
+    "meanings": [
+      "necessary"
+    ],
+    "readings": [
+      "ひつよう"
+    ]
+  },
+  "義": {
+    "meanings": [
+      "duty",
+      "justice"
+    ],
+    "readings": [
+      "ぎ"
+    ]
+  },
+  "義務": {
+    "meanings": [
+      "duty",
+      "obligation"
+    ],
+    "readings": [
+      "ぎむ"
+    ]
+  },
+  "責": {
+    "meanings": [
+      "responsibility",
+      "blame"
+    ],
+    "readings": [
+      "せき"
+    ]
+  },
+  "任せる": {
+    "meanings": [
+      "entrust",
+      "leave to"
+    ],
+    "readings": [
+      "まかせる"
+    ]
+  },
+  "従": {
+    "meanings": [
+      "obey",
+      "follow"
+    ],
+    "readings": [
+      "したがう",
+      "じゅう"
+    ]
+  },
+  "位": {
+    "meanings": [
+      "rank",
+      "position"
+    ],
+    "readings": [
+      "い"
+    ]
+  },
+  "位置": {
+    "meanings": [
+      "position",
+      "location"
+    ],
+    "readings": [
+      "いち"
+    ]
+  },
+  "周": {
+    "meanings": [
+      "around"
+    ],
+    "readings": [
+      "しゅう"
+    ]
+  },
+  "周囲": {
+    "meanings": [
+      "surroundings"
+    ],
+    "readings": [
+      "しゅうい"
+    ]
+  },
+  "囲": {
+    "meanings": [
+      "surround"
+    ],
+    "readings": [
+      "かこむ",
+      "い"
+    ]
+  },
+  "囲む": {
+    "meanings": [
+      "surround"
+    ],
+    "readings": [
+      "かこむ"
+    ]
+  },
+  "境": {
+    "meanings": [
+      "boundary"
+    ],
+    "readings": [
+      "さかい",
+      "きょう"
+    ]
+  },
+  "環境": {
+    "meanings": [
+      "environment"
+    ],
+    "readings": [
+      "かんきょう"
+    ]
+  },
+  "隣": {
+    "meanings": [
+      "neighbor"
+    ],
+    "readings": [
+      "となり",
+      "りん"
+    ]
+  },
+  "隣人": {
+    "meanings": [
+      "neighbor"
+    ],
+    "readings": [
+      "りんじん"
+    ]
+  },
+  "接": {
+    "meanings": [
+      "contact"
+    ],
+    "readings": [
+      "せつ"
+    ]
+  },
+  "接続": {
+    "meanings": [
+      "connection"
+    ],
+    "readings": [
+      "せつぞく"
+    ]
+  },
+  "交": {
+    "meanings": [
+      "intersect",
+      "exchange"
+    ],
+    "readings": [
+      "こう",
+      "まじる"
+    ]
+  },
+  "交流": {
+    "meanings": [
+      "exchange",
+      "interaction"
+    ],
+    "readings": [
+      "こうりゅう"
+    ]
+  },
+  "運": {
+    "meanings": [
+      "carry",
+      "luck"
+    ],
+    "readings": [
+      "うん",
+      "はこぶ"
+    ]
+  },
+  "運動": {
+    "meanings": [
+      "exercise"
+    ],
+    "readings": [
+      "うんどう"
+    ]
+  },
+  "投": {
+    "meanings": [
+      "throw"
+    ],
+    "readings": [
+      "なげる",
+      "とう"
+    ]
+  },
+  "投票": {
+    "meanings": [
+      "vote"
+    ],
+    "readings": [
+      "とうひょう"
+    ]
+  },
+  "打": {
+    "meanings": [
+      "hit"
+    ],
+    "readings": [
+      "うつ",
+      "だ"
+    ]
+  },
+  "打撃": {
+    "meanings": [
+      "blow",
+      "strike"
+    ],
+    "readings": [
+      "だげき"
+    ]
+  },
+  "抜": {
+    "meanings": [
+      "pull out"
+    ],
+    "readings": [
+      "ぬく",
+      "ばつ"
+    ]
+  },
+  "抜く": {
+    "meanings": [
+      "pull out"
+    ],
+    "readings": [
+      "ぬく"
+    ]
+  },
+  "押": {
+    "meanings": [
+      "push"
+    ],
+    "readings": [
+      "おす",
+      "おう"
+    ]
+  },
+  "押す": {
+    "meanings": [
+      "push"
+    ],
+    "readings": [
+      "おす"
+    ]
+  },
+  "倒": {
+    "meanings": [
+      "fall",
+      "collapse"
+    ],
+    "readings": [
+      "たおれる",
+      "とう"
+    ]
+  },
+  "倒れる": {
+    "meanings": [
+      "fall",
+      "collapse"
+    ],
+    "readings": [
+      "たおれる"
+    ]
+  },
+  "浮": {
+    "meanings": [
+      "float"
+    ],
+    "readings": [
+      "うく",
+      "ふ"
+    ]
+  },
+  "浮かぶ": {
+    "meanings": [
+      "float",
+      "come to mind"
+    ],
+    "readings": [
+      "うかぶ"
+    ]
+  },
+  "事": {
+    "meanings": [
+      "matter",
+      "incident"
+    ],
+    "readings": [
+      "こと",
+      "じ"
+    ]
+  },
+  "事件": {
+    "meanings": [
+      "incident",
+      "case"
+    ],
+    "readings": [
+      "じけん"
+    ]
+  },
+  "故": {
+    "meanings": [
+      "cause",
+      "late"
+    ],
+    "readings": [
+      "こ"
+    ]
+  },
+  "事故": {
+    "meanings": [
+      "accident"
+    ],
+    "readings": [
+      "じこ"
+    ]
+  },
+  "犯": {
+    "meanings": [
+      "crime",
+      "offend"
+    ],
+    "readings": [
+      "おかす",
+      "はん"
+    ]
+  },
+  "犯人": {
+    "meanings": [
+      "criminal"
+    ],
+    "readings": [
+      "はんにん"
+    ]
+  },
+  "罪": {
+    "meanings": [
+      "crime",
+      "sin"
+    ],
+    "readings": [
+      "つみ",
+      "ざい"
+    ]
+  },
+  "犯罪": {
+    "meanings": [
+      "crime"
+    ],
+    "readings": [
+      "はんざい"
+    ]
+  },
+  "能": {
+    "meanings": [
+      "ability"
+    ],
+    "readings": [
+      "のう"
+    ]
+  },
+  "能力": {
+    "meanings": [
+      "ability"
+    ],
+    "readings": [
+      "のうりょく"
+    ]
+  },
+  "験": {
+    "meanings": [
+      "test",
+      "effect"
+    ],
+    "readings": [
+      "けん"
+    ]
+  },
+  "経験": {
+    "meanings": [
+      "experience"
+    ],
+    "readings": [
+      "けいけん"
+    ]
+  },
+  "習": {
+    "meanings": [
+      "learn"
+    ],
+    "readings": [
+      "ならう",
+      "しゅう"
+    ]
+  },
+  "学習": {
+    "meanings": [
+      "learning"
+    ],
+    "readings": [
+      "がくしゅう"
+    ]
+  },
+  "試": {
+    "meanings": [
+      "try",
+      "test"
+    ],
+    "readings": [
+      "ためす",
+      "し"
+    ]
+  },
+  "試験": {
+    "meanings": [
+      "exam"
+    ],
+    "readings": [
+      "しけん"
+    ]
+  },
+  "練": {
+    "meanings": [
+      "train",
+      "practice"
+    ],
+    "readings": [
+      "ねる",
+      "れん"
+    ]
+  },
+  "訓練": {
+    "meanings": [
+      "training"
+    ],
+    "readings": [
+      "くんれん"
+    ]
+  },
+  "経過": {
+    "meanings": [
+      "progress",
+      "course"
+    ],
+    "readings": [
+      "けいか"
+    ]
+  },
+  "過": {
+    "meanings": [
+      "past",
+      "exceed"
+    ],
+    "readings": [
+      "か",
+      "すぎる"
+    ]
+  },
+  "過去": {
+    "meanings": [
+      "past"
+    ],
+    "readings": [
+      "かこ"
+    ]
+  },
+  "最": {
+    "meanings": [
+      "most",
+      "the best"
+    ],
+    "readings": [
+      "さい",
+      "もっとも"
+    ]
+  },
+  "最初": {
+    "meanings": [
+      "first",
+      "beginning"
+    ],
+    "readings": [
+      "さいしょ"
+    ]
+  },
+  "完了": {
+    "meanings": [
+      "completion"
+    ],
+    "readings": [
+      "かんりょう"
+    ]
+  },
+  "途": {
+    "meanings": [
+      "way",
+      "route"
+    ],
+    "readings": [
+      "と"
+    ]
+  },
+  "途中": {
+    "meanings": [
+      "on the way"
+    ],
+    "readings": [
+      "とちゅう"
+    ]
+  },
+  "然": {
+    "meanings": [
+      "natural",
+      "so"
+    ],
+    "readings": [
+      "ぜん",
+      "しか"
+    ]
+  },
+  "自然": {
+    "meanings": [
+      "nature"
+    ],
+    "readings": [
+      "しぜん"
+    ]
+  },
+  "景": {
+    "meanings": [
+      "scenery"
+    ],
+    "readings": [
+      "けい"
+    ]
+  },
+  "景色": {
+    "meanings": [
+      "scenery"
+    ],
+    "readings": [
+      "けしき"
+    ]
+  },
+  "現象": {
+    "meanings": [
+      "phenomenon"
+    ],
+    "readings": [
+      "げんしょう"
+    ]
+  },
+  "気": {
+    "meanings": [
+      "spirit",
+      "air"
+    ],
+    "readings": [
+      "き"
+    ]
+  },
+  "景気": {
+    "meanings": [
+      "economic conditions"
+    ],
+    "readings": [
+      "けいき"
+    ]
+  },
+  "立": {
+    "meanings": [
+      "stand",
+      "establish"
+    ],
+    "readings": [
+      "たつ",
+      "りつ"
+    ]
+  },
+  "立場": {
+    "meanings": [
+      "position",
+      "standpoint"
+    ],
+    "readings": [
+      "たちば"
+    ]
+  },
+  "主": {
+    "meanings": [
+      "main",
+      "master"
+    ],
+    "readings": [
+      "おも",
+      "しゅ"
+    ]
+  },
+  "主張": {
+    "meanings": [
+      "assertion",
+      "claim"
+    ],
+    "readings": [
+      "しゅちょう"
+    ]
+  },
+  "客": {
+    "meanings": [
+      "guest",
+      "customer"
+    ],
+    "readings": [
+      "きゃく"
+    ]
+  },
+  "客観": {
+    "meanings": [
+      "objective"
+    ],
+    "readings": [
+      "きゃっかん"
+    ]
+  },
+  "判": {
+    "meanings": [
+      "judge"
+    ],
+    "readings": [
+      "はん"
+    ]
+  },
+  "存": {
+    "meanings": [
+      "exist"
+    ],
+    "readings": [
+      "そん"
+    ]
+  },
+  "存在": {
+    "meanings": [
+      "existence"
+    ],
+    "readings": [
+      "そんざい"
+    ]
+  }
+}

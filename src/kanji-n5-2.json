@@ -1,0 +1,59 @@
+{
+  "九": {
+    "meanings": [
+      "nine"
+    ],
+    "readings": [
+      "きゅう",
+      "ここ"
+    ]
+  },
+  "五": {
+    "meanings": [
+      "five"
+    ],
+    "readings": [
+      "ご",
+      "いつ"
+    ]
+  },
+  "休": {
+    "meanings": [
+      "rest",
+      "holiday"
+    ],
+    "readings": [
+      "やすむ",
+      "きゅう"
+    ]
+  },
+  "入": {
+    "meanings": [
+      "enter",
+      "insert"
+    ],
+    "readings": [
+      "はいる",
+      "いる",
+      "にゅう"
+    ]
+  },
+  "毎": {
+    "meanings": [
+      "every",
+      "each"
+    ],
+    "readings": [
+      "まい"
+    ]
+  },
+  "雨": {
+    "meanings": [
+      "rain"
+    ],
+    "readings": [
+      "あめ",
+      "う"
+    ]
+  }
+}
