@@ -1,0 +1,65 @@
+{
+  "今年": {
+    "meanings": [
+      "this year"
+    ],
+    "readings": [
+      "ことし"
+    ]
+  },
+  "外国": {
+    "meanings": [
+      "foreign country"
+    ],
+    "readings": [
+      "がいこく"
+    ]
+  },
+  "今晩": {
+    "meanings": [
+      "tonight",
+      "this evening"
+    ],
+    "readings": [
+      "こんばん"
+    ]
+  },
+  "何方": {
+    "meanings": [
+      "which way",
+      "which direction",
+      "where"
+    ],
+    "readings": [
+      "どちら"
+    ]
+  },
+  "家庭": {
+    "meanings": [
+      "home",
+      "household",
+      "family",
+      "hearth"
+    ],
+    "readings": [
+      "かてい"
+    ]
+  },
+  "手紙": {
+    "meanings": [
+      "letter",
+      "note"
+    ],
+    "readings": [
+      "てがみ"
+    ]
+  },
+  "今朝": {
+    "meanings": [
+      "this morning"
+    ],
+    "readings": [
+      "けさ"
+    ]
+  }
+}

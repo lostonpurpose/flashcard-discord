@@ -1,0 +1,957 @@
+{
+  "不足": {
+    "meanings": [
+      "insufficiency",
+      "deficiency",
+      "shortage",
+      "lack",
+      "scarcity",
+      "deficit"
+    ],
+    "readings": [
+      "ふそく"
+    ]
+  },
+  "手段": {
+    "meanings": [
+      "means",
+      "way",
+      "measure"
+    ],
+    "readings": [
+      "しゅだん"
+    ]
+  },
+  "首都": {
+    "meanings": [
+      "capital (city)",
+      "metropolis"
+    ],
+    "readings": [
+      "しゅと"
+    ]
+  },
+  "気の毒": {
+    "meanings": [
+      "pitiful",
+      "unfortunate",
+      "poor",
+      "miserable",
+      "wretched"
+    ],
+    "readings": [
+      "き"
+    ]
+  },
+  "順番": {
+    "meanings": [
+      "order",
+      "turn"
+    ],
+    "readings": [
+      "じゅんばん"
+    ]
+  },
+  "中学": {
+    "meanings": [
+      "junior high school",
+      "middle school",
+      "lower secondary school"
+    ],
+    "readings": [
+      "ちゅうがく"
+    ]
+  },
+  "宝石": {
+    "meanings": [
+      "gem",
+      "jewel",
+      "precious stone"
+    ],
+    "readings": [
+      "ほうせき"
+    ]
+  },
+  "年月": {
+    "meanings": [
+      "months and years"
+    ],
+    "readings": [
+      "としつき"
+    ]
+  },
+  "女王": {
+    "meanings": [
+      "queen"
+    ],
+    "readings": [
+      "じょおう"
+    ]
+  },
+  "不図": {
+    "meanings": [
+      "suddenly",
+      "casually",
+      "accidentally",
+      "incidentally",
+      "unexpectedly",
+      "unintentionally"
+    ],
+    "readings": [
+      "ふと"
+    ]
+  },
+  "一時": {
+    "meanings": [
+      "one o'clock"
+    ],
+    "readings": [
+      "いちじ"
+    ]
+  },
+  "週間": {
+    "meanings": [
+      "week"
+    ],
+    "readings": [
+      "しゅうかん"
+    ]
+  },
+  "全国": {
+    "meanings": [
+      "the whole country"
+    ],
+    "readings": [
+      "ぜんこく"
+    ]
+  },
+  "手品": {
+    "meanings": [
+      "magic (illusion)",
+      "conjuring",
+      "magic trick",
+      "conjuring trick",
+      "sleight of hand"
+    ],
+    "readings": [
+      "てじな"
+    ]
+  },
+  "注目": {
+    "meanings": [
+      "notice",
+      "attention",
+      "observation"
+    ],
+    "readings": [
+      "ちゅうもく"
+    ]
+  },
+  "大陸": {
+    "meanings": [
+      "continent"
+    ],
+    "readings": [
+      "たいりく"
+    ]
+  },
+  "髪の毛": {
+    "meanings": [
+      "hair (on the head)",
+      "(a) hair"
+    ],
+    "readings": [
+      "かみ"
+    ]
+  },
+  "正直": {
+    "meanings": [
+      "honest",
+      "frank",
+      "candid",
+      "straightforward"
+    ],
+    "readings": [
+      "しょうじき"
+    ]
+  },
+  "国家": {
+    "meanings": [
+      "state",
+      "country",
+      "nation"
+    ],
+    "readings": [
+      "こっか"
+    ]
+  },
+  "大家": {
+    "meanings": [
+      "landlord",
+      "landlady"
+    ],
+    "readings": [
+      "おおや"
+    ]
+  },
+  "仲間": {
+    "meanings": [
+      "companion",
+      "fellow",
+      "friend",
+      "mate",
+      "comrade",
+      "partner",
+      "colleague",
+      "coworker",
+      "associate"
+    ],
+    "readings": [
+      "なかま"
+    ]
+  },
+  "石油": {
+    "meanings": [
+      "oil",
+      "petroleum"
+    ],
+    "readings": [
+      "せきゆ"
+    ]
+  },
+  "親友": {
+    "meanings": [
+      "close friend",
+      "bosom friend",
+      "buddy",
+      "crony",
+      "chum"
+    ],
+    "readings": [
+      "しんゆう"
+    ]
+  },
+  "不正": {
+    "meanings": [
+      "injustice",
+      "unfairness",
+      "wrongdoing",
+      "iniquity",
+      "impropriety",
+      "irregularity",
+      "dishonesty",
+      "illegality",
+      "fraud"
+    ],
+    "readings": [
+      "ふせい"
+    ]
+  },
+  "劇場": {
+    "meanings": [
+      "theatre",
+      "theater",
+      "playhouse"
+    ],
+    "readings": [
+      "げきじょう"
+    ]
+  },
+  "熱中": {
+    "meanings": [
+      "being enthusiastic about",
+      "being wild about",
+      "being absorbed in",
+      "being engrossed in",
+      "being devoted to"
+    ],
+    "readings": [
+      "ねっちゅう"
+    ]
+  },
+  "金額": {
+    "meanings": [
+      "amount of money",
+      "sum"
+    ],
+    "readings": [
+      "きんがく"
+    ]
+  },
+  "地球": {
+    "meanings": [
+      "Earth",
+      "the globe"
+    ],
+    "readings": [
+      "ちきゅう"
+    ]
+  },
+  "語学": {
+    "meanings": [
+      "study of foreign languages"
+    ],
+    "readings": [
+      "ごがく"
+    ]
+  },
+  "姉妹": {
+    "meanings": [
+      "sisters"
+    ],
+    "readings": [
+      "しまい"
+    ]
+  },
+  "何時でも": {
+    "meanings": [
+      "always",
+      "all the time",
+      "at all times"
+    ],
+    "readings": [
+      "いつでも"
+    ]
+  },
+  "味方": {
+    "meanings": [
+      "friend",
+      "ally",
+      "supporter"
+    ],
+    "readings": [
+      "みかた"
+    ]
+  },
+  "今後": {
+    "meanings": [
+      "from now on",
+      "hereafter"
+    ],
+    "readings": [
+      "こんご"
+    ]
+  },
+  "税金": {
+    "meanings": [
+      "tax",
+      "duty"
+    ],
+    "readings": [
+      "ぜいきん"
+    ]
+  },
+  "能力": {
+    "meanings": [
+      "ability",
+      "faculty"
+    ],
+    "readings": [
+      "のうりょく"
+    ]
+  },
+  "学者": {
+    "meanings": [
+      "scholar",
+      "academic",
+      "scientist"
+    ],
+    "readings": [
+      "がくしゃ"
+    ]
+  },
+  "海外": {
+    "meanings": [
+      "foreign",
+      "abroad",
+      "overseas"
+    ],
+    "readings": [
+      "かいがい"
+    ]
+  },
+  "黒板": {
+    "meanings": [
+      "blackboard"
+    ],
+    "readings": [
+      "こくばん"
+    ]
+  },
+  "国語": {
+    "meanings": [
+      "national language"
+    ],
+    "readings": [
+      "こくご"
+    ]
+  },
+  "一度に": {
+    "meanings": [
+      "all at once"
+    ],
+    "readings": [
+      "いちど"
+    ]
+  },
+  "年中": {
+    "meanings": [
+      "whole year",
+      "all year round",
+      "throughout the year"
+    ],
+    "readings": [
+      "ねんじゅう"
+    ]
+  },
+  "気味": {
+    "meanings": [
+      "sensation",
+      "feeling"
+    ],
+    "readings": [
+      "きみ"
+    ]
+  },
+  "歌手": {
+    "meanings": [
+      "singer"
+    ],
+    "readings": [
+      "かしゅ"
+    ]
+  },
+  "何時か": {
+    "meanings": [
+      "sometime",
+      "someday",
+      "one day",
+      "some time or other",
+      "the other day",
+      "in due course",
+      "in time"
+    ],
+    "readings": [
+      "いつか"
+    ]
+  },
+  "地下": {
+    "meanings": [
+      "underground",
+      "below the ground"
+    ],
+    "readings": [
+      "ちか"
+    ]
+  },
+  "夢中": {
+    "meanings": [
+      "absorbed in",
+      "immersed in",
+      "crazy about",
+      "obsessed with",
+      "devoted to"
+    ],
+    "readings": [
+      "むちゅう"
+    ]
+  },
+  "毛布": {
+    "meanings": [
+      "blanket"
+    ],
+    "readings": [
+      "もうふ"
+    ]
+  },
+  "今回": {
+    "meanings": [
+      "this time",
+      "now"
+    ],
+    "readings": [
+      "こんかい"
+    ]
+  },
+  "筋肉": {
+    "meanings": [
+      "muscle"
+    ],
+    "readings": [
+      "きんにく"
+    ]
+  },
+  "話題": {
+    "meanings": [
+      "topic",
+      "subject"
+    ],
+    "readings": [
+      "わだい"
+    ]
+  },
+  "一家": {
+    "meanings": [
+      "a family",
+      "a household",
+      "a home",
+      "one's family",
+      "whole family"
+    ],
+    "readings": [
+      "いっか"
+    ]
+  },
+  "方法": {
+    "meanings": [
+      "method",
+      "way",
+      "manner",
+      "process",
+      "procedure",
+      "means",
+      "measure"
+    ],
+    "readings": [
+      "ほうほう"
+    ]
+  },
+  "日本": {
+    "meanings": [
+      "Japan"
+    ],
+    "readings": [
+      "にほん"
+    ]
+  },
+  "中心": {
+    "meanings": [
+      "center",
+      "centre",
+      "middle",
+      "heart",
+      "core",
+      "focus",
+      "pivot",
+      "emphasis",
+      "balance"
+    ],
+    "readings": [
+      "ちゅうしん"
+    ]
+  },
+  "物質": {
+    "meanings": [
+      "material",
+      "substance"
+    ],
+    "readings": [
+      "ぶっしつ"
+    ]
+  },
+  "都市": {
+    "meanings": [
+      "town",
+      "city",
+      "municipal",
+      "urban"
+    ],
+    "readings": [
+      "とし"
+    ]
+  },
+  "何時までも": {
+    "meanings": [
+      "forever",
+      "eternally",
+      "for good",
+      "as long as one likes",
+      "indefinitely",
+      "endlessly",
+      "for a long time"
+    ],
+    "readings": [
+      "いつまでも"
+    ]
+  },
+  "青年": {
+    "meanings": [
+      "youth",
+      "young man"
+    ],
+    "readings": [
+      "せいねん"
+    ]
+  },
+  "年間": {
+    "meanings": [
+      "(period of) a year"
+    ],
+    "readings": [
+      "ねんかん"
+    ]
+  },
+  "可愛らしい": {
+    "meanings": [
+      "lovely",
+      "sweet",
+      "pretty",
+      "cute",
+      "adorable"
+    ],
+    "readings": [
+      "かわい"
+    ]
+  },
+  "正式": {
+    "meanings": [
+      "formal",
+      "official",
+      "regular",
+      "proper",
+      "legal",
+      "due (formalities)"
+    ],
+    "readings": [
+      "せいしき"
+    ]
+  },
+  "国境": {
+    "meanings": [
+      "border (between countries)",
+      "national border"
+    ],
+    "readings": [
+      "こっきょう"
+    ]
+  },
+  "虫歯": {
+    "meanings": [
+      "tooth decay",
+      "decayed tooth",
+      "dental cavity",
+      "dental caries"
+    ],
+    "readings": [
+      "むしば"
+    ]
+  },
+  "後者": {
+    "meanings": [
+      "the latter",
+      "the second"
+    ],
+    "readings": [
+      "こうしゃ"
+    ]
+  },
+  "男子": {
+    "meanings": [
+      "boy"
+    ],
+    "readings": [
+      "だんし"
+    ]
+  },
+  "可能": {
+    "meanings": [
+      "possible",
+      "potential",
+      "practicable",
+      "feasible"
+    ],
+    "readings": [
+      "かのう"
+    ]
+  },
+  "手間": {
+    "meanings": [
+      "time",
+      "labour",
+      "labor"
+    ],
+    "readings": [
+      "てま"
+    ]
+  },
+  "出来れば": {
+    "meanings": [
+      "if possible"
+    ],
+    "readings": [
+      "できれば"
+    ]
+  },
+  "市場": {
+    "meanings": [
+      "(town) market",
+      "(street) market",
+      "marketplace"
+    ],
+    "readings": [
+      "いちば"
+    ]
+  },
+  "今日は": {
+    "meanings": [
+      "hello",
+      "good day",
+      "good afternoon"
+    ],
+    "readings": [
+      "こんにちは"
+    ]
+  },
+  "程度": {
+    "meanings": [
+      "degree",
+      "amount",
+      "grade",
+      "standard",
+      "of the order of (following a number)",
+      "about",
+      "approximately"
+    ],
+    "readings": [
+      "ていど"
+    ]
+  },
+  "王子": {
+    "meanings": [
+      "prince"
+    ],
+    "readings": [
+      "おうじ"
+    ]
+  },
+  "地位": {
+    "meanings": [
+      "(social) position",
+      "status",
+      "standing"
+    ],
+    "readings": [
+      "ちい"
+    ]
+  },
+  "先日": {
+    "meanings": [
+      "the other day",
+      "a few days ago"
+    ],
+    "readings": [
+      "せんじつ"
+    ]
+  },
+  "大半": {
+    "meanings": [
+      "majority",
+      "more than half",
+      "most (of)"
+    ],
+    "readings": [
+      "たいはん"
+    ]
+  },
+  "一方": {
+    "meanings": [
+      "one (esp. of two)",
+      "the other",
+      "one way",
+      "the other way",
+      "one direction",
+      "the other direction",
+      "one side",
+      "the other side",
+      "one party",
+      "the other party"
+    ],
+    "readings": [
+      "いっぽう"
+    ]
+  },
+  "損害": {
+    "meanings": [
+      "damage",
+      "injury",
+      "loss"
+    ],
+    "readings": [
+      "そんがい"
+    ]
+  },
+  "差別": {
+    "meanings": [
+      "distinction",
+      "differentiation",
+      "discrimination"
+    ],
+    "readings": [
+      "さべつ"
+    ]
+  },
+  "日光": {
+    "meanings": [
+      "sunlight",
+      "sunshine",
+      "sunbeams"
+    ],
+    "readings": [
+      "にっこう"
+    ]
+  },
+  "列車": {
+    "meanings": [
+      "train",
+      "railway train"
+    ],
+    "readings": [
+      "れっしゃ"
+    ]
+  },
+  "左右": {
+    "meanings": [
+      "left and right",
+      "right and left"
+    ],
+    "readings": [
+      "さゆう"
+    ]
+  },
+  "熱帯": {
+    "meanings": [
+      "tropics"
+    ],
+    "readings": [
+      "ねったい"
+    ]
+  },
+  "出身": {
+    "meanings": [
+      "one's origin (e.g. city",
+      "country",
+      "parentage",
+      "school)"
+    ],
+    "readings": [
+      "しゅっしん"
+    ]
+  },
+  "鉄道": {
+    "meanings": [
+      "railroad",
+      "railway",
+      "rail transport"
+    ],
+    "readings": [
+      "てつどう"
+    ]
+  },
+  "日中": {
+    "meanings": [
+      "daytime",
+      "during the day"
+    ],
+    "readings": [
+      "にっちゅう"
+    ]
+  },
+  "用心": {
+    "meanings": [
+      "care",
+      "precaution",
+      "guarding",
+      "caution"
+    ],
+    "readings": [
+      "ようじん"
+    ]
+  },
+  "外出": {
+    "meanings": [
+      "going out",
+      "outing",
+      "leaving (one's home",
+      "office",
+      "etc.)"
+    ],
+    "readings": [
+      "がいしゅつ"
+    ]
+  },
+  "所為": {
+    "meanings": [
+      "consequence",
+      "outcome",
+      "result",
+      "blame",
+      "fault"
+    ],
+    "readings": [
+      "せい"
+    ]
+  },
+  "大気": {
+    "meanings": [
+      "atmosphere",
+      "air"
+    ],
+    "readings": [
+      "たいき"
+    ]
+  },
+  "土地": {
+    "meanings": [
+      "plot of land",
+      "lot",
+      "soil"
+    ],
+    "readings": [
+      "とち"
+    ]
+  },
+  "不可": {
+    "meanings": [
+      "wrong",
+      "bad",
+      "improper",
+      "unjustifiable",
+      "inadvisable"
+    ],
+    "readings": [
+      "ふか"
+    ]
+  },
+  "物語": {
+    "meanings": [
+      "story",
+      "tale",
+      "narrative",
+      "account",
+      "fable",
+      "legend"
+    ],
+    "readings": [
+      "ものがたり"
+    ]
+  },
+  "本物": {
+    "meanings": [
+      "genuine article",
+      "real thing",
+      "real deal"
+    ],
+    "readings": [
+      "ほんもの"
+    ]
+  },
+  "梅雨": {
+    "meanings": [
+      "(East Asian) rainy season (in Japan",
+      "usu. from early June to mid-July)"
+    ],
+    "readings": [
+      "つゆ"
+    ]
+  }
+}

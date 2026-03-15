@@ -1,0 +1,252 @@
+{
+  "中学": {
+    "meanings": [
+      "junior high school",
+      "middle school",
+      "lower secondary school"
+    ],
+    "readings": [
+      "ちゅうがく"
+    ]
+  },
+  "年月": {
+    "meanings": [
+      "months and years"
+    ],
+    "readings": [
+      "としつき"
+    ]
+  },
+  "一時": {
+    "meanings": [
+      "one o'clock"
+    ],
+    "readings": [
+      "いちじ"
+    ]
+  },
+  "週間": {
+    "meanings": [
+      "week"
+    ],
+    "readings": [
+      "しゅうかん"
+    ]
+  },
+  "全国": {
+    "meanings": [
+      "the whole country"
+    ],
+    "readings": [
+      "ぜんこく"
+    ]
+  },
+  "仲間": {
+    "meanings": [
+      "companion",
+      "fellow",
+      "friend",
+      "mate",
+      "comrade",
+      "partner",
+      "colleague",
+      "coworker",
+      "associate"
+    ],
+    "readings": [
+      "なかま"
+    ]
+  },
+  "語学": {
+    "meanings": [
+      "study of foreign languages"
+    ],
+    "readings": [
+      "ごがく"
+    ]
+  },
+  "何時でも": {
+    "meanings": [
+      "always",
+      "all the time",
+      "at all times"
+    ],
+    "readings": [
+      "いつでも"
+    ]
+  },
+  "今後": {
+    "meanings": [
+      "from now on",
+      "hereafter"
+    ],
+    "readings": [
+      "こんご"
+    ]
+  },
+  "国語": {
+    "meanings": [
+      "national language"
+    ],
+    "readings": [
+      "こくご"
+    ]
+  },
+  "年中": {
+    "meanings": [
+      "whole year",
+      "all year round",
+      "throughout the year"
+    ],
+    "readings": [
+      "ねんじゅう"
+    ]
+  },
+  "何時か": {
+    "meanings": [
+      "sometime",
+      "someday",
+      "one day",
+      "some time or other",
+      "the other day",
+      "in due course",
+      "in time"
+    ],
+    "readings": [
+      "いつか"
+    ]
+  },
+  "日本": {
+    "meanings": [
+      "Japan"
+    ],
+    "readings": [
+      "にほん"
+    ]
+  },
+  "何時までも": {
+    "meanings": [
+      "forever",
+      "eternally",
+      "for good",
+      "as long as one likes",
+      "indefinitely",
+      "endlessly",
+      "for a long time"
+    ],
+    "readings": [
+      "いつまでも"
+    ]
+  },
+  "青年": {
+    "meanings": [
+      "youth",
+      "young man"
+    ],
+    "readings": [
+      "せいねん"
+    ]
+  },
+  "年間": {
+    "meanings": [
+      "(period of) a year"
+    ],
+    "readings": [
+      "ねんかん"
+    ]
+  },
+  "男子": {
+    "meanings": [
+      "boy"
+    ],
+    "readings": [
+      "だんし"
+    ]
+  },
+  "出来れば": {
+    "meanings": [
+      "if possible"
+    ],
+    "readings": [
+      "できれば"
+    ]
+  },
+  "今日は": {
+    "meanings": [
+      "hello",
+      "good day",
+      "good afternoon"
+    ],
+    "readings": [
+      "こんにちは"
+    ]
+  },
+  "先日": {
+    "meanings": [
+      "the other day",
+      "a few days ago"
+    ],
+    "readings": [
+      "せんじつ"
+    ]
+  },
+  "大半": {
+    "meanings": [
+      "majority",
+      "more than half",
+      "most (of)"
+    ],
+    "readings": [
+      "たいはん"
+    ]
+  },
+  "日光": {
+    "meanings": [
+      "sunlight",
+      "sunshine",
+      "sunbeams"
+    ],
+    "readings": [
+      "にっこう"
+    ]
+  },
+  "左右": {
+    "meanings": [
+      "left and right",
+      "right and left"
+    ],
+    "readings": [
+      "さゆう"
+    ]
+  },
+  "日中": {
+    "meanings": [
+      "daytime",
+      "during the day"
+    ],
+    "readings": [
+      "にっちゅう"
+    ]
+  },
+  "外出": {
+    "meanings": [
+      "going out",
+      "outing",
+      "leaving (one's home",
+      "office",
+      "etc.)"
+    ],
+    "readings": [
+      "がいしゅつ"
+    ]
+  },
+  "大気": {
+    "meanings": [
+      "atmosphere",
+      "air"
+    ],
+    "readings": [
+      "たいき"
+    ]
+  }
+}

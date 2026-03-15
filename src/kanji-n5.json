@@ -685,6 +685,16 @@
       "せんせい"
     ]
   },
+  "語": {
+      "meanings": [
+        "language",
+        "word"
+      ],
+      "readings": [
+        "かたる",
+        "ご"
+      ]
+  },
   "友達": {
     "meanings": [
       "friend"
@@ -786,28 +796,12 @@
       "ひとり"
     ]
   },
-  "一日": {
-    "meanings": [
-      "one day"
-    ],
-    "readings": [
-      "いちにち"
-    ]
-  },
   "今月": {
     "meanings": [
       "this month"
     ],
     "readings": [
       "こんげつ"
-    ]
-  },
-  "今年": {
-    "meanings": [
-      "this year"
-    ],
-    "readings": [
-      "ことし"
     ]
   },
   "時間": {
@@ -835,28 +829,12 @@
       "のむ"
     ]
   },
-  "山川": {
-    "meanings": [
-      "mountains and rivers"
-    ],
-    "readings": [
-      "やまかわ"
-    ]
-  },
   "天気": {
     "meanings": [
       "weather"
     ],
     "readings": [
       "てんき"
-    ]
-  },
-  "木曜日": {
-    "meanings": [
-      "Thursday"
-    ],
-    "readings": [
-      "もくようび"
     ]
   },
   "金曜日": {
@@ -874,6 +852,14 @@
     "readings": [
       "じゅう",
       "とお"
+    ]
+  },
+  "今年": {
+    "meanings": [
+      "this year"
+    ],
+    "readings": [
+      "ことし"
     ]
   },
   "日曜日": {
@@ -941,6 +927,14 @@
         "えき"
       ]
   },
+  "一日": {
+    "meanings": [
+      "one day"
+    ],
+    "readings": [
+      "いちにち"
+    ]
+  },
   "気": {
       "meanings": [
         "spirit",
@@ -991,6 +985,14 @@
         "てん"
       ]
   },
+  "木曜日": {
+    "meanings": [
+      "Thursday"
+    ],
+    "readings": [
+      "もくようび"
+    ]
+  },
   "外": {
       "meanings": [
         "outside",
@@ -1018,16 +1020,6 @@
       "readings": [
         "みち",
         "どう"
-      ]
-  },
-  "語": {
-      "meanings": [
-        "language",
-        "word"
-      ],
-      "readings": [
-        "かたる",
-        "ご"
       ]
   },
   "買": {
