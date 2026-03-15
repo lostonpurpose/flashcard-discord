@@ -5,12 +5,34 @@ import sys
 from pathlib import Path
 
 def extract_reading_from_bracket(bracketed):
-    """Extract reading from format like '大空[おおぞら]' -> 'おおぞら'"""
+    """Extract reading from format like '真[ま]ん 中[なか]' -> 'まんなか' or '大空[おおぞら]' -> 'おおぞら'"""
     import re
-    match = re.search(r'\[(.+?)\]', bracketed)
-    if match:
-        return match.group(1)
-    return bracketed
+    # Find all bracketed segments and extract the content
+    brackets = re.findall(r'\[(.+?)\]', bracketed)
+    if brackets:
+        # For furigana format: combine all bracketed readings and remove spaces
+        result = re.sub(r'\[[^\]]*\]', '', bracketed)  # remove brackets
+        result = result.replace(' ', '')  # remove spaces between readings
+        # Prepend the readings from brackets
+        for b in brackets:
+            result = b + result.replace(b, '', 1)
+        # Actually, better approach: extract all readings and non-bracketed parts
+        parts = []
+        last_end = 0
+        for match in re.finditer(r'\[(.+?)\]', bracketed):
+            # Add non-bracketed content before this bracket
+            before = bracketed[last_end:match.start()]
+            if before and before.strip():
+                parts.append(before.replace(' ', ''))
+            # Add bracketed reading
+            parts.append(match.group(1))
+            last_end = match.end()
+        # Add any remaining non-bracketed content
+        after = bracketed[last_end:]
+        if after and after.strip():
+            parts.append(after.replace(' ', ''))
+        return ''.join(parts)
+    return bracketed.replace(' ', '')
 
 def extract_anki(anki_db_path, output_by_level=True):
     """Extract vocabulary from Anki database, organized by JLPT level."""

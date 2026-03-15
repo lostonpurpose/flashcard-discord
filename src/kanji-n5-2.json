@@ -17,6 +17,22 @@
       "いつ"
     ]
   },
+  "来週": {
+    "meanings": [
+      "next week"
+    ],
+    "readings": [
+      "らいしゅう"
+    ]
+  },
+  "外国": {
+    "meanings": [
+      "foreign country"
+    ],
+    "readings": [
+      "がいこく"
+    ]
+  },
   "休": {
     "meanings": [
       "rest",
@@ -47,6 +63,15 @@
       "まい"
     ]
   },
+  "今晩": {
+    "meanings": [
+      "tonight",
+      "this evening"
+    ],
+    "readings": [
+      "こんばん"
+    ]
+  },
   "雨": {
     "meanings": [
       "rain"
@@ -54,6 +79,164 @@
     "readings": [
       "あめ",
       "う"
+    ]
+  },
+  "毎週": {
+    "meanings": [
+      "every week"
+    ],
+    "readings": [
+      "まいしゅう"
+    ]
+  },
+  "来月": {
+    "meanings": [
+      "next month"
+    ],
+    "readings": [
+      "らいげつ"
+    ]
+  },
+  "一月": {
+    "meanings": [
+      "one month"
+    ],
+    "readings": [
+      "ひとつき"
+    ]
+  },
+  "出来る": {
+    "meanings": [
+      "can do",
+      "is possible"
+    ],
+    "readings": [
+      "できる"
+    ]
+  },
+  "先月": {
+    "meanings": [
+      "last month"
+    ],
+    "readings": [
+      "せんげつ"
+    ]
+  },
+  "外国人": {
+    "meanings": [
+      "foreigner"
+    ],
+    "readings": [
+      "がいこくじん"
+    ]
+  },
+  "毎年": {
+    "meanings": [
+      "every year"
+    ],
+    "readings": [
+      "まいとし"
+    ]
+  },
+  "半分": {
+    "meanings": [
+      "half"
+    ],
+    "readings": [
+      "はんぶん"
+    ]
+  },
+  "大学": {
+    "meanings": [
+      "university"
+    ],
+    "readings": [
+      "だいがく"
+    ]
+  },
+  "来年": {
+    "meanings": [
+      "next year"
+    ],
+    "readings": [
+      "らいねん"
+    ]
+  },
+  "電気": {
+    "meanings": [
+      "electricity"
+    ],
+    "readings": [
+      "でんき"
+    ]
+  },
+  "毎月": {
+    "meanings": [
+      "every month",
+      "each month",
+      "monthly"
+    ],
+    "readings": [
+      "まいつき"
+    ]
+  },
+  "二人": {
+    "meanings": [
+      "two people"
+    ],
+    "readings": [
+      "ふたり"
+    ]
+  },
+  "何時": {
+    "meanings": [
+      "when",
+      "at what time"
+    ],
+    "readings": [
+      "いつ"
+    ]
+  },
+  "多分": {
+    "meanings": [
+      "probably",
+      "maybe"
+    ],
+    "readings": [
+      "たぶん"
+    ]
+  },
+  "先週": {
+    "meanings": [
+      "last week"
+    ],
+    "readings": [
+      "せんしゅう"
+    ]
+  },
+  "今週": {
+    "meanings": [
+      "this week"
+    ],
+    "readings": [
+      "こんしゅう"
+    ]
+  },
+  "出口": {
+    "meanings": [
+      "exit",
+      "way out"
+    ],
+    "readings": [
+      "でぐち"
+    ]
+  },
+  "入り口": {
+    "meanings": [
+      "entrance"
+    ],
+    "readings": [
+      "い"
     ]
   }
 }

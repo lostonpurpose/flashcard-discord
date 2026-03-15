@@ -1,0 +1,351 @@
+{
+  "社会": {
+    "meanings": [
+      "society",
+      "public",
+      "community",
+      "the world"
+    ],
+    "readings": [
+      "しゃかい"
+    ]
+  },
+  "品物": {
+    "meanings": [
+      "article",
+      "item",
+      "thing",
+      "goods",
+      "wares"
+    ],
+    "readings": [
+      "しなもの"
+    ]
+  },
+  "近所": {
+    "meanings": [
+      "neighbourhood",
+      "neighborhood",
+      "vicinity"
+    ],
+    "readings": [
+      "きんじょ"
+    ]
+  },
+  "心配": {
+    "meanings": [
+      "worry",
+      "concern",
+      "anxiety",
+      "uneasiness",
+      "fear"
+    ],
+    "readings": [
+      "しんぱい"
+    ]
+  },
+  "運動": {
+    "meanings": [
+      "exercise",
+      "physical training",
+      "workout",
+      "sports",
+      "athletics"
+    ],
+    "readings": [
+      "うんどう"
+    ]
+  },
+  "店員": {
+    "meanings": [
+      "employee (of a store)",
+      "shop assistant",
+      "clerk",
+      "salesperson"
+    ],
+    "readings": [
+      "てんいん"
+    ]
+  },
+  "注意": {
+    "meanings": [
+      "attention",
+      "notice",
+      "heed"
+    ],
+    "readings": [
+      "ちゅうい"
+    ]
+  },
+  "仕方": {
+    "meanings": [
+      "way",
+      "method",
+      "means",
+      "resource",
+      "course"
+    ],
+    "readings": [
+      "しかた"
+    ]
+  },
+  "反対": {
+    "meanings": [
+      "opposition",
+      "resistance",
+      "antagonism",
+      "hostility",
+      "objection",
+      "dissent"
+    ],
+    "readings": [
+      "はんたい"
+    ]
+  },
+  "無理": {
+    "meanings": [
+      "unreasonable",
+      "unnatural",
+      "unjustifiable"
+    ],
+    "readings": [
+      "むり"
+    ]
+  },
+  "場所": {
+    "meanings": [
+      "place",
+      "location",
+      "spot",
+      "position",
+      "area"
+    ],
+    "readings": [
+      "ばしょ"
+    ]
+  },
+  "運転手": {
+    "meanings": [
+      "driver",
+      "chauffeur"
+    ],
+    "readings": [
+      "うんてんしゅ"
+    ]
+  },
+  "用意": {
+    "meanings": [
+      "preparation",
+      "arrangements",
+      "provision",
+      "getting ready",
+      "laying out (e.g. a meal)"
+    ],
+    "readings": [
+      "ようい"
+    ]
+  },
+  "神社": {
+    "meanings": [
+      "Shinto shrine"
+    ],
+    "readings": [
+      "じんじゃ"
+    ]
+  },
+  "世界": {
+    "meanings": [
+      "the world",
+      "society",
+      "the universe"
+    ],
+    "readings": [
+      "せかい"
+    ]
+  },
+  "海岸": {
+    "meanings": [
+      "seashore",
+      "coast",
+      "seaside",
+      "waterfront",
+      "beach"
+    ],
+    "readings": [
+      "かいがん"
+    ]
+  },
+  "地理": {
+    "meanings": [
+      "geography"
+    ],
+    "readings": [
+      "ちり"
+    ]
+  },
+  "旅館": {
+    "meanings": [
+      "ryokan",
+      "traditional Japanese inn"
+    ],
+    "readings": [
+      "りょかん"
+    ]
+  },
+  "運転": {
+    "meanings": [
+      "operation (of a machine)",
+      "running",
+      "working"
+    ],
+    "readings": [
+      "うんてん"
+    ]
+  },
+  "用事": {
+    "meanings": [
+      "business",
+      "things to do",
+      "engagement",
+      "errand",
+      "affairs"
+    ],
+    "readings": [
+      "ようじ"
+    ]
+  },
+  "教会": {
+    "meanings": [
+      "church",
+      "congregation"
+    ],
+    "readings": [
+      "きょうかい"
+    ]
+  },
+  "泳ぎ方": {
+    "meanings": [
+      "way of swimming"
+    ],
+    "readings": [
+      "およ"
+    ]
+  },
+  "発音": {
+    "meanings": [
+      "pronunciation"
+    ],
+    "readings": [
+      "はつおん"
+    ]
+  },
+  "両方": {
+    "meanings": [
+      "both",
+      "both sides",
+      "both parties"
+    ],
+    "readings": [
+      "りょうほう"
+    ]
+  },
+  "注射": {
+    "meanings": [
+      "injection",
+      "jab",
+      "shot"
+    ],
+    "readings": [
+      "ちゅうしゃ"
+    ]
+  },
+  "会場": {
+    "meanings": [
+      "assembly hall",
+      "meeting place",
+      "venue",
+      "site",
+      "grounds"
+    ],
+    "readings": [
+      "かいじょう"
+    ]
+  },
+  "返事": {
+    "meanings": [
+      "reply",
+      "answer",
+      "response"
+    ],
+    "readings": [
+      "へんじ"
+    ]
+  },
+  "研究": {
+    "meanings": [
+      "research",
+      "study",
+      "investigation"
+    ],
+    "readings": [
+      "けんきゅう"
+    ]
+  },
+  "乗り物": {
+    "meanings": [
+      "vehicle",
+      "conveyance",
+      "(means of) transport"
+    ],
+    "readings": [
+      "の"
+    ]
+  },
+  "売り場": {
+    "meanings": [
+      "selling area",
+      "counter",
+      "section",
+      "department",
+      "sales floor"
+    ],
+    "readings": [
+      "う"
+    ]
+  },
+  "住所": {
+    "meanings": [
+      "address (of a home",
+      "business",
+      "etc.)",
+      "residence",
+      "domicile"
+    ],
+    "readings": [
+      "じゅうしょ"
+    ]
+  },
+  "昼休み": {
+    "meanings": [
+      "lunch break",
+      "noon recess",
+      "noon rest period"
+    ],
+    "readings": [
+      "ひるやす"
+    ]
+  },
+  "道具": {
+    "meanings": [
+      "tool",
+      "implement",
+      "instrument",
+      "utensil",
+      "apparatus",
+      "device"
+    ],
+    "readings": [
+      "どうぐ"
+    ]
+  }
+}

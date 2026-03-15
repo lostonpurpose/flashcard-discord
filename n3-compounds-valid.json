@@ -1,0 +1,247 @@
+{
+  "関連": {
+    "meanings": [
+      "relation",
+      "connection",
+      "relevance"
+    ],
+    "readings": [
+      "かんれん"
+    ]
+  },
+  "不平": {
+    "meanings": [
+      "discontent",
+      "dissatisfaction",
+      "complaint",
+      "grievance"
+    ],
+    "readings": [
+      "ふへい"
+    ]
+  },
+  "表情": {
+    "meanings": [
+      "facial expression",
+      "countenance"
+    ],
+    "readings": [
+      "ひょうじょう"
+    ]
+  },
+  "事情": {
+    "meanings": [
+      "circumstances",
+      "conditions",
+      "situation",
+      "reasons",
+      "state of affairs"
+    ],
+    "readings": [
+      "じじょう"
+    ]
+  },
+  "現実": {
+    "meanings": [
+      "reality",
+      "actuality",
+      "hard fact"
+    ],
+    "readings": [
+      "げんじつ"
+    ]
+  },
+  "実現": {
+    "meanings": [
+      "implementation (e.g. of a system)",
+      "materialization",
+      "materialisation",
+      "realization",
+      "realisation",
+      "actualization",
+      "actualisation"
+    ],
+    "readings": [
+      "じつげん"
+    ]
+  },
+  "受け取る": {
+    "meanings": [
+      "to receive",
+      "to get",
+      "to accept"
+    ],
+    "readings": [
+      "う"
+    ]
+  },
+  "安定": {
+    "meanings": [
+      "stability",
+      "steadiness",
+      "consistency",
+      "equilibrium",
+      "balance",
+      "composure"
+    ],
+    "readings": [
+      "あんてい"
+    ]
+  },
+  "失望": {
+    "meanings": [
+      "disappointment",
+      "despair"
+    ],
+    "readings": [
+      "しつぼう"
+    ]
+  },
+  "確実": {
+    "meanings": [
+      "certain",
+      "sure",
+      "definite",
+      "reliable",
+      "sound",
+      "solid",
+      "safe",
+      "secure"
+    ],
+    "readings": [
+      "かくじつ"
+    ]
+  },
+  "参考": {
+    "meanings": [
+      "reference",
+      "consultation"
+    ],
+    "readings": [
+      "さんこう"
+    ]
+  },
+  "相続": {
+    "meanings": [
+      "succession"
+    ],
+    "readings": [
+      "そうぞく"
+    ]
+  },
+  "主義": {
+    "meanings": [
+      "doctrine",
+      "rule",
+      "principle",
+      "-ism"
+    ],
+    "readings": [
+      "しゅぎ"
+    ]
+  },
+  "主要": {
+    "meanings": [
+      "chief",
+      "main",
+      "principal",
+      "major"
+    ],
+    "readings": [
+      "しゅよう"
+    ]
+  },
+  "不満": {
+    "meanings": [
+      "dissatisfaction",
+      "discontent",
+      "displeasure",
+      "complaint",
+      "unhappiness"
+    ],
+    "readings": [
+      "ふまん"
+    ]
+  },
+  "外交": {
+    "meanings": [
+      "diplomacy"
+    ],
+    "readings": [
+      "がいこう"
+    ]
+  },
+  "事実": {
+    "meanings": [
+      "fact",
+      "truth",
+      "reality"
+    ],
+    "readings": [
+      "じじつ"
+    ]
+  },
+  "現状": {
+    "meanings": [
+      "present condition",
+      "existing state",
+      "status quo",
+      "current state"
+    ],
+    "readings": [
+      "げんじょう"
+    ]
+  },
+  "連想": {
+    "meanings": [
+      "association (of ideas)",
+      "being reminded (of something)",
+      "suggestion"
+    ],
+    "readings": [
+      "れんそう"
+    ]
+  },
+  "実験": {
+    "meanings": [
+      "experiment",
+      "experimentation"
+    ],
+    "readings": [
+      "じっけん"
+    ]
+  },
+  "表現": {
+    "meanings": [
+      "expression",
+      "representation",
+      "description"
+    ],
+    "readings": [
+      "ひょうげん"
+    ]
+  },
+  "連続": {
+    "meanings": [
+      "continuation",
+      "succession",
+      "series",
+      "sequence"
+    ],
+    "readings": [
+      "れんぞく"
+    ]
+  },
+  "苦痛": {
+    "meanings": [
+      "pain",
+      "agony",
+      "suffering",
+      "distress",
+      "torment"
+    ],
+    "readings": [
+      "くつう"
+    ]
+  }
+}

@@ -1,0 +1,1475 @@
+{
+  "大木": {
+    "meanings": [
+      "large tree"
+    ],
+    "readings": [
+      "たいぼく"
+    ]
+  },
+  "三日月": {
+    "meanings": [
+      "crescent moon",
+      "young moon"
+    ],
+    "readings": [
+      "みかづき"
+    ]
+  },
+  "夜間": {
+    "meanings": [
+      "night",
+      "nighttime"
+    ],
+    "readings": [
+      "やかん"
+    ]
+  },
+  "目出度い": {
+    "meanings": [
+      "happy",
+      "auspicious",
+      "propitious",
+      "joyous"
+    ],
+    "readings": [
+      "めでたい"
+    ]
+  },
+  "道順": {
+    "meanings": [
+      "route",
+      "way",
+      "course",
+      "directions"
+    ],
+    "readings": [
+      "みちじゅん"
+    ]
+  },
+  "白髪": {
+    "meanings": [
+      "white hair",
+      "grey hair",
+      "gray hair"
+    ],
+    "readings": [
+      "しらが"
+    ]
+  },
+  "鉄橋": {
+    "meanings": [
+      "railway bridge",
+      "iron bridge"
+    ],
+    "readings": [
+      "てっきょう"
+    ]
+  },
+  "一段": {
+    "meanings": [
+      "even more",
+      "still more",
+      "much more",
+      "further"
+    ],
+    "readings": [
+      "いちだん"
+    ]
+  },
+  "親指": {
+    "meanings": [
+      "thumb"
+    ],
+    "readings": [
+      "おやゆび"
+    ]
+  },
+  "足跡": {
+    "meanings": [
+      "footprints"
+    ],
+    "readings": [
+      "あしあと"
+    ]
+  },
+  "年度": {
+    "meanings": [
+      "fiscal year (usu. April 1 to March 31 in Japan)",
+      "financial year"
+    ],
+    "readings": [
+      "ねんど"
+    ]
+  },
+  "学級": {
+    "meanings": [
+      "(school) class"
+    ],
+    "readings": [
+      "がっきゅう"
+    ]
+  },
+  "花嫁": {
+    "meanings": [
+      "bride"
+    ],
+    "readings": [
+      "はなよめ"
+    ]
+  },
+  "中間": {
+    "meanings": [
+      "middle",
+      "midway",
+      "halfway",
+      "centre",
+      "center"
+    ],
+    "readings": [
+      "ちゅうかん"
+    ]
+  },
+  "学年": {
+    "meanings": [
+      "academic year",
+      "school year"
+    ],
+    "readings": [
+      "がくねん"
+    ]
+  },
+  "先端": {
+    "meanings": [
+      "pointed end",
+      "tip",
+      "point",
+      "cusp (of a leaf",
+      "crescent moon",
+      "etc.)",
+      "apex (of a curve)"
+    ],
+    "readings": [
+      "せんたん"
+    ]
+  },
+  "薬品": {
+    "meanings": [
+      "medicine",
+      "drug"
+    ],
+    "readings": [
+      "やくひん"
+    ]
+  },
+  "神話": {
+    "meanings": [
+      "myth",
+      "mythology"
+    ],
+    "readings": [
+      "しんわ"
+    ]
+  },
+  "回数": {
+    "meanings": [
+      "number of times",
+      "frequency",
+      "count"
+    ],
+    "readings": [
+      "かいすう"
+    ]
+  },
+  "盆地": {
+    "meanings": [
+      "basin (e.g. between mountains)"
+    ],
+    "readings": [
+      "ぼんち"
+    ]
+  },
+  "小指": {
+    "meanings": [
+      "little finger",
+      "pinky",
+      "fourth (occ. fifth) finger"
+    ],
+    "readings": [
+      "こゆび"
+    ]
+  },
+  "歯車": {
+    "meanings": [
+      "gear",
+      "cogwheel"
+    ],
+    "readings": [
+      "はぐるま"
+    ]
+  },
+  "客席": {
+    "meanings": [
+      "guest seating (e.g. theater",
+      "stadium)",
+      "passenger seat (e.g. taxi)"
+    ],
+    "readings": [
+      "きゃくせき"
+    ]
+  },
+  "形式": {
+    "meanings": [
+      "form (as opposed to substance)"
+    ],
+    "readings": [
+      "けいしき"
+    ]
+  },
+  "率直": {
+    "meanings": [
+      "frank",
+      "candid",
+      "straightforward",
+      "openhearted",
+      "direct",
+      "outspoken"
+    ],
+    "readings": [
+      "そっちょく"
+    ]
+  },
+  "物差し": {
+    "meanings": [
+      "ruler",
+      "measure"
+    ],
+    "readings": [
+      "ものさ"
+    ]
+  },
+  "子孫": {
+    "meanings": [
+      "descendant",
+      "progeny",
+      "offspring"
+    ],
+    "readings": [
+      "しそん"
+    ]
+  },
+  "下車": {
+    "meanings": [
+      "alighting (from a train",
+      "bus",
+      "etc.)",
+      "getting off",
+      "getting out (of a car)"
+    ],
+    "readings": [
+      "げしゃ"
+    ]
+  },
+  "目下": {
+    "meanings": [
+      "subordinate",
+      "subordinates",
+      "inferior",
+      "inferiors",
+      "junior"
+    ],
+    "readings": [
+      "めした"
+    ]
+  },
+  "王女": {
+    "meanings": [
+      "princess"
+    ],
+    "readings": [
+      "おうじょ"
+    ]
+  },
+  "学力": {
+    "meanings": [
+      "scholarly ability",
+      "scholarship",
+      "knowledge",
+      "literary ability"
+    ],
+    "readings": [
+      "がくりょく"
+    ]
+  },
+  "薬缶": {
+    "meanings": [
+      "kettle"
+    ],
+    "readings": [
+      "やかん"
+    ]
+  },
+  "地味": {
+    "meanings": [
+      "plain",
+      "simple",
+      "subdued",
+      "sober"
+    ],
+    "readings": [
+      "じみ"
+    ]
+  },
+  "案外": {
+    "meanings": [
+      "unexpectedly",
+      "surprisingly"
+    ],
+    "readings": [
+      "あんがい"
+    ]
+  },
+  "窓口": {
+    "meanings": [
+      "counter",
+      "window",
+      "teller window",
+      "ticket window"
+    ],
+    "readings": [
+      "まどぐち"
+    ]
+  },
+  "中年": {
+    "meanings": [
+      "middle-age",
+      "middle age",
+      "midlife",
+      "one's middle years"
+    ],
+    "readings": [
+      "ちゅうねん"
+    ]
+  },
+  "船便": {
+    "meanings": [
+      "surface mail (by ship)",
+      "sea mail"
+    ],
+    "readings": [
+      "ふなびん"
+    ]
+  },
+  "日課": {
+    "meanings": [
+      "daily routine",
+      "daily work",
+      "daily lesson"
+    ],
+    "readings": [
+      "にっか"
+    ]
+  },
+  "灯油": {
+    "meanings": [
+      "kerosene",
+      "paraffin",
+      "lamp oil"
+    ],
+    "readings": [
+      "とうゆ"
+    ]
+  },
+  "火山": {
+    "meanings": [
+      "volcano"
+    ],
+    "readings": [
+      "かざん"
+    ]
+  },
+  "賞品": {
+    "meanings": [
+      "prize",
+      "trophy"
+    ],
+    "readings": [
+      "しょうひん"
+    ]
+  },
+  "空中": {
+    "meanings": [
+      "sky",
+      "air",
+      "mid-air"
+    ],
+    "readings": [
+      "くうちゅう"
+    ]
+  },
+  "図表": {
+    "meanings": [
+      "chart",
+      "diagram",
+      "graph",
+      "figure"
+    ],
+    "readings": [
+      "ずひょう"
+    ]
+  },
+  "下水": {
+    "meanings": [
+      "drainage",
+      "ditch",
+      "gutter",
+      "sewerage"
+    ],
+    "readings": [
+      "げすい"
+    ]
+  },
+  "正方形": {
+    "meanings": [
+      "square"
+    ],
+    "readings": [
+      "せいほうけい"
+    ]
+  },
+  "金魚": {
+    "meanings": [
+      "goldfish (Carassius auratus)"
+    ],
+    "readings": [
+      "きんぎょ"
+    ]
+  },
+  "番地": {
+    "meanings": [
+      "house number",
+      "address"
+    ],
+    "readings": [
+      "ばんち"
+    ]
+  },
+  "直後": {
+    "meanings": [
+      "immediately following"
+    ],
+    "readings": [
+      "ちょくご"
+    ]
+  },
+  "灯台": {
+    "meanings": [
+      "lighthouse"
+    ],
+    "readings": [
+      "とうだい"
+    ]
+  },
+  "図形": {
+    "meanings": [
+      "figure",
+      "shape",
+      "graphic"
+    ],
+    "readings": [
+      "ずけい"
+    ]
+  },
+  "地名": {
+    "meanings": [
+      "place name",
+      "toponym"
+    ],
+    "readings": [
+      "ちめい"
+    ]
+  },
+  "先頭": {
+    "meanings": [
+      "head (of a line",
+      "group",
+      "etc.)",
+      "front",
+      "lead",
+      "forefront",
+      "vanguard"
+    ],
+    "readings": [
+      "せんとう"
+    ]
+  },
+  "南北": {
+    "meanings": [
+      "north and south",
+      "north to south"
+    ],
+    "readings": [
+      "なんぼく"
+    ]
+  },
+  "名物": {
+    "meanings": [
+      "famous product",
+      "special product",
+      "speciality",
+      "specialty"
+    ],
+    "readings": [
+      "めいぶつ"
+    ]
+  },
+  "無地": {
+    "meanings": [
+      "plain",
+      "unfigured",
+      "patternless",
+      "solid (color)"
+    ],
+    "readings": [
+      "むじ"
+    ]
+  },
+  "茶色い": {
+    "meanings": [
+      "light brown",
+      "tawny"
+    ],
+    "readings": [
+      "ちゃ"
+    ]
+  },
+  "半島": {
+    "meanings": [
+      "peninsula"
+    ],
+    "readings": [
+      "はんとう"
+    ]
+  },
+  "上級": {
+    "meanings": [
+      "upper level",
+      "upper grade",
+      "high rank",
+      "advanced level",
+      "senior level",
+      "upper class"
+    ],
+    "readings": [
+      "じょうきゅう"
+    ]
+  },
+  "点数": {
+    "meanings": [
+      "marks",
+      "points",
+      "score",
+      "grade",
+      "runs (baseball)"
+    ],
+    "readings": [
+      "てんすう"
+    ]
+  },
+  "賞金": {
+    "meanings": [
+      "prize money",
+      "monetary award",
+      "reward"
+    ],
+    "readings": [
+      "しょうきん"
+    ]
+  },
+  "針金": {
+    "meanings": [
+      "wire"
+    ],
+    "readings": [
+      "はりがね"
+    ]
+  },
+  "中性": {
+    "meanings": [
+      "neutrality (incl. chemical",
+      "electrical",
+      "etc.)",
+      "indifference"
+    ],
+    "readings": [
+      "ちゅうせい"
+    ]
+  },
+  "風船": {
+    "meanings": [
+      "balloon (toy or decoration)"
+    ],
+    "readings": [
+      "ふうせん"
+    ]
+  },
+  "便所": {
+    "meanings": [
+      "toilet",
+      "lavatory",
+      "water closet",
+      "restroom",
+      "bathroom"
+    ],
+    "readings": [
+      "べんじょ"
+    ]
+  },
+  "名所": {
+    "meanings": [
+      "famous place",
+      "noted place",
+      "place of (scenic or historical) interest",
+      "sights (to see)"
+    ],
+    "readings": [
+      "めいしょ"
+    ]
+  },
+  "お目出度い": {
+    "meanings": [
+      "(matter) for congratulations",
+      "worthy of celebration",
+      "happy (occasion",
+      "ending",
+      "etc.)",
+      "joyous",
+      "auspicious"
+    ],
+    "readings": [
+      "おめでたい"
+    ]
+  },
+  "列島": {
+    "meanings": [
+      "archipelago",
+      "chain of islands"
+    ],
+    "readings": [
+      "れっとう"
+    ]
+  },
+  "今晩は": {
+    "meanings": [
+      "good evening"
+    ],
+    "readings": [
+      "こんばんは"
+    ]
+  },
+  "酒場": {
+    "meanings": [
+      "bar",
+      "pub",
+      "tavern"
+    ],
+    "readings": [
+      "さかば"
+    ]
+  },
+  "全身": {
+    "meanings": [
+      "whole (body)",
+      "full-length (e.g. portrait)"
+    ],
+    "readings": [
+      "ぜんしん"
+    ]
+  },
+  "方針": {
+    "meanings": [
+      "policy",
+      "course",
+      "plan (of action)",
+      "principle"
+    ],
+    "readings": [
+      "ほうしん"
+    ]
+  },
+  "元気でね": {
+    "meanings": [
+      "take care",
+      "take good care of yourself"
+    ],
+    "readings": [
+      "げんき"
+    ]
+  },
+  "森林": {
+    "meanings": [
+      "forest",
+      "woods"
+    ],
+    "readings": [
+      "しんりん"
+    ]
+  },
+  "題名": {
+    "meanings": [
+      "title",
+      "caption",
+      "heading"
+    ],
+    "readings": [
+      "だいめい"
+    ]
+  },
+  "先々月": {
+    "meanings": [
+      "month before last"
+    ],
+    "readings": [
+      "せんせんげつ"
+    ]
+  },
+  "筆者": {
+    "meanings": [
+      "writer",
+      "author"
+    ],
+    "readings": [
+      "ひっしゃ"
+    ]
+  },
+  "正味": {
+    "meanings": [
+      "net (amount)",
+      "clear",
+      "full (e.g. working hours)"
+    ],
+    "readings": [
+      "しょうみ"
+    ]
+  },
+  "一先ず": {
+    "meanings": [
+      "for now",
+      "for the time being",
+      "for the present"
+    ],
+    "readings": [
+      "ひとまず"
+    ]
+  },
+  "課税": {
+    "meanings": [
+      "taxation"
+    ],
+    "readings": [
+      "かぜい"
+    ]
+  },
+  "裏口": {
+    "meanings": [
+      "backdoor",
+      "rear entrance",
+      "rear exit"
+    ],
+    "readings": [
+      "うらぐち"
+    ]
+  },
+  "零点": {
+    "meanings": [
+      "zero (points",
+      "marks)",
+      "no marks"
+    ],
+    "readings": [
+      "れいてん"
+    ]
+  },
+  "火口": {
+    "meanings": [
+      "(volcanic) crater",
+      "caldera"
+    ],
+    "readings": [
+      "かこう"
+    ]
+  },
+  "話し中": {
+    "meanings": [
+      "busy (phone)"
+    ],
+    "readings": [
+      "はな"
+    ]
+  },
+  "用語": {
+    "meanings": [
+      "term",
+      "terminology"
+    ],
+    "readings": [
+      "ようご"
+    ]
+  },
+  "正門": {
+    "meanings": [
+      "main gate",
+      "main entrance"
+    ],
+    "readings": [
+      "せいもん"
+    ]
+  },
+  "都心": {
+    "meanings": [
+      "city centre (esp. of Tokyo)",
+      "heart of a city",
+      "downtown area"
+    ],
+    "readings": [
+      "としん"
+    ]
+  },
+  "来日": {
+    "meanings": [
+      "coming to Japan",
+      "visit to Japan",
+      "arrival in Japan"
+    ],
+    "readings": [
+      "らいにち"
+    ]
+  },
+  "目指す": {
+    "meanings": [
+      "to aim at (for",
+      "to do",
+      "to become)",
+      "to try for",
+      "to have an eye on"
+    ],
+    "readings": [
+      "めざ"
+    ]
+  },
+  "手首": {
+    "meanings": [
+      "wrist"
+    ],
+    "readings": [
+      "てくび"
+    ]
+  },
+  "先々週": {
+    "meanings": [
+      "week before last"
+    ],
+    "readings": [
+      "せんせんしゅう"
+    ]
+  },
+  "下線": {
+    "meanings": [
+      "underline",
+      "underscore"
+    ],
+    "readings": [
+      "かせん"
+    ]
+  },
+  "光線": {
+    "meanings": [
+      "beam",
+      "light ray"
+    ],
+    "readings": [
+      "こうせん"
+    ]
+  },
+  "青白い": {
+    "meanings": [
+      "pale",
+      "pallid"
+    ],
+    "readings": [
+      "あおじろ"
+    ]
+  },
+  "山林": {
+    "meanings": [
+      "mountain forest",
+      "forest on a mountain",
+      "forest land",
+      "woodland"
+    ],
+    "readings": [
+      "さんりん"
+    ]
+  },
+  "中身": {
+    "meanings": [
+      "contents",
+      "interior",
+      "filling"
+    ],
+    "readings": [
+      "なかみ"
+    ]
+  },
+  "日時": {
+    "meanings": [
+      "date and time (of a meeting",
+      "departure",
+      "etc.)"
+    ],
+    "readings": [
+      "にちじ"
+    ]
+  },
+  "無数": {
+    "meanings": [
+      "innumerable",
+      "countless",
+      "numberless"
+    ],
+    "readings": [
+      "むすう"
+    ]
+  },
+  "南極": {
+    "meanings": [
+      "South Pole"
+    ],
+    "readings": [
+      "なんきょく"
+    ]
+  },
+  "能率": {
+    "meanings": [
+      "efficiency"
+    ],
+    "readings": [
+      "のうりつ"
+    ]
+  },
+  "小数": {
+    "meanings": [
+      "fraction (part of)",
+      "decimal fraction"
+    ],
+    "readings": [
+      "しょうすう"
+    ]
+  },
+  "灰色": {
+    "meanings": [
+      "grey",
+      "gray",
+      "ashen"
+    ],
+    "readings": [
+      "はいいろ"
+    ]
+  },
+  "日の出": {
+    "meanings": [
+      "sunrise"
+    ],
+    "readings": [
+      "ひ"
+    ]
+  },
+  "花火": {
+    "meanings": [
+      "fireworks"
+    ],
+    "readings": [
+      "はなび"
+    ]
+  },
+  "回数券": {
+    "meanings": [
+      "coupon tickets",
+      "discount tickets",
+      "book of tickets"
+    ],
+    "readings": [
+      "かいすうけん"
+    ]
+  },
+  "湯気": {
+    "meanings": [
+      "steam",
+      "vapour",
+      "vapor"
+    ],
+    "readings": [
+      "ゆげ"
+    ]
+  },
+  "課程": {
+    "meanings": [
+      "course",
+      "curriculum"
+    ],
+    "readings": [
+      "かてい"
+    ]
+  },
+  "物語る": {
+    "meanings": [
+      "to tell (a story)",
+      "to give an account of (an event",
+      "experience",
+      "etc.)",
+      "to relate",
+      "to recount"
+    ],
+    "readings": [
+      "ものがた"
+    ]
+  },
+  "直線": {
+    "meanings": [
+      "straight line"
+    ],
+    "readings": [
+      "ちょくせん"
+    ]
+  },
+  "心身": {
+    "meanings": [
+      "mind and body"
+    ],
+    "readings": [
+      "しんしん"
+    ]
+  },
+  "地点": {
+    "meanings": [
+      "spot",
+      "point",
+      "place",
+      "position"
+    ],
+    "readings": [
+      "ちてん"
+    ]
+  },
+  "出来上がり": {
+    "meanings": [
+      "completion",
+      "finish"
+    ],
+    "readings": [
+      "できあ"
+    ]
+  },
+  "回り道": {
+    "meanings": [
+      "detour",
+      "circuitous route",
+      "diversion"
+    ],
+    "readings": [
+      "まわ"
+    ]
+  },
+  "薬局": {
+    "meanings": [
+      "pharmacy",
+      "drugstore",
+      "chemist's (shop)"
+    ],
+    "readings": [
+      "やっきょく"
+    ]
+  },
+  "日陰": {
+    "meanings": [
+      "shade",
+      "shadow"
+    ],
+    "readings": [
+      "ひかげ"
+    ]
+  },
+  "大小": {
+    "meanings": [
+      "size"
+    ],
+    "readings": [
+      "だいしょう"
+    ]
+  },
+  "薬指": {
+    "meanings": [
+      "ring finger",
+      "third finger",
+      "fourth finger (esp. in piano-playing)"
+    ],
+    "readings": [
+      "くすりゆび"
+    ]
+  },
+  "足袋": {
+    "meanings": [
+      "tabi",
+      "traditional split-toe socks"
+    ],
+    "readings": [
+      "たび"
+    ]
+  },
+  "お気の毒に": {
+    "meanings": [
+      "my sympathies",
+      "that's too bad",
+      "my condolences"
+    ],
+    "readings": [
+      "き"
+    ]
+  },
+  "国王": {
+    "meanings": [
+      "king",
+      "queen",
+      "monarch",
+      "sovereign"
+    ],
+    "readings": [
+      "こくおう"
+    ]
+  },
+  "地下水": {
+    "meanings": [
+      "groundwater",
+      "underground water"
+    ],
+    "readings": [
+      "ちかすい"
+    ]
+  },
+  "客間": {
+    "meanings": [
+      "drawing room",
+      "parlor",
+      "parlour",
+      "guest room"
+    ],
+    "readings": [
+      "きゃくま"
+    ]
+  },
+  "仲直り": {
+    "meanings": [
+      "reconciliation",
+      "making up (with)",
+      "making peace (with)",
+      "being friends again",
+      "patching up a quarrel"
+    ],
+    "readings": [
+      "なかなお"
+    ]
+  },
+  "下町": {
+    "meanings": [
+      "low-lying part of a city (usu. containing shops",
+      "factories",
+      "etc.)"
+    ],
+    "readings": [
+      "したまち"
+    ]
+  },
+  "北極": {
+    "meanings": [
+      "North Pole"
+    ],
+    "readings": [
+      "ほっきょく"
+    ]
+  },
+  "夫妻": {
+    "meanings": [
+      "husband and wife",
+      "married couple"
+    ],
+    "readings": [
+      "ふさい"
+    ]
+  },
+  "日程": {
+    "meanings": [
+      "schedule",
+      "program",
+      "programme",
+      "agenda"
+    ],
+    "readings": [
+      "にってい"
+    ]
+  },
+  "一昨昨日": {
+    "meanings": [
+      "two days before yesterday",
+      "three days back (ago)"
+    ],
+    "readings": [
+      "いっさくさくじつ"
+    ]
+  },
+  "本来": {
+    "meanings": [
+      "originally",
+      "primarily"
+    ],
+    "readings": [
+      "ほんらい"
+    ]
+  },
+  "地帯": {
+    "meanings": [
+      "zone",
+      "area",
+      "belt",
+      "region"
+    ],
+    "readings": [
+      "ちたい"
+    ]
+  },
+  "日用品": {
+    "meanings": [
+      "daily necessities",
+      "everyday item"
+    ],
+    "readings": [
+      "にちようひん"
+    ]
+  },
+  "毛皮": {
+    "meanings": [
+      "fur",
+      "skin",
+      "pelt"
+    ],
+    "readings": [
+      "けがわ"
+    ]
+  },
+  "出来上がる": {
+    "meanings": [
+      "to be completed",
+      "to be finished",
+      "to be ready (e.g. to serve or eat)"
+    ],
+    "readings": [
+      "できあ"
+    ]
+  },
+  "性質": {
+    "meanings": [
+      "nature (of a person)",
+      "disposition",
+      "temperament",
+      "character"
+    ],
+    "readings": [
+      "せいしつ"
+    ]
+  },
+  "日差し": {
+    "meanings": [
+      "sunlight",
+      "rays of the Sun"
+    ],
+    "readings": [
+      "ひざ"
+    ]
+  },
+  "偶数": {
+    "meanings": [
+      "even number"
+    ],
+    "readings": [
+      "ぐうすう"
+    ]
+  },
+  "下品": {
+    "meanings": [
+      "vulgar",
+      "indecent",
+      "coarse",
+      "crude"
+    ],
+    "readings": [
+      "げひん"
+    ]
+  },
+  "毛糸": {
+    "meanings": [
+      "knitting wool",
+      "woolen yarn",
+      "woollen yarn"
+    ],
+    "readings": [
+      "けいと"
+    ]
+  },
+  "地質": {
+    "meanings": [
+      "geological features"
+    ],
+    "readings": [
+      "ちしつ"
+    ]
+  },
+  "表紙": {
+    "meanings": [
+      "cover (of a book",
+      "magazine",
+      "etc.)",
+      "binding"
+    ],
+    "readings": [
+      "ひょうし"
+    ]
+  },
+  "性別": {
+    "meanings": [
+      "(distinction of) sex",
+      "gender"
+    ],
+    "readings": [
+      "せいべつ"
+    ]
+  },
+  "方程式": {
+    "meanings": [
+      "equation",
+      "formula"
+    ],
+    "readings": [
+      "ほうていしき"
+    ]
+  },
+  "馬穴": {
+    "meanings": [
+      "bucket",
+      "pail"
+    ],
+    "readings": [
+      "バケツ"
+    ]
+  },
+  "皮肉": {
+    "meanings": [
+      "irony",
+      "sarcasm",
+      "cynicism",
+      "satire"
+    ],
+    "readings": [
+      "ひにく"
+    ]
+  },
+  "中指": {
+    "meanings": [
+      "middle finger",
+      "long finger",
+      "second finger",
+      "tall finger"
+    ],
+    "readings": [
+      "なかゆび"
+    ]
+  },
+  "目上": {
+    "meanings": [
+      "superior",
+      "superiors",
+      "senior"
+    ],
+    "readings": [
+      "めうえ"
+    ]
+  },
+  "性能": {
+    "meanings": [
+      "ability",
+      "performance",
+      "efficiency"
+    ],
+    "readings": [
+      "せいのう"
+    ]
+  },
+  "可愛がる": {
+    "meanings": [
+      "to be affectionate to",
+      "to treat tenderly",
+      "to dote on",
+      "to show one's love (for)",
+      "to cherish"
+    ],
+    "readings": [
+      "かわい"
+    ]
+  },
+  "赤道": {
+    "meanings": [
+      "equator"
+    ],
+    "readings": [
+      "せきどう"
+    ]
+  },
+  "南米": {
+    "meanings": [
+      "South America"
+    ],
+    "readings": [
+      "なんべい"
+    ]
+  },
+  "小便": {
+    "meanings": [
+      "urine",
+      "piss",
+      "pee",
+      "urination"
+    ],
+    "readings": [
+      "しょうべん"
+    ]
+  },
+  "不運": {
+    "meanings": [
+      "misfortune",
+      "bad luck",
+      "ill luck",
+      "ill fortune"
+    ],
+    "readings": [
+      "ふうん"
+    ]
+  },
+  "内線": {
+    "meanings": [
+      "phone extension",
+      "indoor wiring",
+      "inner line"
+    ],
+    "readings": [
+      "ないせん"
+    ]
+  }
+}
