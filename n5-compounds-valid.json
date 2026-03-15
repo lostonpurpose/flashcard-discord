@@ -1,0 +1,51 @@
+{
+  "電話": {
+    "meanings": [
+      "phone call"
+    ],
+    "readings": [
+      "でんわ"
+    ]
+  },
+  "毎日": {
+    "meanings": [
+      "every day"
+    ],
+    "readings": [
+      "まいにち"
+    ]
+  },
+  "会社": {
+    "meanings": [
+      "company"
+    ],
+    "readings": [
+      "かいしゃ"
+    ]
+  },
+  "午後": {
+    "meanings": [
+      "afternoon",
+      "p.m."
+    ],
+    "readings": [
+      "ごご"
+    ]
+  },
+  "午前": {
+    "meanings": [
+      "morning"
+    ],
+    "readings": [
+      "ごぜん"
+    ]
+  },
+  "電車": {
+    "meanings": [
+      "train"
+    ],
+    "readings": [
+      "でんしゃ"
+    ]
+  }
+}

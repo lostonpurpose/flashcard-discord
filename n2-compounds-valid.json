@@ -1,0 +1,104 @@
+{
+  "流域": {
+    "meanings": [
+      "drainage basin",
+      "catchment basin",
+      "river basin",
+      "watershed",
+      "valley"
+    ],
+    "readings": [
+      "りゅういき"
+    ]
+  },
+  "災難": {
+    "meanings": [
+      "calamity",
+      "misfortune",
+      "disaster"
+    ],
+    "readings": [
+      "さいなん"
+    ]
+  },
+  "県庁": {
+    "meanings": [
+      "prefectural office"
+    ],
+    "readings": [
+      "けんちょう"
+    ]
+  },
+  "概論": {
+    "meanings": [
+      "introduction",
+      "outline",
+      "general remarks"
+    ],
+    "readings": [
+      "がいろん"
+    ]
+  },
+  "観測": {
+    "meanings": [
+      "observation",
+      "survey",
+      "measurement"
+    ],
+    "readings": [
+      "かんそく"
+    ]
+  },
+  "評論": {
+    "meanings": [
+      "criticism",
+      "critique"
+    ],
+    "readings": [
+      "ひょうろん"
+    ]
+  },
+  "増減": {
+    "meanings": [
+      "increase and decrease",
+      "fluctuation"
+    ],
+    "readings": [
+      "ぞうげん"
+    ]
+  },
+  "課程": {
+    "meanings": [
+      "course",
+      "curriculum"
+    ],
+    "readings": [
+      "かてい"
+    ]
+  },
+  "応対": {
+    "meanings": [
+      "dealing with (people",
+      "customers",
+      "complaints",
+      "etc.)",
+      "receiving (callers",
+      "visitors",
+      "etc.)",
+      "attending to",
+      "handling",
+      "serving"
+    ],
+    "readings": [
+      "おうたい"
+    ]
+  },
+  "抽象": {
+    "meanings": [
+      "abstraction"
+    ],
+    "readings": [
+      "ちゅうしょう"
+    ]
+  }
+}

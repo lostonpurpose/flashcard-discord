@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+sti#!/usr/bin/env python3
 import sqlite3
 import json
 import re
