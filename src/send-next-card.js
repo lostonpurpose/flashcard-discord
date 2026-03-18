@@ -9,21 +9,21 @@ export async function sendNextCard(userId, message) {
 
     // include customs by unioning custom_cards
     const { rows: newCards } = await pool.query(
-        `SELECT id, user_id, card_front, card_back, introduced, next_review,
+        `SELECT id, user_id, card_front, card_back, introduced, next_review, next_card_due,
                 correct_count, incorrect_count, consecutive_correct, score, reading_introduced, FALSE AS is_custom
          FROM cards WHERE user_id = $1 AND introduced = TRUE AND score = 50
          UNION ALL
-         SELECT id, user_id, card_front, card_back, introduced, next_review,
+         SELECT id, user_id, card_front, card_back, introduced, next_review, next_card_due,
                 correct_count, incorrect_count, consecutive_correct, score, FALSE AS reading_introduced, TRUE AS is_custom
          FROM custom_cards WHERE user_id = $1 AND introduced = TRUE AND score = 50`,
         [userId]
     );
     const { rows: reviewCards } = await pool.query(
-        `SELECT id, user_id, card_front, card_back, introduced, next_review,
+        `SELECT id, user_id, card_front, card_back, introduced, next_review, next_card_due,
                 correct_count, incorrect_count, consecutive_correct, score, reading_introduced, FALSE AS is_custom
          FROM cards WHERE user_id = $1 AND introduced = TRUE AND score < 50
          UNION ALL
-         SELECT id, user_id, card_front, card_back, introduced, next_review,
+         SELECT id, user_id, card_front, card_back, introduced, next_review, next_card_due,
                 correct_count, incorrect_count, consecutive_correct, score, FALSE AS reading_introduced, TRUE AS is_custom
          FROM custom_cards WHERE user_id = $1 AND introduced = TRUE AND score < 50`,
         [userId]
@@ -76,6 +76,13 @@ export async function sendNextCard(userId, message) {
     // Pick a random card from the chosen group
     const card = pickGroup[Math.floor(Math.random() * pickGroup.length)];
     console.log('[sendNextCard] Picked card FULL:', card);
+    
+    // Check if card's next_card_due is in the future
+    if (card.next_card_due && new Date(card.next_card_due) > new Date()) {
+      console.log(`[sendNextCard] Card ${card.id} (${card.card_front}) not due until ${card.next_card_due}`);
+      return false; // Card not yet due, skip it
+    }
+    
     // Extra: print all cards for this user/kanji for debugging
     try {
       const { rows: allDupes } = await pool.query(
