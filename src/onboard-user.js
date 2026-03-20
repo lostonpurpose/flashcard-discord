@@ -65,5 +65,5 @@ export async function onboardUser(discordUserId, message, difficulty = 'easy') {
   await new Promise(resolve => setTimeout(resolve, 5000));
 
   // Send spacing message
-  await message.reply("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*(Scroll up for your first five cards to avoid accidentally seeing the meanings!)");
+  await message.reply("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*(Scroll up for your first five cards - this is so you don't accidentally seeing the meanings when answering!)");
 }
