@@ -574,10 +574,8 @@ client.login(botToken);
 
 (async function ensureSeq() {
   try {
-    await pool.query(
-      `SELECT setval('cards_id_seq',
-          (SELECT COALESCE(MAX(id),0) FROM cards) + 1, false)`
-    );
+    // Set cards sequence to a fixed value to avoid high-ID cards from polluting the sequence
+    await pool.query(`SELECT setval('cards_id_seq', 1000, false)`);
   } catch (e) {
     console.warn('Failed to sync cards_id_seq on startup', e);
   }
