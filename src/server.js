@@ -571,12 +571,3 @@ client.on('messageCreate', async (message) => {
 });
 
 client.login(botToken);
-
-(async function ensureSeq() {
-  try {
-    // Set cards sequence to a fixed value to avoid high-ID cards from polluting the sequence
-    await pool.query(`SELECT setval('cards_id_seq', 1000, false)`);
-  } catch (e) {
-    console.warn('Failed to sync cards_id_seq on startup', e);
-  }
-})();
