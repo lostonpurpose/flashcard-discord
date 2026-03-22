@@ -571,14 +571,3 @@ client.on('messageCreate', async (message) => {
 });
 
 client.login(botToken);
-
-(async function ensureSeq() {
-  try {
-    await pool.query(
-      `SELECT setval('cards_id_seq',
-          (SELECT COALESCE(MAX(id),0) FROM cards) + 1, false)`
-    );
-  } catch (e) {
-    console.warn('Failed to sync cards_id_seq on startup', e);
-  }
-})();
