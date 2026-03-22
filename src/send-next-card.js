@@ -77,12 +77,6 @@ export async function sendNextCard(userId, message) {
     const card = pickGroup[Math.floor(Math.random() * pickGroup.length)];
     console.log('[sendNextCard] Picked card FULL:', card);
     
-    // Check if card's next_card_due is in the future
-    if (card.next_card_due && new Date(card.next_card_due) > new Date()) {
-      console.log(`[sendNextCard] Card ${card.id} (${card.card_front}) not due until ${card.next_card_due}`);
-      return false; // Card not yet due, skip it
-    }
-    
     // Extra: print all cards for this user/kanji for debugging
     try {
       const { rows: allDupes } = await pool.query(
