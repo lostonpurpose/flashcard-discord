@@ -55,13 +55,17 @@ export async function sendNextCard(userId, message) {
         pickGroup = reviewCards;
         console.log('[sendNextCard] Picking from reviewCards (only group available)');
     } else {
-        // compute total weight
-        const totalWeight = (reviewCards.length ? 3 : 0) + (freshNew.length ? 2 : 0) + (answeredNew.length ? 1 : 0);
+        // compute total weight with dynamic boundaries
+        const reviewWeight = reviewCards.length ? 3 : 0;
+        const freshNewWeight = freshNew.length ? 2 : 0;
+        const answeredNewWeight = answeredNew.length ? 1 : 0;
+        const totalWeight = reviewWeight + freshNewWeight + answeredNewWeight;
         const r = Math.floor(Math.random() * totalWeight);
-        if (reviewCards.length && r < 3) {
+        
+        if (r < reviewWeight) {
             pickGroup = reviewCards;
             console.log('[sendNextCard] Weighted pick: reviewCards');
-        } else if (freshNew.length && r < (3 + 2)) {
+        } else if (r < reviewWeight + freshNewWeight) {
             pickGroup = freshNew;
             console.log('[sendNextCard] Weighted pick: freshNew');
         } else {
