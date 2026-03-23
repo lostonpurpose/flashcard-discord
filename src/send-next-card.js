@@ -42,44 +42,38 @@ export async function sendNextCard(userId, message) {
         return false; // No cards due
     }
 
-    // Weighted random across three pools
-    // weights: reviewCards=3, freshNew=2, answeredNew=1
-    let pickGroup;
-    if (reviewCards.length === 0 && freshNew.length === 0 && answeredNew.length > 0) {
-        pickGroup = answeredNew;
-        console.log('[sendNextCard] Picking from answeredNew (only group available)');
-    } else if (reviewCards.length === 0 && answeredNew.length === 0 && freshNew.length > 0) {
-        pickGroup = freshNew;
-        console.log('[sendNextCard] Picking from freshNew (only group available)');
-    } else if (freshNew.length === 0 && answeredNew.length === 0 && reviewCards.length > 0) {
-        pickGroup = reviewCards;
-        console.log('[sendNextCard] Picking from reviewCards (only group available)');
-    } else {
-        // compute total weight with dynamic boundaries
-        const reviewWeight = reviewCards.length ? 3 : 0;
-        const freshNewWeight = freshNew.length ? 2 : 0;
-        const answeredNewWeight = answeredNew.length ? 1 : 0;
-        const totalWeight = reviewWeight + freshNewWeight + answeredNewWeight;
-        const r = Math.floor(Math.random() * totalWeight);
-        
-        if (r < reviewWeight) {
-            pickGroup = reviewCards;
-            console.log('[sendNextCard] Weighted pick: reviewCards');
-        } else if (r < reviewWeight + freshNewWeight) {
-            pickGroup = freshNew;
-            console.log('[sendNextCard] Weighted pick: freshNew');
-        } else {
-            pickGroup = answeredNew;
-            console.log('[sendNextCard] Weighted pick: answeredNew');
-        }
+    // Create weighted array of all cards
+    const weightedCards = [];
+    for (const card of reviewCards) {
+      weightedCards.push({ card, weight: 3 });
+    }
+    for (const card of freshNew) {
+      weightedCards.push({ card, weight: 2 });
+    }
+    for (const card of answeredNew) {
+      weightedCards.push({ card, weight: 1 });
     }
 
-    // Debug: print pickGroup before picking
-    console.log('[sendNextCard] pickGroup:', pickGroup.map(c => ({id: c.id, front: c.card_front, score: c.score, reading: c.reading_introduced, back: c.card_back})));
+    // Calculate total weight
+    const totalWeight = weightedCards.reduce((sum, item) => sum + item.weight, 0);
 
-    // Pick a random card from the chosen group
-    const card = pickGroup[Math.floor(Math.random() * pickGroup.length)];
-    console.log('[sendNextCard] Picked card FULL:', card);
+    // Pick random number and find card
+    let r = Math.floor(Math.random() * totalWeight);
+    let card;
+    for (const item of weightedCards) {
+      r -= item.weight;
+      if (r < 0) {
+        card = item.card;
+        break;
+      }
+    }
+
+    console.log('[sendNextCard] Weighted pick from all cards, card:', card.card_front);
+
+    // Handle fallback if somehow no card picked
+    if (!card) {
+      card = weightedCards[0].card;
+    }
     
     // Extra: print all cards for this user/kanji for debugging
     try {
