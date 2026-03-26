@@ -3,9 +3,9 @@ import { Pool } from 'pg';
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 export async function introduceNextBatch(userId, message, difficulty = 'easy') {
-  // 1. Get all *meaning* cards the user has seen (exclude readings) and their scores
+  // 1. Get all *meaning* cards the user has seen (exclude readings)
   const { rows: userCards } = await pool.query(
-    `SELECT id, card_front, card_back, score
+    `SELECT id, card_front, card_back, score, correct_count
      FROM cards
      WHERE user_id = $1
        AND introduced = TRUE
@@ -14,13 +14,12 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
     [userId]
   );
 
-  // 2. Find any new cards still at default score (score === 50)
-  const newCards = userCards.filter(c => Number(c.score) === 50);
+  // 2. Require each batch card to be answered correctly at least once
+  const uncompletedCards = userCards.filter(c => Number(c.correct_count) === 0);
 
-  // if there's at least one new card still at score 50, we're still working
-  // through the current batch; don't introduce more.
-  if (newCards.length > 0) {
-    console.log('[introduceNextBatch] still have', newCards.length, 'new cards (score=50):', newCards.map(c=>c.card_front));
+  // if there's at least one uncompleted batch card, don't introduce more.
+  if (uncompletedCards.length > 0) {
+    console.log('[introduceNextBatch] still have', uncompletedCards.length, 'uncompleted cards (correct_count=0):', uncompletedCards.map(c=>c.card_front));
     return false;
   }
 
