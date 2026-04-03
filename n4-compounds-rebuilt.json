@@ -1,0 +1,189 @@
+{
+  "社会": {
+    "meanings": [
+      "society",
+      "public",
+      "community",
+      "the world"
+    ],
+    "readings": [
+      "しゃかい"
+    ]
+  },
+  "品物": {
+    "meanings": [
+      "article",
+      "item",
+      "thing",
+      "goods",
+      "wares"
+    ],
+    "readings": [
+      "しなもの"
+    ]
+  },
+  "運動": {
+    "meanings": [
+      "exercise",
+      "physical training",
+      "workout",
+      "sports",
+      "athletics"
+    ],
+    "readings": [
+      "うんどう"
+    ]
+  },
+  "店員": {
+    "meanings": [
+      "employee (of a store)",
+      "shop assistant",
+      "clerk",
+      "salesperson"
+    ],
+    "readings": [
+      "てんいん"
+    ]
+  },
+  "注意": {
+    "meanings": [
+      "attention",
+      "notice",
+      "heed"
+    ],
+    "readings": [
+      "ちゅうい"
+    ]
+  },
+  "仕方": {
+    "meanings": [
+      "way",
+      "method",
+      "means",
+      "resource",
+      "course"
+    ],
+    "readings": [
+      "しかた"
+    ]
+  },
+  "無理": {
+    "meanings": [
+      "unreasonable",
+      "unnatural",
+      "unjustifiable"
+    ],
+    "readings": [
+      "むり"
+    ]
+  },
+  "運転手": {
+    "meanings": [
+      "driver",
+      "chauffeur"
+    ],
+    "readings": [
+      "うんてんしゅ"
+    ]
+  },
+  "用意": {
+    "meanings": [
+      "preparation",
+      "arrangements",
+      "provision",
+      "getting ready",
+      "laying out (e.g. a meal)"
+    ],
+    "readings": [
+      "ようい"
+    ]
+  },
+  "世界": {
+    "meanings": [
+      "the world",
+      "society",
+      "the universe"
+    ],
+    "readings": [
+      "せかい"
+    ]
+  },
+  "地理": {
+    "meanings": [
+      "geography"
+    ],
+    "readings": [
+      "ちり"
+    ]
+  },
+  "旅館": {
+    "meanings": [
+      "ryokan",
+      "traditional Japanese inn"
+    ],
+    "readings": [
+      "りょかん"
+    ]
+  },
+  "運転": {
+    "meanings": [
+      "operation (of a machine)",
+      "running",
+      "working"
+    ],
+    "readings": [
+      "うんてん"
+    ]
+  },
+  "用事": {
+    "meanings": [
+      "business",
+      "things to do",
+      "engagement",
+      "errand",
+      "affairs"
+    ],
+    "readings": [
+      "ようじ"
+    ]
+  },
+  "教会": {
+    "meanings": [
+      "church",
+      "congregation"
+    ],
+    "readings": [
+      "きょうかい"
+    ]
+  },
+  "発音": {
+    "meanings": [
+      "pronunciation"
+    ],
+    "readings": [
+      "はつおん"
+    ]
+  },
+  "会場": {
+    "meanings": [
+      "assembly hall",
+      "meeting place",
+      "venue",
+      "site",
+      "grounds"
+    ],
+    "readings": [
+      "かいじょう"
+    ]
+  },
+  "研究": {
+    "meanings": [
+      "research",
+      "study",
+      "investigation"
+    ],
+    "readings": [
+      "けんきゅう"
+    ]
+  }
+}
