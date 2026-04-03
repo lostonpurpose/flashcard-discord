@@ -428,7 +428,7 @@ client.on('messageCreate', async (message) => {
         readingIntroduced = readingIntroRows[0]?.reading_introduced;
       }
       console.log(`[READINGS DEBUG] streak: ${streak}, cardId: ${cardIdFromQuery}, reading_introduced: ${readingIntroduced}`);
-      if (streak === 5 && !readingIntroduced) {
+      if (streak >= 5 && !readingIntroduced) {
         // Fetch readings from master_cards table
         // Always use the original kanji (no '(reading)') for reading card creation
         const baseKanji = lastKanji ? lastKanji.replace(/\s*\(reading\)$/,'').trim() : '';

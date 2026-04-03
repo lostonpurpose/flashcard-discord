@@ -1,5 +1,5 @@
 -- schema.sql (add near the top, before user_created_cards)
-CREATE SEQUENCE IF NOT EXISTS custom_cards_id_seq START 1000000;
+CREATE SEQUENCE IF NOT EXISTS custom_cards_id_seq START 1;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
