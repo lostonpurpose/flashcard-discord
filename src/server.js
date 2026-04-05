@@ -402,7 +402,7 @@ client.on('messageCreate', async (message) => {
       let oldScore = Number(oldRows[0].score);
 
       // Update review stats before fetching new score/streak
-      await reviewCard(userId, cardIdFromQuery, correct);
+      await reviewCard(userId, cardIdFromQuery, correct, cardTable);
 
       // Fetch updated score and streak from the correct table as well
       const { rows: updatedRows } = await pool.query(
@@ -517,7 +517,7 @@ client.on('messageCreate', async (message) => {
 
     // Now update review stats for incorrect answers
     if (!correct) {
-      await reviewCard(userId, cardIdFromQuery, correct);
+      await reviewCard(userId, cardIdFromQuery, correct, cardTable);
     }
 
     // LOCK: Clear last_kanji_sent so further answers are ignored until next card is sent
