@@ -97,6 +97,7 @@ if (!botToken) {
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMembers,
     GatewayIntentBits.DirectMessages,
     GatewayIntentBits.MessageContent,
   ],
@@ -131,6 +132,37 @@ let pendingDeletion = new Map();
 })();
 client.on('ready', () => {
   console.log(`Discord bot logged in as ${client.user.tag}`);
+});
+
+client.on('guildMemberAdd', async (member) => {
+  if (member.user.bot) return;
+
+  try {
+    const result = await pool.query(
+      'INSERT INTO users (discord_user_id) VALUES ($1) ON CONFLICT (discord_user_id) DO NOTHING RETURNING id',
+      [member.user.id]
+    );
+
+    if (result.rowCount !== 1) {
+      // User already exists, skip onboarding for re-joins or returning members.
+      return;
+    }
+
+    const dmMessage = {
+      reply: async (text) => {
+        try {
+          await member.user.send(text);
+        } catch (err) {
+          console.error('[guildMemberAdd] failed to DM new member', member.user.tag, err);
+        }
+      },
+    };
+
+    await onboardUser(member.user.id, dmMessage, 'easy');
+    console.log(`[guildMemberAdd] Onboarded new member ${member.user.tag}`);
+  } catch (err) {
+    console.error('[guildMemberAdd] onboarding error for', member.user.tag, err);
+  }
 });
 
 client.on('messageCreate', async (message) => {
