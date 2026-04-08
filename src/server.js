@@ -477,26 +477,49 @@ client.on('messageCreate', async (message) => {
           }
         }
         if (readings.length) {
-          // Use new template for reading card intro message
-          feedbackText = isReadingCard
-            ? `Correct! The reading(s) for ${baseKanji} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
-            : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
-          await message.reply(feedbackText);
-          console.log('[server.js] replied with:', feedbackText);
-          await message.reply(`Congratulations, you answered "${lastKanji}" (${allMeanings.join(', ')}) 5 times in a row!\n\nYou will now start seeing a card asking for ${baseKanji} (reading). Use hiragana to answer. The reading(s) for ${baseKanji} are:\n\n${readings.join('\n')}`);
-          console.log('[server.js] replied with: reading intro');
-          // Always create reading card as 'KANJI (reading)'
-          let readingCardFront = `${baseKanji} (reading)`;
-          await pool.query(
-            `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
-             VALUES ($1, $2, $3, TRUE, TRUE)`,
-            [userId, readingCardFront, JSON.stringify(readings)]
+          const readingCardFront = `${baseKanji} (reading)`;
+          const { rows: existingReadingRows } = await pool.query(
+            'SELECT id FROM cards WHERE user_id = $1 AND card_front = $2 AND reading_introduced = TRUE',
+            [userId, readingCardFront]
           );
-          // Mark original card as reading_introduced
-          await pool.query(
-            'UPDATE cards SET reading_introduced = TRUE WHERE id = $1',
-            [cardIdFromQuery]
-          );
+
+          if (existingReadingRows.length > 0) {
+            // The reading card already exists, which means the intro must have previously happened.
+            // Ensure the original card is marked as introduced too, but do not repeat the reading message.
+            await pool.query('UPDATE cards SET reading_introduced = TRUE WHERE id = $1', [cardIdFromQuery]);
+            feedbackText = isReadingCard
+              ? `Correct! The reading(s) for ${kanjiOnly} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
+              : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+            await message.reply(feedbackText);
+            console.log('[server.js] replied with: existing reading already introduced, marking original card true');
+          } else {
+            // Persist the reading card and mark the source card as introduced before sending any user-facing messages.
+            await pool.query('BEGIN');
+            try {
+              await pool.query(
+                `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
+                 VALUES ($1, $2, $3, TRUE, TRUE)`,
+                [userId, readingCardFront, JSON.stringify(readings)]
+              );
+              await pool.query(
+                'UPDATE cards SET reading_introduced = TRUE WHERE id = $1',
+                [cardIdFromQuery]
+              );
+              await pool.query('COMMIT');
+            } catch (err) {
+              await pool.query('ROLLBACK');
+              console.error('[READINGS INTRO] failed to persist reading intro state', err);
+              throw err;
+            }
+
+            feedbackText = isReadingCard
+              ? `Correct! The reading(s) for ${baseKanji} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
+              : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+            await message.reply(feedbackText);
+            console.log('[server.js] replied with:', feedbackText);
+            await message.reply(`Congratulations, you answered "${lastKanji}" (${allMeanings.join(', ')}) 5 times in a row!\n\nYou will now start seeing a card asking for ${baseKanji} (reading). Use hiragana to answer. The reading(s) for ${baseKanji} are:\n\n${readings.join('\n')}`);
+            console.log('[server.js] replied with: reading intro');
+          }
         } else {
           feedbackText = isReadingCard
             ? `Correct! The reading(s) for ${baseKanji} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
