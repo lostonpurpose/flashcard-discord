@@ -1,4 +1,5 @@
 import { Pool } from 'pg';
+import { sendNextCard } from './send-next-card.js';
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
@@ -10,6 +11,9 @@ export async function onboardUser(discordUserId, message, difficulty = 'easy') {
   );
   if (!userRows.length) throw new Error('User not found');
   const userId = userRows[0].id;
+
+  // Prevent the scheduler from immediately sending a follow-up card while onboarding is in progress.
+  await pool.query('UPDATE users SET last_card_sent = NOW() WHERE id = $1', [userId]);
 
   // Get first 5 master cards by id
   const { rows: cardRows } = await pool.query(
@@ -66,4 +70,9 @@ export async function onboardUser(discordUserId, message, difficulty = 'easy') {
 
   // Send spacing message
   await message.reply("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*(Scroll up for your first five cards - this is so you don't accidentally seeing the meanings when answering!)");
+
+  // Wait one more minute after the onboarding messages before sending the first review/question card.
+  await new Promise(resolve => setTimeout(resolve, 60000));
+
+  await sendNextCard(userId, message);
 }

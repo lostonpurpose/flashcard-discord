@@ -2,16 +2,14 @@ import { Pool } from 'pg';
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
-export async function reviewCard(userId, cardId, correct) {
-  // Get current score and streak
-  // look up the card in either table
-  let table = 'cards';
-  let { rows } = await pool.query(
-    'SELECT score, consecutive_correct FROM cards WHERE id = $1 AND user_id = $2',
-    [cardId, userId]
-  );
-  if (!rows.length) {
-    // fallback to custom_cards
+export async function reviewCard(userId, cardId, correct, table = 'cards') {
+  // Get current score and streak.
+  // `cards` and `custom_cards` have independent id sequences, so ids are not globally unique.
+  // The caller should pass the table where the card lives to avoid updating the wrong row.
+  let query = `SELECT score, consecutive_correct FROM ${table} WHERE id = $1 AND user_id = $2`;
+  let { rows } = await pool.query(query, [cardId, userId]);
+  if (!rows.length && table === 'cards') {
+    // Fallback only when the caller did not specify a custom table explicitly.
     const { rows: alt } = await pool.query(
       'SELECT score, consecutive_correct FROM custom_cards WHERE id = $1 AND user_id = $2',
       [cardId, userId]
@@ -20,6 +18,7 @@ export async function reviewCard(userId, cardId, correct) {
     rows = alt;
     table = 'custom_cards';
   }
+  if (!rows.length) throw new Error('Card not found');
   
   let score = Number(rows[0].score);
   let streak = Number(rows[0].consecutive_correct);

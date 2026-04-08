@@ -97,6 +97,7 @@ if (!botToken) {
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMembers,
     GatewayIntentBits.DirectMessages,
     GatewayIntentBits.MessageContent,
   ],
@@ -133,6 +134,37 @@ client.on('ready', () => {
   console.log(`Discord bot logged in as ${client.user.tag}`);
 });
 
+client.on('guildMemberAdd', async (member) => {
+  if (member.user.bot) return;
+
+  try {
+    const result = await pool.query(
+      'INSERT INTO users (discord_user_id, last_card_sent) VALUES ($1, NOW()) ON CONFLICT (discord_user_id) DO NOTHING RETURNING id',
+      [member.user.id]
+    );
+
+    if (result.rowCount !== 1) {
+      // User already exists, skip onboarding for re-joins or returning members.
+      return;
+    }
+
+    const dmMessage = {
+      reply: async (text) => {
+        try {
+          await member.user.send(text);
+        } catch (err) {
+          console.error('[guildMemberAdd] failed to DM new member', member.user.tag, err);
+        }
+      },
+    };
+
+    await onboardUser(member.user.id, dmMessage, 'easy');
+    console.log(`[guildMemberAdd] Onboarded new member ${member.user.tag}`);
+  } catch (err) {
+    console.error('[guildMemberAdd] onboarding error for', member.user.tag, err);
+  }
+});
+
 client.on('messageCreate', async (message) => {
   console.log(`Message received from ${message.author.tag}: "${message.content}" in channel type: ${message.channel.type}`);
   console.log('[server.js] messageCreate handler triggered');
@@ -153,7 +185,7 @@ client.on('messageCreate', async (message) => {
   let userId;
   try {
     const result = await pool.query(
-      'INSERT INTO users (discord_user_id) VALUES ($1) ON CONFLICT (discord_user_id) DO NOTHING RETURNING id',
+      'INSERT INTO users (discord_user_id, last_card_sent) VALUES ($1, NOW()) ON CONFLICT (discord_user_id) DO NOTHING RETURNING id',
       [discordUserId]
     );
     if (result.rowCount === 1) {
@@ -402,7 +434,7 @@ client.on('messageCreate', async (message) => {
       let oldScore = Number(oldRows[0].score);
 
       // Update review stats before fetching new score/streak
-      await reviewCard(userId, cardIdFromQuery, correct);
+      await reviewCard(userId, cardIdFromQuery, correct, cardTable);
 
       // Fetch updated score and streak from the correct table as well
       const { rows: updatedRows } = await pool.query(
@@ -427,7 +459,7 @@ client.on('messageCreate', async (message) => {
         );
         readingIntroduced = readingIntroRows[0]?.reading_introduced;
       }
-      console.log(`[READINGS DEBUG] streak: ${streak}, cardId: ${cardIdFromQuery}, reading_introduced: ${readingIntroduced}`);
+      console.log(`[READINGS DEBUG] cardFront=${lastKanji} cardId=${cardIdFromQuery} streak=${streak} reading_introduced=${readingIntroduced} isReadingCard=${isReadingCard}`);
       if (streak >= 5 && !readingIntroduced) {
         // Fetch readings from master_cards table
         // Always use the original kanji (no '(reading)') for reading card creation
@@ -445,26 +477,51 @@ client.on('messageCreate', async (message) => {
           }
         }
         if (readings.length) {
-          // Use new template for reading card intro message
-          feedbackText = isReadingCard
-            ? `Correct! The reading(s) for ${baseKanji} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
-            : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
-          await message.reply(feedbackText);
-          console.log('[server.js] replied with:', feedbackText);
-          await message.reply(`Congratulations, you answered "${lastKanji}" (${allMeanings.join(', ')}) 5 times in a row!\n\nYou will now start seeing a card asking for ${baseKanji} (reading). Use hiragana to answer. The reading(s) for ${baseKanji} are:\n\n${readings.join('\n')}`);
-          console.log('[server.js] replied with: reading intro');
-          // Always create reading card as 'KANJI (reading)'
-          let readingCardFront = `${baseKanji} (reading)`;
-          await pool.query(
-            `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
-             VALUES ($1, $2, $3, TRUE, TRUE)`,
-            [userId, readingCardFront, JSON.stringify(readings)]
+          const readingCardFront = `${baseKanji} (reading)`;
+          const { rows: existingReadingRows } = await pool.query(
+            'SELECT id FROM cards WHERE user_id = $1 AND card_front = $2 AND reading_introduced = TRUE',
+            [userId, readingCardFront]
           );
-          // Mark original card as reading_introduced
-          await pool.query(
-            'UPDATE cards SET reading_introduced = TRUE WHERE id = $1',
-            [cardIdFromQuery]
-          );
+          console.log(`[READINGS DEBUG] existingReadingRows=${existingReadingRows.length} readingCardFront=${readingCardFront} userId=${userId}`);
+
+          if (existingReadingRows.length > 0) {
+            // The reading card already exists, which means the intro must have previously happened.
+            // Ensure the original card is marked as introduced too, but do not repeat the reading message.
+            await pool.query('UPDATE cards SET reading_introduced = TRUE WHERE id = $1', [cardIdFromQuery]);
+            feedbackText = isReadingCard
+              ? `Correct! The reading(s) for ${kanjiOnly} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
+              : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+            await message.reply(feedbackText);
+            console.log('[server.js] replied with: existing reading already introduced, marking original card true');
+          } else {
+            // Persist the reading card and mark the source card as introduced before sending any user-facing messages.
+            await pool.query('BEGIN');
+            try {
+              await pool.query(
+                `INSERT INTO cards (user_id, card_front, card_back, introduced, reading_introduced)
+                 VALUES ($1, $2, $3, TRUE, TRUE)`,
+                [userId, readingCardFront, JSON.stringify(readings)]
+              );
+              await pool.query(
+                'UPDATE cards SET reading_introduced = TRUE WHERE id = $1',
+                [cardIdFromQuery]
+              );
+              await pool.query('COMMIT');
+              console.log(`[READINGS DEBUG] persisted reading intro for sourceCardId=${cardIdFromQuery} and readingCardFront=${readingCardFront}`);
+            } catch (err) {
+              await pool.query('ROLLBACK');
+              console.error('[READINGS INTRO] failed to persist reading intro state', err);
+              throw err;
+            }
+
+            feedbackText = isReadingCard
+              ? `Correct! The reading(s) for ${baseKanji} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
+              : `Correct! ${lastKanji} means ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`;
+            await message.reply(feedbackText);
+            console.log('[server.js] replied with:', feedbackText);
+            await message.reply(`Congratulations, you answered "${lastKanji}" (${allMeanings.join(', ')}) 5 times in a row!\n\nYou will now start seeing a card asking for ${baseKanji} (reading). Use hiragana to answer. The reading(s) for ${baseKanji} are:\n\n${readings.join('\n')}`);
+            console.log('[server.js] replied with: reading intro');
+          }
         } else {
           feedbackText = isReadingCard
             ? `Correct! The reading(s) for ${baseKanji} are: ${allMeanings.join(', ')} (${badge}streak: ${streak} -- old score: ${oldScore} -- score: ${score})`
@@ -517,7 +574,7 @@ client.on('messageCreate', async (message) => {
 
     // Now update review stats for incorrect answers
     if (!correct) {
-      await reviewCard(userId, cardIdFromQuery, correct);
+      await reviewCard(userId, cardIdFromQuery, correct, cardTable);
     }
 
     // LOCK: Clear last_kanji_sent so further answers are ignored until next card is sent
