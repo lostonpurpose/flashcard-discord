@@ -139,7 +139,7 @@ client.on('guildMemberAdd', async (member) => {
 
   try {
     const result = await pool.query(
-      'INSERT INTO users (discord_user_id) VALUES ($1) ON CONFLICT (discord_user_id) DO NOTHING RETURNING id',
+      'INSERT INTO users (discord_user_id, last_card_sent) VALUES ($1, NOW()) ON CONFLICT (discord_user_id) DO NOTHING RETURNING id',
       [member.user.id]
     );
 
@@ -185,7 +185,7 @@ client.on('messageCreate', async (message) => {
   let userId;
   try {
     const result = await pool.query(
-      'INSERT INTO users (discord_user_id) VALUES ($1) ON CONFLICT (discord_user_id) DO NOTHING RETURNING id',
+      'INSERT INTO users (discord_user_id, last_card_sent) VALUES ($1, NOW()) ON CONFLICT (discord_user_id) DO NOTHING RETURNING id',
       [discordUserId]
     );
     if (result.rowCount === 1) {
