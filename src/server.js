@@ -459,7 +459,7 @@ client.on('messageCreate', async (message) => {
         );
         readingIntroduced = readingIntroRows[0]?.reading_introduced;
       }
-      console.log(`[READINGS DEBUG] streak: ${streak}, cardId: ${cardIdFromQuery}, reading_introduced: ${readingIntroduced}`);
+      console.log(`[READINGS DEBUG] cardFront=${lastKanji} cardId=${cardIdFromQuery} streak=${streak} reading_introduced=${readingIntroduced} isReadingCard=${isReadingCard}`);
       if (streak >= 5 && !readingIntroduced) {
         // Fetch readings from master_cards table
         // Always use the original kanji (no '(reading)') for reading card creation
@@ -482,6 +482,7 @@ client.on('messageCreate', async (message) => {
             'SELECT id FROM cards WHERE user_id = $1 AND card_front = $2 AND reading_introduced = TRUE',
             [userId, readingCardFront]
           );
+          console.log(`[READINGS DEBUG] existingReadingRows=${existingReadingRows.length} readingCardFront=${readingCardFront} userId=${userId}`);
 
           if (existingReadingRows.length > 0) {
             // The reading card already exists, which means the intro must have previously happened.
@@ -506,6 +507,7 @@ client.on('messageCreate', async (message) => {
                 [cardIdFromQuery]
               );
               await pool.query('COMMIT');
+              console.log(`[READINGS DEBUG] persisted reading intro for sourceCardId=${cardIdFromQuery} and readingCardFront=${readingCardFront}`);
             } catch (err) {
               await pool.query('ROLLBACK');
               console.error('[READINGS INTRO] failed to persist reading intro state', err);
