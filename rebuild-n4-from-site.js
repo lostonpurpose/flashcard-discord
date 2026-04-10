@@ -24,12 +24,29 @@ const n4Set = new Set(n4Chars);
 
 const n4DataA = readJson(n4a);
 const n4DataB = readJson(n4b);
+const fallbackFiles = [
+  path.join(cwd, 'src', 'kanji-n5.json'),
+  path.join(cwd, 'src', 'kanji-n3-2.json'),
+  path.join(cwd, 'src', 'kanji-n3-1.json'),
+  path.join(cwd, 'anki-vocab-jlpt-n1.json'),
+  path.join(cwd, 'anki-vocab-jlpt-n3.json'),
+  path.join(cwd, 'anki-vocab-jlpt-n4.json'),
+  path.join(cwd, 'anki-vocab-jlpt-n5.json'),
+];
+const fallbackSources = fallbackFiles.map(readJson);
 
 const merged = {};
 for (const ch of n4Chars) {
   if (n4DataA[ch]) merged[ch] = n4DataA[ch];
   else if (n4DataB[ch]) merged[ch] = n4DataB[ch];
-  else merged[ch] = { meanings: ['(meaning missing)'], readings: [] };
+  else {
+    const fallback = fallbackSources.find(data => data[ch]);
+    if (fallback) {
+      merged[ch] = fallback[ch];
+    } else {
+      merged[ch] = { meanings: ['(meaning missing)'], readings: [] };
+    }
+  }
 }
 
 fs.writeFileSync(n4out, JSON.stringify(merged, null, 2), 'utf8');
