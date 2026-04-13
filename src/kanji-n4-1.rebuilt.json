@@ -56,16 +56,6 @@
       "し"
     ]
   },
-  "会": {
-    "meanings": [
-      "meet",
-      "meeting"
-    ],
-    "readings": [
-      "あう",
-      "かい"
-    ]
-  },
   "家": {
     "meanings": [
       "house",
@@ -78,9 +68,11 @@
   },
   "的": {
     "meanings": [
-      "(meaning missing)"
+      "target"
     ],
-    "readings": []
+    "readings": [
+      "まと"
+    ]
   },
   "方": {
     "meanings": [
@@ -132,15 +124,22 @@
   },
   "私": {
     "meanings": [
-      "(meaning missing)"
+      "I",
+      "me"
     ],
-    "readings": []
+    "readings": [
+      "わたし"
+    ]
   },
   "立": {
     "meanings": [
-      "(meaning missing)"
+      "stand",
+      "establish"
     ],
-    "readings": []
+    "readings": [
+      "たつ",
+      "りつ"
+    ]
   },
   "物": {
     "meanings": [
@@ -150,12 +149,6 @@
       "もの",
       "ぶつ"
     ]
-  },
-  "田": {
-    "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
   },
   "体": {
     "meanings": [
@@ -176,20 +169,15 @@
       "どう"
     ]
   },
-  "社": {
-    "meanings": [
-      "company",
-      "shrine"
-    ],
-    "readings": [
-      "しゃ"
-    ]
-  },
   "知": {
     "meanings": [
-      "(meaning missing)"
+      "know",
+      "knowledge"
     ],
-    "readings": []
+    "readings": [
+      "し",
+      "ち"
+    ]
   },
   "理": {
     "meanings": [
@@ -268,9 +256,13 @@
   },
   "明": {
     "meanings": [
-      "(meaning missing)"
+      "bright",
+      "clear"
     ],
-    "readings": []
+    "readings": [
+      "めい",
+      "みょう"
+    ]
   },
   "力": {
     "meanings": [
@@ -297,7 +289,7 @@
       "use"
     ],
     "readings": [
-      "つかう",
+      "もちいる",
       "よう"
     ]
   },
@@ -320,12 +312,6 @@
       "とおる",
       "つう"
     ]
-  },
-  "文": {
-    "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
   },
   "屋": {
     "meanings": [
@@ -357,16 +343,6 @@
       "じ"
     ]
   },
-  "道": {
-    "meanings": [
-      "road",
-      "way"
-    ],
-    "readings": [
-      "みち",
-      "どう"
-    ]
-  },
   "身": {
     "meanings": [
       "somebody",
@@ -379,23 +355,11 @@
   },
   "不": {
     "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
-  },
-  "口": {
-    "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
-  },
-  "多": {
-    "meanings": [
-      "many"
+      "not"
     ],
     "readings": [
-      "おおい",
-      "た"
+      "ふ",
+      "ぶ"
     ]
   },
   "野": {
@@ -409,9 +373,11 @@
   },
   "考": {
     "meanings": [
-      "(meaning missing)"
+      "think"
     ],
-    "readings": []
+    "readings": [
+      "かんがえる"
+    ]
   },
   "開": {
     "meanings": [
@@ -444,7 +410,6 @@
   "以": {
     "meanings": [
       "because",
-      "in view of",
       "compared with"
     ],
     "readings": [
@@ -457,8 +422,8 @@
       "finger"
     ],
     "readings": [
-      "うごく",
-      "どう"
+      "とい",
+      "もん"
     ]
   },
   "正": {
@@ -482,9 +447,12 @@
   },
   "味": {
     "meanings": [
-      "(meaning missing)"
+      "flavor",
+      "taste"
     ],
-    "readings": []
+    "readings": [
+      "あじ"
+    ]
   },
   "界": {
     "meanings": [
@@ -505,12 +473,6 @@
       "む"
     ]
   },
-  "少": {
-    "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
-  },
   "海": {
     "meanings": [
       "sea"
@@ -522,9 +484,12 @@
   },
   "切": {
     "meanings": [
-      "(meaning missing)"
+      "cut"
     ],
-    "readings": []
+    "readings": [
+      "きる",
+      "せつ"
+    ]
   },
   "重": {
     "meanings": [
@@ -556,15 +521,21 @@
   },
   "公": {
     "meanings": [
-      "(meaning missing)"
+      "official",
+      "governmental",
+      "formal"
     ],
-    "readings": []
+    "readings": [
+      "おおやけ"
+    ]
   },
   "画": {
     "meanings": [
-      "(meaning missing)"
+      "stroke (of a kanji)"
     ],
-    "readings": []
+    "readings": [
+      "かく"
+    ]
   },
   "死": {
     "meanings": [
@@ -575,17 +546,15 @@
       "し"
     ]
   },
-  "安": {
-    "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
-  },
   "親": {
     "meanings": [
-      "(meaning missing)"
+      "parent",
+      "parents",
+      "mother and father"
     ],
-    "readings": []
+    "readings": [
+      "おや"
+    ]
   },
   "強": {
     "meanings": [
@@ -640,12 +609,6 @@
       "きょう"
     ]
   },
-  "足": {
-    "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
-  },
   "品": {
     "meanings": [
       "goods",
@@ -658,15 +621,22 @@
   },
   "着": {
     "meanings": [
-      "(meaning missing)"
+      "arrival",
+      "arriving at ..."
     ],
-    "readings": []
+    "readings": [
+      "ちゃく"
+    ]
   },
   "別": {
     "meanings": [
-      "(meaning missing)"
+      "distinction",
+      "difference",
+      "discrimination"
     ],
-    "readings": []
+    "readings": [
+      "べつ"
+    ]
   },
   "音": {
     "meanings": [
@@ -679,15 +649,22 @@
   },
   "元": {
     "meanings": [
-      "(meaning missing)"
+      "former",
+      "ex-",
+      "past",
+      "one-time"
     ],
-    "readings": []
+    "readings": [
+      "もと"
+    ]
   },
   "特": {
     "meanings": [
-      "(meaning missing)"
+      "special"
     ],
-    "readings": []
+    "readings": [
+      "とく"
+    ]
   },
   "風": {
     "meanings": [
@@ -709,15 +686,22 @@
   },
   "空": {
     "meanings": [
-      "(meaning missing)"
+      "emptiness",
+      "being empty"
     ],
-    "readings": []
+    "readings": [
+      "から"
+    ]
   },
   "有": {
     "meanings": [
-      "(meaning missing)"
+      "have",
+      "exist"
     ],
-    "readings": []
+    "readings": [
+      "ある",
+      "ゆう"
+    ]
   },
   "起": {
     "meanings": [
@@ -749,15 +733,26 @@
   },
   "楽": {
     "meanings": [
-      "(meaning missing)"
+      "comfort",
+      "enjoy"
     ],
-    "readings": []
+    "readings": [
+      "たのしい",
+      "らく"
+    ]
   },
   "色": {
     "meanings": [
-      "(meaning missing)"
+      "colour",
+      "color",
+      "hue",
+      "tint",
+      "tinge",
+      "shade"
     ],
-    "readings": []
+    "readings": [
+      "いろ"
+    ]
   },
   "帰": {
     "meanings": [
@@ -793,16 +788,6 @@
     "readings": [
       "ひろい",
       "こう"
-    ]
-  },
-  "店": {
-    "meanings": [
-      "shop",
-      "store"
-    ],
-    "readings": [
-      "みせ",
-      "てん"
     ]
   },
   "町": {
@@ -845,9 +830,14 @@
   },
   "古": {
     "meanings": [
-      "(meaning missing)"
+      "antiquity",
+      "ancient times",
+      "bygone days",
+      "former times"
     ],
-    "readings": []
+    "readings": [
+      "いにしえ"
+    ]
   },
   "始": {
     "meanings": [
@@ -907,17 +897,11 @@
   },
   "映": {
     "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
-  },
-  "買": {
-    "meanings": [
-      "buy"
+      "reflect",
+      "projection"
     ],
     "readings": [
-      "かう",
-      "ばい"
+      "えい"
     ]
   },
   "病": {
@@ -952,27 +936,47 @@
   },
   "台": {
     "meanings": [
-      "(meaning missing)"
+      "stand",
+      "rest",
+      "base",
+      "pedestal",
+      "platform",
+      "table",
+      "holder",
+      "support",
+      "rack"
     ],
-    "readings": []
+    "readings": [
+      "だい"
+    ]
   },
   "室": {
     "meanings": [
-      "(meaning missing)"
+      "room"
     ],
-    "readings": []
+    "readings": [
+      "しつ"
+    ]
   },
   "可": {
     "meanings": [
-      "(meaning missing)"
+      "acceptable",
+      "satisfactory",
+      "allowed",
+      "permitted"
     ],
-    "readings": []
+    "readings": [
+      "か"
+    ]
   },
   "建": {
     "meanings": [
-      "(meaning missing)"
+      "build"
     ],
-    "readings": []
+    "readings": [
+      "たてる",
+      "けん"
+    ]
   },
   "転": {
     "meanings": [
@@ -986,9 +990,11 @@
   },
   "医": {
     "meanings": [
-      "(meaning missing)"
+      "medical"
     ],
-    "readings": []
+    "readings": [
+      "い"
+    ]
   },
   "止": {
     "meanings": [
@@ -1000,17 +1006,14 @@
       "し"
     ]
   },
-  "字": {
-    "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
-  },
   "工": {
     "meanings": [
-      "(meaning missing)"
+      "craft",
+      "construction"
     ],
-    "readings": []
+    "readings": [
+      "こう"
+    ]
   },
   "急": {
     "meanings": [
@@ -1024,21 +1027,18 @@
   },
   "図": {
     "meanings": [
-      "(meaning missing)"
+      "drawing",
+      "picture",
+      "diagram",
+      "figure",
+      "illustration",
+      "chart",
+      "graph",
+      "map"
     ],
-    "readings": []
-  },
-  "黒": {
-    "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
-  },
-  "花": {
-    "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
+    "readings": [
+      "ず"
+    ]
   },
   "英": {
     "meanings": [
@@ -1058,23 +1058,22 @@
       "そう"
     ]
   },
-  "青": {
-    "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
-  },
   "答": {
     "meanings": [
-      "(meaning missing)"
+      "answer"
     ],
-    "readings": []
+    "readings": [
+      "こたえる",
+      "とう"
+    ]
   },
   "紙": {
     "meanings": [
-      "(meaning missing)"
+      "paper"
     ],
-    "readings": []
+    "readings": [
+      "かみ"
+    ]
   },
   "歌": {
     "meanings": [
@@ -1095,12 +1094,6 @@
       "そそぐ",
       "ちゅう"
     ]
-  },
-  "赤": {
-    "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
   },
   "春": {
     "meanings": [
@@ -1132,9 +1125,12 @@
   },
   "験": {
     "meanings": [
-      "(meaning missing)"
+      "test",
+      "effect"
     ],
-    "readings": []
+    "readings": [
+      "けん"
+    ]
   },
   "写": {
     "meanings": [
@@ -1164,12 +1160,6 @@
     "readings": [
       "けん"
     ]
-  },
-  "飲": {
-    "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
   },
   "肉": {
     "meanings": [
@@ -1225,9 +1215,12 @@
   },
   "兄": {
     "meanings": [
-      "(meaning missing)"
+      "older brother",
+      "elder brother"
     ],
-    "readings": []
+    "readings": [
+      "あに"
+    ]
   },
   "秋": {
     "meanings": [
@@ -1240,15 +1233,11 @@
   },
   "堂": {
     "meanings": [
-      "(meaning missing)"
+      "hall"
     ],
-    "readings": []
-  },
-  "週": {
-    "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
+    "readings": [
+      "どう"
+    ]
   },
   "習": {
     "meanings": [
@@ -1261,9 +1250,13 @@
   },
   "試": {
     "meanings": [
-      "(meaning missing)"
+      "try",
+      "test"
     ],
-    "readings": []
+    "readings": [
+      "ためす",
+      "し"
+    ]
   },
   "夏": {
     "meanings": [
@@ -1276,9 +1269,12 @@
   },
   "弟": {
     "meanings": [
-      "(meaning missing)"
+      "younger brother (of an older brother)",
+      "younger sister (of an older sister)"
     ],
-    "readings": []
+    "readings": [
+      "おと"
+    ]
   },
   "鳥": {
     "meanings": [
@@ -1291,23 +1287,18 @@
   },
   "犬": {
     "meanings": [
-      "(meaning missing)"
+      "dog (Canis (lupus) familiaris)"
     ],
-    "readings": []
+    "readings": [
+      "いぬ"
+    ]
   },
   "夕": {
     "meanings": [
-      "(meaning missing)"
-    ],
-    "readings": []
-  },
-  "魚": {
-    "meanings": [
-      "fish"
+      "evening"
     ],
     "readings": [
-      "さかな",
-      "ぎょ"
+      "ゆう"
     ]
   },
   "借": {
@@ -1327,14 +1318,6 @@
     "readings": [
       "めし",
       "はん"
-    ]
-  },
-  "駅": {
-    "meanings": [
-      "station"
-    ],
-    "readings": [
-      "えき"
     ]
   },
   "昼": {
@@ -1358,15 +1341,20 @@
   },
   "姉": {
     "meanings": [
-      "(meaning missing)"
+      "older sister",
+      "elder sister"
     ],
-    "readings": []
+    "readings": [
+      "あね"
+    ]
   },
   "曜": {
     "meanings": [
-      "(meaning missing)"
+      "weekday"
     ],
-    "readings": []
+    "readings": [
+      "よう"
+    ]
   },
   "漢": {
     "meanings": [
@@ -1388,9 +1376,11 @@
   },
   "妹": {
     "meanings": [
-      "(meaning missing)"
+      "younger sister"
     ],
-    "readings": []
+    "readings": [
+      "いもうと"
+    ]
   },
   "貸": {
     "meanings": [
@@ -1403,8 +1393,11 @@
   },
   "勉": {
     "meanings": [
-      "(meaning missing)"
+      "endeavor",
+      "make effort"
     ],
-    "readings": []
+    "readings": [
+      "べん"
+    ]
   }
 }
