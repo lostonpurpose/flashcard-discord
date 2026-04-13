@@ -100,13 +100,17 @@ if (!botToken) {
   throw new Error('Missing DISCORD_BOT_TOKEN env var');
 }
 
+const minimalIntents = [GatewayIntentBits.Guilds, GatewayIntentBits.DirectMessages];
+const privilegedIntents = process.env.APP_ENV === 'test'
+  ? []
+  : [GatewayIntentBits.GuildMembers, GatewayIntentBits.MessageContent];
+
+if (process.env.APP_ENV === 'test') {
+  console.log('[server.js] TEST MODE: using minimal gateway intents');
+}
+
 const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMembers,
-    GatewayIntentBits.DirectMessages,
-    GatewayIntentBits.MessageContent,
-  ],
+  intents: [...minimalIntents, ...privilegedIntents],
   partials: [Partials.Channel],
 });
 
@@ -221,13 +225,12 @@ client.on('messageCreate', async (message) => {
   if (!userAnswer) return;
   const userAnswerLower = userAnswer.trim().toLowerCase();
 
-  if (userAnswerLower.startsWith('challenge!')) {
-    const match = userAnswerLower.match(/^challenge!\s*(\d+)?$/);
-    if (match) {
-      const count = match[1] ? parseInt(match[1], 10) : 10;
-      await challengeMode.startChallenge(userId, message, count, pool);
-      return;
-    }
+  const challengeMatch = userAnswerLower.match(/^challenge!\s*(\d+)?$/);
+  if (challengeMatch) {
+    const count = challengeMatch[1] ? parseInt(challengeMatch[1], 10) : 10;
+    console.log(`[server.js] challenge command received from ${discordUserId}: count=${count}`);
+    await challengeMode.startChallenge(userId, message, count, pool);
+    return;
   }
 
   // handle pending deletion confirmations (yes/no) before any other commands
