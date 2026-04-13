@@ -30,6 +30,11 @@ const job = new CronJob('*/30 * * * * *', async () => {
     for (const user of users) {
       const { id: userId, discord_user_id, last_card_sent, user_freq } = user;
 
+      if (challengeMode.isActive(userId)) {
+        console.log(`[CRON] Skipping ${discord_user_id} because challenge mode is active`);
+        continue;
+      }
+
       const lastSent = last_card_sent ? new Date(last_card_sent) : null;
       const freqMs = (user_freq || 30) * 60 * 1000;
       const timeSinceLast = lastSent ? (now - lastSent) : null;
@@ -88,6 +93,7 @@ import { reviewCard } from './review-card.js';
 import { introduceNextBatch } from './introduce-next-batch.js';
 import { sendNextCard } from './send-next-card.js';
 import { badges } from './badges.js';
+import * as challengeMode from './challenge-mode.js';
 
 const botToken = process.env.DISCORD_BOT_TOKEN;
 if (!botToken) {
@@ -214,6 +220,15 @@ client.on('messageCreate', async (message) => {
   // Skip empty messages
   if (!userAnswer) return;
   const userAnswerLower = userAnswer.trim().toLowerCase();
+
+  if (userAnswerLower.startsWith('challenge!')) {
+    const match = userAnswerLower.match(/^challenge!\s*(\d+)?$/);
+    if (match) {
+      const count = match[1] ? parseInt(match[1], 10) : 10;
+      await challengeMode.startChallenge(userId, message, count, pool);
+      return;
+    }
+  }
 
   // handle pending deletion confirmations (yes/no) before any other commands
   if (pendingDeletion.has(userId)) {
@@ -579,6 +594,11 @@ client.on('messageCreate', async (message) => {
 
     // LOCK: Clear last_kanji_sent so further answers are ignored until next card is sent
     await pool.query('UPDATE users SET last_kanji_sent = NULL WHERE id = $1', [userId]);
+
+    if (challengeMode.isActive(userId)) {
+      await challengeMode.continueChallenge(userId, message, pool);
+      return;
+    }
   } else {
     console.error("No valid cardId found, skipping reviewCard");
   }
@@ -593,6 +613,10 @@ client.on('messageCreate', async (message) => {
   }
 
   // 4. Try to introduce the next batch if ready
+  if (challengeMode.isActive(userId)) {
+    console.log(`[server.js] User ${userId} in challenge mode; skipping normal delivery.`);
+    return;
+  }
   try {
     const batchIntroduced = await introduceNextBatch(userId, message, 'easy');
     // If we just unlocked a new batch, send the next card immediately (no rate-limit check)
