@@ -3,6 +3,11 @@ import { Pool } from 'pg';
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 export async function introduceNextBatch(userId, message, difficulty = 'easy') {
+  if (!userId) {
+    console.error('[introduceNextBatch] missing userId');
+    return false;
+  }
+
   // 1. Get all *meaning* cards the user has seen (exclude readings)
   const { rows: userCards } = await pool.query(
     `SELECT id, card_front, card_back, score, correct_count
@@ -41,11 +46,10 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
     return false;
   }
 
-  // Send message telling them about next 5 kanji
-  await message.reply("Nice work! You're on to the next 5 cards. Here they are:");
-  console.log(`[introduceNextBatch] introduced ${nextCards.length} new cards for user ${userId}`);
+  const cardReplies = [];
+  console.log(`[introduceNextBatch] introducing ${nextCards.length} new cards for user ${userId}`);
 
-  // 6. Insert new cards and send study messages
+  // 6. Insert new cards and prepare study messages
   for (const card of nextCards) {
       let newCardId;
       try {
@@ -104,13 +108,20 @@ export async function introduceNextBatch(userId, message, difficulty = 'easy') {
         }
       }
 
-      // Send next five flashcards to learn via Discord
+      // Prepare next flashcard response text
       const meaningText = meanings.join(', ');
-      await message.reply(`${card.card_front} = ${meaningText}`);
+      cardReplies.push(`${card.card_front} = ${meaningText}`);
     }
+
+  // Send message telling them about next 5 kanji after the cards are inserted successfully
+  await message.reply("Nice work! You're on to the next 5 cards. Here they are:");
+  for (const replyText of cardReplies) {
+    await message.reply(replyText);
+  }
 
   // Send spacing message
   await message.reply("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*(This block is to keep you from seeing the answers :). Scroll up for the new words!)");
 
+  console.log(`[introduceNextBatch] introduced ${nextCards.length} new cards for user ${userId}`);
   return true; // Next batch introduced
 }

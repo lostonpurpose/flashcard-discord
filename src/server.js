@@ -30,6 +30,11 @@ const job = new CronJob('*/30 * * * * *', async () => {
     for (const user of users) {
       const { id: userId, discord_user_id, last_card_sent, user_freq } = user;
 
+      if (challengeMode.isActive(userId)) {
+        console.log(`[CRON] Skipping ${discord_user_id} because challenge mode is active`);
+        continue;
+      }
+
       const lastSent = last_card_sent ? new Date(last_card_sent) : null;
       const freqMs = (user_freq || 30) * 60 * 1000;
       const timeSinceLast = lastSent ? (now - lastSent) : null;
@@ -88,19 +93,24 @@ import { reviewCard } from './review-card.js';
 import { introduceNextBatch } from './introduce-next-batch.js';
 import { sendNextCard } from './send-next-card.js';
 import { badges } from './badges.js';
+import * as challengeMode from './challenge-mode.js';
 
 const botToken = process.env.DISCORD_BOT_TOKEN;
 if (!botToken) {
   throw new Error('Missing DISCORD_BOT_TOKEN env var');
 }
 
+const minimalIntents = [GatewayIntentBits.Guilds, GatewayIntentBits.DirectMessages];
+const privilegedIntents = process.env.APP_ENV === 'test'
+  ? []
+  : [GatewayIntentBits.GuildMembers, GatewayIntentBits.MessageContent];
+
+if (process.env.APP_ENV === 'test') {
+  console.log('[server.js] TEST MODE: using minimal gateway intents');
+}
+
 const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMembers,
-    GatewayIntentBits.DirectMessages,
-    GatewayIntentBits.MessageContent,
-  ],
+  intents: [...minimalIntents, ...privilegedIntents],
   partials: [Partials.Channel],
 });
 
@@ -169,6 +179,7 @@ client.on('messageCreate', async (message) => {
   console.log(`Message received from ${message.author.tag}: "${message.content}" in channel type: ${message.channel.type}`);
   console.log('[server.js] messageCreate handler triggered');
 
+  let userId;
   try {
     // Ignore bot messages
     if (message.author.bot) return;
@@ -182,7 +193,6 @@ client.on('messageCreate', async (message) => {
     console.log(`DM from ${message.author.tag} (${discordUserId}): ${userAnswer}`);
 
   // 1. Ensure user exists
-  let userId;
   try {
     const result = await pool.query(
       'INSERT INTO users (discord_user_id, last_card_sent) VALUES ($1, NOW()) ON CONFLICT (discord_user_id) DO NOTHING RETURNING id',
@@ -202,6 +212,10 @@ client.on('messageCreate', async (message) => {
     }
     // Get userId for later use
     const userRes = await pool.query('SELECT id, last_kanji_sent FROM users WHERE discord_user_id = $1', [discordUserId]);
+    if (!userRes.rows.length) {
+      console.error('Failed to resolve user row for discordUserId', discordUserId);
+      return;
+    }
     userId = userRes.rows[0].id;
     // Store last_kanji_sent for later blocking check
     const lastKanjiSent = userRes.rows[0].last_kanji_sent;
@@ -215,17 +229,32 @@ client.on('messageCreate', async (message) => {
   if (!userAnswer) return;
   const userAnswerLower = userAnswer.trim().toLowerCase();
 
+  const challengeMatch = userAnswerLower.match(/^challenge!\s*(\d+)?$/);
+  if (challengeMatch) {
+    const count = challengeMatch[1] ? parseInt(challengeMatch[1], 10) : 10;
+    console.log(`[server.js] challenge command received from ${discordUserId}: count=${count}`);
+    await challengeMode.startChallenge(userId, message, count, pool);
+    return;
+  }
+
   // handle pending deletion confirmations (yes/no) before any other commands
   if (pendingDeletion.has(userId)) {
     const cardFront = pendingDeletion.get(userId);
     if (userAnswerLower === 'yes') {
+      let deleteResult;
       if (cardFront.endsWith(' (custom)')) {
-        await pool.query('DELETE FROM custom_cards WHERE user_id = $1 AND card_front = $2', [userId, cardFront]);
+        deleteResult = await pool.query('DELETE FROM custom_cards WHERE user_id = $1 AND card_front = $2', [userId, cardFront]);
       } else {
-        await pool.query('DELETE FROM cards WHERE user_id = $1 AND card_front = $2', [userId, cardFront]);
+        deleteResult = await pool.query('DELETE FROM cards WHERE user_id = $1 AND card_front = $2', [userId, cardFront]);
       }
       pendingDeletion.delete(userId);
-      await message.reply(`Card deleted: ${cardFront}`);
+      if (deleteResult.rowCount === 0) {
+        await message.reply(`No card was found with the front "${cardFront}".`);
+      } else if (deleteResult.rowCount === 1) {
+        await message.reply(`Card deleted: ${cardFront}`);
+      } else {
+        await message.reply(`Deleted ${deleteResult.rowCount} cards with the front: ${cardFront}`);
+      }
       return;
     } else if (userAnswerLower === 'no') {
       pendingDeletion.delete(userId);
@@ -579,6 +608,11 @@ client.on('messageCreate', async (message) => {
 
     // LOCK: Clear last_kanji_sent so further answers are ignored until next card is sent
     await pool.query('UPDATE users SET last_kanji_sent = NULL WHERE id = $1', [userId]);
+
+    if (challengeMode.isActive(userId)) {
+      await challengeMode.continueChallenge(userId, message, pool);
+      return;
+    }
   } else {
     console.error("No valid cardId found, skipping reviewCard");
   }
@@ -590,10 +624,19 @@ client.on('messageCreate', async (message) => {
     } catch (e) {
       console.error('[server.js] failed to send fallback reply:', e);
     }
+    return;
   }
 
   // 4. Try to introduce the next batch if ready
+  if (challengeMode.isActive(userId)) {
+    console.log(`[server.js] User ${userId} in challenge mode; skipping normal delivery.`);
+    return;
+  }
   try {
+    if (!userId) {
+      console.error('[server.js] userId undefined before introduceNextBatch');
+      return;
+    }
     const batchIntroduced = await introduceNextBatch(userId, message, 'easy');
     // If we just unlocked a new batch, send the next card immediately (no rate-limit check)
     if (batchIntroduced) {
