@@ -17,17 +17,20 @@ export async function startChallenge(userId, message, requestedCount, pool) {
   }
 
   const { rows } = await pool.query(
-    `SELECT id, card_front, card_back, FALSE AS is_custom
-     FROM cards
-     WHERE user_id = $1
-       AND introduced = TRUE
-       AND score <= 50
-     UNION ALL
-     SELECT id, card_front, card_back, TRUE AS is_custom
-     FROM custom_cards
-     WHERE user_id = $1
-       AND introduced = TRUE
-       AND score <= 50
+    `SELECT id, card_front, card_back, is_custom
+     FROM (
+       SELECT id, card_front, card_back, FALSE AS is_custom
+       FROM cards
+       WHERE user_id = $1
+         AND introduced = TRUE
+         AND score <= 50
+       UNION ALL
+       SELECT id, card_front, card_back, TRUE AS is_custom
+       FROM custom_cards
+       WHERE user_id = $1
+         AND introduced = TRUE
+         AND score <= 50
+     ) AS combined
      ORDER BY RANDOM()
      LIMIT $2`,
     [userId, count]
