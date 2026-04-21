@@ -45,10 +45,10 @@ export async function sendNextCard(userId, message) {
     // Create weighted array of all cards
     const weightedCards = [];
     for (const card of reviewCards) {
-      weightedCards.push({ card, weight: 3 });
+      weightedCards.push({ card, weight: 8 });
     }
     for (const card of freshNew) {
-      weightedCards.push({ card, weight: 2 });
+      weightedCards.push({ card, weight: 5 });
     }
     for (const card of answeredNew) {
       weightedCards.push({ card, weight: 1 });
