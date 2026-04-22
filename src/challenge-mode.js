@@ -71,7 +71,7 @@ async function sendNextChallengeCard(userId, message, pool) {
   return true;
 }
 
-export async function continueChallenge(userId, message, pool) {
+export async function continueChallenge(userId, message, pool, onChallengeComplete = null) {
   const session = challengeSessions.get(userId);
   if (!session) return false;
 
@@ -79,7 +79,10 @@ export async function continueChallenge(userId, message, pool) {
     const outOfCards = session.queue.length < session.requestedCount;
     challengeSessions.delete(userId);
     await message.reply(outOfCards ? 'You are out of challenge cards.' : 'Challenge complete!');
-    return true;
+    if (typeof onChallengeComplete === 'function') {
+      await onChallengeComplete();
+    }
+    return false;
   }
 
   const hasMore = await sendNextChallengeCard(userId, message, pool);
@@ -87,7 +90,10 @@ export async function continueChallenge(userId, message, pool) {
     const outOfCards = session.queue.length < session.requestedCount;
     challengeSessions.delete(userId);
     await message.reply(outOfCards ? 'You are out of challenge cards.' : 'Challenge complete!');
-    return true;
+    if (typeof onChallengeComplete === 'function') {
+      await onChallengeComplete();
+    }
+    return false;
   }
 
   return true;

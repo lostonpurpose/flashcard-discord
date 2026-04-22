@@ -610,8 +610,20 @@ client.on('messageCreate', async (message) => {
     await pool.query('UPDATE users SET last_kanji_sent = NULL WHERE id = $1', [userId]);
 
     if (challengeMode.isActive(userId)) {
-      await challengeMode.continueChallenge(userId, message, pool);
-      return;
+      let batchIntroducedAfterChallenge = false;
+      const challengeStillActive = await challengeMode.continueChallenge(userId, message, pool, async () => {
+        batchIntroducedAfterChallenge = await introduceNextBatch(userId, message, 'easy');
+        if (batchIntroducedAfterChallenge) {
+          await sendNextCard(userId, message);
+        }
+      });
+      if (challengeStillActive) {
+        return;
+      }
+      if (batchIntroducedAfterChallenge) {
+        return;
+      }
+      // If the challenge just finished, continue to normal delivery so next batch can be introduced.
     }
   } else {
     console.error("No valid cardId found, skipping reviewCard");
