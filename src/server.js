@@ -287,7 +287,7 @@ client.on('messageCreate', async (message) => {
   }
 
   if (userAnswerLower === 'help!') {
-    await message.reply("Commands:\n- `sleep!` / `wake!` to pause or resume sending\n- `freq = N` to set card frequency in minutes\n- `difficulty = easy|medium|hard` to restart on a different level\n- `front = back` to create a custom card (the front will be tagged ` (custom)` )\n- `front :: delete` to remove a regular card; append ` (custom)` to delete a custom one");
+    await message.reply("Commands:\n- `freq = N` to set card frequency in minutes\n- `difficulty = easy|medium|hard` to restart on a different level (not yet implemented)\n- `front = back` to create a custom card (the front will be tagged ` (custom)` )\n- `front :: delete` to remove a regular card; append ` (custom)` to delete a custom one\n- `challenge! N` (where N is the number of cards) to enter Challenge Mode - you'll get cards one after another like a traditional app. If you just type `challenge!` the default number is 10 \n- `sleep!` / `wake!` to pause or resume sending");
     return;
   }
 
