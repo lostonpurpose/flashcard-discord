@@ -286,7 +286,7 @@ client.on('messageCreate', async (message) => {
     return;
   }
 
-  if (userAnswerLower === 'help' || userAnswerLower === 'help!') {
+  if (userAnswerLower === 'help!') {
     await message.reply("Commands:\n- `sleep!` / `wake!` to pause or resume sending\n- `freq = N` to set card frequency in minutes\n- `difficulty = easy|medium|hard` to restart on a different level\n- `front = back` to create a custom card (the front will be tagged ` (custom)` )\n- `front :: delete` to remove a regular card; append ` (custom)` to delete a custom one");
     return;
   }
