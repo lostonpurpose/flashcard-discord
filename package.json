@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "node src/server.js",
+    "broadcast": "node src/broadcast.js",
     "postinstall": "npm install cron"
   }
 }

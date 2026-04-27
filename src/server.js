@@ -286,8 +286,8 @@ client.on('messageCreate', async (message) => {
     return;
   }
 
-  if (userAnswerLower === 'help' || userAnswerLower === 'help!') {
-    await message.reply("Commands:\n- `sleep!` / `wake!` to pause or resume sending\n- `freq = N` to set card frequency in minutes\n- `difficulty = easy|medium|hard` to restart on a different level\n- `front = back` to create a custom card (the front will be tagged ` (custom)` )\n- `front :: delete` to remove a regular card; append ` (custom)` to delete a custom one");
+  if (userAnswerLower === 'help!') {
+    await message.reply("Commands:\n- `freq = N` to set card frequency in minutes\n- `difficulty = easy|medium|hard` to restart on a different level (not yet implemented)\n- `front = back` to create a custom card (the front will be tagged ` (custom)` )\n- `front :: delete` to remove a regular card; append ` (custom)` to delete a custom one\n- `challenge! N`  (where N is the number of cards) to enter Challenge Mode - you'll get cards one after another like a traditional app. If you just type `challenge!` the default number is 10 \n- `sleep!` / `wake!` to pause or resume sending");
     return;
   }
 
@@ -610,8 +610,20 @@ client.on('messageCreate', async (message) => {
     await pool.query('UPDATE users SET last_kanji_sent = NULL WHERE id = $1', [userId]);
 
     if (challengeMode.isActive(userId)) {
-      await challengeMode.continueChallenge(userId, message, pool);
-      return;
+      let batchIntroducedAfterChallenge = false;
+      const challengeStillActive = await challengeMode.continueChallenge(userId, message, pool, async () => {
+        batchIntroducedAfterChallenge = await introduceNextBatch(userId, message, 'easy');
+        if (batchIntroducedAfterChallenge) {
+          await sendNextCard(userId, message);
+        }
+      });
+      if (challengeStillActive) {
+        return;
+      }
+      if (batchIntroducedAfterChallenge) {
+        return;
+      }
+      // If the challenge just finished, continue to normal delivery so next batch can be introduced.
     }
   } else {
     console.error("No valid cardId found, skipping reviewCard");

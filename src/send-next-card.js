@@ -43,8 +43,14 @@ export async function sendNextCard(userId, message) {
     }
 
     // Create weighted array of all cards
+    const criticalCards = reviewCards.filter(c => Number(c.score) <= 35);
+    const normalReviewCards = reviewCards.filter(c => Number(c.score) > 35);
+
     const weightedCards = [];
-    for (const card of reviewCards) {
+    for (const card of criticalCards) {
+      weightedCards.push({ card, weight: 15 });
+    }
+    for (const card of normalReviewCards) {
       weightedCards.push({ card, weight: 8 });
     }
     for (const card of freshNew) {

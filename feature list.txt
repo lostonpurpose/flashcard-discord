@@ -12,3 +12,7 @@ https://kanjicards.org/kanji-list-by-freq.html
 https://www.kanshudo.com/collections/jlpt_kanji
 
 https://marmooo.github.io/graded-idioms-ja/%E5%B8%B8%E7%94%A8/
+
+
+to broadcast messages: 
+npm run broadcast -- "New feature: challenge! is now available. Type challenge! to try it."
