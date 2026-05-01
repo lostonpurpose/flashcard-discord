@@ -48,13 +48,13 @@ export async function sendNextCard(userId, message) {
 
     const weightedCards = [];
     for (const card of criticalCards) { // score less than 35
-      weightedCards.push({ card, weight: 20 });
+      weightedCards.push({ card, weight: 40 });
     }
     for (const card of normalReviewCards) { // score btw 35 and 49
-      weightedCards.push({ card, weight: 15 });
+      weightedCards.push({ card, weight: 30 });
     }
     for (const card of freshNew) { // newest batch
-      weightedCards.push({ card, weight: 10 });
+      weightedCards.push({ card, weight: 20 });
     }
     for (const card of answeredNew) { // regular cards
       weightedCards.push({ card, weight: 1 });
