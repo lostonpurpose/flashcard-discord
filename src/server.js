@@ -241,19 +241,25 @@ client.on('messageCreate', async (message) => {
   if (pendingDeletion.has(userId)) {
     const cardFront = pendingDeletion.get(userId);
     if (userAnswerLower === 'yes') {
-      let deleteResult;
-      if (cardFront.endsWith(' (custom)')) {
-        deleteResult = await pool.query('DELETE FROM custom_cards WHERE user_id = $1 AND card_front = $2', [userId, cardFront]);
-      } else {
-        deleteResult = await pool.query('DELETE FROM cards WHERE user_id = $1 AND card_front = $2', [userId, cardFront]);
-      }
-      pendingDeletion.delete(userId);
-      if (deleteResult.rowCount === 0) {
-        await message.reply(`No card was found with the front "${cardFront}".`);
-      } else if (deleteResult.rowCount === 1) {
-        await message.reply(`Card deleted: ${cardFront}`);
-      } else {
-        await message.reply(`Deleted ${deleteResult.rowCount} cards with the front: ${cardFront}`);
+      try {
+        let deleteResult;
+        if (cardFront.endsWith(' (custom)')) {
+          deleteResult = await pool.query('DELETE FROM custom_cards WHERE user_id = $1 AND card_front = $2', [userId, cardFront]);
+        } else {
+          deleteResult = await pool.query('DELETE FROM cards WHERE user_id = $1 AND card_front = $2', [userId, cardFront]);
+        }
+        pendingDeletion.delete(userId);
+        if (deleteResult.rowCount === 0) {
+          await message.reply(`No card was found with the front "${cardFront}".`);
+        } else if (deleteResult.rowCount === 1) {
+          await message.reply(`Card deleted: ${cardFront}`);
+        } else {
+          await message.reply(`Deleted ${deleteResult.rowCount} cards with the front: ${cardFront}`);
+        }
+      } catch (err) {
+        pendingDeletion.delete(userId);
+        console.error('[server.js] delete card failed for', cardFront, err);
+        await message.reply(`Sorry, I couldn't delete "${cardFront}" right now.`);
       }
       return;
     } else if (userAnswerLower === 'no') {
@@ -351,8 +357,9 @@ client.on('messageCreate', async (message) => {
   }
 
   // Check if user wants to delete a card (format: "x :: delete")
-  if (userAnswer.includes(' :: delete')) {
-    const cardFront = userAnswer.replace(' :: delete', '').trim();
+  const deleteMatch = userAnswer.match(/^(.*)\s*::\s*delete\s*$/i);
+  if (deleteMatch) {
+    const cardFront = deleteMatch[1].trim();
     if (cardFront) {
       pendingDeletion.set(userId, cardFront);
       await message.reply(`Are you sure you want to delete the card "${cardFront}"? Reply 'yes' or 'no'.`);
