@@ -30,8 +30,8 @@ const job = new CronJob('*/30 * * * * *', async () => {
     for (const user of users) {
       const { id: userId, discord_user_id, last_card_sent, user_freq } = user;
 
-      if (challengeMode.isActive(userId)) {
-        console.log(`[CRON] Skipping ${discord_user_id} because challenge mode is active`);
+      if (challengeMode.isActive(userId) || newMode.isActive(userId)) {
+        console.log(`[CRON] Skipping ${discord_user_id} because a special session is active`);
         continue;
       }
 
@@ -94,6 +94,7 @@ import { introduceNextBatch } from './introduce-next-batch.js';
 import { sendNextCard } from './send-next-card.js';
 import { badges } from './badges.js';
 import * as challengeMode from './challenge-mode.js';
+import * as newMode from './new-mode.js';
 
 const botToken = process.env.DISCORD_BOT_TOKEN;
 if (!botToken) {
@@ -293,7 +294,16 @@ client.on('messageCreate', async (message) => {
   }
 
   if (userAnswerLower === 'help!') {
-    await message.reply("Commands:\n- `freq = N` to set card frequency in minutes\n- `difficulty = easy|medium|hard` to restart on a different level (not yet implemented)\n- `front = back` to create a custom card (the front will be tagged ` (custom)` )\n- `front :: delete` to remove a regular card; append ` (custom)` to delete a custom one\n- `challenge! N`  (where N is the number of cards) to enter Challenge Mode - you'll get cards one after another like a traditional app. If you just type `challenge!` the default number is 10 \n- `sleep!` / `wake!` to pause or resume sending");
+    await message.reply("Commands:\n- `freq = N` to set card frequency in minutes\n- `difficulty = easy|medium|hard` to restart on a different level (not yet implemented)\n- `front = back` to create a custom card (the front will be tagged ` (custom)` )\n- `front :: delete` to remove a regular card; append ` (custom)` to delete a custom one\n- `new!` to start a new-card session for your current batch (one card at a time, like challenge!)\n- `challenge! N`  (where N is the number of cards) to enter Challenge Mode - you'll get cards one after another like a traditional app. If you just type `challenge!` the default number is 10 \n- `sleep!` / `wake!` to pause or resume sending");
+    return;
+  }
+
+  if (userAnswerLower === 'new!') {
+    if (challengeMode.isActive(userId)) {
+      await message.reply('You are already in challenge mode. Finish it before starting a new-card session.');
+      return;
+    }
+    await newMode.startNewCards(userId, message, pool);
     return;
   }
 
@@ -651,6 +661,14 @@ client.on('messageCreate', async (message) => {
     console.log(`[server.js] User ${userId} in challenge mode; skipping normal delivery.`);
     return;
   }
+
+  if (newMode.isActive(userId)) {
+    const newModeStillActive = await newMode.continueNewCards(userId, message, pool);
+    if (newModeStillActive) {
+      return;
+    }
+  }
+
   try {
     if (!userId) {
       console.error('[server.js] userId undefined before introduceNextBatch');
