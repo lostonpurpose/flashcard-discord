@@ -37,10 +37,10 @@ export async function reviewCard(userId, cardId, correct, table = 'cards') {
       const baseIncrease = Math.floor(Math.random() * 4) + 4;
       // Score increase: baseIncrease + (5 * newStreak)
 
-      const threeInRowBonus = newStreak >= 3 && newStreak <= 4 ? (60 + baseIncrease) : 0;
-      const fiveInRowBonus = newStreak >= 5 && newStreak <= 9 ? (100 + (baseIncrease * 6)) : 0;
-      const tenInRowBonus = newStreak >= 10  && newStreak <= 14 ? (2000 + (baseIncrease * 12)) : 0;
-      const fifteenInRowBounus = newStreak >= 15 ? (300 + (baseIncrease * 30)) : 0;
+      const threeInRowBonus = newStreak >= 3 && newStreak <= 4 ? (80 + baseIncrease) : 0;
+      const fiveInRowBonus = newStreak >= 5 && newStreak <= 9 ? (135 + (baseIncrease * 6)) : 0;
+      const tenInRowBonus = newStreak >= 10  && newStreak <= 14 ? (280 + (baseIncrease * 12)) : 0;
+      const fifteenInRowBounus = newStreak >= 15 ? (410 + (baseIncrease * 30)) : 0;
 
       // final calc for score
       newScore = score + baseIncrease + (5 * newStreak) + threeInRowBonus + fiveInRowBonus + tenInRowBonus + fifteenInRowBounus;
