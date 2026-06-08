@@ -1,3 +1,5 @@
+import { badges } from './badges.js';
+
 export const newSessions = new Map();
 
 export function isActive(userId) {
@@ -11,7 +13,7 @@ export async function startNewCards(userId, message, pool) {
   }
 
   const { rows } = await pool.query(
-    `SELECT id, card_front, card_back
+    `SELECT id, card_front, card_back, correct_count
      FROM cards
      WHERE user_id = $1
        AND introduced = TRUE
@@ -51,7 +53,8 @@ async function sendNextNewCard(userId, message, pool) {
     [new Date().toISOString(), card.card_front, userId]
   );
   const remaining = session.queue.length - session.nextIndex;
-  await message.reply(`${card.card_front} = ? (${remaining} card${remaining === 1 ? '' : 's'} left)`);
+  const badge = badges(Number(card.correct_count));
+  await message.reply(`${card.card_front} = ? ${badge} (${remaining} card${remaining === 1 ? '' : 's'} left)`);
   return true;
 }
 

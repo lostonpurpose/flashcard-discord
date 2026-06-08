@@ -1,3 +1,5 @@
+import { badges } from './badges.js';
+
 export const challengeSessions = new Map();
 
 export function isActive(userId) {
@@ -17,15 +19,15 @@ export async function startChallenge(userId, message, requestedCount, pool) {
   }
 
   const { rows } = await pool.query(
-    `SELECT id, card_front, card_back, is_custom
+    `SELECT id, card_front, card_back, correct_count, is_custom
      FROM (
-       SELECT id, card_front, card_back, FALSE AS is_custom
+       SELECT id, card_front, card_back, correct_count, FALSE AS is_custom
        FROM cards
        WHERE user_id = $1
          AND introduced = TRUE
          AND score <= 50
        UNION ALL
-       SELECT id, card_front, card_back, TRUE AS is_custom
+       SELECT id, card_front, card_back, correct_count, TRUE AS is_custom
        FROM custom_cards
        WHERE user_id = $1
          AND introduced = TRUE
@@ -67,7 +69,8 @@ async function sendNextChallengeCard(userId, message, pool) {
     'UPDATE users SET last_card_sent = $1, last_kanji_sent = $2 WHERE id = $3',
     [new Date().toISOString(), card.card_front, userId]
   );
-  await message.reply(`${card.card_front} = ?`);
+  const badge = badges(Number(card.correct_count));
+  await message.reply(`${card.card_front} = ? ${badge}`);
   return true;
 }
 

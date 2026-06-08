@@ -433,7 +433,7 @@ client.on('messageCreate', async (message) => {
 
     // Fetch last kanji sent and its meanings from whichever table we found
     const lastKanjiRes = await pool.query(
-      `SELECT c.id, c.card_front, c.card_back
+      `SELECT c.id, c.card_front, c.card_back, c.correct_count
        FROM ${cardTable} c
        JOIN users u ON u.id = c.user_id
        WHERE u.id = $1 AND c.card_front = u.last_kanji_sent
@@ -442,6 +442,8 @@ client.on('messageCreate', async (message) => {
     );
     const lastKanji = lastKanjiRes.rows[0]?.card_front;
     const cardBack = lastKanjiRes.rows[0]?.card_back;
+    const currentCorrectCount = Number(lastKanjiRes.rows[0]?.correct_count || 0);
+    let badge = badges(currentCorrectCount);
     // cardIdFromQuery was already set above
 
     // Parse meanings and normalise comma-separated strings
@@ -497,15 +499,16 @@ client.on('messageCreate', async (message) => {
 
       // Fetch updated score and streak from the correct table as well
       const { rows: updatedRows } = await pool.query(
-        `SELECT score, consecutive_correct FROM ${scoreTable} WHERE id = $1 AND user_id = $2`,
+        `SELECT score, consecutive_correct, correct_count FROM ${scoreTable} WHERE id = $1 AND user_id = $2`,
         [cardIdFromQuery, userId]
       );
       if (!updatedRows.length) throw new Error('Card not found');
       let score = Number(updatedRows[0].score);
       let streak = Number(updatedRows[0].consecutive_correct);
+      let correctCount = Number(updatedRows[0].correct_count);
 
-      // fun awards for big streaks
-      let badge = badges(streak);
+      // fun awards based on correct count
+      badge = badges(correctCount);
 
       // === READINGS INTRODUCTION LOGIC ===
       // Only fire once when the streak hits exactly 5, not on 6/7/etc.
@@ -614,8 +617,8 @@ client.on('messageCreate', async (message) => {
       }
 
       feedbackText = isReadingCard
-        ? `Incorrect. The reading(s) for ${kanjiOnly} are: ${allMeanings.join(', ')}`
-        : `Incorrect. ${lastKanji} means ${allMeanings.join(', ')}`;
+        ? `Incorrect. The reading(s) for ${kanjiOnly} are: ${allMeanings.join(', ')} ${badge}`
+        : `Incorrect. ${lastKanji} means ${allMeanings.join(', ')} ${badge}`;
       await message.reply(feedbackText);
       console.log('[server.js] replied with:', feedbackText);
     }

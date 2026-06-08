@@ -1,4 +1,5 @@
 import { Pool } from 'pg';
+import { badges } from './badges.js';
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
@@ -54,7 +55,7 @@ export async function sendNextCard(userId, message) {
       weightedCards.push({ card, weight: 30 });
     }
     for (const card of freshNew) { // newest batch
-      weightedCards.push({ card, weight: 20 });
+      weightedCards.push({ card, weight: 25 });
     }
     for (const card of answeredNew) { // regular cards
       weightedCards.push({ card, weight: 1 });
@@ -80,6 +81,8 @@ export async function sendNextCard(userId, message) {
     if (!card) {
       card = weightedCards[0].card;
     }
+    
+    const badge = badges(Number(card.correct_count));
     
     // Extra: print all cards for this user/kanji for debugging
     try {
@@ -112,7 +115,7 @@ export async function sendNextCard(userId, message) {
   await pool.query('UPDATE users SET last_kanji_sent = $1 WHERE id = $2', [card.card_front, userId]);
     if (allMeanings.length === 1) {
       // Always use card.card_front as-is for the prompt
-      await message.reply(`${card.card_front} = ? [cardId: ${card.id}]`);
+      await message.reply(`${card.card_front} = ? ${badge} [cardId: ${card.id}]`);
       return true;
     }
     // no return yet for multi-meaning cards, but still log ID for telemetry
@@ -134,12 +137,12 @@ export async function sendNextCard(userId, message) {
           [card.id, meaning]
         );
       }
-      await message.reply(`${card.card_front} = ? [cardId: ${card.id}]`);
+      await message.reply(`${card.card_front} = ? ${badge} [cardId: ${card.id}]`);
       return true;
     }
   } else {
     // custom card, skip meaning tracking
-    await message.reply(`${card.card_front} = ? [cardId: ${card.id}]`);
+    await message.reply(`${card.card_front} = ? ${badge} [cardId: ${card.id}]`);
     return true;
   }
 
@@ -165,7 +168,7 @@ export async function sendNextCard(userId, message) {
     // All meanings are balanced, use kanji = ?
     promptText = `${card.card_front} = ?`;
   }
-  await message.reply(`${promptText} [cardId: ${card.id}]`);
+  await message.reply(`${promptText} ${badge} [cardId: ${card.id}]`);
   return true;
 
 }
